@@ -1,0 +1,28 @@
+<%-- see https://lucide.dev/icons/list-todo --%>
+
+@import static LucideUtils.calculatedStrokeWidth
+
+@param String classAppend = null
+@param int size = 24
+@param String color = "currentColor"
+@param int strokeWidth = 2
+@param boolean absoluteStrokeWidth = false
+
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="${size}"
+  height="${size}"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="${color}"
+  stroke-width="${calculatedStrokeWidth(size, strokeWidth, absoluteStrokeWidth)}"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  class="lucide lucide-list-todo-icon lucide-list-todo ${classAppend}"
+>
+  <path d="M13 5h8" />
+  <path d="M13 12h8" />
+  <path d="M13 19h8" />
+  <path d="m3 17 2 2 4-4" />
+  <rect x="3" y="4" width="6" height="6" rx="1" />
+</svg>

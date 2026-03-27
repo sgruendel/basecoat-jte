@@ -1,0 +1,32 @@
+<%-- see https://lucide.dev/icons/theater --%>
+
+@import static LucideUtils.calculatedStrokeWidth
+
+@param String classAppend = null
+@param int size = 24
+@param String color = "currentColor"
+@param int strokeWidth = 2
+@param boolean absoluteStrokeWidth = false
+
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="${size}"
+  height="${size}"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="${color}"
+  stroke-width="${calculatedStrokeWidth(size, strokeWidth, absoluteStrokeWidth)}"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  class="lucide lucide-theater-icon lucide-theater ${classAppend}"
+>
+  <path d="M2 10s3-3 3-8" />
+  <path d="M22 10s-3-3-3-8" />
+  <path d="M10 2c0 4.4-3.6 8-8 8" />
+  <path d="M14 2c0 4.4 3.6 8 8 8" />
+  <path d="M2 10s2 2 2 5" />
+  <path d="M22 10s-2 2-2 5" />
+  <path d="M8 15h8" />
+  <path d="M2 22v-1a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v1" />
+  <path d="M14 22v-1a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v1" />
+</svg>

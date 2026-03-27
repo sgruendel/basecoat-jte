@@ -1,0 +1,26 @@
+<%-- see https://lucide.dev/icons/navigation-off --%>
+
+@import static LucideUtils.calculatedStrokeWidth
+
+@param String classAppend = null
+@param int size = 24
+@param String color = "currentColor"
+@param int strokeWidth = 2
+@param boolean absoluteStrokeWidth = false
+
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="${size}"
+  height="${size}"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="${color}"
+  stroke-width="${calculatedStrokeWidth(size, strokeWidth, absoluteStrokeWidth)}"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  class="lucide lucide-navigation-off-icon lucide-navigation-off ${classAppend}"
+>
+  <path d="M8.43 8.43 3 11l8 2 2 8 2.57-5.43" />
+  <path d="M17.39 11.73 22 2l-9.73 4.61" />
+  <line x1="2" x2="22" y1="2" y2="22" />
+</svg>

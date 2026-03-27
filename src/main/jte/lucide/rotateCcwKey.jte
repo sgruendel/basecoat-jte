@@ -1,0 +1,28 @@
+<%-- see https://lucide.dev/icons/rotate-ccw-key --%>
+
+@import static LucideUtils.calculatedStrokeWidth
+
+@param String classAppend = null
+@param int size = 24
+@param String color = "currentColor"
+@param int strokeWidth = 2
+@param boolean absoluteStrokeWidth = false
+
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="${size}"
+  height="${size}"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="${color}"
+  stroke-width="${calculatedStrokeWidth(size, strokeWidth, absoluteStrokeWidth)}"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  class="lucide lucide-rotate-ccw-key-icon lucide-rotate-ccw-key ${classAppend}"
+>
+  <path d="M12 7v6" />
+  <path d="M12 9h2" />
+  <path d="M3 12a9 9 0 1 0 9-9 9.74 9.74 0 0 0-6.74 2.74L3 8" />
+  <path d="M3 3v5h5" />
+  <circle cx="12" cy="15" r="2" />
+</svg>

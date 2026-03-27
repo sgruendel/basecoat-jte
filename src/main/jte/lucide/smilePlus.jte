@@ -1,0 +1,29 @@
+<%-- see https://lucide.dev/icons/smile-plus --%>
+
+@import static LucideUtils.calculatedStrokeWidth
+
+@param String classAppend = null
+@param int size = 24
+@param String color = "currentColor"
+@param int strokeWidth = 2
+@param boolean absoluteStrokeWidth = false
+
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="${size}"
+  height="${size}"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="${color}"
+  stroke-width="${calculatedStrokeWidth(size, strokeWidth, absoluteStrokeWidth)}"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  class="lucide lucide-smile-plus-icon lucide-smile-plus ${classAppend}"
+>
+  <path d="M22 11v1a10 10 0 1 1-9-10" />
+  <path d="M8 14s1.5 2 4 2 4-2 4-2" />
+  <line x1="9" x2="9.01" y1="9" y2="9" />
+  <line x1="15" x2="15.01" y1="9" y2="9" />
+  <path d="M16 5h6" />
+  <path d="M19 2v6" />
+</svg>

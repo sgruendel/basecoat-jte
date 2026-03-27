@@ -1,0 +1,29 @@
+<%-- see https://lucide.dev/icons/square-scissors --%>
+
+@import static LucideUtils.calculatedStrokeWidth
+
+@param String classAppend = null
+@param int size = 24
+@param String color = "currentColor"
+@param int strokeWidth = 2
+@param boolean absoluteStrokeWidth = false
+
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="${size}"
+  height="${size}"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="${color}"
+  stroke-width="${calculatedStrokeWidth(size, strokeWidth, absoluteStrokeWidth)}"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  class="lucide lucide-square-scissors-icon lucide-square-scissors ${classAppend}"
+>
+  <rect width="18" height="18" x="3" y="3" rx="2" />
+  <circle cx="8.5" cy="8.5" r="1.5" />
+  <line x1="9.56066" y1="9.56066" x2="12" y2="12" />
+  <line x1="17" y1="17" x2="14.82" y2="14.82" />
+  <circle cx="8.5" cy="15.5" r="1.5" />
+  <line x1="9.56066" y1="14.43934" x2="17" y2="7" />
+</svg>

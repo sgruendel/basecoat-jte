@@ -1,0 +1,29 @@
+<%-- see https://lucide.dev/icons/calendar-plus --%>
+
+@import static LucideUtils.calculatedStrokeWidth
+
+@param String classAppend = null
+@param int size = 24
+@param String color = "currentColor"
+@param int strokeWidth = 2
+@param boolean absoluteStrokeWidth = false
+
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="${size}"
+  height="${size}"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="${color}"
+  stroke-width="${calculatedStrokeWidth(size, strokeWidth, absoluteStrokeWidth)}"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  class="lucide lucide-calendar-plus-icon lucide-calendar-plus ${classAppend}"
+>
+  <path d="M16 19h6" />
+  <path d="M16 2v4" />
+  <path d="M19 16v6" />
+  <path d="M21 12.598V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h8.5" />
+  <path d="M3 10h18" />
+  <path d="M8 2v4" />
+</svg>
