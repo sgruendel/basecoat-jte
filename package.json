@@ -1,0 +1,54 @@
+{
+  "name": "basecoat-jte",
+  "version": "1.0.0",
+  "description": "basecoat UI components for jte, including Lucide icons",
+  "author": "Stefan Gründel",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sgruendel/basecoat-jte.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sgruendel/basecoat-jte/issues"
+  },
+  "homepage": "https://github.com/sgruendel/basecoat-jte#readme",
+  "keywords": [
+    "basecoat",
+    "jte",
+    "template",
+    "lucide"
+  ],
+  "scripts": {
+    "generate:lucide-jte": "node scripts/generate-lucide-jte.js",
+    "devserver": "webpack serve --open --mode development",
+    "build": "webpack --mode production",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "basecoat-css": "^0.3.11",
+    "htmx.org": "^2.0.8",
+    "lucide": "^1.7.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.29.0",
+    "@babel/preset-env": "^7.29.2",
+    "@tailwindcss/postcss": "^4.2.2",
+    "autoprefixer": "^10.4.27",
+    "babel-loader": "^10.1.1",
+    "css-loader": "^7.1.4",
+    "css-minimizer-webpack-plugin": "^8.0.0",
+    "mini-css-extract-plugin": "^2.10.1",
+    "postcss-loader": "^8.2.1",
+    "postcss-preset-env": "^11.2.0",
+    "prettier": "^3.8.1",
+    "prettier-plugin-jte": "^1.0.0",
+    "style-loader": "^4.0.0",
+    "tailwindcss": "^4.2.2",
+    "terser-webpack-plugin": "^5.4.0",
+    "warnings-to-errors-webpack-plugin": "^2.3.0",
+    "webpack": "^5.105.4",
+    "webpack-cli": "^7.0.2",
+    "webpack-dev-server": "^5.2.3"
+  },
+  "private": true
+}

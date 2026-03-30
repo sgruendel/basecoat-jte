@@ -1,0 +1,119 @@
+
+@param String title
+@param String description
+@param gg.jte.Content content
+
+<!DOCTYPE html>
+<html>
+<head>
+    <%-- Dark mode --%>
+    <script>
+        (() => {
+          try {
+            const stored = localStorage.getItem('themeMode');
+            if (stored ? stored === 'dark'
+                       : matchMedia('(prefers-color-scheme: dark)').matches) {
+              document.documentElement.classList.add('dark');
+            }
+          } catch (_) {}
+
+          const apply = dark => {
+            document.documentElement.classList.toggle('dark', dark);
+            try { localStorage.setItem('themeMode', dark ? 'dark' : 'light'); } catch (_) {}
+          };
+
+          document.addEventListener('basecoat:theme', (event) => {
+            const mode = event.detail?.mode;
+            apply(mode === 'dark' ? true
+                 : mode === 'light' ? false
+                 : !document.documentElement.classList.contains('dark'));
+          });
+        })();
+    </script>
+    <%-- Theme variant --%>
+    <script>
+        (function() {
+          try {
+            const storedTheme = localStorage.getItem('themeVariant');
+            if (storedTheme) document.documentElement.classList.add('theme-' + storedTheme);
+      } catch (event) {
+        console.error('Could not apply theme variant from localStorage', event);
+      }
+    })();
+    </script>
+    <%-- Meta --%>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Language" content="en">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <%-- Title & Description --%>
+    {% set meta_title = title ~ ' | ' ~ site.title  if title else site.title %}
+    {% set meta_description = description or site.description %}
+    <title>{{ meta_title }}</title>
+    <meta name="description" content="{{ meta_description }}"/>
+    <meta name="title" content="{{ meta_title }}">
+    {% if site.keywords %}<meta name="keywords" content="{{ site.keywords | join(',') }}" />{% endif %}
+    <%-- Favicon --%>
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+    <%-- Open Graph / Facebook --%>
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+    <meta property="og:title" content="{{ meta_title }}">
+    <meta property="og:description" content="{{ meta_description }}">
+    <meta property="og:image" content="{{ site.url }}/assets/social-screenshot.png">
+    <meta property="og:site_name" content="{{ site.title }}">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:author" content="{{ site.author.name }}">
+    <%-- X/Twitter --%>
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="{{ site.url }}{{ page.url }}">
+    <meta name="twitter:title" content="{{ title if title else site.title }}">
+    <meta name="twitter:description" content="{{ meta_description }}">
+    <meta name="twitter:image" content="{{ site.url }}/assets/social-screenshot.png">
+    <meta name="twitter:creator" content="{{ site.author.x }}">
+    <%-- CSS --%>
+    <%-- already in app.css link rel="stylesheet" href="/assets/styles.css">
+    <%-- JS --%>
+    <script src="/js/basecoat.js" defer></script>
+    <script src="/js/command.js" defer></script>
+    <script src="/js/dropdown-menu.js" defer></script>
+    <script src="/js/popover.js" defer></script>
+    <script src="/js/select.js" defer></script>
+    <script src="/js/sidebar.js" defer></script>
+    <script src="/js/tabs.js" defer></script>
+    <script src="/js/toast.js" defer></script>
+    <%-- Highlight.js --%>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/django.min.js"></script>
+    <%-- TODO Bootify --%>
+    <link href="/css/bundle.css" rel="stylesheet" />
+    <script src="/js/bundle.js" defer></script>
+
+    <script>
+        const highlight = () => {
+          if (!window.hljs) return;
+          document
+            .querySelectorAll('pre code:not([data-highlighted]), code.highlight:not([data-highlighted])')
+            .forEach(el => hljs.highlightElement(el));
+        };
+
+        if (!window._hljsInit) {
+          window._hljsInit = true;
+          document.addEventListener('DOMContentLoaded', highlight);
+          document.addEventListener('htmx:afterSwap', highlight);
+        }
+    </script>
+    <script>
+        document.addEventListener('htmx:historyRestore', () => {
+          if (window.basecoat) window.basecoat.initAll();
+        });
+    </script>
+    {% if head %}{{ head | safe }}{% endif %}
+</head>
+<body>
+${content}
+
+{% from "toast.njk" import toaster %}
+{{ toaster() }}
+</body>
+</html>

@@ -1,0 +1,249 @@
+@import 'tailwindcss';
+@import 'basecoat-css';
+
+/* https://github.com/hunvreus/basecoat/blob/main/docs/css/custom.css */
+/* HTMX */
+.htmx-indicator {
+  @apply invisible opacity-0 transition-discrete transition-all;
+}
+.htmx-indicator:not(.htmx-request) {
+  @apply hidden;
+}
+.htmx-request,
+.htmx-request.htmx-indicator {
+  @apply visible opacity-100;
+}
+
+.content {
+  > h2 {
+    @apply mt-12 lg:mt-20 mb-6 scroll-m-22 text-2xl font-semibold tracking-tight first:mt-0;
+  }
+  > h3 {
+    @apply mt-8 mb-6 scroll-m-22 text-xl font-semibold tracking-tight;
+  }
+  > h4 {
+    @apply my-6 scroll-m-22 font-semibold tracking-tight;
+  }
+  .prose {
+    @apply my-6;
+
+    a {
+      @apply font-medium underline underline-offset-4;
+    }
+    code:not(pre > code) {
+      @apply relative rounded-md bg-muted/50 px-[0.3rem] py-[0.2rem] font-mono text-sm;
+    }
+    blockquote {
+      @apply border-l-4 border-border pl-4;
+    }
+    ol {
+      @apply list-decimal ml-6;
+    }
+    ul {
+      @apply list-disc ml-6;
+    }
+    ol,
+    ul {
+      li {
+        @apply mt-2;
+      }
+    }
+    dl {
+      @apply border-b pb-3 my-6;
+      dt {
+        @apply border-t pt-3 mt-3 first:mt-0;
+      }
+      dd {
+        @apply mt-2 space-y-2;
+      }
+      dl {
+        @apply mt-4 border-b-0 pb-0 pl-8 my-0;
+      }
+    }
+    b,
+    strong {
+      @apply font-semibold;
+    }
+    > p,
+    > blockquote,
+    > ul,
+    > ol,
+    > dl,
+    > table,
+    > pre,
+    > p {
+      @apply my-6;
+    }
+    > *:first-child {
+      @apply !mt-0;
+    }
+    > *:last-child {
+      @apply !mb-0;
+    }
+  }
+  .step {
+    counter-increment: step;
+
+    &:before {
+      @apply absolute w-8 h-8 md:w-9 md:h-9 bg-muted rounded-full font-mono font-semibold text-center text-sm inline-flex items-center justify-center -indent-px border-4 mr-2 border-background;
+      @apply md:ml-[-50px] md:mt-[-4px];
+      content: counter(step);
+    }
+    > h3 {
+      @apply max-md:ml-10 min-h-8 flex items-center;
+    }
+  }
+}
+
+/* https://github.com/hunvreus/basecoat/blob/main/docs/css/highlight.css */
+/*
+  Custom Highlight.js theme with CSS variables
+  derived from github.min.css and github-dark.min.css
+*/
+
+:root {
+  /* Base */
+  --hljs-bg: #fff;
+  --hljs-color: #24292e;
+
+  /* Tokens */
+  --hljs-keyword: #d73a49;
+  --hljs-title: #6f42c1;
+  --hljs-literal: #005cc5;
+  --hljs-string: #032f62;
+  --hljs-symbol: #e36209;
+  --hljs-comment: #6a737d;
+  --hljs-tag: #22863a;
+  --hljs-section: #005cc5;
+  --hljs-bullet: #735c0f;
+
+  /* Diffs */
+  --hljs-addition-color: #22863a;
+  --hljs-addition-bg: #f0fff4;
+  --hljs-deletion-color: #b31d28;
+  --hljs-deletion-bg: #ffeef0;
+}
+
+html.dark {
+  /* Base */
+  --hljs-bg: #0d1117;
+  --hljs-color: #c9d1d9;
+
+  /* Tokens */
+  --hljs-keyword: #ff7b72;
+  --hljs-title: #d2a8ff;
+  --hljs-literal: #79c0ff;
+  --hljs-string: #a5d6ff;
+  --hljs-symbol: #ffa657;
+  --hljs-comment: #8b949e;
+  --hljs-tag: #7ee787;
+  --hljs-section: #1f6feb;
+  --hljs-bullet: #f2cc60;
+
+  /* Diffs */
+  --hljs-addition-color: #aff5b4;
+  --hljs-addition-bg: #033a16;
+  --hljs-deletion-color: #ffdcd7;
+  --hljs-deletion-bg: #67060c;
+}
+
+/* --- Base --- */
+pre code.hljs{
+    display:block;
+    overflow-x:auto;
+    padding:1em
+}
+code.hljs{
+    padding:3px 5px
+}
+
+/* --- Mapped styles --- */
+.hljs {
+  color: var(--hljs-color);
+  background: var(--hljs-bg);
+}
+
+.hljs-doctag,
+.hljs-keyword,
+.hljs-meta .hljs-keyword,
+.hljs-template-tag,
+.hljs-template-variable,
+.hljs-type,
+.hljs-variable.language_ {
+  color: var(--hljs-keyword);
+}
+
+.hljs-title,
+.hljs-title.class_,
+.hljs-title.class_.inherited__,
+.hljs-title.function_ {
+  color: var(--hljs-title);
+}
+
+.hljs-attr,
+.hljs-attribute,
+.hljs-literal,
+.hljs-meta,
+.hljs-number,
+.hljs-operator,
+.hljs-selector-attr,
+.hljs-selector-class,
+.hljs-selector-id,
+.hljs-variable {
+  color: var(--hljs-literal);
+}
+
+.hljs-meta .hljs-string,
+.hljs-regexp,
+.hljs-string {
+  color: var(--hljs-string);
+}
+
+.hljs-built_in,
+.hljs-symbol {
+  color: var(--hljs-symbol);
+}
+
+.hljs-code,
+.hljs-comment,
+.hljs-formula {
+  color: var(--hljs-comment);
+}
+
+.hljs-name,
+.hljs-quote,
+.hljs-selector-pseudo,
+.hljs-selector-tag {
+  color: var(--hljs-tag);
+}
+
+.hljs-subst {
+  color: var(--hljs-color);
+}
+
+.hljs-section {
+  color: var(--hljs-section);
+  font-weight: 700;
+}
+
+.hljs-bullet {
+  color: var(--hljs-bullet);
+}
+
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-strong {
+  font-weight: 700;
+}
+
+.hljs-addition {
+  color: var(--hljs-addition-color);
+  background-color: var(--hljs-addition-bg);
+}
+
+.hljs-deletion {
+  color: var(--hljs-deletion-color);
+  background-color: var(--hljs-deletion-bg);
+}
