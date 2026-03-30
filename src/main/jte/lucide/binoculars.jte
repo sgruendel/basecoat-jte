@@ -7,7 +7,7 @@
 @param boolean absoluteStrokeWidth = false
 
 <%-- see https://github.com/lucide-icons/lucide/blob/main/packages/vue/src/Icon.ts#L50 --%>
-!{ final var calculatedStrokeWidth = absoluteStrokeWidth ? Double.toString(strokeWidth * 24.0 / size) : Integer.toString(strokeWidth); }
+!{final var calculatedStrokeWidth = absoluteStrokeWidth ? Double.toString(strokeWidth * 24.0 / size) : Integer.toString(strokeWidth);}
 
 <svg
   xmlns="http://www.w3.org/2000/svg"
@@ -21,7 +21,7 @@
   stroke-linejoin="round"
   class="lucide lucide-binoculars-icon lucide-binoculars ${classAppend}"
 >
-  <path d="M10 10h4" />
+    <path d="M10 10h4" />
   <path d="M19 7V4a1 1 0 0 0-1-1h-2a1 1 0 0 0-1 1v3" />
   <path d="M20 21a2 2 0 0 0 2-2v-3.851c0-1.39-2-2.962-2-4.829V8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v11a2 2 0 0 0 2 2z" />
   <path d="M 22 16 L 2 16" />

@@ -19,6 +19,14 @@ const iconsDir = path.join(
   "icons",
 );
 const outputDir = path.join(rootDir, "src", "main", "jte", "lucide");
+const templateFilePath = path.join(
+  rootDir,
+  "scripts",
+  "templates",
+  "lucide-icon.jte",
+);
+const templateSource = fs.readFileSync(templateFilePath, "utf8");
+const templateTokenPattern = /\{\{([A-Z_]+)\}\}/g;
 
 function toLowerCamelCase(value) {
   return value.charAt(0).toLowerCase() + value.slice(1);
@@ -86,13 +94,48 @@ function renderChildNode([tagName, attributes]) {
   return `  <${tagName} ${renderedAttributes} />`;
 }
 
+function renderTemplateSource(values) {
+  const expectedTokens = new Set(["ICON_FILE_NAME", "CHILDREN"]);
+
+  for (const token of Object.keys(values)) {
+    if (!expectedTokens.has(token)) {
+      throw new Error(`Unexpected template token: ${token}`);
+    }
+  }
+
+  const templateTokens = new Set(templateSource.matchAll(templateTokenPattern));
+  for (const match of templateTokens) {
+    const token = match[1];
+    if (!Object.hasOwn(values, token)) {
+      throw new Error(`Missing template value for ${token}`);
+    }
+  }
+
+  const content = templateSource.replaceAll(
+    templateTokenPattern,
+    (_, token) => {
+      return values[token];
+    },
+  );
+
+  const unreplacedTokenMatch = content.match(templateTokenPattern);
+  if (unreplacedTokenMatch) {
+    throw new Error(`Unreplaced template token: ${unreplacedTokenMatch[1]}`);
+  }
+
+  return content;
+}
+
 function renderTemplate(exportName, iconFileName, childNodes) {
   const templateName = toLowerCamelCase(exportName);
   const children = childNodes.map(renderChildNode).join("\n");
 
   return {
     templateName,
-    content: `<%-- see https://lucide.dev/icons/${iconFileName} --%>\n\n@param String classAppend = null\n@param int size = 24\n@param String color = "currentColor"\n@param int strokeWidth = 2\n@param boolean absoluteStrokeWidth = false\n\n<%-- see https://github.com/lucide-icons/lucide/blob/main/packages/vue/src/Icon.ts#L50 --%>\n!{ final var calculatedStrokeWidth = absoluteStrokeWidth ? Double.toString(strokeWidth * 24.0 / size) : Integer.toString(strokeWidth); }\n\n<svg\n  xmlns="http://www.w3.org/2000/svg"\n  width="\${size}"\n  height="\${size}"\n  viewBox="0 0 24 24"\n  fill="none"\n  stroke="\${color}"\n  stroke-width="\${calculatedStrokeWidth}"\n  stroke-linecap="round"\n  stroke-linejoin="round"\n  class="lucide lucide-${iconFileName}-icon lucide-${iconFileName} \${classAppend}"\n>\n${children}\n</svg>\n`,
+    content: renderTemplateSource({
+      ICON_FILE_NAME: iconFileName,
+      CHILDREN: children,
+    }),
   };
 }
 

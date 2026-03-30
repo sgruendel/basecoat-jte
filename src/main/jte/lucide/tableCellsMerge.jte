@@ -7,7 +7,7 @@
 @param boolean absoluteStrokeWidth = false
 
 <%-- see https://github.com/lucide-icons/lucide/blob/main/packages/vue/src/Icon.ts#L50 --%>
-!{ final var calculatedStrokeWidth = absoluteStrokeWidth ? Double.toString(strokeWidth * 24.0 / size) : Integer.toString(strokeWidth); }
+!{final var calculatedStrokeWidth = absoluteStrokeWidth ? Double.toString(strokeWidth * 24.0 / size) : Integer.toString(strokeWidth);}
 
 <svg
   xmlns="http://www.w3.org/2000/svg"
@@ -21,7 +21,7 @@
   stroke-linejoin="round"
   class="lucide lucide-table-cells-merge-icon lucide-table-cells-merge ${classAppend}"
 >
-  <path d="M12 21v-6" />
+    <path d="M12 21v-6" />
   <path d="M12 9V3" />
   <path d="M3 15h18" />
   <path d="M3 9h18" />

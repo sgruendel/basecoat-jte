@@ -7,7 +7,7 @@
 @param boolean absoluteStrokeWidth = false
 
 <%-- see https://github.com/lucide-icons/lucide/blob/main/packages/vue/src/Icon.ts#L50 --%>
-!{ final var calculatedStrokeWidth = absoluteStrokeWidth ? Double.toString(strokeWidth * 24.0 / size) : Integer.toString(strokeWidth); }
+!{final var calculatedStrokeWidth = absoluteStrokeWidth ? Double.toString(strokeWidth * 24.0 / size) : Integer.toString(strokeWidth);}
 
 <svg
   xmlns="http://www.w3.org/2000/svg"
@@ -21,7 +21,7 @@
   stroke-linejoin="round"
   class="lucide lucide-cassette-tape-icon lucide-cassette-tape ${classAppend}"
 >
-  <rect width="20" height="16" x="2" y="4" rx="2" />
+    <rect width="20" height="16" x="2" y="4" rx="2" />
   <circle cx="8" cy="10" r="2" />
   <path d="M8 12h8" />
   <circle cx="16" cy="10" r="2" />

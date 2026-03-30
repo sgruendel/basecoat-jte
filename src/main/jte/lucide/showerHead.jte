@@ -7,7 +7,7 @@
 @param boolean absoluteStrokeWidth = false
 
 <%-- see https://github.com/lucide-icons/lucide/blob/main/packages/vue/src/Icon.ts#L50 --%>
-!{ final var calculatedStrokeWidth = absoluteStrokeWidth ? Double.toString(strokeWidth * 24.0 / size) : Integer.toString(strokeWidth); }
+!{final var calculatedStrokeWidth = absoluteStrokeWidth ? Double.toString(strokeWidth * 24.0 / size) : Integer.toString(strokeWidth);}
 
 <svg
   xmlns="http://www.w3.org/2000/svg"
@@ -21,7 +21,7 @@
   stroke-linejoin="round"
   class="lucide lucide-shower-head-icon lucide-shower-head ${classAppend}"
 >
-  <path d="m4 4 2.5 2.5" />
+    <path d="m4 4 2.5 2.5" />
   <path d="M13.5 6.5a4.95 4.95 0 0 0-7 7" />
   <path d="M15 5 5 15" />
   <path d="M14 17v.01" />

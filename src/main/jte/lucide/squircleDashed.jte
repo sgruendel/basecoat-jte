@@ -7,7 +7,7 @@
 @param boolean absoluteStrokeWidth = false
 
 <%-- see https://github.com/lucide-icons/lucide/blob/main/packages/vue/src/Icon.ts#L50 --%>
-!{ final var calculatedStrokeWidth = absoluteStrokeWidth ? Double.toString(strokeWidth * 24.0 / size) : Integer.toString(strokeWidth); }
+!{final var calculatedStrokeWidth = absoluteStrokeWidth ? Double.toString(strokeWidth * 24.0 / size) : Integer.toString(strokeWidth);}
 
 <svg
   xmlns="http://www.w3.org/2000/svg"
@@ -21,7 +21,7 @@
   stroke-linejoin="round"
   class="lucide lucide-squircle-dashed-icon lucide-squircle-dashed ${classAppend}"
 >
-  <path d="M13.77 3.043a34 34 0 0 0-3.54 0" />
+    <path d="M13.77 3.043a34 34 0 0 0-3.54 0" />
   <path d="M13.771 20.956a33 33 0 0 1-3.541.001" />
   <path d="M20.18 17.74c-.51 1.15-1.29 1.93-2.439 2.44" />
   <path d="M20.18 6.259c-.51-1.148-1.291-1.929-2.44-2.438" />

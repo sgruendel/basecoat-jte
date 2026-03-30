@@ -7,7 +7,7 @@
 @param boolean absoluteStrokeWidth = false
 
 <%-- see https://github.com/lucide-icons/lucide/blob/main/packages/vue/src/Icon.ts#L50 --%>
-!{ final var calculatedStrokeWidth = absoluteStrokeWidth ? Double.toString(strokeWidth * 24.0 / size) : Integer.toString(strokeWidth); }
+!{final var calculatedStrokeWidth = absoluteStrokeWidth ? Double.toString(strokeWidth * 24.0 / size) : Integer.toString(strokeWidth);}
 
 <svg
   xmlns="http://www.w3.org/2000/svg"
@@ -21,7 +21,7 @@
   stroke-linejoin="round"
   class="lucide lucide-drafting-compass-icon lucide-drafting-compass ${classAppend}"
 >
-  <path d="m12.99 6.74 1.93 3.44" />
+    <path d="m12.99 6.74 1.93 3.44" />
   <path d="M19.136 12a10 10 0 0 1-14.271 0" />
   <path d="m21 21-2.16-3.84" />
   <path d="m3 21 8.02-14.26" />

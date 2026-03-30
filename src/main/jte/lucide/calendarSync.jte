@@ -7,7 +7,7 @@
 @param boolean absoluteStrokeWidth = false
 
 <%-- see https://github.com/lucide-icons/lucide/blob/main/packages/vue/src/Icon.ts#L50 --%>
-!{ final var calculatedStrokeWidth = absoluteStrokeWidth ? Double.toString(strokeWidth * 24.0 / size) : Integer.toString(strokeWidth); }
+!{final var calculatedStrokeWidth = absoluteStrokeWidth ? Double.toString(strokeWidth * 24.0 / size) : Integer.toString(strokeWidth);}
 
 <svg
   xmlns="http://www.w3.org/2000/svg"
@@ -21,7 +21,7 @@
   stroke-linejoin="round"
   class="lucide lucide-calendar-sync-icon lucide-calendar-sync ${classAppend}"
 >
-  <path d="M11 10v4h4" />
+    <path d="M11 10v4h4" />
   <path d="m11 14 1.535-1.605a5 5 0 0 1 8 1.5" />
   <path d="M16 2v4" />
   <path d="m21 18-1.535 1.605a5 5 0 0 1-8-1.5" />

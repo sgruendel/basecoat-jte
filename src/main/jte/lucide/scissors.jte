@@ -7,7 +7,7 @@
 @param boolean absoluteStrokeWidth = false
 
 <%-- see https://github.com/lucide-icons/lucide/blob/main/packages/vue/src/Icon.ts#L50 --%>
-!{ final var calculatedStrokeWidth = absoluteStrokeWidth ? Double.toString(strokeWidth * 24.0 / size) : Integer.toString(strokeWidth); }
+!{final var calculatedStrokeWidth = absoluteStrokeWidth ? Double.toString(strokeWidth * 24.0 / size) : Integer.toString(strokeWidth);}
 
 <svg
   xmlns="http://www.w3.org/2000/svg"
@@ -21,7 +21,7 @@
   stroke-linejoin="round"
   class="lucide lucide-scissors-icon lucide-scissors ${classAppend}"
 >
-  <circle cx="6" cy="6" r="3" />
+    <circle cx="6" cy="6" r="3" />
   <path d="M8.12 8.12 12 12" />
   <path d="M20 4 8.12 15.88" />
   <circle cx="6" cy="18" r="3" />

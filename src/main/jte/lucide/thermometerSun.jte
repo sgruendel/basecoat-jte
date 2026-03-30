@@ -7,7 +7,7 @@
 @param boolean absoluteStrokeWidth = false
 
 <%-- see https://github.com/lucide-icons/lucide/blob/main/packages/vue/src/Icon.ts#L50 --%>
-!{ final var calculatedStrokeWidth = absoluteStrokeWidth ? Double.toString(strokeWidth * 24.0 / size) : Integer.toString(strokeWidth); }
+!{final var calculatedStrokeWidth = absoluteStrokeWidth ? Double.toString(strokeWidth * 24.0 / size) : Integer.toString(strokeWidth);}
 
 <svg
   xmlns="http://www.w3.org/2000/svg"
@@ -21,7 +21,7 @@
   stroke-linejoin="round"
   class="lucide lucide-thermometer-sun-icon lucide-thermometer-sun ${classAppend}"
 >
-  <path d="M12 2v2" />
+    <path d="M12 2v2" />
   <path d="M12 8a4 4 0 0 0-1.645 7.647" />
   <path d="M2 12h2" />
   <path d="M20 14.54a4 4 0 1 1-4 0V4a2 2 0 0 1 4 0z" />

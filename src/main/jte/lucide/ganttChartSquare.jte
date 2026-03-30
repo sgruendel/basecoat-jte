@@ -7,7 +7,7 @@
 @param boolean absoluteStrokeWidth = false
 
 <%-- see https://github.com/lucide-icons/lucide/blob/main/packages/vue/src/Icon.ts#L50 --%>
-!{ final var calculatedStrokeWidth = absoluteStrokeWidth ? Double.toString(strokeWidth * 24.0 / size) : Integer.toString(strokeWidth); }
+!{final var calculatedStrokeWidth = absoluteStrokeWidth ? Double.toString(strokeWidth * 24.0 / size) : Integer.toString(strokeWidth);}
 
 <svg
   xmlns="http://www.w3.org/2000/svg"
@@ -21,7 +21,7 @@
   stroke-linejoin="round"
   class="lucide lucide-square-chart-gantt-icon lucide-square-chart-gantt ${classAppend}"
 >
-  <rect width="18" height="18" x="3" y="3" rx="2" />
+    <rect width="18" height="18" x="3" y="3" rx="2" />
   <path d="M9 8h7" />
   <path d="M8 12h6" />
   <path d="M11 16h5" />

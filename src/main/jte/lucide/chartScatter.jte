@@ -7,7 +7,7 @@
 @param boolean absoluteStrokeWidth = false
 
 <%-- see https://github.com/lucide-icons/lucide/blob/main/packages/vue/src/Icon.ts#L50 --%>
-!{ final var calculatedStrokeWidth = absoluteStrokeWidth ? Double.toString(strokeWidth * 24.0 / size) : Integer.toString(strokeWidth); }
+!{final var calculatedStrokeWidth = absoluteStrokeWidth ? Double.toString(strokeWidth * 24.0 / size) : Integer.toString(strokeWidth);}
 
 <svg
   xmlns="http://www.w3.org/2000/svg"
@@ -21,7 +21,7 @@
   stroke-linejoin="round"
   class="lucide lucide-chart-scatter-icon lucide-chart-scatter ${classAppend}"
 >
-  <circle cx="7.5" cy="7.5" r=".5" fill="currentColor" />
+    <circle cx="7.5" cy="7.5" r=".5" fill="currentColor" />
   <circle cx="18.5" cy="5.5" r=".5" fill="currentColor" />
   <circle cx="11.5" cy="11.5" r=".5" fill="currentColor" />
   <circle cx="7.5" cy="16.5" r=".5" fill="currentColor" />

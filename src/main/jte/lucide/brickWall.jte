@@ -7,7 +7,7 @@
 @param boolean absoluteStrokeWidth = false
 
 <%-- see https://github.com/lucide-icons/lucide/blob/main/packages/vue/src/Icon.ts#L50 --%>
-!{ final var calculatedStrokeWidth = absoluteStrokeWidth ? Double.toString(strokeWidth * 24.0 / size) : Integer.toString(strokeWidth); }
+!{final var calculatedStrokeWidth = absoluteStrokeWidth ? Double.toString(strokeWidth * 24.0 / size) : Integer.toString(strokeWidth);}
 
 <svg
   xmlns="http://www.w3.org/2000/svg"
@@ -21,7 +21,7 @@
   stroke-linejoin="round"
   class="lucide lucide-brick-wall-icon lucide-brick-wall ${classAppend}"
 >
-  <rect width="18" height="18" x="3" y="3" rx="2" />
+    <rect width="18" height="18" x="3" y="3" rx="2" />
   <path d="M12 9v6" />
   <path d="M16 15v6" />
   <path d="M16 3v6" />

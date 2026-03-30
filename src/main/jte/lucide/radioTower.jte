@@ -7,7 +7,7 @@
 @param boolean absoluteStrokeWidth = false
 
 <%-- see https://github.com/lucide-icons/lucide/blob/main/packages/vue/src/Icon.ts#L50 --%>
-!{ final var calculatedStrokeWidth = absoluteStrokeWidth ? Double.toString(strokeWidth * 24.0 / size) : Integer.toString(strokeWidth); }
+!{final var calculatedStrokeWidth = absoluteStrokeWidth ? Double.toString(strokeWidth * 24.0 / size) : Integer.toString(strokeWidth);}
 
 <svg
   xmlns="http://www.w3.org/2000/svg"
@@ -21,7 +21,7 @@
   stroke-linejoin="round"
   class="lucide lucide-radio-tower-icon lucide-radio-tower ${classAppend}"
 >
-  <path d="M4.9 16.1C1 12.2 1 5.8 4.9 1.9" />
+    <path d="M4.9 16.1C1 12.2 1 5.8 4.9 1.9" />
   <path d="M7.8 4.7a6.14 6.14 0 0 0-.8 7.5" />
   <circle cx="12" cy="9" r="2" />
   <path d="M16.2 4.8c2 2 2.26 5.11.8 7.47" />

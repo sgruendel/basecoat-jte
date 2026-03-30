@@ -7,7 +7,7 @@
 @param boolean absoluteStrokeWidth = false
 
 <%-- see https://github.com/lucide-icons/lucide/blob/main/packages/vue/src/Icon.ts#L50 --%>
-!{ final var calculatedStrokeWidth = absoluteStrokeWidth ? Double.toString(strokeWidth * 24.0 / size) : Integer.toString(strokeWidth); }
+!{final var calculatedStrokeWidth = absoluteStrokeWidth ? Double.toString(strokeWidth * 24.0 / size) : Integer.toString(strokeWidth);}
 
 <svg
   xmlns="http://www.w3.org/2000/svg"
@@ -21,7 +21,7 @@
   stroke-linejoin="round"
   class="lucide lucide-zodiac-capricorn-icon lucide-zodiac-capricorn ${classAppend}"
 >
-  <path d="M11 21a3 3 0 0 0 3-3V6.5a1 1 0 0 0-7 0" />
+    <path d="M11 21a3 3 0 0 0 3-3V6.5a1 1 0 0 0-7 0" />
   <path d="M7 19V6a3 3 0 0 0-3-3h0" />
   <circle cx="17" cy="17" r="3" />
 </svg>

@@ -7,7 +7,7 @@
 @param boolean absoluteStrokeWidth = false
 
 <%-- see https://github.com/lucide-icons/lucide/blob/main/packages/vue/src/Icon.ts#L50 --%>
-!{ final var calculatedStrokeWidth = absoluteStrokeWidth ? Double.toString(strokeWidth * 24.0 / size) : Integer.toString(strokeWidth); }
+!{final var calculatedStrokeWidth = absoluteStrokeWidth ? Double.toString(strokeWidth * 24.0 / size) : Integer.toString(strokeWidth);}
 
 <svg
   xmlns="http://www.w3.org/2000/svg"
@@ -21,7 +21,7 @@
   stroke-linejoin="round"
   class="lucide lucide-gamepad-2-icon lucide-gamepad-2 ${classAppend}"
 >
-  <line x1="6" x2="10" y1="11" y2="11" />
+    <line x1="6" x2="10" y1="11" y2="11" />
   <line x1="8" x2="8" y1="9" y2="13" />
   <line x1="15" x2="15.01" y1="12" y2="12" />
   <line x1="18" x2="18.01" y1="10" y2="10" />

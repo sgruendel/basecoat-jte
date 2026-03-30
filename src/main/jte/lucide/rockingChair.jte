@@ -7,7 +7,7 @@
 @param boolean absoluteStrokeWidth = false
 
 <%-- see https://github.com/lucide-icons/lucide/blob/main/packages/vue/src/Icon.ts#L50 --%>
-!{ final var calculatedStrokeWidth = absoluteStrokeWidth ? Double.toString(strokeWidth * 24.0 / size) : Integer.toString(strokeWidth); }
+!{final var calculatedStrokeWidth = absoluteStrokeWidth ? Double.toString(strokeWidth * 24.0 / size) : Integer.toString(strokeWidth);}
 
 <svg
   xmlns="http://www.w3.org/2000/svg"
@@ -21,7 +21,7 @@
   stroke-linejoin="round"
   class="lucide lucide-rocking-chair-icon lucide-rocking-chair ${classAppend}"
 >
-  <path d="m15 13 3.708 7.416" />
+    <path d="m15 13 3.708 7.416" />
   <path d="M3 19a15 15 0 0 0 18 0" />
   <path d="m3 2 3.21 9.633A2 2 0 0 0 8.109 13H18" />
   <path d="m9 13-3.708 7.416" />

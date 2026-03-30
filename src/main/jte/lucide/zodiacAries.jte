@@ -7,7 +7,7 @@
 @param boolean absoluteStrokeWidth = false
 
 <%-- see https://github.com/lucide-icons/lucide/blob/main/packages/vue/src/Icon.ts#L50 --%>
-!{ final var calculatedStrokeWidth = absoluteStrokeWidth ? Double.toString(strokeWidth * 24.0 / size) : Integer.toString(strokeWidth); }
+!{final var calculatedStrokeWidth = absoluteStrokeWidth ? Double.toString(strokeWidth * 24.0 / size) : Integer.toString(strokeWidth);}
 
 <svg
   xmlns="http://www.w3.org/2000/svg"
@@ -21,6 +21,6 @@
   stroke-linejoin="round"
   class="lucide lucide-zodiac-aries-icon lucide-zodiac-aries ${classAppend}"
 >
-  <path d="M12 7.5a4.5 4.5 0 1 1 5 4.5" />
+    <path d="M12 7.5a4.5 4.5 0 1 1 5 4.5" />
   <path d="M7 12a4.5 4.5 0 1 1 5-4.5V21" />
 </svg>

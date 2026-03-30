@@ -7,7 +7,7 @@
 @param boolean absoluteStrokeWidth = false
 
 <%-- see https://github.com/lucide-icons/lucide/blob/main/packages/vue/src/Icon.ts#L50 --%>
-!{ final var calculatedStrokeWidth = absoluteStrokeWidth ? Double.toString(strokeWidth * 24.0 / size) : Integer.toString(strokeWidth); }
+!{final var calculatedStrokeWidth = absoluteStrokeWidth ? Double.toString(strokeWidth * 24.0 / size) : Integer.toString(strokeWidth);}
 
 <svg
   xmlns="http://www.w3.org/2000/svg"
@@ -21,7 +21,7 @@
   stroke-linejoin="round"
   class="lucide lucide-ferris-wheel-icon lucide-ferris-wheel ${classAppend}"
 >
-  <circle cx="12" cy="12" r="2" />
+    <circle cx="12" cy="12" r="2" />
   <path d="M12 2v4" />
   <path d="m6.8 15-3.5 2" />
   <path d="m20.7 7-3.5 2" />

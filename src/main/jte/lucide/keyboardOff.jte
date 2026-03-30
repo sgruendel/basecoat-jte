@@ -7,7 +7,7 @@
 @param boolean absoluteStrokeWidth = false
 
 <%-- see https://github.com/lucide-icons/lucide/blob/main/packages/vue/src/Icon.ts#L50 --%>
-!{ final var calculatedStrokeWidth = absoluteStrokeWidth ? Double.toString(strokeWidth * 24.0 / size) : Integer.toString(strokeWidth); }
+!{final var calculatedStrokeWidth = absoluteStrokeWidth ? Double.toString(strokeWidth * 24.0 / size) : Integer.toString(strokeWidth);}
 
 <svg
   xmlns="http://www.w3.org/2000/svg"
@@ -21,7 +21,7 @@
   stroke-linejoin="round"
   class="lucide lucide-keyboard-off-icon lucide-keyboard-off ${classAppend}"
 >
-  <path d="M 20 4 A2 2 0 0 1 22 6" />
+    <path d="M 20 4 A2 2 0 0 1 22 6" />
   <path d="M 22 6 L 22 16.41" />
   <path d="M 7 16 L 16 16" />
   <path d="M 9.69 4 L 20 4" />

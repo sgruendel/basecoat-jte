@@ -7,7 +7,7 @@
 @param boolean absoluteStrokeWidth = false
 
 <%-- see https://github.com/lucide-icons/lucide/blob/main/packages/vue/src/Icon.ts#L50 --%>
-!{ final var calculatedStrokeWidth = absoluteStrokeWidth ? Double.toString(strokeWidth * 24.0 / size) : Integer.toString(strokeWidth); }
+!{final var calculatedStrokeWidth = absoluteStrokeWidth ? Double.toString(strokeWidth * 24.0 / size) : Integer.toString(strokeWidth);}
 
 <svg
   xmlns="http://www.w3.org/2000/svg"
@@ -21,7 +21,7 @@
   stroke-linejoin="round"
   class="lucide lucide-grip-horizontal-icon lucide-grip-horizontal ${classAppend}"
 >
-  <circle cx="12" cy="9" r="1" />
+    <circle cx="12" cy="9" r="1" />
   <circle cx="19" cy="9" r="1" />
   <circle cx="5" cy="9" r="1" />
   <circle cx="12" cy="15" r="1" />
