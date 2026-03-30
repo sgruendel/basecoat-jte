@@ -2,7 +2,7 @@
   <header class="border-b px-4 py-3 flex items-center justify-between">
     <h2 class="text-sm font-medium">Accordion</h2>
     <a
-      href="/components/accordion"
+      href="https://basecoatui.com/components/accordion"
       class="text-muted-foreground hover:text-foreground"
       data-tooltip="See documentation"
       data-side="left"
