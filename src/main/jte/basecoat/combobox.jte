@@ -17,10 +17,10 @@
     aria-expanded="false"
     aria-controls="${id}-listbox"
   >
-    <span class="bg-teal-300 truncate"></span>
+    <span class="truncate"></span>
 
     @template.lucide.chevronsUpDown(
-      classAppend = "bg-teal-300 text-muted-foreground opacity-50 shrink-0"
+      classAppend = "text-muted-foreground opacity-50 shrink-0"
     )
   </button>
   <div id="${id}-popover" data-popover aria-hidden="true">
