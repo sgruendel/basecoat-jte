@@ -1,6 +1,10 @@
 const fs = require("fs");
 const path = require("path");
 
+// Generates JTE templates for the canonical Lucide icon set using the shared
+// `scripts/templates/lucide-icon.jte` stub and writes them to `src/main/jte/lucide`.
+// Source SVGs are read from the installed Lucide package in `node_modules`.
+
 const rootDir = __dirname + "/..";
 const iconsAndAliasesPath = path.join(
   rootDir,
