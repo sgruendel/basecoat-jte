@@ -5,6 +5,10 @@
 @param String color = "currentColor"
 @param int strokeWidth = 2
 @param boolean absoluteStrokeWidth = false
+@param String role = null
+@param String ariaLabel = null
+@param Boolean ariaHidden = null
+@param Boolean focusable = null
 
 <%-- see https://github.com/lucide-icons/lucide/blob/main/packages/vue/src/Icon.ts#L50 --%>
 !{final var calculatedStrokeWidth = absoluteStrokeWidth ? Double.toString(strokeWidth * 24.0 / size) : Integer.toString(strokeWidth);}
@@ -20,6 +24,10 @@
   stroke-linecap="round"
   stroke-linejoin="round"
   class="lucide lucide-traffic-cone-icon lucide-traffic-cone ${classAppend}"
+  role="${role}"
+  aria-label="${ariaLabel}"
+  aria-hidden="${ariaHidden}"
+  focusable="${focusable}"
 >
     <path d="M16.05 10.966a5 2.5 0 0 1-8.1 0" />
   <path d="m16.923 14.049 4.48 2.04a1 1 0 0 1 .001 1.831l-8.574 3.9a2 2 0 0 1-1.66 0l-8.574-3.91a1 1 0 0 1 0-1.83l4.484-2.04" />

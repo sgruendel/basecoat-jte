@@ -5,6 +5,10 @@
 @param String color = "currentColor"
 @param int strokeWidth = 2
 @param boolean absoluteStrokeWidth = false
+@param String role = null
+@param String ariaLabel = null
+@param Boolean ariaHidden = null
+@param Boolean focusable = null
 
 <%-- see https://github.com/lucide-icons/lucide/blob/main/packages/vue/src/Icon.ts#L50 --%>
 !{final var calculatedStrokeWidth = absoluteStrokeWidth ? Double.toString(strokeWidth * 24.0 / size) : Integer.toString(strokeWidth);}
@@ -20,6 +24,10 @@
   stroke-linecap="round"
   stroke-linejoin="round"
   class="lucide lucide-rocket-icon lucide-rocket ${classAppend}"
+  role="${role}"
+  aria-label="${ariaLabel}"
+  aria-hidden="${ariaHidden}"
+  focusable="${focusable}"
 >
     <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5" />
   <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09" />

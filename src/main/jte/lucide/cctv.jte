@@ -5,6 +5,10 @@
 @param String color = "currentColor"
 @param int strokeWidth = 2
 @param boolean absoluteStrokeWidth = false
+@param String role = null
+@param String ariaLabel = null
+@param Boolean ariaHidden = null
+@param Boolean focusable = null
 
 <%-- see https://github.com/lucide-icons/lucide/blob/main/packages/vue/src/Icon.ts#L50 --%>
 !{final var calculatedStrokeWidth = absoluteStrokeWidth ? Double.toString(strokeWidth * 24.0 / size) : Integer.toString(strokeWidth);}
@@ -20,6 +24,10 @@
   stroke-linecap="round"
   stroke-linejoin="round"
   class="lucide lucide-cctv-icon lucide-cctv ${classAppend}"
+  role="${role}"
+  aria-label="${ariaLabel}"
+  aria-hidden="${ariaHidden}"
+  focusable="${focusable}"
 >
     <path d="M16.75 12h3.632a1 1 0 0 1 .894 1.447l-2.034 4.069a1 1 0 0 1-1.708.134l-2.124-2.97" />
   <path d="M17.106 9.053a1 1 0 0 1 .447 1.341l-3.106 6.211a1 1 0 0 1-1.342.447L3.61 12.3a2.92 2.92 0 0 1-1.3-3.91L3.69 5.6a2.92 2.92 0 0 1 3.92-1.3z" />

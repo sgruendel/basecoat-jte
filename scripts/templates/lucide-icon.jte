@@ -5,6 +5,7 @@
 @param String color = "currentColor"
 @param int strokeWidth = 2
 @param boolean absoluteStrokeWidth = false
+{{OPTIONAL_PARAMS}}
 
 <%-- see https://github.com/lucide-icons/lucide/blob/main/packages/vue/src/Icon.ts#L50 --%>
 !{final var calculatedStrokeWidth = absoluteStrokeWidth ? Double.toString(strokeWidth * 24.0 / size) : Integer.toString(strokeWidth);}
@@ -20,6 +21,7 @@
   stroke-linecap="round"
   stroke-linejoin="round"
   class="lucide lucide-{{ICON_FILE_NAME}}-icon lucide-{{ICON_FILE_NAME}} ${classAppend}"
+{{OPTIONAL_ATTRIBUTES}}
 >
   {{CHILDREN}}
 </svg>

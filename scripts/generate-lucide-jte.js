@@ -27,6 +27,32 @@ const templateFilePath = path.join(
 );
 const templateSource = fs.readFileSync(templateFilePath, "utf8");
 const templateTokenPattern = /\{\{([A-Z_]+)\}\}/g;
+const optionalSvgAttributes = [
+  {
+    parameterName: "role",
+    parameterType: "String",
+    defaultValue: "null",
+    attributeName: "role",
+  },
+  {
+    parameterName: "ariaLabel",
+    parameterType: "String",
+    defaultValue: "null",
+    attributeName: "aria-label",
+  },
+  {
+    parameterName: "ariaHidden",
+    parameterType: "Boolean",
+    defaultValue: "null",
+    attributeName: "aria-hidden",
+  },
+  {
+    parameterName: "focusable",
+    parameterType: "Boolean",
+    defaultValue: "null",
+    attributeName: "focusable",
+  },
+];
 
 function toLowerCamelCase(value) {
   return value.charAt(0).toLowerCase() + value.slice(1);
@@ -95,7 +121,12 @@ function renderChildNode([tagName, attributes]) {
 }
 
 function renderTemplateSource(values) {
-  const expectedTokens = new Set(["ICON_FILE_NAME", "CHILDREN"]);
+  const expectedTokens = new Set([
+    "ICON_FILE_NAME",
+    "OPTIONAL_PARAMS",
+    "OPTIONAL_ATTRIBUTES",
+    "CHILDREN",
+  ]);
 
   for (const token of Object.keys(values)) {
     if (!expectedTokens.has(token)) {
@@ -126,6 +157,22 @@ function renderTemplateSource(values) {
   return content;
 }
 
+function renderOptionalParams() {
+  return optionalSvgAttributes
+    .map(({ parameterType, parameterName, defaultValue }) => {
+      return `@param ${parameterType} ${parameterName} = ${defaultValue}`;
+    })
+    .join("\n");
+}
+
+function renderOptionalAttributes() {
+  return optionalSvgAttributes
+    .map(({ parameterName, attributeName }) => {
+      return `  ${attributeName}="\$\{${parameterName}}"`;
+    })
+    .join("\n");
+}
+
 function renderTemplate(exportName, iconFileName, childNodes) {
   const templateName = toLowerCamelCase(exportName);
   const children = childNodes.map(renderChildNode).join("\n");
@@ -134,6 +181,8 @@ function renderTemplate(exportName, iconFileName, childNodes) {
     templateName,
     content: renderTemplateSource({
       ICON_FILE_NAME: iconFileName,
+      OPTIONAL_PARAMS: renderOptionalParams(),
+      OPTIONAL_ATTRIBUTES: renderOptionalAttributes(),
       CHILDREN: children,
     }),
   };
