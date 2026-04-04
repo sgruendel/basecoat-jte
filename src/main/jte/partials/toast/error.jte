@@ -1,8 +1,8 @@
 @import com.basecoatui.jte.util.BasecoatToast.Category
-@import com.basecoatui.jte.util.BasecoatToastButton
+@import com.basecoatui.jte.util.BasecoatToast.Button
 
 @template.basecoat.toast(
   category = Category.ERROR,
   title = "Event has not been created",
-  cancel = new BasecoatToastButton(null, "Dismiss", "close()")
+  cancel = Button.of("Dismiss", "close()")
 )
