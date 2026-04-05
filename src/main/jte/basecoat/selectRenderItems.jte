@@ -27,7 +27,7 @@
       aria-labelledby="${groupLabelId}"
       $unsafe{JteHelper.attrs(item.get().attrs())}
     >
-      <div role="heading" id="${groupLabelId}}">${item.get().label()}</div>
+      <div role="heading" id="${groupLabelId}">${item.get().label()}</div>
       @if(item.get().items() != null)
         @template.basecoat.selectRenderItems(
           items = item.get().items(),
