@@ -1,4 +1,5 @@
 @import java.util.List
+@import java.util.Map
 @import com.basecoatui.jte.util.BasecoatTab
 
 <section id="tabs" class="w-full rounded-lg border scroll-mt-14">
@@ -17,10 +18,8 @@
     <div class="flex flex-col gap-6">
       @template.basecoat.tabs(
         id = "demo-tabs-with-panels",
-        mainClassAppend = "max-w-75",
-        tabListClassAppend = "w-full",
         tabs = List.of(
-          new BasecoatTab("Account",
+          BasecoatTab.of("Account",
             @`
           <div class="card">
             <header>
@@ -54,8 +53,11 @@
             </footer>
           </div>
 
+
+
+
         `),
-          new BasecoatTab("Password",
+          BasecoatTab.of("Password",
             @`
           <div class="card">
             <header>
@@ -83,79 +85,46 @@
             </footer>
           </div>
 
+
+
+
         `)
+        ),
+        mainAttrs = Map.of("class", "max-w-[300px]"),
+        tablistAttrs = Map.of("class", "w-full")
+      )
+
+      @template.basecoat.tabs(
+        id = "demo-tabs-without-panels",
+        tabs = List.of(
+          BasecoatTab.of("Home"),
+          BasecoatTab.of("Settings")
         )
       )
 
-      <div class="tabs">
-        <div role="tablist" class="inline-flex gap-2">
-          <button
-            type="button"
-            role="tab"
-            aria-selected="true"
-            tabindex="0"
-            class="btn-outline"
-          >
-            Home
-          </button>
-          <button
-            type="button"
-            role="tab"
-            aria-selected="false"
-            tabindex="-1"
-            class="btn-outline"
-          >
-            Settings
-          </button>
-        </div>
-      </div>
+      @template.basecoat.tabs(
+        id = "demo-tabs-disabled",
+        tabs = List.of(
+          BasecoatTab.of("Home"),
+          BasecoatTab.of("Disabled", Map.of("disabled", true))
+        )
+      )
 
-      <div class="tabs">
-        <div role="tablist" class="inline-flex gap-2">
-          <button
-            type="button"
-            role="tab"
-            aria-selected="true"
-            tabindex="0"
-            class="btn-outline"
-          >
-            Home
-          </button>
-          <button
-            type="button"
-            role="tab"
-            aria-selected="false"
-            tabindex="-1"
-            class="btn-outline"
-            disabled
-          >
-            Disabled
-          </button>
-        </div>
-      </div>
+      @template.basecoat.tabs(
+        id = "demo-tabs-with-icons",
+        tabs = List.of(
+          BasecoatTab.of(@`
+          @template.lucide.appWindow()
+            Preview
 
-      <div class="tabs">
-        <div role="tablist" class="inline-flex gap-2">
-          <button
-            type="button"
-            role="tab"
-            aria-selected="true"
-            tabindex="0"
-            class="btn-outline flex items-center gap-2"
-          >
-            @template.lucide.appWindow() Preview
-          </button>
-          <button
-            type="button"
-            role="tab"
-            aria-selected="false"
-            tabindex="-1"
-            class="btn-outline flex items-center gap-2"
-          >
-            @template.lucide.code() Code
-          </button>
-        </div>
-      </div>
+        `),
+          BasecoatTab.of(@`
+          @template.lucide.code()
+            Code
+
+        `)
+        )
+      )
     </div>
   </div>
 </section>

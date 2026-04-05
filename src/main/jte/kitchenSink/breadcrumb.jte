@@ -1,3 +1,7 @@
+@import java.util.List
+@import java.util.Map
+@import com.basecoatui.jte.util.BasecoatSelect.Item
+
 <section id="breadcrumb" class="w-full rounded-lg border scroll-mt-14">
   <header class="border-b px-4 py-3 flex items-center justify-between">
     <h2 class="text-sm font-medium">Breadcrumb</h2>
@@ -22,13 +26,13 @@
         @template.basecoat.dropdownMenu(
           id = "demo-breadcrumb-menu",
           triggerContent = @`@template.lucide.ellipsis()`,
-          triggerClass = "flex size-9 items-center justify-center h-4 w-4 hover:text-foreground cursor-pointer",
-          content = @`
-            <div role="menuitem">Documentation</div>
-            <div role="menuitem">Themes</div>
-            <div role="menuitem">GitHub</div>
-
-          `
+          triggerAttrs = Map.of("class", "flex size-9 items-center justify-center h-4 w-4 hover:text-foreground cursor-pointer"),
+          popoverAttrs = Map.of("class", "p-1"),
+          items = List.of(
+            Item.of("Documentation"),
+            Item.of("Themes"),
+            Item.of("GitHub")
+          )
         )
       </li>
       <li>@template.lucide.chevronRight(classAppend = "size-3.5")</li>

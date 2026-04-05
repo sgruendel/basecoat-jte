@@ -19,44 +19,45 @@
   @param close_on_overlay_click {boolean} [optional] [default=true] - Whether clicking the overlay closes the dialog.
 --%>
 
+@import java.util.Map
 @import gg.jte.Content
+@import com.basecoatui.jte.util.JteHelper
 
 @param String id
 @param String trigger = null
 @param String title = null
 @param String description = null
-@param Content footer = null
-@param String mainAttrs = null
-@param String triggerClass = null
-@param String dialogClass = null
-@param String headerAttrs = null
-@param String bodyClass = null
-@param String bodyAttrs = null
-@param String footerAttrs = null
+@param Map<?, ?> dialogAttrs = null
+@param Map<?, ?> triggerAttrs = null
+@param Map<?, ?> headerAttrs = null
+@param Map<?, ?> bodyAttrs = null
+@param Map<?, ?> footerAttrs = null
 @param boolean open = false
 @param boolean closeButton = true
 @param boolean closeOnOverlayClick = true
 @param Content content = null
+@param Content footer = null
 
 @if(trigger != null)
   <button
-    class="${triggerClass}"
     type="button"
-    onclick="document.getElementById('${id}').showModal()"
+    onclick= "document.getElementById('${id}').showModal()"
+    $unsafe{JteHelper.attrs(triggerAttrs)}
   >
     ${trigger}
   </button>
 @endif
 <dialog
   id="${id}"
-  class="dialog ${dialogClass}"
+  class="${JteHelper.classAppend("dialog", dialogAttrs)}"
   aria-labelledby="${id}-title"
   aria-describedby="${description != null ? (id + "-description") : null}"
   onclick="${closeOnOverlayClick ? "if (event.target === this) this.close()" : null}"
+  $unsafe{JteHelper.attrs(dialogAttrs, "class")}
 >
   <div>
     @if(title != null || description != null)
-      <header>
+      <header $unsafe{JteHelper.attrs(headerAttrs)}>
         <h2 id="${id}-title">${title}</h2>
         @if(description != null)
           <p id="${id}-description">${description}</p>
@@ -64,10 +65,10 @@
       </header>
     @endif
     @if(content != null)
-      <section class="${bodyClass}">${content}</section>
+      <section $unsafe{JteHelper.attrs(bodyAttrs)}>${content}</section>
     @endif
     @if(footer != null)
-      <footer>${footer}</footer>
+      <footer $unsafe{JteHelper.attrs(footerAttrs)}>${footer}</footer>
     @endif
     @if(closeButton)
       <button

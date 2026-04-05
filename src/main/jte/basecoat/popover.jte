@@ -10,22 +10,29 @@
   @param popover_attrs {object} [optional] - Additional HTML attributes for the popover content div.
 --%>
 
+@import java.util.Map
 @import gg.jte.Content
+@import com.basecoatui.jte.util.JteHelper
 
 @param String id
 @param String triggerText = null
 @param Content triggerContent = null
-@param String triggerClass = null
-@param String popoverClass = null
+@param Map<?, ?> mainAttrs = null
+@param Map<?, ?> triggerAttrs = null
+@param Map<?, ?> popoverAttrs = null
 @param Content content
 
-<div id="${id}" class="popover ${triggerClass}">
+<div
+  id="${id}"
+  class="${JteHelper.classAppend("popover", mainAttrs)}"
+  $unsafe{JteHelper.attrs(mainAttrs, "class")}
+>
   <button
     type="button"
-    class="btn-outline"
     id="${id}-trigger"
     aria-expanded="false"
     aria-controls="${id}-popover"
+    $unsafe{JteHelper.attrs(triggerAttrs)}
   >
     ${triggerText}
     ${triggerContent}
@@ -34,7 +41,7 @@
     id="${id}-popover"
     data-popover
     aria-hidden="true"
-    class="${popoverClass}"
+    $unsafe{JteHelper.attrs(popoverAttrs)}
   >
     ${content}
   </div>

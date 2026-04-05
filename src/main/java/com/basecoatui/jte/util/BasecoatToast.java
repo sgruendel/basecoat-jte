@@ -2,9 +2,11 @@ package com.basecoatui.jte.util;
 
 import gg.jte.Content;
 
+import java.util.Map;
+
 
 public record BasecoatToast(Category category, String title, String description, Button action,
-                            Button cancel, Content content) {
+                            Button cancel, Map<?, ?> attrs, Content content) {
 
     public enum Category {
         SUCCESS, INFO, WARNING, ERROR

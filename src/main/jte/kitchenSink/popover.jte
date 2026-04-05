@@ -1,3 +1,5 @@
+@import java.util.Map
+
 <section id="popover" class="w-full rounded-lg border scroll-mt-14">
   <header class="border-b px-4 py-3 flex items-center justify-between">
     <h2 class="text-sm font-medium">Popover</h2>
@@ -13,8 +15,9 @@
   <div class="p-4">
     @template.basecoat.popover(
       id = "demo-popover",
-      triggerText = "Open popoverit",
-      popoverClass = "w-80",
+      triggerText = "Open popover",
+      triggerAttrs = Map.of("class", "btn-outline"),
+      popoverAttrs = Map.of("class", "w-80"),
       content = @`
         <div class="grid gap-4">
           <header class="grid gap-1.5">
@@ -40,9 +43,6 @@
             </div>
           </form>
         </div>
-
-
-
 
       `
     )

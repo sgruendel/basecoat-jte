@@ -1,3 +1,5 @@
+@import java.util.Map
+
 <section id="combobox" class="w-full rounded-lg border scroll-mt-14">
   <header class="border-b px-4 py-3 flex items-center justify-between">
     <h2 class="text-sm font-medium">Combobox</h2>
@@ -14,8 +16,8 @@
     <div class="flex flex-wrap items-start gap-4">
       @template.basecoat.select(
         id = "demo-combobox-frameworks",
-        btnClassAppend = "w-48",
-        noResultsText = "No framework found.",
+        popoverAttrs = Map.of("class", "w-48"),
+        listboxAttrs = Map.of("data-empty", "No framework found."),
         isCombobox = true,
         options = @`
           <div role="option" data-value="Next.js">Next.js</div>
@@ -25,15 +27,13 @@
           <div role="option" data-value="Astro">Astro</div>
 
 
-
-
         `
       )
 
       @template.basecoat.select(
         id = "demo-combobox-timezones",
-        btnClassAppend = "w-72",
-        noResultsText = "No timezone found.",
+        popoverAttrs = Map.of("class", "w-72"),
+        listboxAttrs = Map.of("data-empty", "No timezone found."),
         isCombobox = true,
         options = @`
           <div class="max-h-64 overflow-y-auto scrollbar">
@@ -70,13 +70,6 @@
             @template.lucide.circlePlus()
             Create timezone
           </div>
-
-
-
-
-
-
-
 
 
         `

@@ -17,20 +17,26 @@
 --%>
 
 @import java.util.List
+@import java.util.Map
 @import gg.jte.support.ForSupport
 @import com.basecoatui.jte.util.BasecoatTab
+@import com.basecoatui.jte.util.JteHelper
 
 @param String id
 @param List<BasecoatTab> tabs = null
+@param Map<?, ?> mainAttrs = null
+@param Map<?, ?> tablistAttrs = null
 @param int defaultTabIndex = 0
-@param String mainClassAppend = null
-@param String tabListClassAppend = null
 
-<div id="${id}" class="tabs ${mainClassAppend}">
+<div
+  id="${id}"
+  class="${JteHelper.classAppend("tabs", mainAttrs)}"
+  $unsafe{JteHelper.attrs(mainAttrs, "class")}
+>
   <nav
-    class="${tabListClassAppend}"
     role="tablist"
     aria-orientation="horizontal"
+    $unsafe{JteHelper.attrs(tablistAttrs)}
   >
     @for(var tab : ForSupport.of(tabs))
       <button
@@ -40,8 +46,10 @@
         aria-controls="${id}-panel-${tab.getIndex()}"
         aria-selected="${tab.getIndex() == defaultTabIndex ? "true" : "false"}"
         tabindex="0"
+        $unsafe{JteHelper.attrs(tab.get().tabAttrs())}
       >
-        ${tab.get().tab()}
+        ${tab.get().tabText()}
+        ${tab.get().tabContent()}
       </button>
     @endfor
   </nav>
@@ -55,6 +63,7 @@
         tabindex="-1"
         aria-selected="${tab.getIndex() == defaultTabIndex ? "true" : "false"}"
         hidden="${tab.getIndex() != defaultTabIndex}"
+        $unsafe{JteHelper.attrs(tab.get().panelAttrs())}
       >
         ${tab.get().panel()}
       </div>
