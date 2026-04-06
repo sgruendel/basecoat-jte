@@ -48,9 +48,11 @@ public class JteHelper {
     public static <K, V> String classAppend(final String className, final Map<K, V> m) {
 
         if (m != null && !m.isEmpty()) {
-            final String classAppend = m.get("class").toString();
-            if (StringUtils.hasText(classAppend)) {
-                return className + " " + classAppend;
+            final V classAppend = m.get("class");
+            if (classAppend instanceof String classAppendString) {
+                if (StringUtils.hasText(classAppendString)) {
+                    return className + " " + classAppend;
+                }
             }
         }
         return className;
