@@ -52,10 +52,6 @@
               <button type="button" class="btn">Save changes</button>
             </footer>
           </div>
-
-
-
-
         `),
           BasecoatTab.of("Password",
             @`
@@ -84,10 +80,6 @@
               <button type="button" class="btn">Save Password</button>
             </footer>
           </div>
-
-
-
-
         `)
         ),
         mainAttrs = Map.of("class", "max-w-[300px]"),
@@ -115,13 +107,11 @@
         tabs = List.of(
           BasecoatTab.of(@`
           @template.lucide.appWindow()
-            Preview
-
+              Preview
         `),
           BasecoatTab.of(@`
           @template.lucide.code()
-            Code
-
+              Code
         `)
         )
       )

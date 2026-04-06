@@ -1,20 +1,19 @@
 @import java.util.Map
-<section id="slider"  class="w-full rounded-lg border scroll-mt-14">
+<section id="slider" class="w-full rounded-lg border scroll-mt-14">
   <header class="border-b px-4 py-3 flex items-center justify-between">
     <h2 class="text-sm font-medium">Slider</h2>
-    <a href="https://basecoatui.com/components/slider" class="text-muted-foreground hover:text-foreground" data-tooltip="See documentation" data-side="left">
+    <a
+      href="https://basecoatui.com/components/slider"
+      class="text-muted-foreground hover:text-foreground"
+      data-tooltip="See documentation"
+      data-side="left"
+    >
       @template.lucide.bookOpen(attrs = Map.of("class", "size-4"))
     </a>
   </header>
   <div class="p-4">
     <div class="max-w-sm">
-      <input
-        type="range"
-        class="input w-full"
-        min="0"
-        max="27"
-        value="12"
-      >
+      <input type="range" class="input w-full" min="0" max="27" value="12" />
     </div>
   </div>
 </section>
@@ -27,13 +26,13 @@
       const min = parseFloat(el.min || 0);
       const max = parseFloat(el.max || 100);
       const value = parseFloat(el.value);
-      const percent = (max === min) ? 0 : ((value - min) / (max - min)) * 100;
-      el.style.setProperty('--slider-value', percent + '%');
+      const percent = max === min ? 0 : ((value - min) / (max - min)) * 100;
+      el.style.setProperty("--slider-value", percent + "%");
     };
 
-    sliders.forEach(slider => {
+    sliders.forEach((slider) => {
       updateSlider(slider);
-      slider.addEventListener('input', (event) => updateSlider(event.target));
+      slider.addEventListener("input", (event) => updateSlider(event.target));
     });
   })();
 </script>

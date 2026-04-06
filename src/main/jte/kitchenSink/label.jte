@@ -1,8 +1,13 @@
 @import java.util.Map
-<section id="label"  class="w-full rounded-lg border scroll-mt-14">
+<section id="label" class="w-full rounded-lg border scroll-mt-14">
   <header class="border-b px-4 py-3 flex items-center justify-between">
     <h2 class="text-sm font-medium">Label</h2>
-    <a href="https://basecoatui.com/components/label" class="text-muted-foreground hover:text-foreground" data-tooltip="See documentation" data-side="left">
+    <a
+      href="https://basecoatui.com/components/label"
+      class="text-muted-foreground hover:text-foreground"
+      data-tooltip="See documentation"
+      data-side="left"
+    >
       @template.lucide.bookOpen(attrs = Map.of("class", "size-4"))
     </a>
   </header>
@@ -10,20 +15,37 @@
     <div class="flex flex-col gap-y-4">
       <div class="grid w-full max-w-sm gap-6">
         <div class="flex items-center gap-3">
-          <input type="checkbox" id="label-demo-terms" class="input">
-          <label for="label-demo-terms" class="label">Accept terms and conditions</label>
+          <input type="checkbox" id="label-demo-terms" class="input" />
+          <label for="label-demo-terms" class="label"
+            >Accept terms and conditions</label
+          >
         </div>
         <div class="grid gap-3">
           <label for="label-demo-text" class="label">Username</label>
-          <input type="text" id="label-demo-text" class="input" placeholder="Username">
+          <input
+            type="text"
+            id="label-demo-text"
+            class="input"
+            placeholder="Username"
+          />
         </div>
         <div class="grid gap-3">
           <label for="label-demo-disabled" class="label">Disabled</label>
-          <input type="text" id="label-demo-disabled" class="peer input" placeholder="Disabled" disabled>
+          <input
+            type="text"
+            id="label-demo-disabled"
+            class="peer input"
+            placeholder="Disabled"
+            disabled
+          />
         </div>
         <div class="grid gap-3">
           <label for="label-demo-textarea" class="label">Message</label>
-          <textarea id="label-demo-textarea" class="textarea" placeholder="Message"></textarea>
+          <textarea
+            id="label-demo-textarea"
+            class="textarea"
+            placeholder="Message"
+          ></textarea>
         </div>
       </div>
     </div>

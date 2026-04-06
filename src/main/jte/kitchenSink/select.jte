@@ -59,21 +59,15 @@
             id = "select-scrollbar",
             triggerAttrs = Map.of("class", "w-[180px]"),
             listboxAttrs = Map.of("class", "scrollbar overflow-y-auto max-h-64"),
-            options = @`
-              @for(int i = 0; i < 100; i++)
-                <div role="option" data-value="item-${i}">Item ${i}</div>
-              @endfor
-
-            `
+            options = @`@for(int i = 0; i < 100; i++)
+              <div role="option" data-value="item-${i}">Item ${i}</div>
+            @endfor`
           )
 
           @template.basecoat.select(
             id = "select-disabled",
             triggerAttrs = Map.of("disabled", true, "class", "w-[180px]"),
-            options = @`
-              <div role="option" data-value="disabled">Disabled</div>
-
-            `
+            options = @`<div role="option" data-value="disabled">Disabled</div>`
           )
 
           @template.basecoat.select(
@@ -83,28 +77,28 @@
             options = @`
               <div type="button" role="option" data-value="bar">
                 <span class="flex items-center gap-2">
-                  @template.lucide.chartBar(attrs = Map.of("class", "text-muted-foreground"))
+                  @template.lucide.chartBar(
+                attrs = Map.of("class", "text-muted-foreground")
+              )
                   Bar
                 </span>
               </div>
               <div type="button" role="option" data-value="line">
                 <span class="flex items-center gap-2">
-                  @template.lucide.chartLine(attrs = Map.of("class", "text-muted-foreground"))
+                  @template.lucide.chartLine(
+                attrs = Map.of("class", "text-muted-foreground")
+              )
                   Line
                 </span>
               </div>
               <div type="button" role="option" data-value="pie">
                 <span class="flex items-center gap-2">
-                  @template.lucide.chartPie(attrs = Map.of("class", "text-muted-foreground"))
+                  @template.lucide.chartPie(
+                attrs = Map.of("class", "text-muted-foreground")
+              )
                   Pie
                 </span>
               </div>
-
-
-
-
-
-
             `
           )
         </div>

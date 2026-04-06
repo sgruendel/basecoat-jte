@@ -107,16 +107,10 @@ Example dialog usage:
         <input id="name" type="text" value="Pedro Duarte" />
       </div>
     </form>
-
-
-
   `,
   footer = @`
     <button type="button" class="btn-outline">Cancel</button>
     <button type="button" class="btn">Save</button>
-
-
-
   `
 )
 ```
@@ -136,9 +130,6 @@ Example dropdown usage:
     <div role="menuitem">Billing</div>
     <hr role="separator">
     <div role="menuitem">Log out</div>
-
-
-
   `
 )
 ```

@@ -22,8 +22,6 @@
       footer = @`
         <button class="btn-outline" type="button" onclick="document.getElementById('alert-dialog-demo').close()">Cancel</button>
         <button class="btn-primary" type="button" onclick="document.getElementById('alert-dialog-demo').close()">Continue</button>
-
-
       `,
       closeButton = false,
       closeOnOverlayClick = false

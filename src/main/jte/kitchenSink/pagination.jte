@@ -1,17 +1,28 @@
 @import java.util.Map
-<section id="pagination"  class="w-full rounded-lg border scroll-mt-14">
+<section id="pagination" class="w-full rounded-lg border scroll-mt-14">
   <header class="border-b px-4 py-3 flex items-center justify-between">
     <h2 class="text-sm font-medium">Pagination</h2>
-    <a href="https://basecoatui.com/components/pagination" class="text-muted-foreground hover:text-foreground" data-tooltip="See documentation" data-side="left">
+    <a
+      href="https://basecoatui.com/components/pagination"
+      class="text-muted-foreground hover:text-foreground"
+      data-tooltip="See documentation"
+      data-side="left"
+    >
       @template.lucide.bookOpen(attrs = Map.of("class", "size-4"))
     </a>
   </header>
   <div class="p-4">
     <div class="inline-flex">
-      <nav role="navigation" aria-label="pagination" class="mx-auto flex w-full justify-center">
+      <nav
+        role="navigation"
+        aria-label="pagination"
+        class="mx-auto flex w-full justify-center"
+      >
         <ul class="flex flex-row items-center gap-1">
           <li>
-            <a href="#" class="btn-ghost">@template.lucide.chevronLeft() Previous</a>
+            <a href="#" class="btn-ghost"
+              >@template.lucide.chevronLeft() Previous</a
+            >
           </li>
           <li>
             <a href="#" class="btn-ghost size-9">1</a>
@@ -26,7 +37,9 @@
             <a href="#" class="btn-icon-ghost">@template.lucide.ellipsis()</a>
           </li>
           <li>
-            <a href="#" class="btn-ghost">Next @template.lucide.chevronRight()</a>
+            <a href="#" class="btn-ghost"
+              >Next @template.lucide.chevronRight()</a
+            >
           </li>
         </ul>
       </nav>

@@ -25,8 +25,6 @@
           <div role="option" data-value="Nuxt.js">Nuxt.js</div>
           <div role="option" data-value="Remix">Remix</div>
           <div role="option" data-value="Astro">Astro</div>
-
-
         `
       )
 
@@ -70,8 +68,6 @@
             @template.lucide.circlePlus()
             Create timezone
           </div>
-
-
         `
       )
     </div>

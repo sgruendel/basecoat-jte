@@ -32,8 +32,6 @@
               <input type="text" value="@peduarte" id="demo-dialog-edit-profile-username" />
             </div>
           </form>
-
-
         `,
         footer = @`
           <button class="btn-outline" type="button" onclick="document.getElementById('demo-dialog-edit-profile').close()">
@@ -42,8 +40,6 @@
           <button class="btn" type="button" onclick="document.getElementById('demo-dialog-edit-profile').close()">
             Save changes
           </button>
-
-
         `
       )
 
@@ -68,13 +64,11 @@
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
           </div>
-
         `,
         footer = @`
           <button class="btn-outline" type="button" onclick="document.getElementById('dialog-example').close()">
             Close
           </button>
-
         `
       )
     </div>

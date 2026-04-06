@@ -1,16 +1,22 @@
 @import java.util.Map
-<section id="table"  class="w-full rounded-lg border scroll-mt-14">
+<section id="table" class="w-full rounded-lg border scroll-mt-14">
   <header class="border-b px-4 py-3 flex items-center justify-between">
     <h2 class="text-sm font-medium">Table</h2>
-    <a href="https://basecoatui.com/components/table" class="text-muted-foreground hover:text-foreground" data-tooltip="See documentation" data-side="left">
+    <a
+      href="https://basecoatui.com/components/table"
+      class="text-muted-foreground hover:text-foreground"
+      data-tooltip="See documentation"
+      data-side="left"
+    >
       @template.lucide.bookOpen(attrs = Map.of("class", "size-4"))
     </a>
   </header>
   <div class="p-4">
-
     <div class="relative w-full overflow-x-auto">
       <table class="table">
-        <caption>A list of your recent invoices.</caption>
+        <caption>
+          A list of your recent invoices.
+        </caption>
         <thead>
           <tr>
             <th>Invoice</th>

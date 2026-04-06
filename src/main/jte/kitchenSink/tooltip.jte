@@ -1,8 +1,13 @@
 @import java.util.Map
-<section id="tooltip"  class="w-full rounded-lg border scroll-mt-14">
+<section id="tooltip" class="w-full rounded-lg border scroll-mt-14">
   <header class="border-b px-4 py-3 flex items-center justify-between">
     <h2 class="text-sm font-medium">Tooltip</h2>
-    <a href="https://basecoatui.com/components/tooltip" class="text-muted-foreground hover:text-foreground" data-tooltip="See documentation" data-side="left">
+    <a
+      href="https://basecoatui.com/components/tooltip"
+      class="text-muted-foreground hover:text-foreground"
+      data-tooltip="See documentation"
+      data-side="left"
+    >
       @template.lucide.bookOpen(attrs = Map.of("class", "size-4"))
     </a>
   </header>
@@ -11,13 +16,28 @@
       <button type="button" class="btn-outline" data-tooltip="Top tooltip">
         Top
       </button>
-      <button type="button" class="btn-outline" data-tooltip="Right tooltip" data-side="right">
+      <button
+        type="button"
+        class="btn-outline"
+        data-tooltip="Right tooltip"
+        data-side="right"
+      >
         Right
       </button>
-      <button type="button" class="btn-outline" data-tooltip="Bottom tooltip" data-side="bottom">
+      <button
+        type="button"
+        class="btn-outline"
+        data-tooltip="Bottom tooltip"
+        data-side="bottom"
+      >
         Bottom
       </button>
-      <button type="button" class="btn-outline" data-tooltip="Left tooltip" data-side="left">
+      <button
+        type="button"
+        class="btn-outline"
+        data-tooltip="Left tooltip"
+        data-side="left"
+      >
         Left
       </button>
     </div>

@@ -1,8 +1,13 @@
 @import java.util.Map
-<section id="card"  class="w-full rounded-lg border scroll-mt-14">
+<section id="card" class="w-full rounded-lg border scroll-mt-14">
   <header class="border-b px-4 py-3 flex items-center justify-between">
     <h2 class="text-sm font-medium">Card</h2>
-    <a href="https://basecoatui.com/components/card" class="text-muted-foreground hover:text-foreground" data-tooltip="See documentation" data-side="left">
+    <a
+      href="https://basecoatui.com/components/card"
+      class="text-muted-foreground hover:text-foreground"
+      data-tooltip="See documentation"
+      data-side="left"
+    >
       @template.lucide.bookOpen(attrs = Map.of("class", "size-4"))
     </a>
   </header>
@@ -17,21 +22,30 @@
           <form class="form grid gap-6">
             <div class="grid gap-2">
               <label for="demo-card-form-email">Email</label>
-              <input type="email" id="demo-card-form-email">
+              <input type="email" id="demo-card-form-email" />
             </div>
             <div class="grid gap-2">
               <div class="flex items-center gap-2">
                 <label for="demo-card-form-password">Password</label>
-                <a href="#" class="ml-auto inline-block text-sm underline-offset-4 hover:underline">Forgot your password?</a>
+                <a
+                  href="#"
+                  class="ml-auto inline-block text-sm underline-offset-4 hover:underline"
+                  >Forgot your password?</a
+                >
               </div>
-              <input type="password" id="demo-card-form-password">
+              <input type="password" id="demo-card-form-password" />
             </div>
           </form>
         </section>
         <footer class="flex flex-col items-center gap-2">
           <button type="button" class="btn w-full">Login</button>
-          <button type="button" class="btn-outline w-full">Login with Google</button>
-          <p class="mt-4 text-center text-sm">Don't have an account? <a href="#" class="underline-offset-4 hover:underline">Sign up</a></p>
+          <button type="button" class="btn-outline w-full">
+            Login with Google
+          </button>
+          <p class="mt-4 text-center text-sm">
+            Don't have an account?
+            <a href="#" class="underline-offset-4 hover:underline">Sign up</a>
+          </p>
         </footer>
       </div>
 
@@ -41,7 +55,10 @@
           <p>Transcript from the meeting with the client.</p>
         </header>
         <section class="text-sm">
-          <p>Client requested dashboard redesign with focus on mobile responsiveness.</p>
+          <p>
+            Client requested dashboard redesign with focus on mobile
+            responsiveness.
+          </p>
           <ol class="mt-4 flex list-decimal flex-col gap-2 pl-6">
             <li>New analytics widgets for daily/weekly metrics</li>
             <li>Simplified navigation menu</li>
@@ -51,10 +68,12 @@
           </ol>
         </section>
         <footer class="flex items-center">
-          <div class="flex -space-x-2 [&_img]:ring-background [&_img]:ring-2 [&_img]:grayscale [&_img]:size-8 [&_img]:shrink-0 [&_img]:object-cover [&_img]:rounded-full">
-            <img alt="@hunvreus" src="https://github.com/hunvreus.png">
-            <img alt="@shadcn" src="https://github.com/shadcn.png">
-            <img alt="@adamwathan" src="https://github.com/adamwathan.png">
+          <div
+            class="flex -space-x-2 [&_img]:ring-background [&_img]:ring-2 [&_img]:grayscale [&_img]:size-8 [&_img]:shrink-0 [&_img]:object-cover [&_img]:rounded-full"
+          >
+            <img alt="@hunvreus" src="https://github.com/hunvreus.png" />
+            <img alt="@shadcn" src="https://github.com/shadcn.png" />
+            <img alt="@adamwathan" src="https://github.com/adamwathan.png" />
           </div>
         </footer>
       </div>
@@ -70,34 +89,26 @@
             loading="lazy"
             width="500"
             height="500"
-            class="aspect-video object-cover" style="color:transparent"
+            class="aspect-video object-cover"
+            style="color:transparent"
             srcset="
-              https://images.unsplash.com/photo-1588345921523-c2dcdb7f1dcd?w=800&dpr=2&q=80&w=640&q=75 1x,
+              https://images.unsplash.com/photo-1588345921523-c2dcdb7f1dcd?w=800&dpr=2&q=80&w=640&q=75  1x,
               https://images.unsplash.com/photo-1588345921523-c2dcdb7f1dcd?w=800&dpr=2&q=80&w=1080&q=75 2x
             "
             src="https://images.unsplash.com/photo-1588345921523-c2dcdb7f1dcd?w=800&dpr=2&q=80&w=1080&q=75"
           />
         </section>
         <footer class="flex items-center gap-2">
-          <span class="badge-outline">
-            @template.lucide.bed()
-            1
-          </span>
-          <span class="badge-outline">
-            @template.lucide.bath()
-            2
-          </span>
-          <span class="badge-outline">
-            @template.lucide.landPlot()
-            350m²
-          </span>
-          <span class="ml-auto font-medium tabular-nums">
-            $135,000
-          </span>
+          <span class="badge-outline"> @template.lucide.bed() 1 </span>
+          <span class="badge-outline"> @template.lucide.bath() 2 </span>
+          <span class="badge-outline"> @template.lucide.landPlot() 350m² </span>
+          <span class="ml-auto font-medium tabular-nums"> $135,000 </span>
         </footer>
       </div>
 
-      <div class="flex w-full flex-wrap items-start gap-8 md:*:[.card]:basis-1/4">
+      <div
+        class="flex w-full flex-wrap items-start gap-8 md:*:[.card]:basis-1/4"
+      >
         <div class="card">
           <section>Content Only</section>
         </div>

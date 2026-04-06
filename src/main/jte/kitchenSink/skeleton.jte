@@ -1,15 +1,22 @@
 @import java.util.Map
-<section id="skeleton"  class="w-full rounded-lg border scroll-mt-14">
+<section id="skeleton" class="w-full rounded-lg border scroll-mt-14">
   <header class="border-b px-4 py-3 flex items-center justify-between">
     <h2 class="text-sm font-medium">Skeleton</h2>
-    <a href="https://basecoatui.com/components/skeleton" class="text-muted-foreground hover:text-foreground" data-tooltip="See documentation" data-side="left">
+    <a
+      href="https://basecoatui.com/components/skeleton"
+      class="text-muted-foreground hover:text-foreground"
+      data-tooltip="See documentation"
+      data-side="left"
+    >
       @template.lucide.bookOpen(attrs = Map.of("class", "size-4"))
     </a>
   </header>
   <div class="p-4">
     <div class="flex flex-col gap-4">
       <div class="flex items-center gap-4">
-        <div class="bg-accent animate-pulse size-10 shrink-0 rounded-full"></div>
+        <div
+          class="bg-accent animate-pulse size-10 shrink-0 rounded-full"
+        ></div>
         <div class="grid gap-2">
           <div class="bg-accent animate-pulse rounded-md h-4 w-[150px]"></div>
           <div class="bg-accent animate-pulse rounded-md h-4 w-[100px]"></div>
@@ -23,7 +30,9 @@
             <div class="bg-accent animate-pulse rounded-md h-4 w-1/2"></div>
           </header>
           <section>
-            <div class="bg-accent animate-pulse rounded-md aspect-square w-full"></div>
+            <div
+              class="bg-accent animate-pulse rounded-md aspect-square w-full"
+            ></div>
           </section>
         </div>
 
@@ -33,7 +42,9 @@
             <div class="bg-accent animate-pulse rounded-md h-4 w-1/2"></div>
           </header>
           <section>
-            <div class="bg-accent animate-pulse rounded-md aspect-square w-full"></div>
+            <div
+              class="bg-accent animate-pulse rounded-md aspect-square w-full"
+            ></div>
           </section>
         </div>
       </div>
