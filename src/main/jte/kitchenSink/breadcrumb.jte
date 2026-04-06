@@ -16,12 +16,14 @@
   </header>
   <div class="p-4">
     <ol
-      class="text-muted-foreground flex flex-wrap items-center gap-1.5 text-sm break-words sm:gap-2.5"
+      class="text-muted-foreground flex flex-wrap items-center gap-1.5 text-sm wrap-break-word sm:gap-2.5"
     >
       <li class="inline-flex items-center gap-1.5">
         <a href="#" class="hover:text-foreground transition-colors">Home</a>
       </li>
-      <li>@template.lucide.chevronRight(attrs = Map.of("class", "size-3.5"))</li>
+      <li>
+        @template.lucide.chevronRight(attrs = Map.of("class", "size-3.5"))
+      </li>
       <li class="inline-flex items-center gap-1.5">
         @template.basecoat.dropdownMenu(
           id = "demo-breadcrumb-menu",
@@ -35,13 +37,17 @@
           )
         )
       </li>
-      <li>@template.lucide.chevronRight(attrs = Map.of("class", "size-3.5"))</li>
+      <li>
+        @template.lucide.chevronRight(attrs = Map.of("class", "size-3.5"))
+      </li>
       <li class="inline-flex items-center gap-1.5">
         <a href="#" class="hover:text-foreground transition-colors"
           >Components</a
         >
       </li>
-      <li>@template.lucide.chevronRight(attrs = Map.of("class", "size-3.5"))</li>
+      <li>
+        @template.lucide.chevronRight(attrs = Map.of("class", "size-3.5"))
+      </li>
       <li class="inline-flex items-center gap-1.5">
         <span class="text-foreground font-normal">Breadcrumb</span>
       </li>
