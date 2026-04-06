@@ -1,14 +1,13 @@
 <%-- see https://lucide.dev/icons/chart-candlestick --%>
 
-@param String classAppend = null
+@import java.util.Map
+@import com.basecoatui.jte.util.JteHelper
+
 @param int size = 24
 @param String color = "currentColor"
 @param int strokeWidth = 2
 @param boolean absoluteStrokeWidth = false
-@param String role = null
-@param String ariaLabel = null
-@param Boolean ariaHidden = null
-@param Boolean focusable = null
+@param Map<?, ?> attrs = null
 
 <%-- see https://github.com/lucide-icons/lucide/blob/main/packages/vue/src/Icon.ts#L50 --%>
 !{final var calculatedStrokeWidth = absoluteStrokeWidth ? Double.toString(strokeWidth * 24.0 / size) : Integer.toString(strokeWidth);}
@@ -23,13 +22,10 @@
   stroke-width="${calculatedStrokeWidth}"
   stroke-linecap="round"
   stroke-linejoin="round"
-  class="lucide lucide-chart-candlestick-icon lucide-chart-candlestick ${classAppend}"
-  role="${role}"
-  aria-label="${ariaLabel}"
-  aria-hidden="${ariaHidden}"
-  focusable="${focusable}"
+  class="${JteHelper.classAppend("lucide lucide-chart-candlestick-icon lucide-chart-candlestick", attrs)}"
+  $unsafe{JteHelper.attrs(attrs, "class")}
 >
-    <path d="M9 5v4" />
+  <path d="M9 5v4" />
   <rect width="4" height="6" x="7" y="9" rx="1" />
   <path d="M9 15v2" />
   <path d="M17 3v2" />

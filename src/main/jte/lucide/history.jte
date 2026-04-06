@@ -1,14 +1,13 @@
 <%-- see https://lucide.dev/icons/history --%>
 
-@param String classAppend = null
+@import java.util.Map
+@import com.basecoatui.jte.util.JteHelper
+
 @param int size = 24
 @param String color = "currentColor"
 @param int strokeWidth = 2
 @param boolean absoluteStrokeWidth = false
-@param String role = null
-@param String ariaLabel = null
-@param Boolean ariaHidden = null
-@param Boolean focusable = null
+@param Map<?, ?> attrs = null
 
 <%-- see https://github.com/lucide-icons/lucide/blob/main/packages/vue/src/Icon.ts#L50 --%>
 !{final var calculatedStrokeWidth = absoluteStrokeWidth ? Double.toString(strokeWidth * 24.0 / size) : Integer.toString(strokeWidth);}
@@ -23,13 +22,10 @@
   stroke-width="${calculatedStrokeWidth}"
   stroke-linecap="round"
   stroke-linejoin="round"
-  class="lucide lucide-history-icon lucide-history ${classAppend}"
-  role="${role}"
-  aria-label="${ariaLabel}"
-  aria-hidden="${ariaHidden}"
-  focusable="${focusable}"
+  class="${JteHelper.classAppend("lucide lucide-history-icon lucide-history", attrs)}"
+  $unsafe{JteHelper.attrs(attrs, "class")}
 >
-    <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
+  <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
   <path d="M3 3v5h5" />
   <path d="M12 7v5l4 2" />
 </svg>

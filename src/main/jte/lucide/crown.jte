@@ -1,14 +1,13 @@
 <%-- see https://lucide.dev/icons/crown --%>
 
-@param String classAppend = null
+@import java.util.Map
+@import com.basecoatui.jte.util.JteHelper
+
 @param int size = 24
 @param String color = "currentColor"
 @param int strokeWidth = 2
 @param boolean absoluteStrokeWidth = false
-@param String role = null
-@param String ariaLabel = null
-@param Boolean ariaHidden = null
-@param Boolean focusable = null
+@param Map<?, ?> attrs = null
 
 <%-- see https://github.com/lucide-icons/lucide/blob/main/packages/vue/src/Icon.ts#L50 --%>
 !{final var calculatedStrokeWidth = absoluteStrokeWidth ? Double.toString(strokeWidth * 24.0 / size) : Integer.toString(strokeWidth);}
@@ -23,12 +22,11 @@
   stroke-width="${calculatedStrokeWidth}"
   stroke-linecap="round"
   stroke-linejoin="round"
-  class="lucide lucide-crown-icon lucide-crown ${classAppend}"
-  role="${role}"
-  aria-label="${ariaLabel}"
-  aria-hidden="${ariaHidden}"
-  focusable="${focusable}"
+  class="${JteHelper.classAppend("lucide lucide-crown-icon lucide-crown", attrs)}"
+  $unsafe{JteHelper.attrs(attrs, "class")}
 >
-    <path d="M11.562 3.266a.5.5 0 0 1 .876 0L15.39 8.87a1 1 0 0 0 1.516.294L21.183 5.5a.5.5 0 0 1 .798.519l-2.834 10.246a1 1 0 0 1-.956.734H5.81a1 1 0 0 1-.957-.734L2.02 6.02a.5.5 0 0 1 .798-.519l4.276 3.664a1 1 0 0 0 1.516-.294z" />
+  <path
+    d="M11.562 3.266a.5.5 0 0 1 .876 0L15.39 8.87a1 1 0 0 0 1.516.294L21.183 5.5a.5.5 0 0 1 .798.519l-2.834 10.246a1 1 0 0 1-.956.734H5.81a1 1 0 0 1-.957-.734L2.02 6.02a.5.5 0 0 1 .798-.519l4.276 3.664a1 1 0 0 0 1.516-.294z"
+  />
   <path d="M5 21h14" />
 </svg>

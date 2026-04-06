@@ -1,14 +1,13 @@
 <%-- see https://lucide.dev/icons/git-branch-plus --%>
 
-@param String classAppend = null
+@import java.util.Map
+@import com.basecoatui.jte.util.JteHelper
+
 @param int size = 24
 @param String color = "currentColor"
 @param int strokeWidth = 2
 @param boolean absoluteStrokeWidth = false
-@param String role = null
-@param String ariaLabel = null
-@param Boolean ariaHidden = null
-@param Boolean focusable = null
+@param Map<?, ?> attrs = null
 
 <%-- see https://github.com/lucide-icons/lucide/blob/main/packages/vue/src/Icon.ts#L50 --%>
 !{final var calculatedStrokeWidth = absoluteStrokeWidth ? Double.toString(strokeWidth * 24.0 / size) : Integer.toString(strokeWidth);}
@@ -23,13 +22,10 @@
   stroke-width="${calculatedStrokeWidth}"
   stroke-linecap="round"
   stroke-linejoin="round"
-  class="lucide lucide-git-branch-plus-icon lucide-git-branch-plus ${classAppend}"
-  role="${role}"
-  aria-label="${ariaLabel}"
-  aria-hidden="${ariaHidden}"
-  focusable="${focusable}"
+  class="${JteHelper.classAppend("lucide lucide-git-branch-plus-icon lucide-git-branch-plus", attrs)}"
+  $unsafe{JteHelper.attrs(attrs, "class")}
 >
-    <path d="M6 3v12" />
+  <path d="M6 3v12" />
   <path d="M18 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
   <path d="M6 21a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
   <path d="M15 6a9 9 0 0 0-9 9" />

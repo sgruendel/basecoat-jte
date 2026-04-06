@@ -1,14 +1,13 @@
 <%-- see https://lucide.dev/icons/wine-off --%>
 
-@param String classAppend = null
+@import java.util.Map
+@import com.basecoatui.jte.util.JteHelper
+
 @param int size = 24
 @param String color = "currentColor"
 @param int strokeWidth = 2
 @param boolean absoluteStrokeWidth = false
-@param String role = null
-@param String ariaLabel = null
-@param Boolean ariaHidden = null
-@param Boolean focusable = null
+@param Map<?, ?> attrs = null
 
 <%-- see https://github.com/lucide-icons/lucide/blob/main/packages/vue/src/Icon.ts#L50 --%>
 !{final var calculatedStrokeWidth = absoluteStrokeWidth ? Double.toString(strokeWidth * 24.0 / size) : Integer.toString(strokeWidth);}
@@ -23,15 +22,14 @@
   stroke-width="${calculatedStrokeWidth}"
   stroke-linecap="round"
   stroke-linejoin="round"
-  class="lucide lucide-wine-off-icon lucide-wine-off ${classAppend}"
-  role="${role}"
-  aria-label="${ariaLabel}"
-  aria-hidden="${ariaHidden}"
-  focusable="${focusable}"
+  class="${JteHelper.classAppend("lucide lucide-wine-off-icon lucide-wine-off", attrs)}"
+  $unsafe{JteHelper.attrs(attrs, "class")}
 >
-    <path d="M8 22h8" />
+  <path d="M8 22h8" />
   <path d="M7 10h3m7 0h-1.343" />
   <path d="M12 15v7" />
-  <path d="M7.307 7.307A12.33 12.33 0 0 0 7 10a5 5 0 0 0 7.391 4.391M8.638 2.981C8.75 2.668 8.872 2.34 9 2h6c1.5 4 2 6 2 8 0 .407-.05.809-.145 1.198" />
+  <path
+    d="M7.307 7.307A12.33 12.33 0 0 0 7 10a5 5 0 0 0 7.391 4.391M8.638 2.981C8.75 2.668 8.872 2.34 9 2h6c1.5 4 2 6 2 8 0 .407-.05.809-.145 1.198"
+  />
   <line x1="2" x2="22" y1="2" y2="22" />
 </svg>

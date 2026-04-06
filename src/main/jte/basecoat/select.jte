@@ -123,13 +123,9 @@
     <span class="truncate">${defaultLabel}</span>
 
     @if(isCombobox)
-      @template.lucide.chevronsUpDown(
-        classAppend = "text-muted-foreground opacity-50 shrink-0"
-      )
+      @template.lucide.chevronsUpDown(attrs = Map.of("class", "text-muted-foreground opacity-50 shrink-0"))
     @else
-      @template.lucide.chevronDown(
-        classAppend = "text-muted-foreground opacity-50 shrink-0"
-      )
+      @template.lucide.chevronDown(attrs = Map.of("class", "text-muted-foreground opacity-50 shrink-0"))
     @endif
   </button>
   <div

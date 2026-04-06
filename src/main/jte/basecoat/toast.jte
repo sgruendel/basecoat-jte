@@ -39,13 +39,13 @@
 >
   <div class="toast-content">
     @if(category == Category.SUCCESS)
-      @template.lucide.circleCheck(ariaHidden = true)
+      @template.lucide.circleCheck(attrs = Map.of("aria-hidden", "true"))
     @elseif(category == Category.INFO)
-      @template.lucide.info(ariaHidden = true)
+      @template.lucide.info(attrs = Map.of("aria-hidden", "true"))
     @elseif(category == Category.WARNING)
-      @template.lucide.triangleAlert(ariaHidden = true)
+      @template.lucide.triangleAlert(attrs = Map.of("aria-hidden", "true"))
     @elseif(category == Category.ERROR)
-      @template.lucide.circleX(ariaHidden = true)
+      @template.lucide.circleX(attrs = Map.of("aria-hidden", "true"))
     @endif
 
     <section>

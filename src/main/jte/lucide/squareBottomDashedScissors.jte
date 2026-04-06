@@ -1,14 +1,13 @@
 <%-- see https://lucide.dev/icons/square-bottom-dashed-scissors --%>
 
-@param String classAppend = null
+@import java.util.Map
+@import com.basecoatui.jte.util.JteHelper
+
 @param int size = 24
 @param String color = "currentColor"
 @param int strokeWidth = 2
 @param boolean absoluteStrokeWidth = false
-@param String role = null
-@param String ariaLabel = null
-@param Boolean ariaHidden = null
-@param Boolean focusable = null
+@param Map<?, ?> attrs = null
 
 <%-- see https://github.com/lucide-icons/lucide/blob/main/packages/vue/src/Icon.ts#L50 --%>
 !{final var calculatedStrokeWidth = absoluteStrokeWidth ? Double.toString(strokeWidth * 24.0 / size) : Integer.toString(strokeWidth);}
@@ -23,13 +22,10 @@
   stroke-width="${calculatedStrokeWidth}"
   stroke-linecap="round"
   stroke-linejoin="round"
-  class="lucide lucide-square-bottom-dashed-scissors-icon lucide-square-bottom-dashed-scissors ${classAppend}"
-  role="${role}"
-  aria-label="${ariaLabel}"
-  aria-hidden="${ariaHidden}"
-  focusable="${focusable}"
+  class="${JteHelper.classAppend("lucide lucide-square-bottom-dashed-scissors-icon lucide-square-bottom-dashed-scissors", attrs)}"
+  $unsafe{JteHelper.attrs(attrs, "class")}
 >
-    <line x1="5" y1="3" x2="19" y2="3" />
+  <line x1="5" y1="3" x2="19" y2="3" />
   <line x1="3" y1="5" x2="3" y2="19" />
   <line x1="21" y1="5" x2="21" y2="19" />
   <line x1="9" y1="21" x2="10" y2="21" />

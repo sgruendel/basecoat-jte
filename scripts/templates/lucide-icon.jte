@@ -1,11 +1,13 @@
 <%-- see https://lucide.dev/icons/{{ICON_FILE_NAME}} --%>
 
-@param String classAppend = null
+@import java.util.Map
+@import com.basecoatui.jte.util.JteHelper
+
 @param int size = 24
 @param String color = "currentColor"
 @param int strokeWidth = 2
 @param boolean absoluteStrokeWidth = false
-{{OPTIONAL_PARAMS}}
+@param Map<?, ?> attrs = null
 
 <%-- see https://github.com/lucide-icons/lucide/blob/main/packages/vue/src/Icon.ts#L50 --%>
 !{final var calculatedStrokeWidth = absoluteStrokeWidth ? Double.toString(strokeWidth * 24.0 / size) : Integer.toString(strokeWidth);}
@@ -20,8 +22,8 @@
   stroke-width="${calculatedStrokeWidth}"
   stroke-linecap="round"
   stroke-linejoin="round"
-  class="lucide lucide-{{ICON_FILE_NAME}}-icon lucide-{{ICON_FILE_NAME}} ${classAppend}"
-{{OPTIONAL_ATTRIBUTES}}
+  class="${JteHelper.classAppend("lucide lucide-{{ICON_FILE_NAME}}-icon lucide-{{ICON_FILE_NAME}}", attrs)}"
+  $unsafe{JteHelper.attrs(attrs, "class")}
 >
-  {{CHILDREN}}
+{{CHILDREN}}
 </svg>

@@ -1,8 +1,9 @@
+@import java.util.Map
 <section id="accordion"  class="w-full rounded-lg border scroll-mt-14">
   <header class="border-b px-4 py-3 flex items-center justify-between">
     <h2 class="text-sm font-medium">Accordion</h2>
     <a href="https://basecoatui.com/components/accordion" class="text-muted-foreground hover:text-foreground" data-tooltip="See documentation" data-side="left">
-      @template.lucide.bookOpen(classAppend = "size-4")
+      @template.lucide.bookOpen(attrs = Map.of("class", "size-4"))
     </a>
   </header>
   <div class="p-4">
@@ -12,7 +13,7 @@
           <summary class="w-full focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] transition-all outline-none rounded-md">
             <h2 class="flex flex-1 items-start justify-between gap-4 py-4 text-left text-sm font-medium hover:underline ">
               Is it accessible?
-              @template.lucide.chevronDown(classAppend = "text-muted-foreground pointer-events-none size-4 shrink-0 translate-y-0.5 transition-transform duration-200 group-open:rotate-180")
+              @template.lucide.chevronDown(attrs = Map.of("class", "text-muted-foreground pointer-events-none size-4 shrink-0 translate-y-0.5 transition-transform duration-200 group-open:rotate-180"))
             </h2>
           </summary>
           <section class="pb-4">
@@ -23,7 +24,7 @@
           <summary class="w-full focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] transition-all outline-none rounded-md">
             <h2 class="flex flex-1 items-start justify-between gap-4 py-4 text-left text-sm font-medium hover:underline ">
               Is it styled?
-              @template.lucide.chevronDown(classAppend = "text-muted-foreground pointer-events-none size-4 shrink-0 translate-y-0.5 transition-transform duration-200 group-open:rotate-180")
+              @template.lucide.chevronDown(attrs = Map.of("class", "text-muted-foreground pointer-events-none size-4 shrink-0 translate-y-0.5 transition-transform duration-200 group-open:rotate-180"))
             </h2>
           </summary>
           <section class="pb-4">
@@ -34,7 +35,7 @@
           <summary class="w-full focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] transition-all outline-none rounded-md">
             <h2 class="flex flex-1 items-start justify-between gap-4 py-4 text-left text-sm font-medium hover:underline ">
               Is it animated?
-              @template.lucide.chevronDown(classAppend = "text-muted-foreground pointer-events-none size-4 shrink-0 translate-y-0.5 transition-transform duration-200 group-open:rotate-180")
+              @template.lucide.chevronDown(attrs = Map.of("class", "text-muted-foreground pointer-events-none size-4 shrink-0 translate-y-0.5 transition-transform duration-200 group-open:rotate-180"))
             </h2>
           </summary>
           <section>
@@ -47,7 +48,7 @@
           <summary class="w-full focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] transition-all outline-none rounded-md">
             <h2 class="flex flex-1 items-start justify-between gap-4 py-4 text-left text-sm font-medium hover:underline ">
               What are the key considerations when implementing a comprehensive enterprise-level authentication system?
-              @template.lucide.chevronDown(classAppend = "text-muted-foreground pointer-events-none size-4 shrink-0 translate-y-0.5 transition-transform duration-200 group-open:rotate-180")
+              @template.lucide.chevronDown(attrs = Map.of("class", "text-muted-foreground pointer-events-none size-4 shrink-0 translate-y-0.5 transition-transform duration-200 group-open:rotate-180"))
             </h2>
           </summary>
           <section class="pb-4">
@@ -58,7 +59,7 @@
           <summary class="w-full focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] transition-all outline-none rounded-md">
             <h2 class="flex flex-1 items-start justify-between gap-4 py-4 text-left text-sm font-medium hover:underline ">
               How does modern distributed system architecture handle eventual consistency and data synchronization across multiple regions?
-              @template.lucide.chevronDown(classAppend = "text-muted-foreground pointer-events-none size-4 shrink-0 translate-y-0.5 transition-transform duration-200 group-open:rotate-180")
+              @template.lucide.chevronDown(attrs = Map.of("class", "text-muted-foreground pointer-events-none size-4 shrink-0 translate-y-0.5 transition-transform duration-200 group-open:rotate-180"))
             </h2>
           </summary>
           <section>

@@ -1,14 +1,13 @@
 <%-- see https://lucide.dev/icons/fingerprint-pattern --%>
 
-@param String classAppend = null
+@import java.util.Map
+@import com.basecoatui.jte.util.JteHelper
+
 @param int size = 24
 @param String color = "currentColor"
 @param int strokeWidth = 2
 @param boolean absoluteStrokeWidth = false
-@param String role = null
-@param String ariaLabel = null
-@param Boolean ariaHidden = null
-@param Boolean focusable = null
+@param Map<?, ?> attrs = null
 
 <%-- see https://github.com/lucide-icons/lucide/blob/main/packages/vue/src/Icon.ts#L50 --%>
 !{final var calculatedStrokeWidth = absoluteStrokeWidth ? Double.toString(strokeWidth * 24.0 / size) : Integer.toString(strokeWidth);}
@@ -23,13 +22,10 @@
   stroke-width="${calculatedStrokeWidth}"
   stroke-linecap="round"
   stroke-linejoin="round"
-  class="lucide lucide-fingerprint-pattern-icon lucide-fingerprint-pattern ${classAppend}"
-  role="${role}"
-  aria-label="${ariaLabel}"
-  aria-hidden="${ariaHidden}"
-  focusable="${focusable}"
+  class="${JteHelper.classAppend("lucide lucide-fingerprint-pattern-icon lucide-fingerprint-pattern", attrs)}"
+  $unsafe{JteHelper.attrs(attrs, "class")}
 >
-    <path d="M12 10a2 2 0 0 0-2 2c0 1.02-.1 2.51-.26 4" />
+  <path d="M12 10a2 2 0 0 0-2 2c0 1.02-.1 2.51-.26 4" />
   <path d="M14 13.12c0 2.38 0 6.38-1 8.88" />
   <path d="M17.29 21.02c.12-.6.43-2.3.5-3.02" />
   <path d="M2 12a10 10 0 0 1 18-6" />

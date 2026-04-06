@@ -1,14 +1,13 @@
 <%-- see https://lucide.dev/icons/align-start-vertical --%>
 
-@param String classAppend = null
+@import java.util.Map
+@import com.basecoatui.jte.util.JteHelper
+
 @param int size = 24
 @param String color = "currentColor"
 @param int strokeWidth = 2
 @param boolean absoluteStrokeWidth = false
-@param String role = null
-@param String ariaLabel = null
-@param Boolean ariaHidden = null
-@param Boolean focusable = null
+@param Map<?, ?> attrs = null
 
 <%-- see https://github.com/lucide-icons/lucide/blob/main/packages/vue/src/Icon.ts#L50 --%>
 !{final var calculatedStrokeWidth = absoluteStrokeWidth ? Double.toString(strokeWidth * 24.0 / size) : Integer.toString(strokeWidth);}
@@ -23,13 +22,10 @@
   stroke-width="${calculatedStrokeWidth}"
   stroke-linecap="round"
   stroke-linejoin="round"
-  class="lucide lucide-align-start-vertical-icon lucide-align-start-vertical ${classAppend}"
-  role="${role}"
-  aria-label="${ariaLabel}"
-  aria-hidden="${ariaHidden}"
-  focusable="${focusable}"
+  class="${JteHelper.classAppend("lucide lucide-align-start-vertical-icon lucide-align-start-vertical", attrs)}"
+  $unsafe{JteHelper.attrs(attrs, "class")}
 >
-    <rect width="9" height="6" x="6" y="14" rx="2" />
+  <rect width="9" height="6" x="6" y="14" rx="2" />
   <rect width="16" height="6" x="6" y="4" rx="2" />
   <path d="M2 2v20" />
 </svg>

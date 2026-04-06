@@ -9,7 +9,7 @@
       data-tooltip="See documentation"
       data-side="left"
     >
-      @template.lucide.bookOpen(classAppend = "size-4")
+      @template.lucide.bookOpen(attrs = Map.of("class", "size-4"))
     </a>
   </header>
   <div class="p-4">
@@ -48,29 +48,17 @@
           <div role="group" aria-labelledby="appearance-options">
             <div role="heading" id="appearance-options">Appearance</div>
             <div role="menuitemcheckbox" aria-checked="true" class="group">
-              @template.lucide.check(
-            classAppend = "invisible group-aria-checked:visible",
-            ariaHidden = true,
-            focusable = false
-          )
+              @template.lucide.check(attrs = Map.of("class", "invisible group-aria-checked:visible", "aria-hidden", "true", "focusable", "false"))
               Status Bar
               <span class="text-muted-foreground ml-auto text-xs tracking-widest">⇧⌘P</span>
             </div>
             <div role="menuitemcheckbox" aria-checked="false" class="group" aria-disabled="true">
-              @template.lucide.check(
-            classAppend = "invisible group-aria-checked:visible",
-            ariaHidden = true,
-            focusable = false
-          )
+              @template.lucide.check(attrs = Map.of("class", "invisible group-aria-checked:visible", "aria-hidden", "true", "focusable", "false"))
               Activity Bar
               <span class="text-muted-foreground ml-auto text-xs tracking-widest">⌘B</span>
             </div>
             <div role="menuitemcheckbox" aria-checked="false" class="group">
-              @template.lucide.check(
-            classAppend = "invisible group-aria-checked:visible",
-            ariaHidden = true,
-            focusable = false
-          )
+              @template.lucide.check(attrs = Map.of("class", "invisible group-aria-checked:visible", "aria-hidden", "true", "focusable", "false"))
               Panel
               <span class="text-muted-foreground ml-auto text-xs tracking-widest">⌘S</span>
             </div>
@@ -181,9 +169,7 @@
               >hunvreus@example.com</span
             >
           </div>
-          @template.lucide.chevronsUpDown(
-            classAppend = "text-muted-foreground ml-auto"
-          )
+          @template.lucide.chevronsUpDown(attrs = Map.of("class", "text-muted-foreground ml-auto"))
         </button>
         <div
           id="dropdown-profile-wide-popover"

@@ -1,3 +1,4 @@
+@import java.util.Map
 <section id="alert" class="w-full rounded-lg border scroll-mt-14">
   <header class="border-b px-4 py-3 flex items-center justify-between">
     <h2 class="text-sm font-medium">Alert</h2>
@@ -7,7 +8,7 @@
       data-tooltip="See documentation"
       data-side="left"
     >
-      @template.lucide.bookOpen(classAppend = "size-4")
+      @template.lucide.bookOpen(attrs = Map.of("class", "size-4"))
     </a>
   </header>
   <div class="p-4">

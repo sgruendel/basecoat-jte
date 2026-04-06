@@ -9,7 +9,7 @@
       data-tooltip="See documentation"
       data-side="left"
     >
-      @template.lucide.bookOpen(classAppend = "size-4")
+      @template.lucide.bookOpen(attrs = Map.of("class", "size-4"))
     </a>
   </header>
   <div class="p-4">
@@ -22,6 +22,7 @@
       footer = @`
         <button class="btn-outline" type="button" onclick="document.getElementById('alert-dialog-demo').close()">Cancel</button>
         <button class="btn-primary" type="button" onclick="document.getElementById('alert-dialog-demo').close()">Continue</button>
+
 
       `,
       closeButton = false,

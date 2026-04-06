@@ -11,7 +11,7 @@
       data-tooltip="See documentation"
       data-side="left"
     >
-      @template.lucide.bookOpen(classAppend = "size-4")
+      @template.lucide.bookOpen(attrs = Map.of("class", "size-4"))
     </a>
   </header>
   <div class="p-4">
@@ -21,7 +21,7 @@
       <li class="inline-flex items-center gap-1.5">
         <a href="#" class="hover:text-foreground transition-colors">Home</a>
       </li>
-      <li>@template.lucide.chevronRight(classAppend = "size-3.5")</li>
+      <li>@template.lucide.chevronRight(attrs = Map.of("class", "size-3.5"))</li>
       <li class="inline-flex items-center gap-1.5">
         @template.basecoat.dropdownMenu(
           id = "demo-breadcrumb-menu",
@@ -35,13 +35,13 @@
           )
         )
       </li>
-      <li>@template.lucide.chevronRight(classAppend = "size-3.5")</li>
+      <li>@template.lucide.chevronRight(attrs = Map.of("class", "size-3.5"))</li>
       <li class="inline-flex items-center gap-1.5">
         <a href="#" class="hover:text-foreground transition-colors"
           >Components</a
         >
       </li>
-      <li>@template.lucide.chevronRight(classAppend = "size-3.5")</li>
+      <li>@template.lucide.chevronRight(attrs = Map.of("class", "size-3.5"))</li>
       <li class="inline-flex items-center gap-1.5">
         <span class="text-foreground font-normal">Breadcrumb</span>
       </li>

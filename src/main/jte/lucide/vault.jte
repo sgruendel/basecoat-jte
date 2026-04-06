@@ -1,14 +1,13 @@
 <%-- see https://lucide.dev/icons/vault --%>
 
-@param String classAppend = null
+@import java.util.Map
+@import com.basecoatui.jte.util.JteHelper
+
 @param int size = 24
 @param String color = "currentColor"
 @param int strokeWidth = 2
 @param boolean absoluteStrokeWidth = false
-@param String role = null
-@param String ariaLabel = null
-@param Boolean ariaHidden = null
-@param Boolean focusable = null
+@param Map<?, ?> attrs = null
 
 <%-- see https://github.com/lucide-icons/lucide/blob/main/packages/vue/src/Icon.ts#L50 --%>
 !{final var calculatedStrokeWidth = absoluteStrokeWidth ? Double.toString(strokeWidth * 24.0 / size) : Integer.toString(strokeWidth);}
@@ -23,13 +22,10 @@
   stroke-width="${calculatedStrokeWidth}"
   stroke-linecap="round"
   stroke-linejoin="round"
-  class="lucide lucide-vault-icon lucide-vault ${classAppend}"
-  role="${role}"
-  aria-label="${ariaLabel}"
-  aria-hidden="${ariaHidden}"
-  focusable="${focusable}"
+  class="${JteHelper.classAppend("lucide lucide-vault-icon lucide-vault", attrs)}"
+  $unsafe{JteHelper.attrs(attrs, "class")}
 >
-    <rect width="18" height="18" x="3" y="3" rx="2" />
+  <rect width="18" height="18" x="3" y="3" rx="2" />
   <circle cx="7.5" cy="7.5" r=".5" fill="currentColor" />
   <path d="m7.9 7.9 2.7 2.7" />
   <circle cx="16.5" cy="7.5" r=".5" fill="currentColor" />

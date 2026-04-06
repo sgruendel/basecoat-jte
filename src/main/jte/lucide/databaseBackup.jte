@@ -1,14 +1,13 @@
 <%-- see https://lucide.dev/icons/database-backup --%>
 
-@param String classAppend = null
+@import java.util.Map
+@import com.basecoatui.jte.util.JteHelper
+
 @param int size = 24
 @param String color = "currentColor"
 @param int strokeWidth = 2
 @param boolean absoluteStrokeWidth = false
-@param String role = null
-@param String ariaLabel = null
-@param Boolean ariaHidden = null
-@param Boolean focusable = null
+@param Map<?, ?> attrs = null
 
 <%-- see https://github.com/lucide-icons/lucide/blob/main/packages/vue/src/Icon.ts#L50 --%>
 !{final var calculatedStrokeWidth = absoluteStrokeWidth ? Double.toString(strokeWidth * 24.0 / size) : Integer.toString(strokeWidth);}
@@ -23,13 +22,10 @@
   stroke-width="${calculatedStrokeWidth}"
   stroke-linecap="round"
   stroke-linejoin="round"
-  class="lucide lucide-database-backup-icon lucide-database-backup ${classAppend}"
-  role="${role}"
-  aria-label="${ariaLabel}"
-  aria-hidden="${ariaHidden}"
-  focusable="${focusable}"
+  class="${JteHelper.classAppend("lucide lucide-database-backup-icon lucide-database-backup", attrs)}"
+  $unsafe{JteHelper.attrs(attrs, "class")}
 >
-    <ellipse cx="12" cy="5" rx="9" ry="3" />
+  <ellipse cx="12" cy="5" rx="9" ry="3" />
   <path d="M3 12a9 3 0 0 0 5 2.69" />
   <path d="M21 9.3V5" />
   <path d="M3 5v14a9 3 0 0 0 6.47 2.88" />

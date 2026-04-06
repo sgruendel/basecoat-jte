@@ -1,14 +1,13 @@
 <%-- see https://lucide.dev/icons/percent --%>
 
-@param String classAppend = null
+@import java.util.Map
+@import com.basecoatui.jte.util.JteHelper
+
 @param int size = 24
 @param String color = "currentColor"
 @param int strokeWidth = 2
 @param boolean absoluteStrokeWidth = false
-@param String role = null
-@param String ariaLabel = null
-@param Boolean ariaHidden = null
-@param Boolean focusable = null
+@param Map<?, ?> attrs = null
 
 <%-- see https://github.com/lucide-icons/lucide/blob/main/packages/vue/src/Icon.ts#L50 --%>
 !{final var calculatedStrokeWidth = absoluteStrokeWidth ? Double.toString(strokeWidth * 24.0 / size) : Integer.toString(strokeWidth);}
@@ -23,13 +22,10 @@
   stroke-width="${calculatedStrokeWidth}"
   stroke-linecap="round"
   stroke-linejoin="round"
-  class="lucide lucide-percent-icon lucide-percent ${classAppend}"
-  role="${role}"
-  aria-label="${ariaLabel}"
-  aria-hidden="${ariaHidden}"
-  focusable="${focusable}"
+  class="${JteHelper.classAppend("lucide lucide-percent-icon lucide-percent", attrs)}"
+  $unsafe{JteHelper.attrs(attrs, "class")}
 >
-    <line x1="19" x2="5" y1="5" y2="19" />
+  <line x1="19" x2="5" y1="5" y2="19" />
   <circle cx="6.5" cy="6.5" r="2.5" />
   <circle cx="17.5" cy="17.5" r="2.5" />
 </svg>

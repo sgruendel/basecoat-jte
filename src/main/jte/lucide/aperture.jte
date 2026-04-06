@@ -1,14 +1,13 @@
 <%-- see https://lucide.dev/icons/aperture --%>
 
-@param String classAppend = null
+@import java.util.Map
+@import com.basecoatui.jte.util.JteHelper
+
 @param int size = 24
 @param String color = "currentColor"
 @param int strokeWidth = 2
 @param boolean absoluteStrokeWidth = false
-@param String role = null
-@param String ariaLabel = null
-@param Boolean ariaHidden = null
-@param Boolean focusable = null
+@param Map<?, ?> attrs = null
 
 <%-- see https://github.com/lucide-icons/lucide/blob/main/packages/vue/src/Icon.ts#L50 --%>
 !{final var calculatedStrokeWidth = absoluteStrokeWidth ? Double.toString(strokeWidth * 24.0 / size) : Integer.toString(strokeWidth);}
@@ -23,13 +22,10 @@
   stroke-width="${calculatedStrokeWidth}"
   stroke-linecap="round"
   stroke-linejoin="round"
-  class="lucide lucide-aperture-icon lucide-aperture ${classAppend}"
-  role="${role}"
-  aria-label="${ariaLabel}"
-  aria-hidden="${ariaHidden}"
-  focusable="${focusable}"
+  class="${JteHelper.classAppend("lucide lucide-aperture-icon lucide-aperture", attrs)}"
+  $unsafe{JteHelper.attrs(attrs, "class")}
 >
-    <circle cx="12" cy="12" r="10" />
+  <circle cx="12" cy="12" r="10" />
   <path d="m14.31 8 5.74 9.94" />
   <path d="M9.69 8h11.48" />
   <path d="m7.38 12 5.74-9.94" />

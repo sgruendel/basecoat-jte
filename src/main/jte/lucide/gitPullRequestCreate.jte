@@ -1,14 +1,13 @@
 <%-- see https://lucide.dev/icons/git-pull-request-create --%>
 
-@param String classAppend = null
+@import java.util.Map
+@import com.basecoatui.jte.util.JteHelper
+
 @param int size = 24
 @param String color = "currentColor"
 @param int strokeWidth = 2
 @param boolean absoluteStrokeWidth = false
-@param String role = null
-@param String ariaLabel = null
-@param Boolean ariaHidden = null
-@param Boolean focusable = null
+@param Map<?, ?> attrs = null
 
 <%-- see https://github.com/lucide-icons/lucide/blob/main/packages/vue/src/Icon.ts#L50 --%>
 !{final var calculatedStrokeWidth = absoluteStrokeWidth ? Double.toString(strokeWidth * 24.0 / size) : Integer.toString(strokeWidth);}
@@ -23,13 +22,10 @@
   stroke-width="${calculatedStrokeWidth}"
   stroke-linecap="round"
   stroke-linejoin="round"
-  class="lucide lucide-git-pull-request-create-icon lucide-git-pull-request-create ${classAppend}"
-  role="${role}"
-  aria-label="${ariaLabel}"
-  aria-hidden="${ariaHidden}"
-  focusable="${focusable}"
+  class="${JteHelper.classAppend("lucide lucide-git-pull-request-create-icon lucide-git-pull-request-create", attrs)}"
+  $unsafe{JteHelper.attrs(attrs, "class")}
 >
-    <circle cx="6" cy="6" r="3" />
+  <circle cx="6" cy="6" r="3" />
   <path d="M6 9v12" />
   <path d="M13 6h3a2 2 0 0 1 2 2v3" />
   <path d="M18 15v6" />

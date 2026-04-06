@@ -1,14 +1,13 @@
 <%-- see https://lucide.dev/icons/swords --%>
 
-@param String classAppend = null
+@import java.util.Map
+@import com.basecoatui.jte.util.JteHelper
+
 @param int size = 24
 @param String color = "currentColor"
 @param int strokeWidth = 2
 @param boolean absoluteStrokeWidth = false
-@param String role = null
-@param String ariaLabel = null
-@param Boolean ariaHidden = null
-@param Boolean focusable = null
+@param Map<?, ?> attrs = null
 
 <%-- see https://github.com/lucide-icons/lucide/blob/main/packages/vue/src/Icon.ts#L50 --%>
 !{final var calculatedStrokeWidth = absoluteStrokeWidth ? Double.toString(strokeWidth * 24.0 / size) : Integer.toString(strokeWidth);}
@@ -23,13 +22,10 @@
   stroke-width="${calculatedStrokeWidth}"
   stroke-linecap="round"
   stroke-linejoin="round"
-  class="lucide lucide-swords-icon lucide-swords ${classAppend}"
-  role="${role}"
-  aria-label="${ariaLabel}"
-  aria-hidden="${ariaHidden}"
-  focusable="${focusable}"
+  class="${JteHelper.classAppend("lucide lucide-swords-icon lucide-swords", attrs)}"
+  $unsafe{JteHelper.attrs(attrs, "class")}
 >
-    <polyline points="14.5 17.5 3 6 3 3 6 3 17.5 14.5" />
+  <polyline points="14.5 17.5 3 6 3 3 6 3 17.5 14.5" />
   <line x1="13" x2="19" y1="19" y2="13" />
   <line x1="16" x2="20" y1="16" y2="20" />
   <line x1="19" x2="21" y1="21" y2="19" />

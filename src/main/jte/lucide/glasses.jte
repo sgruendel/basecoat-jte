@@ -1,14 +1,13 @@
 <%-- see https://lucide.dev/icons/glasses --%>
 
-@param String classAppend = null
+@import java.util.Map
+@import com.basecoatui.jte.util.JteHelper
+
 @param int size = 24
 @param String color = "currentColor"
 @param int strokeWidth = 2
 @param boolean absoluteStrokeWidth = false
-@param String role = null
-@param String ariaLabel = null
-@param Boolean ariaHidden = null
-@param Boolean focusable = null
+@param Map<?, ?> attrs = null
 
 <%-- see https://github.com/lucide-icons/lucide/blob/main/packages/vue/src/Icon.ts#L50 --%>
 !{final var calculatedStrokeWidth = absoluteStrokeWidth ? Double.toString(strokeWidth * 24.0 / size) : Integer.toString(strokeWidth);}
@@ -23,13 +22,10 @@
   stroke-width="${calculatedStrokeWidth}"
   stroke-linecap="round"
   stroke-linejoin="round"
-  class="lucide lucide-glasses-icon lucide-glasses ${classAppend}"
-  role="${role}"
-  aria-label="${ariaLabel}"
-  aria-hidden="${ariaHidden}"
-  focusable="${focusable}"
+  class="${JteHelper.classAppend("lucide lucide-glasses-icon lucide-glasses", attrs)}"
+  $unsafe{JteHelper.attrs(attrs, "class")}
 >
-    <circle cx="6" cy="15" r="4" />
+  <circle cx="6" cy="15" r="4" />
   <circle cx="18" cy="15" r="4" />
   <path d="M14 15a2 2 0 0 0-2-2 2 2 0 0 0-2 2" />
   <path d="M2.5 13 5 7c.7-1.3 1.4-2 3-2" />

@@ -1,14 +1,13 @@
 <%-- see https://lucide.dev/icons/ice-cream-cone --%>
 
-@param String classAppend = null
+@import java.util.Map
+@import com.basecoatui.jte.util.JteHelper
+
 @param int size = 24
 @param String color = "currentColor"
 @param int strokeWidth = 2
 @param boolean absoluteStrokeWidth = false
-@param String role = null
-@param String ariaLabel = null
-@param Boolean ariaHidden = null
-@param Boolean focusable = null
+@param Map<?, ?> attrs = null
 
 <%-- see https://github.com/lucide-icons/lucide/blob/main/packages/vue/src/Icon.ts#L50 --%>
 !{final var calculatedStrokeWidth = absoluteStrokeWidth ? Double.toString(strokeWidth * 24.0 / size) : Integer.toString(strokeWidth);}
@@ -23,13 +22,10 @@
   stroke-width="${calculatedStrokeWidth}"
   stroke-linecap="round"
   stroke-linejoin="round"
-  class="lucide lucide-ice-cream-cone-icon lucide-ice-cream-cone ${classAppend}"
-  role="${role}"
-  aria-label="${ariaLabel}"
-  aria-hidden="${ariaHidden}"
-  focusable="${focusable}"
+  class="${JteHelper.classAppend("lucide lucide-ice-cream-cone-icon lucide-ice-cream-cone", attrs)}"
+  $unsafe{JteHelper.attrs(attrs, "class")}
 >
-    <path d="m7 11 4.08 10.35a1 1 0 0 0 1.84 0L17 11" />
+  <path d="m7 11 4.08 10.35a1 1 0 0 0 1.84 0L17 11" />
   <path d="M17 7A5 5 0 0 0 7 7" />
   <path d="M17 7a2 2 0 0 1 0 4H7a2 2 0 0 1 0-4" />
 </svg>

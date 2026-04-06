@@ -11,7 +11,7 @@
       data-tooltip="See documentation"
       data-side="left"
     >
-      @template.lucide.bookOpen(classAppend = "size-4")
+      @template.lucide.bookOpen(attrs = Map.of("class", "size-4"))
     </a>
   </header>
   <div class="p-4">

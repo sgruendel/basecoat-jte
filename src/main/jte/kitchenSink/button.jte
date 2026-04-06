@@ -1,8 +1,9 @@
+@import java.util.Map
 <section id="button"  class="w-full rounded-lg border scroll-mt-14">
   <header class="border-b px-4 py-3 flex items-center justify-between">
     <h2 class="text-sm font-medium">Button</h2>
     <a href="https://basecoatui.com/components/button" class="text-muted-foreground hover:text-foreground" data-tooltip="See documentation" data-side="left">
-      @template.lucide.bookOpen(classAppend = "size-4")
+      @template.lucide.bookOpen(attrs = Map.of("class", "size-4"))
     </a>
   </header>
   <div class="p-4">
@@ -26,7 +27,7 @@
           @template.lucide.arrowRight()
         </button>
         <button class="btn-outline" disabled>
-          @template.lucide.loader(classAppend = "animate-spin")
+          @template.lucide.loader(attrs = Map.of("class", "animate-spin"))
           Loading
         </button>
       </div>
@@ -47,7 +48,7 @@
           @template.lucide.arrowRight()
         </button>
         <button class="btn-sm-outline" disabled>
-          @template.lucide.loader(classAppend = "animate-spin")
+          @template.lucide.loader(attrs = Map.of("class", "animate-spin"))
           Loading
         </button>
       </div>
@@ -71,7 +72,7 @@
           @template.lucide.arrowRight()
         </button>
         <button class="btn-lg-outline" disabled>
-          @template.lucide.loader(classAppend = "animate-spin")
+          @template.lucide.loader(attrs = Map.of("class", "animate-spin"))
           Loading
         </button>
       </div>
@@ -93,7 +94,7 @@
           @template.lucide.trash2()
         </button>
         <button class="btn-icon-outline" disabled>
-          @template.lucide.loader(classAppend = "animate-spin")
+          @template.lucide.loader(attrs = Map.of("class", "animate-spin"))
         </button>
       </div>
     </div>

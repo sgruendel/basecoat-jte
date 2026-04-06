@@ -1,14 +1,13 @@
 <%-- see https://lucide.dev/icons/circle-dot-dashed --%>
 
-@param String classAppend = null
+@import java.util.Map
+@import com.basecoatui.jte.util.JteHelper
+
 @param int size = 24
 @param String color = "currentColor"
 @param int strokeWidth = 2
 @param boolean absoluteStrokeWidth = false
-@param String role = null
-@param String ariaLabel = null
-@param Boolean ariaHidden = null
-@param Boolean focusable = null
+@param Map<?, ?> attrs = null
 
 <%-- see https://github.com/lucide-icons/lucide/blob/main/packages/vue/src/Icon.ts#L50 --%>
 !{final var calculatedStrokeWidth = absoluteStrokeWidth ? Double.toString(strokeWidth * 24.0 / size) : Integer.toString(strokeWidth);}
@@ -23,13 +22,10 @@
   stroke-width="${calculatedStrokeWidth}"
   stroke-linecap="round"
   stroke-linejoin="round"
-  class="lucide lucide-circle-dot-dashed-icon lucide-circle-dot-dashed ${classAppend}"
-  role="${role}"
-  aria-label="${ariaLabel}"
-  aria-hidden="${ariaHidden}"
-  focusable="${focusable}"
+  class="${JteHelper.classAppend("lucide lucide-circle-dot-dashed-icon lucide-circle-dot-dashed", attrs)}"
+  $unsafe{JteHelper.attrs(attrs, "class")}
 >
-    <path d="M10.1 2.18a9.93 9.93 0 0 1 3.8 0" />
+  <path d="M10.1 2.18a9.93 9.93 0 0 1 3.8 0" />
   <path d="M17.6 3.71a9.95 9.95 0 0 1 2.69 2.7" />
   <path d="M21.82 10.1a9.93 9.93 0 0 1 0 3.8" />
   <path d="M20.29 17.6a9.95 9.95 0 0 1-2.7 2.69" />

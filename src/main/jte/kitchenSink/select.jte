@@ -11,7 +11,7 @@
       data-tooltip="See documentation"
       data-side="left"
     >
-      @template.lucide.bookOpen(classAppend = "size-4")
+      @template.lucide.bookOpen(attrs = Map.of("class", "size-4"))
     </a>
   </header>
   <div class="p-4 gap">
@@ -83,25 +83,19 @@
             options = @`
               <div type="button" role="option" data-value="bar">
                 <span class="flex items-center gap-2">
-                  @template.lucide.chartBar(
-                classAppend = "text-muted-foreground"
-              )
+                  @template.lucide.chartBar(attrs = Map.of("class", "text-muted-foreground"))
                   Bar
                 </span>
               </div>
               <div type="button" role="option" data-value="line">
                 <span class="flex items-center gap-2">
-                  @template.lucide.chartLine(
-                classAppend = "text-muted-foreground"
-              )
+                  @template.lucide.chartLine(attrs = Map.of("class", "text-muted-foreground"))
                   Line
                 </span>
               </div>
               <div type="button" role="option" data-value="pie">
                 <span class="flex items-center gap-2">
-                  @template.lucide.chartPie(
-                classAppend = "text-muted-foreground"
-              )
+                  @template.lucide.chartPie(attrs = Map.of("class", "text-muted-foreground"))
                   Pie
                 </span>
               </div>

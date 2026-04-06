@@ -31,35 +31,15 @@ const templateFilePath = path.join(
 );
 const templateSource = fs.readFileSync(templateFilePath, "utf8");
 const templateTokenPattern = /\{\{([A-Z_]+)\}\}/g;
-const optionalSvgAttributes = [
-  {
-    parameterName: "role",
-    parameterType: "String",
-    defaultValue: "null",
-    attributeName: "role",
-  },
-  {
-    parameterName: "ariaLabel",
-    parameterType: "String",
-    defaultValue: "null",
-    attributeName: "aria-label",
-  },
-  {
-    parameterName: "ariaHidden",
-    parameterType: "Boolean",
-    defaultValue: "null",
-    attributeName: "aria-hidden",
-  },
-  {
-    parameterName: "focusable",
-    parameterType: "Boolean",
-    defaultValue: "null",
-    attributeName: "focusable",
-  },
-];
 
 function toLowerCamelCase(value) {
   return value.charAt(0).toLowerCase() + value.slice(1);
+}
+
+function fileNameToLowerCamelCase(fileName) {
+  return fileName.replace(/-([a-zA-Z0-9])/g, (_, letter) =>
+    letter.toUpperCase(),
+  );
 }
 
 function escapeAttributeValue(value) {
@@ -117,20 +97,20 @@ function parseIconNodes(iconFileName) {
 }
 
 function renderChildNode([tagName, attributes]) {
-  const renderedAttributes = Object.entries(attributes)
-    .map(([name, value]) => `${name}="${escapeAttributeValue(value)}"`)
-    .join(" ");
+  const entries = Object.entries(attributes);
+  const renderedAttributes = entries.map(([name, value]) => {
+    return `${name}="${escapeAttributeValue(value)}"`;
+  });
 
-  return `  <${tagName} ${renderedAttributes} />`;
+  if (renderedAttributes.join(" ").length <= 80) {
+    return `  <${tagName} ${renderedAttributes.join(" ")} />`;
+  }
+
+  return `  <${tagName}\n${renderedAttributes.map((attribute) => `    ${attribute}`).join("\n")}\n  />`;
 }
 
 function renderTemplateSource(values) {
-  const expectedTokens = new Set([
-    "ICON_FILE_NAME",
-    "OPTIONAL_PARAMS",
-    "OPTIONAL_ATTRIBUTES",
-    "CHILDREN",
-  ]);
+  const expectedTokens = new Set(["ICON_FILE_NAME", "CHILDREN"]);
 
   for (const token of Object.keys(values)) {
     if (!expectedTokens.has(token)) {
@@ -161,32 +141,14 @@ function renderTemplateSource(values) {
   return content;
 }
 
-function renderOptionalParams() {
-  return optionalSvgAttributes
-    .map(({ parameterType, parameterName, defaultValue }) => {
-      return `@param ${parameterType} ${parameterName} = ${defaultValue}`;
-    })
-    .join("\n");
-}
-
-function renderOptionalAttributes() {
-  return optionalSvgAttributes
-    .map(({ parameterName, attributeName }) => {
-      return `  ${attributeName}="\$\{${parameterName}}"`;
-    })
-    .join("\n");
-}
-
 function renderTemplate(exportName, iconFileName, childNodes) {
-  const templateName = toLowerCamelCase(exportName);
+  const templateName = fileNameToLowerCamelCase(iconFileName);
   const children = childNodes.map(renderChildNode).join("\n");
 
   return {
     templateName,
     content: renderTemplateSource({
       ICON_FILE_NAME: iconFileName,
-      OPTIONAL_PARAMS: renderOptionalParams(),
-      OPTIONAL_ATTRIBUTES: renderOptionalAttributes(),
       CHILDREN: children,
     }),
   };
@@ -196,6 +158,7 @@ function main() {
   fs.mkdirSync(outputDir, { recursive: true });
 
   const icons = parseCanonicalIcons();
+  const expectedTemplateNames = new Set();
   let writtenCount = 0;
 
   for (const icon of icons) {
@@ -207,8 +170,19 @@ function main() {
     );
     const outputPath = path.join(outputDir, `${template.templateName}.jte`);
 
+    expectedTemplateNames.add(`${template.templateName}.jte`);
     fs.writeFileSync(outputPath, template.content, "utf8");
     writtenCount += 1;
+  }
+
+  for (const fileName of fs.readdirSync(outputDir)) {
+    if (!fileName.endsWith(".jte")) {
+      continue;
+    }
+
+    if (!expectedTemplateNames.has(fileName)) {
+      fs.unlinkSync(path.join(outputDir, fileName));
+    }
   }
 
   console.log(`Generated ${writtenCount} Lucide JTE templates in ${outputDir}`);
