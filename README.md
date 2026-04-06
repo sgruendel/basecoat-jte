@@ -1,8 +1,10 @@
 # basecoat-jte
 
- [![Maven Tests](https://github.com/sgruendel/basecoat-jte/actions/workflows/maven-tests.yml/badge.svg)](https://github.com/sgruendel/basecoat-jte/actions/workflows/maven-tests.yml)
+[![Maven Tests](https://github.com/sgruendel/basecoat-jte/actions/workflows/maven-tests.yml/badge.svg)](https://github.com/sgruendel/basecoat-jte/actions/workflows/maven-tests.yml)
 
 JTE templates for [Basecoat](https://basecoatui.com/) components and [Lucide](https://lucide.dev/) icons.
+
+Compatible with [Basecoat 0.3.3](https://github.com/hunvreus/basecoat/releases/tag/0.3.3).
 
 This repository shows how to use Basecoat with:
 
@@ -107,10 +109,12 @@ Example dialog usage:
     </form>
 
 
+
   `,
   footer = @`
     <button type="button" class="btn-outline">Cancel</button>
     <button type="button" class="btn">Save</button>
+
 
 
   `
@@ -132,6 +136,7 @@ Example dropdown usage:
     <div role="menuitem">Billing</div>
     <hr role="separator">
     <div role="menuitem">Log out</div>
+
 
 
   `
