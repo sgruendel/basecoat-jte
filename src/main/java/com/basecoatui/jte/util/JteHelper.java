@@ -1,7 +1,5 @@
 package com.basecoatui.jte.util;
 
-import org.springframework.util.StringUtils;
-
 import java.util.List;
 import java.util.Map;
 
@@ -32,25 +30,26 @@ public class JteHelper {
         return sb.toString();
     }
 
-    public static <K, V> String attrs(final Map<K, V> m, final List<String> keysToSkip) {
+    public static <K, V> String attrs(final Map<K, V> attrs, final List<String> keysToSkip) {
 
-        if (m == null || m.isEmpty()) {
+        if (attrs == null || attrs.isEmpty()) {
             return null;
         }
 
         final StringBuffer sb = new StringBuffer();
-        m.entrySet().stream()
+        attrs.entrySet().stream()
                 .filter(entry -> !keysToSkip.contains(entry.getKey()))
                 .forEach(entry -> sb.append(htmlAttr(entry.getKey(), entry.getValue())));
         return sb.toString();
     }
 
-    public static <K, V> String classAppend(final String className, final Map<K, V> m) {
+    public static <K, V> String classAppend(final String className, final Map<K, V>  attrs) {
 
-        if (m != null && !m.isEmpty()) {
-            final V classAppend = m.get("class");
-            if (classAppend instanceof String classAppendString) {
-                if (StringUtils.hasText(classAppendString)) {
+        if (attrs != null && !attrs.isEmpty()) {
+            final V classAppend = attrs.get("class");
+            if (classAppend != null) {
+                final var classAppendString = String.valueOf(classAppend);
+                if (!classAppendString.isEmpty()) {
                     return className + " " + classAppend;
                 }
             }
