@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>4.0.5</version>
+		<version>4.1.0</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.basecoatui</groupId>
@@ -48,7 +48,7 @@
 		<dependency>
 			<groupId>gg.jte</groupId>
 			<artifactId>jte-spring-boot-starter-4</artifactId>
-			<version>3.2.3</version>
+			<version>3.2.4</version>
 		</dependency>
 	</dependencies>
 
@@ -57,7 +57,7 @@
 			<plugin>
 				<groupId>gg.jte</groupId>
 				<artifactId>jte-maven-plugin</artifactId>
-				<version>3.2.3</version>
+				<version>3.2.4</version>
 				<executions>
 					<execution>
 						<id>jte-generate</id>
