@@ -107,11 +107,11 @@
         tabs = List.of(
           BasecoatTab.of(@`
           @template.lucide.appWindow()
-              Preview
+                Preview
         `),
           BasecoatTab.of(@`
           @template.lucide.code()
-              Code
+                Code
         `)
         )
       )

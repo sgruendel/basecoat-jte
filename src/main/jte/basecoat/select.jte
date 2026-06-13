@@ -44,6 +44,7 @@
 
 !{
 
+
   final List<String> selectedArray;
   if (selected != null && selectedList != null) {
     throw new IllegalArgumentException("only one of selected and selectedList must be specified");
@@ -102,6 +103,7 @@
   } else {
     value = "";
   }
+
 }
 
 <div
@@ -123,9 +125,13 @@
     <span class="truncate">${defaultLabel}</span>
 
     @if(isCombobox)
-      @template.lucide.chevronsUpDown(attrs = Map.of("class", "text-muted-foreground opacity-50 shrink-0"))
+      @template.lucide.chevronsUpDown(
+        attrs = Map.of("class", "text-muted-foreground opacity-50 shrink-0")
+      )
     @else
-      @template.lucide.chevronDown(attrs = Map.of("class", "text-muted-foreground opacity-50 shrink-0"))
+      @template.lucide.chevronDown(
+        attrs = Map.of("class", "text-muted-foreground opacity-50 shrink-0")
+      )
     @endif
   </button>
   <div

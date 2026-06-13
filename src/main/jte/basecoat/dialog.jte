@@ -38,10 +38,11 @@
 @param Content content = null
 @param Content footer = null
 
+
 @if(trigger != null)
   <button
     type="button"
-    onclick= "document.getElementById('${id}').showModal()"
+    onclick="document.getElementById('${id}').showModal()"
     $unsafe{JteHelper.attrs(triggerAttrs)}
   >
     ${trigger}

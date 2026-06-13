@@ -42,6 +42,5 @@
             <%-- toc omitted --%>
         </div>
     </div>
-
   `
 )
