@@ -4,7 +4,7 @@
   Renders a tabs component.
 
   @param id {string} - Unique identifier for the tabs component.
-  @param tabsets {array} - An array of objects, each representing a tab and its panel.
+  @param tabsets {array} - An array of objects, each representing a tab and panel.
     Each object should have:
     - id {string}: Unique identifier prefix for the tab and panel.
     - tab {string}: HTML content for the tab button.
@@ -13,6 +13,7 @@
     - panel_attrs {object} [optional]: Additional HTML attributes for the tab panel div.
   @param main_attrs {object} [optional] - Additional HTML attributes for the main container div.
   @param tablist_attrs {object} [optional] - Additional HTML attributes for the tablist nav element.
+    Set aria-orientation="vertical" for vertical tabs or data-variant="line" for line tabs.
   @param default_tab_index {number} [optional] [default=0] - The 0-based index of the tab to be active initially.
 --%>
 
@@ -28,6 +29,15 @@
 @param Map<?, ?> tablistAttrs = null
 @param int defaultTabIndex = 0
 
+!{
+  final String orientation;
+  if (tablistAttrs != null && tablistAttrs.containsKey("aria-orientation")) {
+    orientation = tablistAttrs.get("aria-orientation").toString();
+  } else {
+    orientation = "horizontal";
+  }
+}
+
 <div
   id="${id}"
   class="${JteHelper.classAppend("tabs", mainAttrs)}"
@@ -35,8 +45,8 @@
 >
   <nav
     role="tablist"
-    aria-orientation="horizontal"
-    $unsafe{JteHelper.attrs(tablistAttrs)}
+    aria-orientation="${orientation}"
+    $unsafe{JteHelper.attrs(tablistAttrs, "aria-orientation")}
   >
     @for(var tab : ForSupport.of(tabs))
       <button
@@ -44,8 +54,8 @@
         role="tab"
         id="${id}-tab-${tab.getIndex()}"
         aria-controls="${id}-panel-${tab.getIndex()}"
-        aria-selected="${tab.getIndex() == defaultTabIndex ? "true" : "false"}"
-        tabindex="0"
+        aria-selected="${Boolean.toString(tab.getIndex() == defaultTabIndex)}"
+        tabindex="${tab.getIndex() == defaultTabIndex && !tab.get().isDisabled() ? "0" : "-1"}"
         $unsafe{JteHelper.attrs(tab.get().tabAttrs())}
       >
         ${tab.get().tabText()}
@@ -61,7 +71,7 @@
         id="${id}-panel-${tab.getIndex()}"
         aria-labelledby="${id}-tab-${tab.getIndex()}"
         tabindex="-1"
-        aria-selected="${tab.getIndex() == defaultTabIndex ? "true" : "false"}"
+        aria-selected="${Boolean.toString(tab.getIndex() == defaultTabIndex)}"
         hidden="${tab.getIndex() != defaultTabIndex}"
         $unsafe{JteHelper.attrs(tab.get().panelAttrs())}
       >

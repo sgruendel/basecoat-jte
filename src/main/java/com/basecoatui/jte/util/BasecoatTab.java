@@ -27,4 +27,20 @@ public record BasecoatTab(String tabText, Content tabContent, Map<?, ?> tabAttrs
         return new BasecoatTab(tabText, null, null, panel, null);
     }
 
+    /**
+     * Checks if the tab is disabled based on the presence of "disabled" or "aria-disabled" attributes in the tabAttrs
+     * map.
+     *
+     * @return {@code true} if the tab is disabled, {@code false} otherwise.
+     */
+    public boolean isDisabled() {
+
+        if (tabAttrs != null) {
+            final Object disabled = tabAttrs.get("disabled");
+            final Object ariaDisabled = tabAttrs.get("aria-disabled");
+            return Boolean.TRUE.equals(disabled) || "true".equals(disabled) || "true".equals(ariaDisabled);
+        }
+        return false;
+    }
+
 }
