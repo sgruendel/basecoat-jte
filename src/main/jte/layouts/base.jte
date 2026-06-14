@@ -60,9 +60,9 @@
     <%-- Title & Description --%>
     <%--{% set meta_title = title ~ ' | ' ~ site.title  if title else site.title %}--%>
     <%--{% set meta_description = description or site.description %}--%>
-    <title>{{ meta_title }}</title>
-    <meta name="description" content="{{ meta_description }}" />
-    <meta name="title" content="{{ meta_title }}" />
+    <title>${title}</title>
+    <meta name="description" content="${description}" />
+    <meta name="title" content="${title}" />
     <%--{% if site.keywords %}<meta name="keywords" content="{{ site.keywords | join(',') }}" />{% endif %}--%>
     <%-- Favicon --%>
     <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
