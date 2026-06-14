@@ -74,6 +74,7 @@
     @if(closeButton)
       <button
         type="button"
+        class="btn-sm-icon-ghost"
         aria-label="Close dialog"
         onclick="this.closest('dialog').close()"
       >
