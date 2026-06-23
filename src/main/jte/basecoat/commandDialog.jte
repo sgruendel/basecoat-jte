@@ -48,7 +48,7 @@
       id="${id}-menu"
       aria-orientation="vertical"
       data-empty="${emptyText}"
-      class="${JteHelper.classAppend("scrollbar", menuAttrs)}"
+      class="${JteHelper.clazz(menuAttrs)}"
       $unsafe{JteHelper.attrs(menuAttrs, "class")}
     >
       @if(items != null && !items.isEmpty())

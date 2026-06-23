@@ -61,7 +61,11 @@
       <footer>
         @if(action != null)
           @if(action.href() != null)
-            <a href="${action.href()}" class="btn-sm" data-toast-action
+            <a
+              href="${action.href()}"
+              class="btn"
+              data-size="sm"
+              data-toast-action
               >${action.label()}</a
             >
           @else
@@ -85,7 +89,9 @@
           @else
             <button
               type="button"
-              class="btn-sm-outline"
+              class="btn"
+              data-variant="outline"
+              data-size="sm"
               data-toast-cancel
               onclick="${cancel.onclick()}"
             >
