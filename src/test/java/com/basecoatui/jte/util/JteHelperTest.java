@@ -113,6 +113,15 @@ class JteHelperTest {
     }
 
     @Test
+    void clazzUsesClassAttributeWhenPresent() {
+
+        assertEquals("btn btn-primary", JteHelper.clazz(Map.of("class", "btn btn-primary")));
+        assertNull(JteHelper.clazz(Map.of("class", "")));
+        assertNull(JteHelper.clazz(Map.of("id", "primary")));
+        assertNull(JteHelper.clazz(null));
+    }
+
+    @Test
     void classAppendUsesClassAttributeWhenPresent() {
 
         assertEquals("btn btn-primary", JteHelper.classAppend("btn", Map.of("class", "btn-primary")));

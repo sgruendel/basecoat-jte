@@ -60,6 +60,20 @@ public class JteHelper {
         return sb.toString();
     }
 
+    public static String clazz(final Map<?, ?> attrs) {
+
+        if (attrs != null && !attrs.isEmpty()) {
+            final Object clazz = attrs.get("class");
+            if (clazz != null) {
+                final var classString = String.valueOf(clazz);
+                if (!classString.isEmpty()) {
+                    return classString;
+                }
+            }
+        }
+        return null;
+    }
+
     public static String classAppend(final String className, final Map<?, ?> attrs) {
 
         if (attrs != null && !attrs.isEmpty()) {
@@ -67,7 +81,7 @@ public class JteHelper {
             if (classAppend != null) {
                 final var classAppendString = String.valueOf(classAppend);
                 if (!classAppendString.isEmpty()) {
-                    return className + " " + classAppend;
+                    return className + " " + classAppendString;
                 }
             }
         }
