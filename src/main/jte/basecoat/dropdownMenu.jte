@@ -5,7 +5,11 @@
 
   @param id {string} [optional] - Unique identifier for the dropdown component.
   @param trigger {string} [optional] - HTML content for the button that triggers the dropdown.
-  @param triggerClass {String} [optional] - Additional classes for the trigger button.
+  @param items {array} [optional] - Array of menu items for the dropdown.
+  @param main_attrs {object} [optional] - Additional HTML attributes for the main container div.
+  @param trigger_attrs {object} [optional] - Additional HTML attributes for the trigger button.
+  @param popover_attrs {object} [optional] - Additional HTML attributes for the dropdown content div.
+  @param menu_attrs {object} [optional] - Additional HTML attributes for the menu div.
 --%>
 
 @import java.util.List

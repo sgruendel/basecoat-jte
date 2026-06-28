@@ -46,9 +46,7 @@
         aria-disabled="${item.get().disabled() ? "true" : null}"
         $unsafe{JteHelper.attrs(item.get().attrs(), "href")}
       >
-        @if(item.get().icon() != null)
-          ${item.get().icon()}
-        @endif
+        ${item.get().icon()}
         ${item.get().label()}
       </a>
     @else
@@ -59,9 +57,7 @@
         aria-disabled="${item.get().disabled() ? "true" : null}"
         $unsafe{JteHelper.attrs(item.get().attrs())}
       >
-        @if(item.get().icon() != null)
-          ${item.get().icon()}
-        @endif
+        ${item.get().icon()}
         ${item.get().label()}
       </div>
     @endif

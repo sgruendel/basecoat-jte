@@ -44,13 +44,11 @@
     <li>
       <details
         id="submenu-${itemId}"
-        open="${item.get().open() ? true : null}"
+        open="${item.get().open()}"
         $unsafe{JteHelper.attrs(item.get().attrs(), "open")}
       >
         <summary aria-controls="submenu-${itemId}-content">
-          @if(item.get().icon() != null)
-            ${item.get().icon()}
-          @endif
+          ${item.get().icon()}
           <span>${item.get().label()}</span>
         </summary>
         <ul id="submenu-${itemId}-content">
@@ -70,9 +68,7 @@
         aria-current="${item.get().current() ? "page" : null}"
         $unsafe{JteHelper.attrs(item.get().attrs(), List.of("href", "aria-current"))}
       >
-        @if(item.get().icon() != null)
-          ${item.get().icon()}
-        @endif
+        ${item.get().icon()}
         <span>${item.get().label()}</span>
       </a>
     </li>

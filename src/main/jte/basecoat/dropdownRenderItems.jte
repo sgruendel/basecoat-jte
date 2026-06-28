@@ -44,9 +44,7 @@
         href="${item.get().url()}"
         $unsafe{JteHelper.attrs(item.get().attrs(), "href")}
       >
-        @if(item.get().icon() != null)
-          ${item.get().icon()}
-        @endif
+        ${item.get().icon()}
         ${item.get().label()}
       </a>
     @else
@@ -55,9 +53,7 @@
         role="menuitem"
         $unsafe{JteHelper.attrs(item.get().attrs())}
       >
-        @if(item.get().icon() != null)
-          ${item.get().icon()}
-        @endif
+        ${item.get().icon()}
         ${item.get().label()}
       </div>
     @endif

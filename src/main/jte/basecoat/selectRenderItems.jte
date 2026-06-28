@@ -43,7 +43,7 @@
       id="${itemId}"
       role="option"
       data-value="${item.get().value()}"
-      aria-selected="${selectedArray.contains(item.get().value())}"
+      aria-selected="${selectedArray.contains(item.get().value()) ? "true" : null}"
       $unsafe{JteHelper.attrs(item.get().attrs())}
     >
       ${item.get().label()}

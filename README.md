@@ -2,9 +2,12 @@
 
 [![Maven Tests](https://github.com/sgruendel/basecoat-jte/actions/workflows/maven-tests.yml/badge.svg)](https://github.com/sgruendel/basecoat-jte/actions/workflows/maven-tests.yml)
 
-JTE templates for [Basecoat](https://basecoatui.com/) components and [Lucide](https://lucide.dev/) icons.
+JTE templates for [Basecoat](https://basecoatui.com/) components and
+[Lucide](https://lucide.dev/) icons.
 
-Compatible with [Basecoat 0.3.3](https://github.com/hunvreus/basecoat/releases/tag/0.3.3).
+Compatible with
+[Basecoat 1.0.1](https://github.com/hunvreus/basecoat/releases/tag/1.0.1) and
+[Lucide 1.21.0](https://github.com/lucide-icons/lucide/releases/tag/1.21.0).
 
 This repository shows how to use Basecoat with:
 
@@ -207,14 +210,14 @@ For local development, run Spring Boot and the webpack dev server in two termina
 ./mvnw spring-boot:run
 ```
 
-2. Start the webpack dev server on port `8081`:
+1. Start the webpack dev server on port `8081`:
 
 ```sh
 npm install
 npm run devserver
 ```
 
-3. Open the demo in your browser:
+1. Open the demo in your browser:
 
 ```text
 http://localhost:8081

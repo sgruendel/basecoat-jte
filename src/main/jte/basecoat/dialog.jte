@@ -38,6 +38,11 @@
 @param Content content = null
 @param Content footer = null
 
+!{
+  final var dialogTitleId = title != null ? id + "-title" : null;
+  final var dialogDescriptionId = description != null ? id + "-description" : null;
+}
+
 
 @if(trigger != null)
   <button
@@ -51,17 +56,20 @@
 <dialog
   id="${id}"
   class="${JteHelper.classAppend("dialog", dialogAttrs)}"
-  aria-labelledby="${id}-title"
-  aria-describedby="${description != null ? (id + "-description") : null}"
+  aria-labelledby="${dialogTitleId}"
+  aria-describedby="${dialogDescriptionId}"
+  open="${open}"
   onclick="${closeOnOverlayClick ? "if (event.target === this) this.close()" : null}"
   $unsafe{JteHelper.attrs(dialogAttrs, "class")}
 >
   <div>
     @if(title != null || description != null)
       <header $unsafe{JteHelper.attrs(headerAttrs)}>
-        <h2 id="${id}-title">${title}</h2>
+        @if(title != null)
+          <h2 id="${dialogTitleId}">${title}</h2>
+        @endif
         @if(description != null)
-          <p id="${id}-description">${description}</p>
+          <p id="${dialogDescriptionId}">${description}</p>
         @endif
       </header>
     @endif

@@ -17,12 +17,13 @@
 @import com.basecoatui.jte.util.BasecoatToast
 @import com.basecoatui.jte.util.JteHelper
 
-@param List<BasecoatToast> toasts= null
+@param String id = "toaster"
+@param List<BasecoatToast> toasts = null
 @param Map<?, ?> attrs = null
 @param Content content = null
 
 <div
-  id="toaster"
+  id="${id}"
   class="${JteHelper.classAppend("toaster", attrs)}"
   $unsafe{JteHelper.attrs(attrs, "class")}
 >

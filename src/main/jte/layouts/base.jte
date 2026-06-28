@@ -96,10 +96,15 @@
     <%-- CSS --%>
     <%-- already in app.css link rel="stylesheet" href="/assets/styles.css">
     <%-- JS --%>
+    <script src="/js/accordion.js" defer></script>
     <script src="/js/basecoat.js" defer></script>
+    <script src="/js/chart.js" defer></script>
+    <script src="/js/combobox.js" defer></script>
     <script src="/js/command.js" defer></script>
+    <script src="/js/drawer.js" defer></script>
     <script src="/js/dropdown-menu.js" defer></script>
     <script src="/js/popover.js" defer></script>
+    <script src="/js/range.js" defer></script>
     <script src="/js/select.js" defer></script>
     <script src="/js/sidebar.js" defer></script>
     <script src="/js/tabs.js" defer></script>

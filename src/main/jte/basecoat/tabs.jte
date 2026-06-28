@@ -49,13 +49,14 @@
     $unsafe{JteHelper.attrs(tablistAttrs, "aria-orientation")}
   >
     @for(var tab : ForSupport.of(tabs))
+      !{var isDefaultTab = tab.getIndex() == defaultTabIndex;}
       <button
         type="button"
         role="tab"
         id="${id}-tab-${tab.getIndex()}"
         aria-controls="${id}-panel-${tab.getIndex()}"
-        aria-selected="${Boolean.toString(tab.getIndex() == defaultTabIndex)}"
-        tabindex="${tab.getIndex() == defaultTabIndex && !tab.get().isDisabled() ? "0" : "-1"}"
+        aria-selected="${Boolean.toString(isDefaultTab)}"
+        tabindex="${isDefaultTab && !tab.get().isDisabled() ? "0" : "-1"}"
         $unsafe{JteHelper.attrs(tab.get().tabAttrs())}
       >
         ${tab.get().tabText()}
@@ -66,13 +67,14 @@
 
   @for(var tab : ForSupport.of(tabs))
     @if(tab.get().panel() != null)
+      !{var isDefaultTab = tab.getIndex() == defaultTabIndex;}
       <div
         role="tabpanel"
         id="${id}-panel-${tab.getIndex()}"
         aria-labelledby="${id}-tab-${tab.getIndex()}"
         tabindex="-1"
-        aria-selected="${Boolean.toString(tab.getIndex() == defaultTabIndex)}"
-        hidden="${tab.getIndex() != defaultTabIndex}"
+        aria-selected="${Boolean.toString(isDefaultTab)}"
+        hidden="${!isDefaultTab}"
         $unsafe{JteHelper.attrs(tab.get().panelAttrs())}
       >
         ${tab.get().panel()}

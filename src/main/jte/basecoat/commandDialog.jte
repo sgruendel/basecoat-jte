@@ -33,7 +33,7 @@
   id="${id}"
   class="${JteHelper.classAppend("command-dialog", dialogAttrs)}"
   aria-label="Command menu"
-  open="${open ? true : null}"
+  open="${open}"
   onclick="if (event.target === this) this.close()"
   $unsafe{JteHelper.attrs(dialogAttrs, "class")}
 >

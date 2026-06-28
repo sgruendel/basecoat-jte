@@ -1,21 +1,19 @@
 <%-- see https://github.com/hunvreus/basecoat/blob/main/src/nunjucks/select.njk --%>
 
 <%--
-  Renders a select or combobox component.
+  Renders a select component.
 
   @param id {string} [optional] - Unique identifier for the select component.
   @param selected {string|array} [optional] - The initially selected value(s).
   @param name {string} [optional] - The name attribute for the hidden input storing the selected value.
   @param multiple {boolean} [optional] [default=false] - Enables multiple selection mode.
-  @param placeholder {string} [optional] - Placeholder text shown when no options are selected (multiple mode only).
+  @param placeholder {string} [optional] - Placeholder text shown when no option is selected.
   @param close_on_select {boolean} [optional] [default=false] - Closes the popover when selecting an option in multiple mode.
   @param main_attrs {object} [optional] - Additional HTML attributes for the main container div.
   @param trigger_attrs {object} [optional] - Additional HTML attributes for the trigger button.
   @param popover_attrs {object} [optional] - Additional HTML attributes for the popover content div.
   @param listbox_attrs {object} [optional] - Additional HTML attributes for the listbox div.
   @param input_attrs {object} [optional] - Additional HTML attributes for the hidden input.
-  @param search_placeholder {string} [optional] [default="Search entries..."] - Placeholder text for the search input (combobox only).
-  @param is_combobox {boolean} [optional] [default=false] - Renders a combobox with search functionality if true.
 --%>
 
 @import java.util.ArrayList
@@ -27,28 +25,26 @@
 @import com.basecoatui.jte.util.JteHelper
 
 @param String id
-@param String name = null
 @param String selected = null
 @param List<String> selectedList = null
+@param String name = null
+@param boolean multiple = false
+@param String placeholder = null
+@param boolean closeOnSelect = false
 @param Map<?, ?> mainAttrs = null
 @param Map<?, ?> triggerAttrs = null
 @param Map<?, ?> popoverAttrs = null
 @param Map<?, ?> listboxAttrs = null
 @param Map<?, ?> inputAttrs = null
-@param String placeholderText = "Search …"
-@param boolean multiple = false
-@param boolean closeOnSelect = false
-@param boolean isCombobox = false
 @param List<Item> items = null
 @param Content options = null
 
 !{
-
-
   final List<String> selectedArray;
   if (selected != null && selectedList != null) {
     throw new IllegalArgumentException("only one of selected and selectedList must be specified");
   }
+
   if (selected != null) {
     selectedArray = List.of(selected);
   } else if (selectedList != null) {
@@ -81,14 +77,22 @@
     }
   }
 
-  final Item defaultOption = selectedOptions.isEmpty() ? firstOption : selectedOptions.getFirst();
+  final Item defaultOption;
+  if (!selectedOptions.isEmpty()) {
+    defaultOption = selectedOptions.getFirst();
+  } else if (placeholder == null || firstOption == null) {
+      defaultOption = null;
+  } else {
+    defaultOption = firstOption;
+  }
+
   final List<String> labels = new ArrayList<>();
   final String defaultLabel;
   if (multiple && !selectedOptions.isEmpty()) {
-    selectedOptions.forEach(si -> labels.add(si.value()));
+    selectedOptions.forEach(so -> labels.add(so.label()));
     defaultLabel = String.join(",", labels);
-  } else if (multiple) {
-    defaultLabel = placeholderText;
+  } else if (placeholder != null && selectedOptions.isEmpty()) {
+    defaultLabel = placeholder;
   } else if (defaultOption != null) {
     defaultLabel = defaultOption.label();
   } else {
@@ -103,19 +107,18 @@
   } else {
     value = "";
   }
-
 }
 
 <div
   id="${id}"
   class="${JteHelper.classAppend("select", mainAttrs)}"
-  data-placeholder="${(multiple && placeholderText != null) ? placeholderText : null}"
-  data-close-on-select="${multiple && closeOnSelect}"
+  data-placeholder="${placeholder}"
+  data-close-on-select="${(multiple && closeOnSelect) ? "true" : null}"
   $unsafe{JteHelper.attrs(mainAttrs, "class")}
 >
   <button
     type="button"
-    class="${JteHelper.classAppend("btn-outline", triggerAttrs)}"
+    class="${JteHelper.clazz(triggerAttrs)}"
     id="${id}-trigger"
     aria-haspopup="listbox"
     aria-expanded="false"
@@ -123,16 +126,9 @@
     $unsafe{JteHelper.attrs(triggerAttrs, "class")}
   >
     <span class="truncate">${defaultLabel}</span>
-
-    @if(isCombobox)
-      @template.lucide.chevronsUpDown(
-        attrs = Map.of("class", "text-muted-foreground opacity-50 shrink-0")
-      )
-    @else
-      @template.lucide.chevronDown(
-        attrs = Map.of("class", "text-muted-foreground opacity-50 shrink-0")
-      )
-    @endif
+    @template.lucide.chevronDown(
+      attrs = Map.of("class", "text-muted-foreground opacity-50 shrink-0")
+    )
   </button>
   <div
     id="${id}-popover"
@@ -140,29 +136,12 @@
     aria-hidden="true"
     $unsafe{JteHelper.attrs(popoverAttrs)}
   >
-    @if(isCombobox)
-      <header>
-        @template.lucide.search()
-        <input
-          type="text"
-          value=""
-          placeholder="${placeholderText}"
-          autocomplete="off"
-          aria-autocomplete="list"
-          role="combobox"
-          aria-expanded="false"
-          aria-controls="${id}-listbox"
-          aria-labelledby="${id}-trigger"
-        />
-      </header>
-    @endif
-
     <div
       role="listbox"
       id="${id}-listbox"
       aria-orientation="vertical"
       aria-labelledby="${id}-trigger"
-      aria-multiselectable="${multiple}"
+      aria-multiselectable="${multiple ? "true" : null}"
       $unsafe{JteHelper.attrs(listboxAttrs)}
     >
       @if(items != null)

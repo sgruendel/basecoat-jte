@@ -6,18 +6,22 @@
   @param category {string} [optional] [default="success"] - Type of toast ('success', 'error', 'info', 'warning'). Determines icon and ARIA role.
   @param title {string} [optional] - The main title text of the toast.
   @param description {string} [optional] - The secondary description text.
+  @param duration {number} [optional] - Timeout in milliseconds. Use -1 to keep the toast open.
+  @param icon {string} [optional] - Custom icon HTML. Defaults to the category icon.
   @param action {object} [optional] - Defines an action button.
     - label {string}: Button text.
     - onclick {string}: JavaScript code to execute on click.
-    - url {string}: URL for an anchor link button.
+    - href {string}: URL for an anchor link button.
   @param cancel {object} [optional] - Defines a cancel/dismiss button (similar structure to action).
     - label {string}: Button text.
     - onclick {string}: JavaScript code to execute on click.
-    - url {string}: URL for an anchor link button.
+    - href {string}: URL for an anchor link button.
   @param attrs {object} [optional] - Additional HTML attributes for the toast div.
 --%>
 
+@import java.time.Duration
 @import java.util.Map
+@import gg.jte.Content
 @import com.basecoatui.jte.util.BasecoatToast.Category
 @import com.basecoatui.jte.util.BasecoatToast.Button
 @import com.basecoatui.jte.util.JteHelper
@@ -25,6 +29,8 @@
 @param Category category = com.basecoatui.jte.util.BasecoatToast.Category.SUCCESS
 @param String title = null
 @param String description = null
+@param Duration duration = null
+@param Content icon = null
 @param Button action = null
 @param Button cancel = null
 @param Map<?, ?> attrs = null
@@ -35,10 +41,13 @@
   aria-atomic="true"
   aria-hidden="false"
   data-category="${category.name().toLowerCase()}"
+  data-duration="${duration != null ? duration.toMillis() : null}"
   $unsafe{JteHelper.attrs(attrs, "class")}
 >
   <div class="toast-content">
-    @if(category == Category.SUCCESS)
+    @if(icon != null)
+      ${icon}
+    @elseif(category == Category.SUCCESS)
       @template.lucide.circleCheck(attrs = Map.of("aria-hidden", "true"))
     @elseif(category == Category.INFO)
       @template.lucide.info(attrs = Map.of("aria-hidden", "true"))
@@ -66,12 +75,14 @@
               class="btn"
               data-size="sm"
               data-toast-action
-              >${action.label()}</a
             >
+              ${action.label()}
+            </a>
           @else
             <button
               type="button"
               class="btn"
+              data-size="sm"
               data-toast-action
               onclick="${action.onclick()}"
             >
@@ -83,9 +94,15 @@
 
         @if(cancel != null)
           @if(cancel.href() != null)
-            <a href="${cancel.href()}" class="btn-sm" data-toast-cancel
-              >${cancel.label()}</a
+            <a
+              href="${cancel.href()}"
+              class="btn"
+              data-variant="outline"
+              data-size="sm"
+              data-toast-cancel
             >
+              ${cancel.label()}
+            </a>
           @else
             <button
               type="button"

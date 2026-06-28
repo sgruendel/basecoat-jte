@@ -9,7 +9,7 @@
   @param side {string} [optional] - Side of the sidebar to display.
   @param header {string} [optional] - Header content for the sidebar.
   @param footer {string} [optional] - Footer content for the sidebar.
-  @param items {array} [optional] - Array of menu items for the sidebar.
+  @param menu {array} [optional] - Array of menu items for the sidebar.
   @param main_attrs {object} [optional] - Additional HTML attributes for the main container div.
   @param header_attrs {object} [optional] - Additional HTML attributes for the header element.
   @param content_attrs {object} [optional] - Additional HTML attributes for the content section.
@@ -25,7 +25,7 @@
 @param String id
 @param String label = "Sidebar navigation"
 @param boolean open = true
-@param String side = null
+@param String side = "left"
 @param Content header = null
 @param Content footer = null
 @param List<Item> menu = null
@@ -38,9 +38,9 @@
 <aside
   id="${id}"
   class="${JteHelper.classAppend("sidebar", mainAttrs)}"
-  data-side="${side != null ? side : "left"}"
+  data-side="${side}"
   aria-hidden="${Boolean.toString(!open)}"
-  inert="${open ? null : true}"
+  inert="${!open}"
   $unsafe{JteHelper.attrs(mainAttrs, "class")}
 >
   <nav aria-label="${label}">

@@ -14,11 +14,12 @@
   </header>
   <div class="p-4">
     <div class="flex flex-wrap items-start gap-4">
-      @template.basecoat.select(
-        id = "demo-combobox-frameworks",
-        popoverAttrs = Map.of("class", "w-48"),
+      @template.basecoat.combobox(
+        id = "framework-combobox",
+        name = "framework",
+        placeholder = "Select a framework",
+        inputAttrs = Map.of("class", "w-48"),
         listboxAttrs = Map.of("data-empty", "No framework found."),
-        isCombobox = true,
         options = @`
           <div role="option" data-value="Next.js">Next.js</div>
           <div role="option" data-value="SvelteKit">SvelteKit</div>
@@ -29,10 +30,9 @@
       )
 
       @template.basecoat.select(
-        id = "demo-combobox-timezones",
+        id = "timezone-combobox",
         popoverAttrs = Map.of("class", "w-72"),
         listboxAttrs = Map.of("data-empty", "No timezone found."),
-        isCombobox = true,
         options = @`
           <div class="max-h-64 overflow-y-auto scrollbar">
             <div role="group" aria-labelledby="demo-combobox-timezones-group-0">
