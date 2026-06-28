@@ -29,6 +29,10 @@ This repository shows how to use Basecoat with:
 - `scripts/generate-lucide-jte.js`
   Generates Lucide JTE templates from the installed `lucide` npm package.
 
+The kitchen sink examples are still based on the previous Basecoat version
+0.3.11 and might look a bit off compared to the current Basecoat version 1.0.1,
+but they are the best reference for how the JTE templates are meant to be used.
+
 ## Using Lucide Icons
 
 Each icon is a JTE template under `src/main/jte/lucide`.
@@ -82,13 +86,25 @@ Reusable component templates live in `src/main/jte/basecoat`.
 
 Current component templates include:
 
+- `combobox.jte`
+- `command.jte`
+- `commandDialog.jte`
+- `commandInput.jte`
 - `dialog.jte`
 - `dropdownMenu.jte`
 - `popover.jte`
 - `select.jte`
+- `sidebar.jte`
 - `tabs.jte`
 - `toast.jte`
 - `toaster.jte`
+
+Supporting render helpers are also present for nested item structures:
+
+- `commandRenderItems.jte`
+- `dropdownRenderItems.jte`
+- `selectRenderItems.jte`
+- `sidebarRenderItems.jte`
 
 Most of these templates support an `attrs`-style API through `Map<?, ?>` parameters for passing HTML attributes through
 to the rendered elements.
@@ -163,6 +179,13 @@ Example select usage:
 ## Toast Partials
 
 Example toast partials live in `src/main/jte/partials/toast`.
+
+Current toast partials include:
+
+- `success.jte`
+- `info.jte`
+- `warning.jte`
+- `error.jte`
 
 They are intended to be rendered into the toaster container, for example via htmx.
 
