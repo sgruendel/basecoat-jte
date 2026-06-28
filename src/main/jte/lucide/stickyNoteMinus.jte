@@ -1,4 +1,4 @@
-<%-- see https://lucide.dev/icons/candy-cane --%>
+<%-- see https://lucide.dev/icons/sticky-note-minus --%>
 
 @import java.util.Map
 @import com.basecoatui.jte.util.JteHelper
@@ -22,14 +22,12 @@
   stroke-width="${calculatedStrokeWidth}"
   stroke-linecap="round"
   stroke-linejoin="round"
-  class="${JteHelper.classAppend("lucide lucide-candy-cane-icon lucide-candy-cane", attrs)}"
+  class="${JteHelper.classAppend("lucide lucide-sticky-note-minus-icon lucide-sticky-note-minus", attrs)}"
   $unsafe{JteHelper.attrs(attrs, "class")}
 >
-  <path d="m10.8 5 2.111 4.223" />
-  <path d="M17.75 7 15 2.1" />
-  <path d="m4.874 14.647 2.12 4.24" />
+  <path d="M15 3v5a1 1 0 0 0 1 1h5" />
   <path
-    d="M5.7 21a2 2 0 0 1-3.5-2l8.6-14a6 6 0 0 1 10.4 6 2 2 0 1 1-3.464-2 2 2 0 1 0-3.464-2z"
+    d="M21 14V9a2.4 2.4 0 0 0-.706-1.706l-3.588-3.588A2.4 2.4 0 0 0 15 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h7.35"
   />
-  <path d="m7.906 9.712 2.005 4.411" />
+  <path d="M21 18h-6" />
 </svg>

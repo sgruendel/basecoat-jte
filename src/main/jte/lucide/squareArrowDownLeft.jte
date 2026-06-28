@@ -25,7 +25,7 @@
   class="${JteHelper.classAppend("lucide lucide-square-arrow-down-left-icon lucide-square-arrow-down-left", attrs)}"
   $unsafe{JteHelper.attrs(attrs, "class")}
 >
-  <rect width="18" height="18" x="3" y="3" rx="2" />
-  <path d="m16 8-8 8" />
-  <path d="M16 16H8V8" />
+  <path d="M15 15H9l6-6" />
+  <path d="M9 15V9" />
+  <rect x="3" y="3" width="18" height="18" rx="2" />
 </svg>

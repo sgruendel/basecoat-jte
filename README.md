@@ -87,7 +87,8 @@ Current component templates include:
 - `toast.jte`
 - `toaster.jte`
 
-Most of these templates support an `attrs`-style API through `Map<?, ?>` parameters for passing HTML attributes through to the rendered elements.
+Most of these templates support an `attrs`-style API through `Map<?, ?>` parameters for passing HTML attributes through
+to the rendered elements.
 
 Example dialog usage:
 
@@ -176,7 +177,8 @@ Example toast partial usage:
 
 ## Kitchen Sink
 
-The kitchen sink examples under `src/main/jte/kitchenSink` are the best reference for how the JTE templates are meant to be used.
+The kitchen sink examples under `src/main/jte/kitchenSink` are the best reference for how the JTE templates are meant to
+be used.
 
 They show:
 
@@ -218,7 +220,8 @@ npm run devserver
 http://localhost:8081
 ```
 
-The webpack dev server proxies requests to the Spring Boot app on `http://localhost:8080`, while serving the frontend assets with live reload.
+The webpack dev server proxies requests to the Spring Boot app on `http://localhost:8080`, while serving the frontend
+assets with live reload.
 
 If you do not need the webpack dev server, you can also build the frontend assets once and run only Spring Boot:
 

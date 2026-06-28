@@ -1,4 +1,4 @@
-<%-- see https://lucide.dev/icons/candy-cane --%>
+<%-- see https://lucide.dev/icons/blender --%>
 
 @import java.util.Map
 @import com.basecoatui.jte.util.JteHelper
@@ -22,14 +22,15 @@
   stroke-width="${calculatedStrokeWidth}"
   stroke-linecap="round"
   stroke-linejoin="round"
-  class="${JteHelper.classAppend("lucide lucide-candy-cane-icon lucide-candy-cane", attrs)}"
+  class="${JteHelper.classAppend("lucide lucide-blender-icon lucide-blender", attrs)}"
   $unsafe{JteHelper.attrs(attrs, "class")}
 >
-  <path d="m10.8 5 2.111 4.223" />
-  <path d="M17.75 7 15 2.1" />
-  <path d="m4.874 14.647 2.12 4.24" />
   <path
-    d="M5.7 21a2 2 0 0 1-3.5-2l8.6-14a6 6 0 0 1 10.4 6 2 2 0 1 1-3.464-2 2 2 0 1 0-3.464-2z"
+    d="M8 14a2 2 0 0 0-1.963 1.615l-1.018 5.193A1 1 0 0 0 6 22h12a1 1 0 0 0 .981-1.192l-1.018-5.193A2 2 0 0 0 16 14z"
   />
-  <path d="m7.906 9.712 2.005 4.411" />
+  <path d="m17 2-1 12" />
+  <path d="M8.006 14 7 2" />
+  <path d="M7.565 8.787A5 5 0 0 0 12 8a5 5 0 0 1 4.56-.75" />
+  <path d="M19 2H5a2 2 0 0 0-2 2v5a2 2 0 0 0 .688 1.5" />
+  <path d="M12 18h.01" />
 </svg>

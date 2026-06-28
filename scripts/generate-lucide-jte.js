@@ -12,7 +12,7 @@ const iconsAndAliasesPath = path.join(
   "lucide",
   "dist",
   "esm",
-  "iconsAndAliases.js",
+  "iconsAndAliases.mjs",
 );
 const iconsDir = path.join(
   rootDir,
@@ -57,7 +57,7 @@ function parseCanonicalIcons() {
       continue;
     }
 
-    const fileMatch = line.match(/from '\.\/icons\/(.+?)\.js';$/);
+    const fileMatch = line.match(/from '\.\/icons\/(.+?)\.mjs';$/);
     if (!fileMatch) {
       continue;
     }
@@ -83,7 +83,7 @@ function parseCanonicalIcons() {
 }
 
 function parseIconNodes(iconFileName) {
-  const iconFilePath = path.join(iconsDir, `${iconFileName}.js`);
+  const iconFilePath = path.join(iconsDir, `${iconFileName}.mjs`);
   const source = fs.readFileSync(iconFilePath, "utf8");
   const iconDefinitionMatch = source.match(
     /const\s+\w+\s*=\s*(\[[\s\S]*?\]);\s*export\s*\{/,

@@ -1,4 +1,4 @@
-<%-- see https://lucide.dev/icons/waves --%>
+<%-- see https://lucide.dev/icons/astroid --%>
 
 @import java.util.Map
 @import com.basecoatui.jte.util.JteHelper
@@ -22,16 +22,10 @@
   stroke-width="${calculatedStrokeWidth}"
   stroke-linecap="round"
   stroke-linejoin="round"
-  class="${JteHelper.classAppend("lucide lucide-waves-icon lucide-waves", attrs)}"
+  class="${JteHelper.classAppend("lucide lucide-astroid-icon lucide-astroid", attrs)}"
   $unsafe{JteHelper.attrs(attrs, "class")}
 >
   <path
-    d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"
-  />
-  <path
-    d="M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"
-  />
-  <path
-    d="M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"
+    d="M12.983 21.186a1 1 0 0 1-1.966 0 10 10 0 0 0-8.203-8.203 1 1 0 0 1 0-1.966 10 10 0 0 0 8.203-8.203 1 1 0 0 1 1.966 0 10 10 0 0 0 8.203 8.203 1 1 0 0 1 0 1.966 10 10 0 0 0-8.203 8.203"
   />
 </svg>

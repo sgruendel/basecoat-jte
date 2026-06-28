@@ -1,4 +1,4 @@
-<%-- see https://lucide.dev/icons/candy-cane --%>
+<%-- see https://lucide.dev/icons/repeat-off --%>
 
 @import java.util.Map
 @import com.basecoatui.jte.util.JteHelper
@@ -22,14 +22,14 @@
   stroke-width="${calculatedStrokeWidth}"
   stroke-linecap="round"
   stroke-linejoin="round"
-  class="${JteHelper.classAppend("lucide lucide-candy-cane-icon lucide-candy-cane", attrs)}"
+  class="${JteHelper.classAppend("lucide lucide-repeat-off-icon lucide-repeat-off", attrs)}"
   $unsafe{JteHelper.attrs(attrs, "class")}
 >
-  <path d="m10.8 5 2.111 4.223" />
-  <path d="M17.75 7 15 2.1" />
-  <path d="m4.874 14.647 2.12 4.24" />
-  <path
-    d="M5.7 21a2 2 0 0 1-3.5-2l8.6-14a6 6 0 0 1 10.4 6 2 2 0 1 1-3.464-2 2 2 0 1 0-3.464-2z"
-  />
-  <path d="m7.906 9.712 2.005 4.411" />
+  <path d="M11.656 6H21l-4-4" />
+  <path d="M17.898 17.898A4 4 0 0 1 17 18H3l4-4" />
+  <path d="m2 2 20 20" />
+  <path d="M21 13v1a4 4 0 0 1-.171 1.159" />
+  <path d="m21 6-4 4" />
+  <path d="M3 11v-1a4 4 0 0 1 3.102-3.898" />
+  <path d="m7 22-4-4" />
 </svg>

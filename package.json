@@ -28,7 +28,7 @@
   "dependencies": {
     "basecoat-css": "^0.3.11",
     "htmx.org": "^2.0.8",
-    "lucide": "^1.7.0"
+    "lucide": "^1.21.0"
   },
   "devDependencies": {
     "@babel/core": "^7.29.0",

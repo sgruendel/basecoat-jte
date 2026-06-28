@@ -1,4 +1,4 @@
-<%-- see https://lucide.dev/icons/candy-cane --%>
+<%-- see https://lucide.dev/icons/eye-dashed --%>
 
 @import java.util.Map
 @import com.basecoatui.jte.util.JteHelper
@@ -22,14 +22,16 @@
   stroke-width="${calculatedStrokeWidth}"
   stroke-linecap="round"
   stroke-linejoin="round"
-  class="${JteHelper.classAppend("lucide lucide-candy-cane-icon lucide-candy-cane", attrs)}"
+  class="${JteHelper.classAppend("lucide lucide-eye-dashed-icon lucide-eye-dashed", attrs)}"
   $unsafe{JteHelper.attrs(attrs, "class")}
 >
-  <path d="m10.8 5 2.111 4.223" />
-  <path d="M17.75 7 15 2.1" />
-  <path d="m4.874 14.647 2.12 4.24" />
-  <path
-    d="M5.7 21a2 2 0 0 1-3.5-2l8.6-14a6 6 0 0 1 10.4 6 2 2 0 1 1-3.464-2 2 2 0 1 0-3.464-2z"
-  />
-  <path d="m7.906 9.712 2.005 4.411" />
+  <path d="M13.054 18.946a11 11 0 0 1-2.11 0" />
+  <path d="M13.054 5.054a11 11 0 0 0-2.11-.001" />
+  <path d="M17.072 6.274a11 11 0 0 1 1.753 1.173" />
+  <path d="M18.825 16.552a11 11 0 0 1-1.753 1.174" />
+  <path d="M2.514 13.303a11 11 0 0 1-.452-.954 1 1 0 0 1 0-.697 11 11 0 0 1 .45-.955" />
+  <path d="M21.485 10.697a11 11 0 0 1 .453.955 1 1 0 0 1 0 .697 11 11 0 0 1-.453.954" />
+  <path d="M5.173 7.448a11 11 0 0 1 1.753-1.174" />
+  <path d="M6.926 17.726a11 11 0 0 1-1.753-1.174" />
+  <circle cx="12" cy="12" r="3" />
 </svg>

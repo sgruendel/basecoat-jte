@@ -1,4 +1,4 @@
-<%-- see https://lucide.dev/icons/text-select --%>
+<%-- see https://lucide.dev/icons/parasol --%>
 
 @import java.util.Map
 @import com.basecoatui.jte.util.JteHelper
@@ -22,22 +22,12 @@
   stroke-width="${calculatedStrokeWidth}"
   stroke-linecap="round"
   stroke-linejoin="round"
-  class="${JteHelper.classAppend("lucide lucide-text-select-icon lucide-text-select", attrs)}"
+  class="${JteHelper.classAppend("lucide lucide-parasol-icon lucide-parasol", attrs)}"
   $unsafe{JteHelper.attrs(attrs, "class")}
 >
-  <path d="M14 21h1" />
-  <path d="M14 3h1" />
-  <path d="M19 3a2 2 0 0 1 2 2" />
-  <path d="M21 14v1" />
-  <path d="M21 19a2 2 0 0 1-2 2" />
-  <path d="M21 9v1" />
-  <path d="M3 14v1" />
-  <path d="M3 9v1" />
-  <path d="M5 21a2 2 0 0 1-2-2" />
-  <path d="M5 3a2 2 0 0 0-2 2" />
-  <path d="M7 12h10" />
-  <path d="M7 16h6" />
-  <path d="M7 8h8" />
-  <path d="M9 21h1" />
-  <path d="M9 3h1" />
+  <path d="M12.5 11.134 18.196 21" />
+  <path
+    d="M20.425 5.299a10 10 0 0 0-16.941 9.78c.183.563.843.774 1.355.478L20.16 6.711c.512-.296.66-.973.264-1.413"
+  />
+  <path d="M21 21H3" />
 </svg>
