@@ -4,6 +4,7 @@
 @import com.basecoatui.jte.util.JteHelper
 
 @param int size = 24
+@param String fill = "none"
 @param String color = "currentColor"
 @param int strokeWidth = 2
 @param boolean absoluteStrokeWidth = false
@@ -17,7 +18,7 @@
   width="${size}"
   height="${size}"
   viewBox="0 0 24 24"
-  fill="none"
+  fill="${fill}"
   stroke="${color}"
   stroke-width="${calculatedStrokeWidth}"
   stroke-linecap="round"
@@ -25,6 +26,6 @@
   class="${JteHelper.classAppend("lucide lucide-ungroup-icon lucide-ungroup", attrs)}"
   $unsafe{JteHelper.attrs(attrs, "class")}
 >
-  <rect width="8" height="6" x="5" y="4" rx="1" />
-  <rect width="8" height="6" x="11" y="14" rx="1" />
+  <rect x="11" y="14" width="10" height="7" rx="2" />
+  <rect x="3" y="3" width="10" height="7" rx="2" />
 </svg>

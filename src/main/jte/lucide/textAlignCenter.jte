@@ -4,6 +4,7 @@
 @import com.basecoatui.jte.util.JteHelper
 
 @param int size = 24
+@param String fill = "none"
 @param String color = "currentColor"
 @param int strokeWidth = 2
 @param boolean absoluteStrokeWidth = false
@@ -17,7 +18,7 @@
   width="${size}"
   height="${size}"
   viewBox="0 0 24 24"
-  fill="none"
+  fill="${fill}"
   stroke="${color}"
   stroke-width="${calculatedStrokeWidth}"
   stroke-linecap="round"

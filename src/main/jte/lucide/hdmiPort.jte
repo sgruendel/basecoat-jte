@@ -4,6 +4,7 @@
 @import com.basecoatui.jte.util.JteHelper
 
 @param int size = 24
+@param String fill = "none"
 @param String color = "currentColor"
 @param int strokeWidth = 2
 @param boolean absoluteStrokeWidth = false
@@ -17,7 +18,7 @@
   width="${size}"
   height="${size}"
   viewBox="0 0 24 24"
-  fill="none"
+  fill="${fill}"
   stroke="${color}"
   stroke-width="${calculatedStrokeWidth}"
   stroke-linecap="round"
@@ -26,7 +27,7 @@
   $unsafe{JteHelper.attrs(attrs, "class")}
 >
   <path
-    d="M22 9a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1h1l2 2h12l2-2h1a1 1 0 0 0 1-1Z"
+    d="M22 9a1 1 0 00-1-1H3a1 1 0 00-1 1v4a1 1 0 001 1h.5a2 2 0 011.6.8l.3.4A2 2 0 007 16h10a2 2 0 001.6-.8l.3-.4a2 2 0 011.6-.8h.5a1 1 0 001-1z"
   />
-  <path d="M7.5 12h9" />
+  <path d="M8 12h8" />
 </svg>
