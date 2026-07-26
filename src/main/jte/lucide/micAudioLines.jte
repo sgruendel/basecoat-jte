@@ -1,4 +1,4 @@
-<%-- see https://lucide.dev/icons/book-open-text --%>
+<%-- see https://lucide.dev/icons/mic-audio-lines --%>
 
 @import java.util.Map
 @import com.basecoatui.jte.util.JteHelper
@@ -23,15 +23,16 @@
   stroke-width="${calculatedStrokeWidth}"
   stroke-linecap="round"
   stroke-linejoin="round"
-  class="${JteHelper.classAppend("lucide lucide-book-open-text-icon lucide-book-open-text", attrs)}"
+  class="${JteHelper.classAppend("lucide lucide-mic-audio-lines-icon lucide-mic-audio-lines", attrs)}"
   $unsafe{JteHelper.attrs(attrs, "class")}
 >
-  <path d="M12 5v16" />
-  <path d="M16 13h2" />
-  <path d="M16 9h2" />
-  <path
-    d="M20.001 19A2 2 0 0022 17V5a2 2 0 00-1.999-2L16 3.002A5 5 0 0012 5a5 5 0 00-4-2H4a2 2 0 00-2 2v12a2 2 0 001.999 2H8a5 5 0 014 2 5 5 0 014-2z"
-  />
-  <path d="M6 13h2" />
-  <path d="M6 9h2" />
+  <path d="M10 3v2.341" />
+  <path d="M12 17v4" />
+  <path d="M14 5v.341" />
+  <path d="M18 5v13" />
+  <path d="M2 10v3" />
+  <path d="M22 10v3" />
+  <path d="M6 6v11" />
+  <path d="M9 21h6" />
+  <rect width="4" height="8" x="10" y="9" rx="2" />
 </svg>

@@ -1,4 +1,4 @@
-<%-- see https://lucide.dev/icons/podcast --%>
+<%-- see https://lucide.dev/icons/shield-keyhole --%>
 
 @import java.util.Map
 @import com.basecoatui.jte.util.JteHelper
@@ -23,11 +23,12 @@
   stroke-width="${calculatedStrokeWidth}"
   stroke-linecap="round"
   stroke-linejoin="round"
-  class="${JteHelper.classAppend("lucide lucide-podcast-icon lucide-podcast", attrs)}"
+  class="${JteHelper.classAppend("lucide lucide-shield-keyhole-icon lucide-shield-keyhole", attrs)}"
   $unsafe{JteHelper.attrs(attrs, "class")}
 >
-  <path d="M13 17a1 1 0 1 0-2 0l.5 4.5a0.5 0.5 0 0 0 1 0z" fill="currentColor" />
-  <path d="M16.85 18.58a9 9 0 1 0-9.7 0" />
-  <path d="M8 14a5 5 0 1 1 8 0" />
-  <circle cx="12" cy="11" r="1" fill="currentColor" />
+  <path d="M12 13v3" />
+  <path
+    d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 01-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 011-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 011.52 0C14.51 3.81 17 5 19 5a1 1 0 011 1z"
+  />
+  <circle cx="12" cy="11" r="2" />
 </svg>

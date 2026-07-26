@@ -1,4 +1,4 @@
-<%-- see https://lucide.dev/icons/book-open-text --%>
+<%-- see https://lucide.dev/icons/scan-square --%>
 
 @import java.util.Map
 @import com.basecoatui.jte.util.JteHelper
@@ -23,15 +23,12 @@
   stroke-width="${calculatedStrokeWidth}"
   stroke-linecap="round"
   stroke-linejoin="round"
-  class="${JteHelper.classAppend("lucide lucide-book-open-text-icon lucide-book-open-text", attrs)}"
+  class="${JteHelper.classAppend("lucide lucide-scan-square-icon lucide-scan-square", attrs)}"
   $unsafe{JteHelper.attrs(attrs, "class")}
 >
-  <path d="M12 5v16" />
-  <path d="M16 13h2" />
-  <path d="M16 9h2" />
-  <path
-    d="M20.001 19A2 2 0 0022 17V5a2 2 0 00-1.999-2L16 3.002A5 5 0 0012 5a5 5 0 00-4-2H4a2 2 0 00-2 2v12a2 2 0 001.999 2H8a5 5 0 014 2 5 5 0 014-2z"
-  />
-  <path d="M6 13h2" />
-  <path d="M6 9h2" />
+  <path d="M3 7V5a2 2 0 0 1 2-2h2" />
+  <path d="M17 3h2a2 2 0 0 1 2 2v2" />
+  <path d="M21 17v2a2 2 0 0 1-2 2h-2" />
+  <path d="M7 21H5a2 2 0 0 1-2-2v-2" />
+  <rect width="8" height="8" x="8" y="8" rx="1" />
 </svg>

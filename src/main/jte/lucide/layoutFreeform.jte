@@ -1,4 +1,4 @@
-<%-- see https://lucide.dev/icons/book-open-text --%>
+<%-- see https://lucide.dev/icons/layout-freeform --%>
 
 @import java.util.Map
 @import com.basecoatui.jte.util.JteHelper
@@ -23,15 +23,10 @@
   stroke-width="${calculatedStrokeWidth}"
   stroke-linecap="round"
   stroke-linejoin="round"
-  class="${JteHelper.classAppend("lucide lucide-book-open-text-icon lucide-book-open-text", attrs)}"
+  class="${JteHelper.classAppend("lucide lucide-layout-freeform-icon lucide-layout-freeform", attrs)}"
   $unsafe{JteHelper.attrs(attrs, "class")}
 >
-  <path d="M12 5v16" />
-  <path d="M16 13h2" />
-  <path d="M16 9h2" />
-  <path
-    d="M20.001 19A2 2 0 0022 17V5a2 2 0 00-1.999-2L16 3.002A5 5 0 0012 5a5 5 0 00-4-2H4a2 2 0 00-2 2v12a2 2 0 001.999 2H8a5 5 0 014 2 5 5 0 014-2z"
-  />
-  <path d="M6 13h2" />
-  <path d="M6 9h2" />
+  <rect width="7" height="7" x="3" y="3" rx="1" />
+  <rect width="7" height="7" x="14" y="4" rx="1" />
+  <rect width="7" height="7" x="4" y="14" rx="1" />
 </svg>

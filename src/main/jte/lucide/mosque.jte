@@ -1,4 +1,4 @@
-<%-- see https://lucide.dev/icons/book-open-text --%>
+<%-- see https://lucide.dev/icons/mosque --%>
 
 @import java.util.Map
 @import com.basecoatui.jte.util.JteHelper
@@ -23,15 +23,15 @@
   stroke-width="${calculatedStrokeWidth}"
   stroke-linecap="round"
   stroke-linejoin="round"
-  class="${JteHelper.classAppend("lucide lucide-book-open-text-icon lucide-book-open-text", attrs)}"
+  class="${JteHelper.classAppend("lucide lucide-mosque-icon lucide-mosque", attrs)}"
   $unsafe{JteHelper.attrs(attrs, "class")}
 >
-  <path d="M12 5v16" />
-  <path d="M16 13h2" />
-  <path d="M16 9h2" />
+  <path d="M12.268 2a2 2 0 003.465 2" />
+  <path d="M14 5 L14 8" />
+  <path d="M16 22v-3a2 2 0 00-4 0v3" />
   <path
-    d="M20.001 19A2 2 0 0022 17V5a2 2 0 00-1.999-2L16 3.002A5 5 0 0012 5a5 5 0 00-4-2H4a2 2 0 00-2 2v12a2 2 0 001.999 2H8a5 5 0 014 2 5 5 0 014-2z"
+    d="M21 13c-.662-1.497-1.666-2.753-2.9-3.63C16.825 8.47 15.422 8 14 8s-2.826.47-4.1 1.37C8.668 10.248 7.663 11.504 7 13z"
   />
-  <path d="M6 13h2" />
-  <path d="M6 9h2" />
+  <path d="M3 9h4" />
+  <path d="M7 22V6a5 5 0 00-2-4 5 5 0 00-2 4v14a2 2 0 002 2h14a2 2 0 002-2v-7" />
 </svg>
