@@ -12,6 +12,7 @@ public record BasecoatSidebar() {
         ITEM, GROUP, SEPARATOR, SUBMENU
     }
 
+    // TODO allow Content for label
     public record Item(
             ItemType type,
             String id,
@@ -31,6 +32,12 @@ public record BasecoatSidebar() {
             return new Item(ItemType.ITEM, null, label, url, false, false, null, null, null);
         }
 
+        public static Item of(final String label, final String url, final Content icon) {
+
+            return new Item(ItemType.ITEM, null, label, url, false, false, null, null, icon);
+        }
+
+        // TODO when current, when of???
         public static Item current(final String label, final String url) {
 
             return new Item(ItemType.ITEM, null, label, url, true, false, null, null, null);

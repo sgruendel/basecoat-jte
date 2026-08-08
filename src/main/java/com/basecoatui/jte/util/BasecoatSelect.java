@@ -8,6 +8,7 @@ import java.util.Map;
 
 public record BasecoatSelect() {
 
+    // TODO sealed interface
     public enum ItemType {
         ITEM, GROUP, SEPARATOR
     }
