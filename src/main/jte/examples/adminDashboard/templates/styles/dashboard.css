@@ -1,0 +1,44 @@
+:root {
+  --dashboard-header-height: 49px;
+}
+body {
+  margin: 0;
+}
+.metric-card {
+  background-image: linear-gradient(to top, color-mix(in srgb, var(--muted) 45%, transparent), transparent);
+}
+/* TODO use button-group instead of range-group */
+.range-group [aria-pressed="true"] {
+  background: var(--accent);
+  color: var(--accent-foreground);
+}
+.dashboard-tab-list > button {
+  white-space: nowrap;
+}
+.table-row-dragging {
+  opacity: 0.55;
+}
+.table-row-drop {
+  box-shadow: inset 0 2px 0 var(--primary);
+}
+.status-icon {
+  width: 0.8rem;
+  height: 0.8rem;
+}
+.status-icon[data-done="true"] {
+  color: rgb(34 197 94);
+  fill: currentColor;
+}
+.chart-box {
+  position: relative;
+  height: 250px;
+}
+.detail-chart-box {
+  position: relative;
+  height: 180px;
+}
+@media (max-width: 767px) {
+  .chart-box {
+    height: 220px;
+  }
+}

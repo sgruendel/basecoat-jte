@@ -4,28 +4,25 @@ const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const WarningsToErrorsPlugin = require('warnings-to-errors-webpack-plugin');
 
-
 module.exports = (env, argv) => ({
   entry: {
-    bundle: './src/main/resources/js/app.js'
+    bundle: './src/main/resources/js/app.js',
+    'admin-dashboard': './src/main/resources/js/admin-dashboard.js',
   },
   output: {
     path: path.resolve(__dirname, './target/classes/static'),
-    filename: 'js/[name].js'
+    filename: 'js/[name].js',
   },
   devtool: argv.mode === 'production' ? false : 'eval-source-map',
   optimization: {
     minimize: true,
-    minimizer: [
-      new TerserPlugin(),
-      new CssMinimizerPlugin()
-    ]
+    minimizer: [new TerserPlugin(), new CssMinimizerPlugin()],
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: 'css/[name].css'
+      filename: 'css/[name].css',
     }),
-    new WarningsToErrorsPlugin()
+    new WarningsToErrorsPlugin(),
   ],
   module: {
     rules: [
@@ -34,9 +31,9 @@ module.exports = (env, argv) => ({
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['@babel/preset-env']
-          }
-        }
+            presets: ['@babel/preset-env'],
+          },
+        },
       },
       {
         test: /\.css$/,
@@ -45,39 +42,30 @@ module.exports = (env, argv) => ({
           {
             loader: 'css-loader',
             options: {
-              importLoaders: 1
-            }
+              importLoaders: 1,
+            },
           },
           {
             loader: 'postcss-loader',
             options: {
               postcssOptions: {
-                plugins: [
-                  require('@tailwindcss/postcss')
-                ]
-              }
-            }
-          }
-        ]
-      }
-    ]
+                plugins: [require('@tailwindcss/postcss')],
+              },
+            },
+          },
+        ],
+      },
+    ],
   },
   resolve: {
-    modules: [
-      path.resolve(__dirname, './src/main/resources'),
-      'node_modules'
-    ]
+    modules: [path.resolve(__dirname, './src/main/resources'), 'node_modules'],
   },
   devServer: {
     port: 8081,
     compress: true,
     hot: true,
     static: false,
-    watchFiles: [
-      'src/main/jte/**/*.jte',
-      'src/main/resources/js/**/*.js',
-      'src/main/resources/css/**/*.css'
-    ],
+    watchFiles: ['src/main/jte/**/*.jte', 'src/main/resources/js/**/*.js', 'src/main/resources/css/**/*.css'],
     proxy: [
       {
         context: '**',
@@ -86,8 +74,8 @@ module.exports = (env, argv) => ({
         prependPath: false,
         headers: {
           'X-Devserver': '1',
-        }
-      }
-    ]
-  }
+        },
+      },
+    ],
+  },
 });

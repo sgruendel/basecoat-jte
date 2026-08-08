@@ -5,11 +5,10 @@
     <h1 class="text-base font-medium">Documents</h1>
     <div class="ml-auto flex items-center gap-2">
       <button class="btn" data-size="sm" class="hidden h-7 sm:flex">
-        @template.lucide.circlePlus()
         @template.lucide.circlePlus(fill = "white", color = "black")
-        <%-- TODO simulate filled icon using fill/color, what about dark mode? --%>
+        <%-- TODO what about dark mode? --%>
         <span>Quick Create</span>
-    </button>
+      </button>
     </div>
   </div>
 </header>

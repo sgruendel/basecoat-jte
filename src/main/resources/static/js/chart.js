@@ -1,3 +1,7 @@
+import ChartJs from 'chart.js/auto'; // TODO only import the chart types that are used to reduce bundle size
+
+let chartApi;
+
 (() => {
   const instances = new WeakMap();
   const activeCanvases = new Set();
@@ -65,10 +69,16 @@
       datasets: chartData.datasets.map((dataset) => ({
         ...dataset,
         data: Array.isArray(dataset.data) ? [...dataset.data] : dataset.data,
-        backgroundColor: Array.isArray(dataset.backgroundColor) ? [...dataset.backgroundColor] : dataset.backgroundColor,
+        backgroundColor: Array.isArray(dataset.backgroundColor)
+          ? [...dataset.backgroundColor]
+          : dataset.backgroundColor,
         borderColor: Array.isArray(dataset.borderColor) ? [...dataset.borderColor] : dataset.borderColor,
-        hoverBackgroundColor: Array.isArray(dataset.hoverBackgroundColor) ? [...dataset.hoverBackgroundColor] : dataset.hoverBackgroundColor,
-        hoverBorderColor: Array.isArray(dataset.hoverBorderColor) ? [...dataset.hoverBorderColor] : dataset.hoverBorderColor,
+        hoverBackgroundColor: Array.isArray(dataset.hoverBackgroundColor)
+          ? [...dataset.hoverBackgroundColor]
+          : dataset.hoverBackgroundColor,
+        hoverBorderColor: Array.isArray(dataset.hoverBorderColor)
+          ? [...dataset.hoverBorderColor]
+          : dataset.hoverBorderColor,
       })),
     };
   };
@@ -76,14 +86,16 @@
   const clonePlainObject = (value) => {
     if (!value || typeof value !== 'object' || Array.isArray(value)) return value;
 
-    return Object.fromEntries(Object.entries(value).map(([key, item]) => [
-      key,
-      item && typeof item === 'object' && !Array.isArray(item) ? clonePlainObject(item) : item,
-    ]));
+    return Object.fromEntries(
+      Object.entries(value).map(([key, item]) => [
+        key,
+        item && typeof item === 'object' && !Array.isArray(item) ? clonePlainObject(item) : item,
+      ]),
+    );
   };
 
   const resolveColor = (color, element) => {
-    if (Array.isArray(color)) return color.map(item => resolveColor(item, element));
+    if (Array.isArray(color)) return color.map((item) => resolveColor(item, element));
     if (typeof color !== 'string') return color;
 
     const probe = document.createElement('span');
@@ -166,7 +178,11 @@
       }
 
       if (dataset._basecoatSurface) {
-        dataset.backgroundColor = surfaceColor(dataset.borderColor || dataset.backgroundColor, element, dataset._basecoatSurface);
+        dataset.backgroundColor = surfaceColor(
+          dataset.borderColor || dataset.backgroundColor,
+          element,
+          dataset._basecoatSurface,
+        );
         delete dataset._basecoatSurface;
       }
     });
@@ -218,13 +234,15 @@
       const [firstKey, firstSeries = {}] = entries[0] || [];
       return {
         labels,
-        datasets: [{
-          label: firstSeries.label || firstKey || 'Value',
-          data: rows.map((row) => valueFor(row, firstKey)),
-          backgroundColor: rows.map((row, index) => row?.color || row?.fill || colorForIndex(index)),
-          borderColor: rows.map((row, index) => row?.color || row?.fill || colorForIndex(index)),
-          ...(firstSeries.dataset || {}),
-        }],
+        datasets: [
+          {
+            label: firstSeries.label || firstKey || 'Value',
+            data: rows.map((row) => valueFor(row, firstKey)),
+            backgroundColor: rows.map((row, index) => row?.color || row?.fill || colorForIndex(index)),
+            borderColor: rows.map((row, index) => row?.color || row?.fill || colorForIndex(index)),
+            ...(firstSeries.dataset || {}),
+          },
+        ],
       };
     }
 
@@ -233,11 +251,8 @@
       datasets: entries.map(([key, item], index) => {
         const color = item.color || colorForIndex(index);
         const dataset = item.dataset || {};
-        const surface = item.surface === true
-          ? { from: 0.4 }
-          : item.surface === 'gradient'
-            ? { from: 0.8, to: 0.1 }
-            : item.surface;
+        const surface =
+          item.surface === true ? { from: 0.4 } : item.surface === 'gradient' ? { from: 0.8, to: 0.1 } : item.surface;
 
         return {
           label: item.label || key,
@@ -357,28 +372,31 @@
       }
 
       const items = chart.options.plugins.legend.labels.generateLabels(chart);
-      legend.replaceChildren(...items.map((item) => {
-        const content = document.createElement('span');
-        content.className = 'chart-legend-item';
+      legend.replaceChildren(
+        ...items.map((item) => {
+          const content = document.createElement('span');
+          content.className = 'chart-legend-item';
 
-        const indicator = document.createElement('span');
-        indicator.className = 'chart-legend-indicator';
-        const indicatorColor = typeof item.fillStyle === 'string'
-          ? item.fillStyle
-          : typeof item.strokeStyle === 'string'
-            ? item.strokeStyle
-            : colorForIndex(item.datasetIndex || item.index || 0);
-        indicator.style.setProperty('--chart-indicator-color', indicatorColor);
+          const indicator = document.createElement('span');
+          indicator.className = 'chart-legend-indicator';
+          const indicatorColor =
+            typeof item.fillStyle === 'string'
+              ? item.fillStyle
+              : typeof item.strokeStyle === 'string'
+                ? item.strokeStyle
+                : colorForIndex(item.datasetIndex || item.index || 0);
+          indicator.style.setProperty('--chart-indicator-color', indicatorColor);
 
-        const label = document.createElement('span');
-        label.textContent = item.text;
+          const label = document.createElement('span');
+          label.textContent = item.text;
 
-        content.append(indicator, label);
+          content.append(indicator, label);
 
-        const listItem = document.createElement('li');
-        listItem.append(content);
-        return listItem;
-      }));
+          const listItem = document.createElement('li');
+          listItem.append(content);
+          return listItem;
+        }),
+      );
     },
   });
 
@@ -390,7 +408,7 @@
   };
 
   const initChart = (canvas, config = {}) => {
-    const Chart = config.Chart || window.Chart;
+    const Chart = config.Chart || ChartJs;
     if (!Chart) {
       throw new Error('Chart.js is required before calling basecoat.chart().');
     }
@@ -405,7 +423,9 @@
     const tooltip = readBoolean(canvas, config, 'tooltip', 'chartTooltip', true);
     const data = config.data || readJsonAttribute(canvas, 'data-chart-data') || [];
     const series = config.series || readJsonAttribute(canvas, 'data-chart-series') || {};
-    const chartData = config.chartData ? cloneChartData(config.chartData) : toChartData({ type, labelKey, data, series });
+    const chartData = config.chartData
+      ? cloneChartData(config.chartData)
+      : toChartData({ type, labelKey, data, series });
     const userOptions = config.options || {};
     const legendPlugin = createLegendPlugin(canvas, legend);
     const container = ensureContainer(canvas);
@@ -431,9 +451,11 @@
       : {};
     const scales = {
       ...defaultScales,
-      ...(Object.fromEntries(Object.entries(userOptions.scales || {})
-        .filter(([key]) => key !== 'x' && key !== 'y')
-        .map(([key, value]) => [key, clonePlainObject(value)]))),
+      ...Object.fromEntries(
+        Object.entries(userOptions.scales || {})
+          .filter(([key]) => key !== 'x' && key !== 'y')
+          .map(([key, value]) => [key, clonePlainObject(value)]),
+      ),
     };
 
     canvas.classList.remove('chart');
@@ -494,6 +516,8 @@
     return charts.length === 1 ? charts[0] : charts;
   };
 
+  chartApi = chart;
+
   const refreshCharts = () => {
     refreshFrame = null;
 
@@ -515,7 +539,11 @@
 
   const observeTokenChanges = () => {
     const observer = new MutationObserver((mutations) => {
-      if (mutations.some((mutation) => mutation.attributeName === 'class' || mutation.attributeName === 'data-style-variant')) {
+      if (
+        mutations.some(
+          (mutation) => mutation.attributeName === 'class' || mutation.attributeName === 'data-style-variant',
+        )
+      ) {
         scheduleRefresh();
       }
     });
@@ -535,3 +563,5 @@
 
   observeTokenChanges();
 })();
+
+export { chartApi as chart };

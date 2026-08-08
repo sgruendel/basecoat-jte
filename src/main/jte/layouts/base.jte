@@ -10,11 +10,7 @@
       (() => {
         try {
           const stored = localStorage.getItem("themeMode");
-          if (
-            stored
-              ? stored === "dark"
-              : matchMedia("(prefers-color-scheme: dark)").matches
-          ) {
+          if (stored ? stored === "dark" : matchMedia("(prefers-color-scheme: dark)").matches) {
             document.documentElement.classList.add("dark");
           }
         } catch (_) {}
@@ -29,11 +25,7 @@
         document.addEventListener("basecoat:theme", (event) => {
           const mode = event.detail?.mode;
           apply(
-            mode === "dark"
-              ? true
-              : mode === "light"
-                ? false
-                : !document.documentElement.classList.contains("dark"),
+            mode === "dark" ? true : mode === "light" ? false : !document.documentElement.classList.contains("dark"),
           );
         });
       })();
@@ -43,13 +35,9 @@
       (function () {
         try {
           const storedTheme = localStorage.getItem("themeVariant");
-          if (storedTheme)
-            document.documentElement.classList.add("theme-" + storedTheme);
+          if (storedTheme) document.documentElement.classList.add("theme-" + storedTheme);
         } catch (event) {
-          console.error(
-            "Could not apply theme variant from localStorage",
-            event,
-          );
+          console.error("Could not apply theme variant from localStorage", event);
         }
       })();
     </script>
@@ -66,20 +54,13 @@
     <%--{% if site.keywords %}<meta name="keywords" content="{{ site.keywords | join(',') }}" />{% endif %}--%>
     <%-- Favicon --%>
     <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
-    <link
-      rel="apple-touch-icon"
-      sizes="180x180"
-      href="/assets/apple-touch-icon.png"
-    />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
     <%-- Open Graph / Facebook --%>
     <meta property="og:type" content="website" />
     <meta property="og:url" content="{{ site.url }}{{ page.url }}" />
     <meta property="og:title" content="{{ meta_title }}" />
     <meta property="og:description" content="{{ meta_description }}" />
-    <meta
-      property="og:image"
-      content="{{ site.url }}/assets/social-screenshot.png"
-    />
+    <meta property="og:image" content="{{ site.url }}/assets/social-screenshot.png" />
     <meta property="og:site_name" content="{{ site.title }}" />
     <meta property="og:locale" content="en_US" />
     <meta property="og:author" content="{{ site.author.name }}" />
@@ -88,17 +69,13 @@
     <meta name="twitter:url" content="{{ site.url }}{{ page.url }}" />
     <meta name="twitter:title" content="{{ title if title else site.title }}" />
     <meta name="twitter:description" content="{{ meta_description }}" />
-    <meta
-      name="twitter:image"
-      content="{{ site.url }}/assets/social-screenshot.png"
-    />
+    <meta name="twitter:image" content="{{ site.url }}/assets/social-screenshot.png" />
     <meta name="twitter:creator" content="{{ site.author.x }}" />
     <%-- CSS --%>
     <%-- already in app.css link rel="stylesheet" href="/assets/styles.css">
     <%-- JS --%>
     <script src="/js/accordion.js" defer></script>
     <script src="/js/basecoat.js" defer></script>
-    <script src="/js/chart.js" defer></script>
     <script src="/js/combobox.js" defer></script>
     <script src="/js/command.js" defer></script>
     <script src="/js/drawer.js" defer></script>
@@ -120,9 +97,7 @@
       const highlight = () => {
         if (!window.hljs) return;
         document
-          .querySelectorAll(
-            "pre code:not([data-highlighted]), code.highlight:not([data-highlighted])",
-          )
+          .querySelectorAll("pre code:not([data-highlighted]), code.highlight:not([data-highlighted])")
           .forEach((el) => hljs.highlightElement(el));
       };
 
