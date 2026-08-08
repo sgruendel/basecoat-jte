@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: basecoat-jte
+gg:
+  jte:
+    development-mode: true
