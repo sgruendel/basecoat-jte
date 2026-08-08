@@ -1,4 +1,4 @@
-<%-- see https://lucide.dev/icons/laugh --%>
+<%-- see https://lucide.dev/icons/broom-sparkles --%>
 
 @import java.util.Map
 @import com.basecoatui.jte.util.JteHelper
@@ -23,11 +23,19 @@
   stroke-width="${calculatedStrokeWidth}"
   stroke-linecap="round"
   stroke-linejoin="round"
-  class="${JteHelper.classAppend("lucide lucide-laugh-icon lucide-laugh", attrs)}"
+  class="${JteHelper.classAppend("lucide lucide-broom-sparkles-icon lucide-broom-sparkles", attrs)}"
   $unsafe{JteHelper.attrs(attrs, "class")}
 >
-  <circle cx="12" cy="12" r="10" />
-  <path d="M18 13a6 6 0 0 1-6 5 6 6 0 0 1-6-5h12Z" />
-  <line x1="9" x2="9.01" y1="9" y2="9" />
-  <line x1="15" x2="15.01" y1="9" y2="9" />
+  <path d="M11 2v2" />
+  <path d="M12 3h-2" />
+  <path d="M13.5 10.5 22 2" />
+  <path
+    d="M14.734 13.841a2 2 0 00-.314-2.42L12.58 9.58a2 2 0 00-2.421-.314l-7.657 4.461A1 1 0 002.3 15.3l6.403 6.403a1 1 0 001.571-.204z"
+  />
+  <path d="M20 15v4" />
+  <path d="M22 17h-4" />
+  <path d="M4 4v4" />
+  <path d="m5 18 2-2" />
+  <path d="M6 6H2" />
+  <path d="m7.699 10.7 5.602 5.601" />
 </svg>

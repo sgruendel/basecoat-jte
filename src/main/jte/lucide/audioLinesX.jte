@@ -1,4 +1,4 @@
-<%-- see https://lucide.dev/icons/calendar-check --%>
+<%-- see https://lucide.dev/icons/audio-lines-x --%>
 
 @import java.util.Map
 @import com.basecoatui.jte.util.JteHelper
@@ -23,12 +23,15 @@
   stroke-width="${calculatedStrokeWidth}"
   stroke-linecap="round"
   stroke-linejoin="round"
-  class="${JteHelper.classAppend("lucide lucide-calendar-check-icon lucide-calendar-check", attrs)}"
+  class="${JteHelper.classAppend("lucide lucide-audio-lines-x-icon lucide-audio-lines-x", attrs)}"
   $unsafe{JteHelper.attrs(attrs, "class")}
 >
-  <path d="M8 2v3" />
-  <path d="M16 2v3" />
-  <rect x="3" y="3" width="18" height="18" rx="2" />
-  <path d="M3 9h18" />
-  <path d="m9 15 2 2 4-4" />
+  <path d="M10 3v18" />
+  <path d="M14 8v6.35" />
+  <path d="m17 17 5 5" />
+  <path d="M18 5v8.1" />
+  <path d="M2 10v3" />
+  <path d="M22 10v3" />
+  <path d="m22 17-5 5" />
+  <path d="M6 6v11" />
 </svg>

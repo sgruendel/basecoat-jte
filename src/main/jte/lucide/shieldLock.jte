@@ -1,4 +1,4 @@
-<%-- see https://lucide.dev/icons/calendar-check --%>
+<%-- see https://lucide.dev/icons/shield-lock --%>
 
 @import java.util.Map
 @import com.basecoatui.jte.util.JteHelper
@@ -23,12 +23,12 @@
   stroke-width="${calculatedStrokeWidth}"
   stroke-linecap="round"
   stroke-linejoin="round"
-  class="${JteHelper.classAppend("lucide lucide-calendar-check-icon lucide-calendar-check", attrs)}"
+  class="${JteHelper.classAppend("lucide lucide-shield-lock-icon lucide-shield-lock", attrs)}"
   $unsafe{JteHelper.attrs(attrs, "class")}
 >
-  <path d="M8 2v3" />
-  <path d="M16 2v3" />
-  <rect x="3" y="3" width="18" height="18" rx="2" />
-  <path d="M3 9h18" />
-  <path d="m9 15 2 2 4-4" />
+  <path
+    d="M20 9.807V6a1 1 0 00-1-1c-2 0-4.49-1.19-6.24-2.72a1.17 1.17 0 00-1.52 0C9.5 3.8 7 5 5 5a1 1 0 00-1 1v7c0 3.88 2.107 6.254 5 7.796"
+  />
+  <path d="M19 17v-2a2 2 0 00-4 0v2" />
+  <rect x="13" y="17" width="8" height="5" rx="1" />
 </svg>

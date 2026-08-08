@@ -1,4 +1,4 @@
-<%-- see https://lucide.dev/icons/smile-plus --%>
+<%-- see https://lucide.dev/icons/face-slightly-smiling-plus --%>
 
 @import java.util.Map
 @import com.basecoatui.jte.util.JteHelper
@@ -23,13 +23,13 @@
   stroke-width="${calculatedStrokeWidth}"
   stroke-linecap="round"
   stroke-linejoin="round"
-  class="${JteHelper.classAppend("lucide lucide-smile-plus-icon lucide-smile-plus", attrs)}"
+  class="${JteHelper.classAppend("lucide lucide-face-slightly-smiling-plus-icon lucide-face-slightly-smiling-plus", attrs)}"
   $unsafe{JteHelper.attrs(attrs, "class")}
 >
-  <path d="M22 11v1a10 10 0 1 1-9-10" />
-  <path d="M8 14s1.5 2 4 2 4-2 4-2" />
-  <line x1="9" x2="9.01" y1="9" y2="9" />
-  <line x1="15" x2="15.01" y1="9" y2="9" />
+  <path d="M13.267 2.08a10 10 0 108.653 8.653" />
+  <path d="M15 10V9" />
   <path d="M16 5h6" />
+  <path d="M16.472 15a6 6 0 01-8.943 0" />
   <path d="M19 2v6" />
+  <path d="M9 10V9" />
 </svg>

@@ -1,4 +1,4 @@
-<%-- see https://lucide.dev/icons/meh --%>
+<%-- see https://lucide.dev/icons/layer-arrow-up --%>
 
 @import java.util.Map
 @import com.basecoatui.jte.util.JteHelper
@@ -23,11 +23,12 @@
   stroke-width="${calculatedStrokeWidth}"
   stroke-linecap="round"
   stroke-linejoin="round"
-  class="${JteHelper.classAppend("lucide lucide-meh-icon lucide-meh", attrs)}"
+  class="${JteHelper.classAppend("lucide lucide-layer-arrow-up-icon lucide-layer-arrow-up", attrs)}"
   $unsafe{JteHelper.attrs(attrs, "class")}
 >
-  <circle cx="12" cy="12" r="10" />
-  <line x1="8" x2="16" y1="15" y2="15" />
-  <line x1="9" x2="9.01" y1="9" y2="9" />
-  <line x1="15" x2="15.01" y1="9" y2="9" />
+  <path d="M12 14V4" />
+  <path
+    d="M7.674 10.774 2.58 13.09a1 1 0 000 1.822l8.6 3.91a2 2 0 001.65 0l8.58-3.9a1 1 0 00.59-.92 1 1 0 00-.59-.922l-5.078-2.308"
+  />
+  <path d="m9 7 3-3 3 3" />
 </svg>

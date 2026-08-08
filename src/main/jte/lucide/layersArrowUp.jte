@@ -1,4 +1,4 @@
-<%-- see https://lucide.dev/icons/annoyed --%>
+<%-- see https://lucide.dev/icons/layers-arrow-up --%>
 
 @import java.util.Map
 @import com.basecoatui.jte.util.JteHelper
@@ -23,11 +23,13 @@
   stroke-width="${calculatedStrokeWidth}"
   stroke-linecap="round"
   stroke-linejoin="round"
-  class="${JteHelper.classAppend("lucide lucide-annoyed-icon lucide-annoyed", attrs)}"
+  class="${JteHelper.classAppend("lucide lucide-layers-arrow-up-icon lucide-layers-arrow-up", attrs)}"
   $unsafe{JteHelper.attrs(attrs, "class")}
 >
-  <circle cx="12" cy="12" r="10" />
-  <path d="M8 15h8" />
-  <path d="M8 9h2" />
-  <path d="M14 9h2" />
+  <path d="M12 12V2" />
+  <path d="M2 17.002a1 1 0 00.58.91l8.6 3.91a2 2 0 001.65 0l8.58-3.9a1 1 0 00.59-.92" />
+  <path
+    d="M7.674 8.774 2.58 11.09a1 1 0 000 1.822l8.6 3.91a2 2 0 001.65 0l8.58-3.9a1 1 0 00.59-.92 1 1 0 00-.59-.922l-5.078-2.308"
+  />
+  <path d="m9 5 3-3 3 3" />
 </svg>

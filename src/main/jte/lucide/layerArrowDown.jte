@@ -1,4 +1,4 @@
-<%-- see https://lucide.dev/icons/frown --%>
+<%-- see https://lucide.dev/icons/layer-arrow-down --%>
 
 @import java.util.Map
 @import com.basecoatui.jte.util.JteHelper
@@ -23,11 +23,13 @@
   stroke-width="${calculatedStrokeWidth}"
   stroke-linecap="round"
   stroke-linejoin="round"
-  class="${JteHelper.classAppend("lucide lucide-frown-icon lucide-frown", attrs)}"
+  class="${JteHelper.classAppend("lucide lucide-layer-arrow-down-icon lucide-layer-arrow-down", attrs)}"
   $unsafe{JteHelper.attrs(attrs, "class")}
 >
-  <circle cx="12" cy="12" r="10" />
-  <path d="M16 16s-1.5-2-4-2-4 2-4 2" />
-  <line x1="9" x2="9.01" y1="9" y2="9" />
-  <line x1="15" x2="15.01" y1="9" y2="9" />
+  <path d="M12 10v10" />
+  <path d="M22 10a1 1 0 01-.59.92l-5.077 2.308" />
+  <path
+    d="M22.017 10.005a1 1 0 00-.597-.916l-8.59-3.91a2 2 0 00-1.66.001L2.6 9.08a1 1 0 00-.02 1.831l5.093 2.316"
+  />
+  <path d="m9 17 3 3 3-3" />
 </svg>

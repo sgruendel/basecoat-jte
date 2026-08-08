@@ -1,4 +1,4 @@
-<%-- see https://lucide.dev/icons/calendar-check --%>
+<%-- see https://lucide.dev/icons/face-expressionless --%>
 
 @import java.util.Map
 @import com.basecoatui.jte.util.JteHelper
@@ -23,12 +23,11 @@
   stroke-width="${calculatedStrokeWidth}"
   stroke-linecap="round"
   stroke-linejoin="round"
-  class="${JteHelper.classAppend("lucide lucide-calendar-check-icon lucide-calendar-check", attrs)}"
+  class="${JteHelper.classAppend("lucide lucide-face-expressionless-icon lucide-face-expressionless", attrs)}"
   $unsafe{JteHelper.attrs(attrs, "class")}
 >
-  <path d="M8 2v3" />
-  <path d="M16 2v3" />
-  <rect x="3" y="3" width="18" height="18" rx="2" />
-  <path d="M3 9h18" />
-  <path d="m9 15 2 2 4-4" />
+  <path d="M14 10h2" />
+  <path d="M8 10h2" />
+  <path d="M8 16h8" />
+  <circle cx="12" cy="12" r="10" />
 </svg>
