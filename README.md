@@ -1,6 +1,6 @@
 # basecoat-jte
 
-[![Maven Tests](https://github.com/sgruendel/basecoat-jte/actions/workflows/maven-tests.yml/badge.svg)](https://github.com/sgruendel/basecoat-jte/actions/workflows/maven-tests.yml)
+[![Maven Tests](https://github.com/sgruendel/basecoat-jte/actions/workflows/maven-tests.yaml/badge.svg)](https://github.com/sgruendel/basecoat-jte/actions/workflows/maven-tests.yaml)
 
 JTE templates for [Basecoat](https://basecoatui.com/) components and
 [Lucide](https://lucide.dev/) icons.
@@ -45,11 +45,7 @@ Example:
 @template.lucide.bookOpen(attrs = Map.of("class", "size-4"))
 @template.lucide.circleCheck(attrs = Map.of("aria-hidden", "true"))
 @template.lucide.loaderCircle(
-  attrs = Map.of(
-    "class", "animate-spin",
-    "role", "status",
-    "aria-label", "Loading"
-  )
+  attrs = Map.of("class", "animate-spin", "role", "status", "aria-label", "Loading")
 )
 ```
 
@@ -148,7 +144,7 @@ Example dropdown usage:
   content = @`
     <div role="menuitem">Profile</div>
     <div role="menuitem">Billing</div>
-    <hr role="separator">
+    <hr role="separator" />
     <div role="menuitem">Log out</div>
   `
 )
@@ -167,11 +163,10 @@ Example select usage:
   triggerAttrs = Map.of("class", "w-[180px]"),
   selected = "blueberry",
   items = List.of(
-    Item.of("Fruits", List.of(
-      Item.of("Apple", "apple"),
-      Item.of("Banana", "banana"),
-      Item.of("Blueberry", "blueberry")
-    ))
+    Item.of(
+      "Fruits",
+      List.of(Item.of("Apple", "apple"), Item.of("Banana", "banana"), Item.of("Blueberry", "blueberry"))
+    )
   )
 )
 ```
