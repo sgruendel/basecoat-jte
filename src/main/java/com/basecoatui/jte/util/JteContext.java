@@ -1,6 +1,9 @@
 package com.basecoatui.jte.util;
 
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
 
 public class JteContext {
@@ -13,6 +16,14 @@ public class JteContext {
 
     public static void reset() {
         JteContext.model.remove();
+    }
+
+    public static boolean isDevserver() {
+        return "1".equals(getRequest().getHeader("X-Devserver"));
+    }
+
+    public static HttpServletRequest getRequest() {
+        return ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
     }
 
 }
