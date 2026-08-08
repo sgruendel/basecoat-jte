@@ -1,6 +1,6 @@
 spring:
   application:
-    name: jte
+    name: basecoat-jte
 gg:
   jte:
     development-mode: false
