@@ -3,4 +3,4 @@ spring:
     name: jte
 gg:
   jte:
-    development-mode: true
+    development-mode: false
