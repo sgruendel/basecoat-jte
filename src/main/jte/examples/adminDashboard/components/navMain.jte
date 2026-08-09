@@ -1,14 +1,15 @@
 @import java.util.List
-@import java.util.Map
+@import gg.jte.Content
 
 !{
-  // TODO replace Map.entry with a record
+  record Item(String name, Content icon) {}
+
   final var items = List.of(
-    Map.entry("Dashboard", @`@template.lucide.gauge()`),
-    Map.entry("Lifecycle", @`@template.lucide.layoutList()`),
-    Map.entry("Analytics", @`@template.lucide.chartColumnBig()`),
-    Map.entry("Projects", @`@template.lucide.folder()`),
-    Map.entry("Team", @`@template.lucide.users()`)
+    new Item("Dashboard", @`@template.lucide.gauge()`),
+    new Item("Lifecycle", @`@template.lucide.layoutList()`),
+    new Item("Analytics", @`@template.lucide.chartColumnBig()`),
+    new Item("Projects", @`@template.lucide.folder()`),
+    new Item("Team", @`@template.lucide.users()`)
   );
 }
 
@@ -18,8 +19,8 @@
     @for(var item : items)
       <li>
         <a href="#">
-          ${item.getValue()}
-          <span>${item.getKey()}</span>
+          ${item.icon}
+          <span>${item.name}</span>
         </a>
       </li>
     @endfor
