@@ -1,20 +1,32 @@
 package com.basecoatui.jte;
 
-import com.basecoatui.jte.examples.model.User;
+import com.basecoatui.jte.examples.models.OutlineQuery;
+import com.basecoatui.jte.examples.admindashboard.services.OutlineService;
+import com.basecoatui.jte.examples.models.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
 
+import static org.springframework.http.HttpStatus.NOT_FOUND;
+
 
 @Controller
 @RequestMapping("/examples")
 public class ExamplesController {
+
+    private final OutlineService outlineService;
+
+    public ExamplesController(final OutlineService outlineService) {
+        this.outlineService = outlineService;
+    }
 
     // TODO add proper class for data with toJson() method replacing JsonHelper
     private static final List<Map<String, Object>> chartData = List.of(
@@ -116,8 +128,30 @@ public class ExamplesController {
 
         final var user = new User("shadcn", "m@example.com", "https://github.com/shadcn.png");
         model.addAttribute("user", user);
-        model.addAttribute("chartData", "TODO: data.json");
+        model.addAttribute("outlinePage", outlineService.findPage(OutlineQuery.from(null, null, null, null)));
         return "examples/adminDashboard/index";
+    }
+
+    @GetMapping("/admin-dashboard/outlines")
+    public String outline(
+        @RequestParam(required = false) final Integer page,
+        @RequestParam(required = false) final Integer size,
+        @RequestParam(required = false) final String sort,
+        @RequestParam(required = false) final String direction,
+        final Model model
+    ) {
+        model.addAttribute("page", outlineService.findPage(OutlineQuery.from(page, size, sort, direction)));
+        return "examples/adminDashboard/components/dataTable/outlineResults";
+    }
+
+    @GetMapping("/admin-dashboard/outlines/{id}")
+    public String outlineDetails(@PathVariable final long id, final Model model) {
+        model.addAttribute(
+            "row",
+            outlineService.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Outline row not found"))
+        );
+        return "examples/adminDashboard/components/dataTable/outlineDetails";
     }
 
     @GetMapping("/admin-dashboard/chart-area-interactive")

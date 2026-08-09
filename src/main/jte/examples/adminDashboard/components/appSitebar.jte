@@ -1,5 +1,5 @@
 @import java.util.Map
-@import com.basecoatui.jte.examples.model.User
+@import com.basecoatui.jte.examples.models.User
 
 @param User user
 

@@ -1,11 +1,10 @@
-@import com.basecoatui.jte.examples.model.User
-@import java.util.List
-@import java.util.Map
+@import com.basecoatui.jte.examples.models.User
+@import com.basecoatui.jte.examples.models.OutlinePage
 
 @param User user
-@param String chartData
+@param OutlinePage outlinePage
 
 @template.examples.layout(
   pageTitle = "Admin Dashboard",
-  content=@`@template.examples.adminDashboard.page(user = user, chartData = chartData)`
+  content=@`@template.examples.adminDashboard.page(user = user, outlinePage = outlinePage)`
 )
