@@ -153,20 +153,13 @@
           selected = Integer.toString(page.size()),
           items = sizes,
           mainAttrs = Map.of(
-            "class",
-            "w-20",
-            "hx-get",
-            "/examples/admin-dashboard/outlines",
-            "hx-trigger",
-            "change",
-            "hx-include",
-            "#rows-per-page input",
-            "hx-vals",
-            pageSizeValues,
-            "hx-target",
-            "#outline-results",
-            "hx-swap",
-            "outerHTML"
+            "class", "w-20",
+            "hx-get", "/examples/admin-dashboard/outlines",
+            "hx-trigger", "change",
+            "hx-include", "#rows-per-page input",
+            "hx-vals", pageSizeValues,
+            "hx-target", "#outline-results",
+            "hx-swap", "outerHTML"
           ),
           triggerAttrs = Map.of("class", "h-8 w-20", "aria-labelledby", "rows-per-page-label rows-per-page-trigger"),
           popoverAttrs = Map.of("data-side", "top")
