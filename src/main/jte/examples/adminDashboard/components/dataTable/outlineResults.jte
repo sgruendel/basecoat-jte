@@ -5,17 +5,9 @@
 @import java.util.Map
 
 @param OutlinePage page
-@param List<Item> pageSizeItems = null
+@param List<Item> pageSizeItems
 
 !{
-  // TODO server side enum
-  final List<Item> sizes = pageSizeItems != null ? pageSizeItems : List.of(
-    Item.of("10", "10"),
-    Item.of("20", "20"),
-    Item.of("30", "30"),
-    Item.of("40", "40"),
-    Item.of("50", "50")
-  );
   final String baseUrl = "/examples/admin-dashboard/outlines?size=" + page.size()
     + "&sort=" + page.sort().queryValue() + "&direction=" + page.direction().queryValue();
   // TODO use JsonHelper to generate JSON string
@@ -151,7 +143,7 @@
           id = "rows-per-page",
           name = "size",
           selected = Integer.toString(page.size()),
-          items = sizes,
+          items = pageSizeItems,
           mainAttrs = Map.of(
             "class", "w-20",
             "hx-get", "/examples/admin-dashboard/outlines",

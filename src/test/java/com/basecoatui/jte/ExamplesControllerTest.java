@@ -29,6 +29,7 @@ class ExamplesControllerTest {
             .andExpect(status().isOk())
             .andExpect(content().string(containsString("Cover page")))
             .andExpect(content().string(containsString("Page 1 of 7")))
+            .andExpect(content().string(containsString("data-value=\"50\"")))
             .andExpect(content().string(containsString("0 of 68 row(s) selected.")));
     }
 
@@ -42,6 +43,7 @@ class ExamplesControllerTest {
             .andExpect(status().isOk())
             .andExpect(content().string(containsString("id=\"outline-results\"")))
             .andExpect(content().string(containsString("Page 2 of 4")))
+            .andExpect(content().string(containsString("data-value=\"50\"")))
             .andExpect(content().string(containsString("aria-sort=\"descending\"")))
             .andExpect(content().string(not(containsString("Document views"))));
     }

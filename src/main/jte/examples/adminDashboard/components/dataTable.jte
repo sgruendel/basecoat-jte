@@ -6,6 +6,7 @@
 @import com.basecoatui.jte.util.BasecoatSelect.Item
 
 @param OutlinePage page
+@param List<Item> pageSizeItems
 
 !{
   final List<Item> viewItems = List.of(
@@ -21,14 +22,6 @@
     Item.of("Target", "target"),
     Item.of("Limit", "limit"),
     Item.of("Reviewer", "reviewer")
-  );
-
-  final List<Item> pageSizeItems = List.of(
-    Item.of("10", "10"),
-    Item.of("20", "20"),
-    Item.of("30", "30"),
-    Item.of("40", "40"),
-    Item.of("50", "50")
   );
 
   final Content emptyPanel = @`<div class="aspect-video rounded-lg border border-dashed"></div>`;

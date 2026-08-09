@@ -4,6 +4,7 @@ import com.basecoatui.jte.examples.admindashboard.models.OutlineQuery;
 import com.basecoatui.jte.examples.admindashboard.services.ChartDataService;
 import com.basecoatui.jte.examples.admindashboard.services.OutlineService;
 import com.basecoatui.jte.examples.models.User;
+import com.basecoatui.jte.util.BasecoatSelect.Item;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,12 +13,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.List;
+
 import static org.springframework.http.HttpStatus.NOT_FOUND;
 
 
 @Controller
 @RequestMapping("/examples")
 public class ExamplesController {
+
+    private static final List<Item> PAGE_SIZE_ITEMS = List.of(
+        Item.of("10", "10"),
+        Item.of("20", "20"),
+        Item.of("30", "30"),
+        Item.of("40", "40"),
+        Item.of("50", "50")
+    );
 
     private final ChartDataService chartDataService;
 
@@ -34,6 +45,7 @@ public class ExamplesController {
         final var user = new User("shadcn", "m@example.com", "https://github.com/shadcn.png");
         model.addAttribute("user", user);
         model.addAttribute("outlinePage", outlineService.findPage(OutlineQuery.from(null, null, null, null)));
+        model.addAttribute("pageSizeItems", PAGE_SIZE_ITEMS);
         return "examples/adminDashboard/index";
     }
 
@@ -46,6 +58,7 @@ public class ExamplesController {
         final Model model
     ) {
         model.addAttribute("page", outlineService.findPage(OutlineQuery.from(page, size, sort, direction)));
+        model.addAttribute("pageSizeItems", PAGE_SIZE_ITEMS);
         return "examples/adminDashboard/components/dataTable/outlineResults";
     }
 
