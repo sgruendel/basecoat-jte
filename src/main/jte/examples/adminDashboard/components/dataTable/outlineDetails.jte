@@ -1,20 +1,13 @@
+@import com.basecoatui.jte.examples.admindashboard.models.ChartDataPoint
 @import com.basecoatui.jte.examples.admindashboard.models.OutlineRow
 @import com.basecoatui.jte.util.JsonHelper
 @import java.util.List
 @import java.util.Map
 
 @param OutlineRow row
+@param List<ChartDataPoint> detailData
 
 !{
-  // TODO request server side data
-  final List<Map<String, Object>> detailData = List.of(
-    Map.of("month", "January", "desktop", 186, "mobile", 80),
-    Map.of("month", "February", "desktop", 305, "mobile", 200),
-    Map.of("month", "March", "desktop", 237, "mobile", 120),
-    Map.of("month", "April", "desktop", 73, "mobile", 190),
-    Map.of("month", "May", "desktop", 209, "mobile", 130),
-    Map.of("month", "June", "desktop", 214, "mobile", 140)
-  );
   // TODO server side enum
   final Map<String, Object> detailSeries = Map.of(
     "desktop", Map.of("label", "Desktop", "color", "var(--chart-1)", "surface", "gradient"),
@@ -23,7 +16,6 @@
 }
 
 <article>
-  <%-- TODO this is currently populated via JavaScript, should be an htmx request--%>
   <header>
     <h2 id="row-details-title">${row.header()}</h2>
     <p>Document outline details</p>
@@ -34,7 +26,7 @@
         <canvas
           id="detail-chart"
           data-chart-type="line"
-          data-chart-label-key="month"
+          data-chart-label-key="date"
           data-chart-data="${JsonHelper.write(detailData)}"
           data-chart-series="${JsonHelper.write(detailSeries)}"
           aria-label="Sample visitors for ${row.header()}"

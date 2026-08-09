@@ -56,6 +56,7 @@ public class ExamplesController {
             outlineService.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Outline row not found"))
         );
+        model.addAttribute("detailData", chartDataService.findDetailChartData());
         return "examples/adminDashboard/components/dataTable/outlineDetails";
     }
 
@@ -75,4 +76,3 @@ public class ExamplesController {
     }
 
 }
-

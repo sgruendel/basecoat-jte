@@ -7,4 +7,6 @@ import java.util.List;
 public interface ChartDataService {
 
     List<ChartDataPoint> findLastDays(int days);
+
+    List<ChartDataPoint> findDetailChartData();
 }

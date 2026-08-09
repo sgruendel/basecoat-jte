@@ -64,6 +64,8 @@ class ExamplesControllerTest {
             .andExpect(status().isOk())
             .andExpect(content().string(containsString("Cover page")))
             .andExpect(content().string(containsString("Document outline details")))
+            .andExpect(content().string(containsString("January")))
+            .andExpect(content().string(containsString("June")))
             .andExpect(content().string(not(containsString("<form"))));
     }
 

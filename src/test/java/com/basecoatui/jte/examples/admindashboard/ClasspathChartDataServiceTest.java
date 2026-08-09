@@ -33,4 +33,15 @@ class ClasspathChartDataServiceTest {
         assertThat(rows.getFirst().date()).isEqualTo("2024-06-23");
         assertThat(rows.getLast().date()).isEqualTo("2024-06-30");
     }
+
+    @Test
+    void loadsTheDetailDrawerChartFixture() {
+        final var rows = service.findDetailChartData();
+
+        assertThat(rows).hasSize(6);
+        assertThat(rows.getFirst().date()).isEqualTo("January");
+        assertThat(rows.getFirst().desktop()).isEqualTo(186);
+        assertThat(rows.getLast().date()).isEqualTo("June");
+        assertThat(rows.getLast().mobile()).isEqualTo(140);
+    }
 }
