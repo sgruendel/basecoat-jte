@@ -119,7 +119,6 @@ document.body.addEventListener("htmx:afterSwap", (event) => {
   if (event.target.id === "row-details") {
     event.target.dataset.side = window.matchMedia("(max-width: 767px)").matches ? "bottom" : "right";
     requestAnimationFrame(() => {
-      window.basecoat?.initAll?.();
       renderDetailChart();
       event.target.showModal();
     });

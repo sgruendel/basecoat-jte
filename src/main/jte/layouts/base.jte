@@ -74,23 +74,10 @@
     <%-- CSS --%>
     <%-- already in app.css link rel="stylesheet" href="/assets/styles.css">
     <%-- JS --%>
-    <script src="/js/accordion.js" defer></script>
-    <script src="/js/basecoat.js" defer></script>
-    <script src="/js/combobox.js" defer></script>
-    <script src="/js/command.js" defer></script>
-    <script src="/js/drawer.js" defer></script>
-    <script src="/js/dropdown-menu.js" defer></script>
-    <script src="/js/popover.js" defer></script>
-    <script src="/js/range.js" defer></script>
-    <script src="/js/select.js" defer></script>
-    <script src="/js/sidebar.js" defer></script>
-    <script src="/js/tabs.js" defer></script>
-    <script src="/js/toast.js" defer></script>
     <%-- Highlight.js --%>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/django.min.js"></script>
-    <%-- TODO Bootify --%>
-    <%--link href="/css/bundle.css" rel="stylesheet" /--%>
+    <%-- Basecoat components and application behavior --%>
     <script src="/js/bundle.js" defer></script>
 
     <script>
