@@ -72,4 +72,13 @@ class ExamplesControllerTest {
         mockMvc.perform(get("/examples/admin-dashboard/outlines/999"))
             .andExpect(status().isNotFound());
     }
+
+    @Test
+    void chartEndpointLoadsAndFiltersTheClasspathFixture() throws Exception {
+        mockMvc.perform(get("/examples/admin-dashboard/chart-area-interactive").param("range", "7d"))
+            .andExpect(status().isOk())
+            .andExpect(content().string(containsString("2024-06-23")))
+            .andExpect(content().string(containsString("2024-06-30")))
+            .andExpect(content().string(not(containsString("2024-06-22"))));
+    }
 }

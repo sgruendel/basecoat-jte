@@ -1,10 +1,11 @@
 @import gg.jte.support.ForSupport
 @import java.util.List
 @import java.util.Map
+@import com.basecoatui.jte.examples.admindashboard.models.ChartDataPoint
 @import com.basecoatui.jte.util.BasecoatSelect.Item
 @import com.basecoatui.jte.util.JsonHelper
 
-@param List<Map<String, Object>> data = null
+@param List<ChartDataPoint> data = null
 @param String range = "90d"
 <%-- TODO derive default value from enum, also check Controller for default value --%>
 
@@ -56,18 +57,12 @@
           name = "range",
           selected = range,
           mainAttrs = Map.of(
-            "class",
-            "w-40 md:hidden",
-            "hx-get",
-            "/examples/admin-dashboard/chart-area-interactive",
-            "hx-trigger",
-            "change",
-            "hx-include",
-            "#chart-range input",
-            "hx-target",
-            "#chart-area-section",
-            "hx-swap",
-            "outerHTML"
+            "class", "w-40 md:hidden",
+            "hx-get", "/examples/admin-dashboard/chart-area-interactive",
+            "hx-trigger", "change",
+            "hx-include", "#chart-range input",
+            "hx-target", "#chart-area-section",
+            "hx-swap", "outerHTML"
           ),
           triggerAttrs = Map.of("class", "w-40", "aria-labelledby", "chart-range-label chart-range-trigger"),
           popoverAttrs = Map.of("data-align", "end"),
