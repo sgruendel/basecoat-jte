@@ -32,7 +32,9 @@
   <div class="overflow-hidden rounded-lg border">
     <div class="table-container">
       <table class="table">
-        <caption class="sr-only">Document outline</caption>
+        <caption class="sr-only">
+          Document outline
+        </caption>
         <thead class="bg-muted sticky top-0 z-10">
           <tr>
             <th class="w-10 text-center">
@@ -118,7 +120,9 @@
                 <td data-column="status">
                   <span class="badge whitespace-nowrap" data-variant="outline">
                     @if(row.status().equals("Done"))
-                      @template.lucide.circleCheckBig(attrs = Map.of("class", "size-3.5 fill-green-500 text-white dark:fill-green-400"))
+                      @template.lucide.circleCheckBig(
+                        attrs = Map.of("class", "size-3.5 fill-green-500 text-white dark:fill-green-400")
+                      )
                     @else
                       @template.lucide.loader(attrs = Map.of("class", "size-3.5 animate-spin"))
                     @endif
@@ -149,13 +153,20 @@
           selected = Integer.toString(page.size()),
           items = sizes,
           mainAttrs = Map.of(
-            "class", "w-20",
-            "hx-get", "/examples/admin-dashboard/outlines",
-            "hx-trigger", "change",
-            "hx-include", "#rows-per-page input",
-            "hx-vals", pageSizeValues,
-            "hx-target", "#outline-results",
-            "hx-swap", "outerHTML"
+            "class",
+            "w-20",
+            "hx-get",
+            "/examples/admin-dashboard/outlines",
+            "hx-trigger",
+            "change",
+            "hx-include",
+            "#rows-per-page input",
+            "hx-vals",
+            pageSizeValues,
+            "hx-target",
+            "#outline-results",
+            "hx-swap",
+            "outerHTML"
           ),
           triggerAttrs = Map.of("class", "h-8 w-20", "aria-labelledby", "rows-per-page-label rows-per-page-trigger"),
           popoverAttrs = Map.of("data-side", "top")
@@ -164,27 +175,100 @@
       <div class="text-sm font-medium">Page ${page.page() + 1} of ${page.totalPages()}</div>
       <nav class="ml-auto flex items-center gap-2" aria-label="Outline pagination">
         @if(page.hasPrevious())
-          <button type="button" class="btn hidden lg:flex" data-variant="outline" data-size="icon-sm" aria-label="Go to first page" hx-get="${baseUrl}&page=0" hx-target="#outline-results" hx-swap="outerHTML">
+          <button
+            type="button"
+            class="btn hidden lg:flex"
+            data-variant="outline"
+            data-size="icon-sm"
+            aria-label="Go to first page"
+            hx-get="${baseUrl}&page=0"
+            hx-target="#outline-results"
+            hx-swap="outerHTML"
+          >
             @template.lucide.chevronFirst()
           </button>
-          <button type="button" class="btn" data-variant="outline" data-size="icon-sm" aria-label="Go to previous page" hx-get="${baseUrl}&page=${page.page() - 1}" hx-target="#outline-results" hx-swap="outerHTML">
+          <button
+            type="button"
+            class="btn"
+            data-variant="outline"
+            data-size="icon-sm"
+            aria-label="Go to previous page"
+            hx-get="${baseUrl}&page=${page.page() - 1}"
+            hx-target="#outline-results"
+            hx-swap="outerHTML"
+          >
             @template.lucide.chevronLeft()
           </button>
         @else
-          <button type="button" class="btn hidden lg:flex" data-variant="outline" data-size="icon-sm" aria-label="Go to first page" disabled>@template.lucide.chevronFirst()</button>
-          <button type="button" class="btn" data-variant="outline" data-size="icon-sm" aria-label="Go to previous page" disabled>@template.lucide.chevronLeft()</button>
+          <button
+            type="button"
+            class="btn hidden lg:flex"
+            data-variant="outline"
+            data-size="icon-sm"
+            aria-label="Go to first page"
+            disabled
+          >
+            @template.lucide.chevronFirst()
+          </button>
+          <button
+            type="button"
+            class="btn"
+            data-variant="outline"
+            data-size="icon-sm"
+            aria-label="Go to previous page"
+            disabled
+          >
+            @template.lucide.chevronLeft()
+          </button>
         @endif
 
+
         @if(page.hasNext())
-          <button type="button" class="btn" data-variant="outline" data-size="icon-sm" aria-label="Go to next page" hx-get="${baseUrl}&page=${page.page() + 1}" hx-target="#outline-results" hx-swap="outerHTML">
+          <button
+            type="button"
+            class="btn"
+            data-variant="outline"
+            data-size="icon-sm"
+            aria-label="Go to next page"
+            hx-get="${baseUrl}&page=${page.page() + 1}"
+            hx-target="#outline-results"
+            hx-swap="outerHTML"
+          >
             @template.lucide.chevronRight()
           </button>
-          <button type="button" class="btn hidden lg:flex" data-variant="outline" data-size="icon-sm" aria-label="Go to last page" hx-get="${baseUrl}&page=${page.totalPages() - 1}" hx-target="#outline-results" hx-swap="outerHTML">
+          <button
+            type="button"
+            class="btn hidden lg:flex"
+            data-variant="outline"
+            data-size="icon-sm"
+            aria-label="Go to last page"
+            hx-get="${baseUrl}&page=${page.totalPages() - 1}"
+            hx-target="#outline-results"
+            hx-swap="outerHTML"
+          >
             @template.lucide.chevronLast()
           </button>
         @else
-          <button type="button" class="btn" data-variant="outline" data-size="icon-sm" aria-label="Go to next page" disabled>@template.lucide.chevronRight()</button>
-          <button type="button" class="btn hidden lg:flex" data-variant="outline" data-size="icon-sm" aria-label="Go to last page" disabled>@template.lucide.chevronLast()</button>
+          <button
+            type="button"
+            class="btn"
+            data-variant="outline"
+            data-size="icon-sm"
+            aria-label="Go to next page"
+            disabled
+          >
+            @template.lucide.chevronRight()
+          </button>
+          <button
+            type="button"
+            class="btn hidden lg:flex"
+            data-variant="outline"
+            data-size="icon-sm"
+            aria-label="Go to last page"
+            disabled
+          >
+            @template.lucide.chevronLast()
+          </button>
         @endif
       </nav>
     </div>

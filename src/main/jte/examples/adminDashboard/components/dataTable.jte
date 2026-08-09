@@ -110,9 +110,4 @@
   </div>
 </section>
 
-<dialog
-  id="row-details"
-  class="drawer"
-  data-side="right"
-  aria-label="Document details"
-></dialog>
+<dialog id="row-details" class="drawer" data-side="right" aria-label="Document details"></dialog>

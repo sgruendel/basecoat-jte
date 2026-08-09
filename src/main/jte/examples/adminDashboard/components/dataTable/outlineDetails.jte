@@ -49,12 +49,18 @@
     </div>
 
     <dl class="grid grid-cols-[minmax(7rem,auto)_1fr] gap-x-4 gap-y-3 text-sm">
-      <dt class="text-muted-foreground">Header</dt><dd>${row.header()}</dd>
-      <dt class="text-muted-foreground">Section Type</dt><dd>${row.type()}</dd>
-      <dt class="text-muted-foreground">Status</dt><dd>${row.status()}</dd>
-      <dt class="text-muted-foreground">Target</dt><dd>${row.target()}</dd>
-      <dt class="text-muted-foreground">Limit</dt><dd>${row.limit()}</dd>
-      <dt class="text-muted-foreground">Reviewer</dt><dd>${row.reviewer()}</dd>
+      <dt class="text-muted-foreground">Header</dt>
+      <dd>${row.header()}</dd>
+      <dt class="text-muted-foreground">Section Type</dt>
+      <dd>${row.type()}</dd>
+      <dt class="text-muted-foreground">Status</dt>
+      <dd>${row.status()}</dd>
+      <dt class="text-muted-foreground">Target</dt>
+      <dd>${row.target()}</dd>
+      <dt class="text-muted-foreground">Limit</dt>
+      <dd>${row.limit()}</dd>
+      <dt class="text-muted-foreground">Reviewer</dt>
+      <dd>${row.reviewer()}</dd>
     </dl>
   </section>
   <footer>

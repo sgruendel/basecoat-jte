@@ -23,7 +23,7 @@
 >
   <button
     type="button"
-    class="btn h-auto w-full justify-${alignClass.equals("text-right") ? "end" : "start"} px-0 font-medium"
+    class="btn justify-${alignClass.equals("text-right") ? "end" : "start"} h-auto w-full px-0 font-medium"
     data-variant="ghost"
     hx-get="${url}"
     hx-target="#outline-results"
