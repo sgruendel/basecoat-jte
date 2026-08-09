@@ -1,4 +1,4 @@
-@import com.basecoatui.jte.examples.models.OutlineRow
+@import com.basecoatui.jte.examples.admindashboard.models.OutlineRow
 @import com.basecoatui.jte.util.JsonHelper
 @import java.util.List
 @import java.util.Map

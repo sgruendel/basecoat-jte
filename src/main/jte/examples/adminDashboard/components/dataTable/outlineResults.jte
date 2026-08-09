@@ -1,5 +1,5 @@
-@import com.basecoatui.jte.examples.models.OutlinePage
-@import com.basecoatui.jte.examples.models.OutlineSort
+@import com.basecoatui.jte.examples.admindashboard.models.OutlinePage
+@import com.basecoatui.jte.examples.admindashboard.models.OutlineSort
 @import com.basecoatui.jte.util.BasecoatSelect.Item
 @import java.util.List
 @import java.util.Map

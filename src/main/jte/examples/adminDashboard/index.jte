@@ -1,5 +1,5 @@
 @import com.basecoatui.jte.examples.models.User
-@import com.basecoatui.jte.examples.models.OutlinePage
+@import com.basecoatui.jte.examples.admindashboard.models.OutlinePage
 
 @param User user
 @param OutlinePage outlinePage

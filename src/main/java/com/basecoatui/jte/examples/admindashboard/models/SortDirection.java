@@ -1,4 +1,4 @@
-package com.basecoatui.jte.examples.models;
+package com.basecoatui.jte.examples.admindashboard.models;
 
 public enum SortDirection {
     ASC,

@@ -1,4 +1,4 @@
-package com.basecoatui.jte.examples.models;
+package com.basecoatui.jte.examples.admindashboard.models;
 
 import java.util.List;
 

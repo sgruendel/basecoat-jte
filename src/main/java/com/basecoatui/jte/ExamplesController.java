@@ -1,6 +1,6 @@
 package com.basecoatui.jte;
 
-import com.basecoatui.jte.examples.models.OutlineQuery;
+import com.basecoatui.jte.examples.admindashboard.models.OutlineQuery;
 import com.basecoatui.jte.examples.admindashboard.services.OutlineService;
 import com.basecoatui.jte.examples.models.User;
 import org.springframework.stereotype.Controller;

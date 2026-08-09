@@ -1,10 +1,10 @@
 package com.basecoatui.jte.examples.admindashboard;
 
 import com.basecoatui.jte.examples.admindashboard.services.ClasspathOutlineService;
-import com.basecoatui.jte.examples.models.OutlineQuery;
-import com.basecoatui.jte.examples.models.OutlineRow;
-import com.basecoatui.jte.examples.models.OutlineSort;
-import com.basecoatui.jte.examples.models.SortDirection;
+import com.basecoatui.jte.examples.admindashboard.models.OutlineQuery;
+import com.basecoatui.jte.examples.admindashboard.models.OutlineRow;
+import com.basecoatui.jte.examples.admindashboard.models.OutlineSort;
+import com.basecoatui.jte.examples.admindashboard.models.SortDirection;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import tools.jackson.databind.json.JsonMapper;

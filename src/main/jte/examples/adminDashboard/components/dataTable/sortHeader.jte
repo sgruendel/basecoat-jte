@@ -1,6 +1,6 @@
-@import com.basecoatui.jte.examples.models.OutlinePage
-@import com.basecoatui.jte.examples.models.OutlineSort
-@import com.basecoatui.jte.examples.models.SortDirection
+@import com.basecoatui.jte.examples.admindashboard.models.OutlinePage
+@import com.basecoatui.jte.examples.admindashboard.models.OutlineSort
+@import com.basecoatui.jte.examples.admindashboard.models.SortDirection
 @import java.util.Map
 
 @param OutlinePage page

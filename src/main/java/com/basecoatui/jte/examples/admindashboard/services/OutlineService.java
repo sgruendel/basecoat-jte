@@ -1,8 +1,8 @@
 package com.basecoatui.jte.examples.admindashboard.services;
 
-import com.basecoatui.jte.examples.models.OutlinePage;
-import com.basecoatui.jte.examples.models.OutlineQuery;
-import com.basecoatui.jte.examples.models.OutlineRow;
+import com.basecoatui.jte.examples.admindashboard.models.OutlinePage;
+import com.basecoatui.jte.examples.admindashboard.models.OutlineQuery;
+import com.basecoatui.jte.examples.admindashboard.models.OutlineRow;
 
 import java.util.Optional;
 
