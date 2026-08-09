@@ -13,7 +13,7 @@
   final boolean active = page.sort() == field;
   final SortDirection nextDirection = active ? page.direction().reverse() : SortDirection.ASC;
   final String url = "/examples/admin-dashboard/outlines?page=0&size=" + page.size()
-    + "&sort=" + field.queryValue() + "&direction=" + nextDirection.queryValue();
+    + "&sort=" + field.queryValue() + "," + nextDirection.queryValue();
 }
 
 <th

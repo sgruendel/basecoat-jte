@@ -7,6 +7,8 @@ import com.basecoatui.jte.examples.admindashboard.models.OutlineSort;
 import com.basecoatui.jte.examples.admindashboard.models.SortDirection;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import tools.jackson.databind.json.JsonMapper;
 
 import java.util.Comparator;
@@ -24,7 +26,7 @@ class ClasspathOutlineServiceTest {
 
     @Test
     void loadsTheCompleteReactFixture() {
-        final var page = service.findPage(OutlineQuery.from(null, 50, null, null));
+        final var page = service.findPage(PageRequest.of(0, 50));
 
         assertThat(page.totalElements()).isEqualTo(68);
         assertThat(page.totalPages()).isEqualTo(2);
@@ -35,7 +37,7 @@ class ClasspathOutlineServiceTest {
 
     @Test
     void paginatesAndClampsRequestsPastTheLastPage() {
-        final var page = service.findPage(OutlineQuery.from(99, 20, "id", "asc"));
+        final var page = service.findPage(PageRequest.of(99, 20, Sort.by("id").ascending()));
 
         assertThat(page.page()).isEqualTo(3);
         assertThat(page.rows()).hasSize(8);
@@ -45,7 +47,7 @@ class ClasspathOutlineServiceTest {
 
     @Test
     void sortsNumericFieldsNumerically() {
-        final var page = service.findPage(OutlineQuery.from(0, 50, "target", "asc"));
+        final var page = service.findPage(PageRequest.of(0, 50, Sort.by("target").ascending()));
 
         assertThat(page.rows())
             .extracting(row -> Integer.parseInt(row.target()))
@@ -54,7 +56,7 @@ class ClasspathOutlineServiceTest {
 
     @Test
     void sortsTextCaseInsensitivelyAndUsesIdAsStableTieBreaker() {
-        final var page = service.findPage(OutlineQuery.from(0, 50, "status", "desc"));
+        final var page = service.findPage(PageRequest.of(0, 50, Sort.by("status").descending()));
 
         assertThat(page.rows())
             .extracting(row -> row.status().toLowerCase())
@@ -71,7 +73,7 @@ class ClasspathOutlineServiceTest {
 
     @Test
     void normalizesUnsupportedQueryValues() {
-        final var query = OutlineQuery.from(-2, 13, "missing", "sideways");
+        final var query = OutlineQuery.from(PageRequest.of(0, 13, Sort.by("missing").ascending()));
 
         assertThat(query.page()).isZero();
         assertThat(query.size()).isEqualTo(10);

@@ -5,6 +5,7 @@
 
 @param User user
 @param OutlinePage outlinePage
+@param String baseUrl
 @param List<Item> pageSizeItems
 
 @template.examples.layout(
@@ -12,6 +13,7 @@
   content=@`@template.examples.adminDashboard.page(
     user = user,
     outlinePage = outlinePage,
+    baseUrl = baseUrl,
     pageSizeItems = pageSizeItems
   )`
 )

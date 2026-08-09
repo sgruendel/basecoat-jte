@@ -6,6 +6,7 @@
 @import com.basecoatui.jte.util.BasecoatSelect.Item
 
 @param OutlinePage page
+@param String baseUrl
 @param List<Item> pageSizeItems
 
 !{
@@ -48,6 +49,7 @@
         @`
           @template.examples.adminDashboard.components.dataTable.outlinePanel(
             page = page,
+            baseUrl = baseUrl,
             pageSizeItems = pageSizeItems
           )
         `,

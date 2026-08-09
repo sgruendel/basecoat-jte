@@ -1,10 +1,11 @@
 package com.basecoatui.jte.examples.admindashboard.services;
 
- import com.basecoatui.jte.examples.admindashboard.models.OutlinePage;
+import com.basecoatui.jte.examples.admindashboard.models.OutlinePage;
 import com.basecoatui.jte.examples.admindashboard.models.OutlineQuery;
 import com.basecoatui.jte.examples.admindashboard.models.OutlineRow;
 import com.basecoatui.jte.examples.admindashboard.models.SortDirection;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import tools.jackson.core.JacksonException;
 import tools.jackson.core.type.TypeReference;
@@ -32,7 +33,8 @@ public class ClasspathOutlineService implements OutlineService {
     }
 
     @Override
-    public OutlinePage findPage(final OutlineQuery query) {
+    public OutlinePage findPage(final Pageable pageable) {
+        final OutlineQuery query = OutlineQuery.from(pageable);
         final List<OutlineRow> sortedRows = rows.stream()
             .sorted(comparator(query))
             .toList();

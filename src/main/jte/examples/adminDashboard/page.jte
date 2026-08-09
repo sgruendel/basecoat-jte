@@ -5,6 +5,7 @@
 
 @param User user
 @param OutlinePage outlinePage
+@param String baseUrl
 @param List<Item> pageSizeItems
 
 <script src="/js/admin-dashboard.js" defer></script>
@@ -17,6 +18,7 @@
     @template.examples.adminDashboard.components.chartAreaInteractive()
     @template.examples.adminDashboard.components.dataTable(
       page = outlinePage,
+      baseUrl = baseUrl,
       pageSizeItems = pageSizeItems
     )
   </div>

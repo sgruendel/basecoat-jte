@@ -1,18 +1,19 @@
 @import com.basecoatui.jte.examples.admindashboard.models.OutlinePage
 @import com.basecoatui.jte.examples.admindashboard.models.OutlineSort
 @import com.basecoatui.jte.util.BasecoatSelect.Item
+@import com.basecoatui.jte.util.JsonHelper
 @import java.util.List
 @import java.util.Map
 
 @param OutlinePage page
+@param String baseUrl
 @param List<Item> pageSizeItems
 
 !{
-  final String baseUrl = "/examples/admin-dashboard/outlines?size=" + page.size()
-    + "&sort=" + page.sort().queryValue() + "&direction=" + page.direction().queryValue();
-  // TODO use JsonHelper to generate JSON string
-  final String pageSizeValues = "{\"page\":\"0\",\"sort\":\"" + page.sort().queryValue()
-    + "\",\"direction\":\"" + page.direction().queryValue() + "\"}";
+  final String pageSizeValues = JsonHelper.write(Map.of(
+    "page", "0",
+    "sort", page.sort().queryValue() + "," + page.direction().queryValue()
+  ));
 }
 
 <div
