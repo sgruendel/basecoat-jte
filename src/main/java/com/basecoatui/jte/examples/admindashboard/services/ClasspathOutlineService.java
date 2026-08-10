@@ -12,10 +12,13 @@ import tools.jackson.core.type.TypeReference;
 import tools.jackson.databind.json.JsonMapper;
 
 import java.io.IOException;
+import java.util.Collection;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Locale;
 import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 public class ClasspathOutlineService implements OutlineService {
@@ -57,6 +60,18 @@ public class ClasspathOutlineService implements OutlineService {
     @Override
     public Optional<OutlineRow> findById(final long id) {
         return rows.stream().filter(row -> row.id() == id).findFirst();
+    }
+
+    @Override
+    public Set<Long> findExistingIds(final Collection<Long> ids) {
+        if (ids.isEmpty()) {
+            return Set.of();
+        }
+        final Set<Long> requestedIds = Set.copyOf(ids);
+        return rows.stream()
+            .map(OutlineRow::id)
+            .filter(requestedIds::contains)
+            .collect(Collectors.toUnmodifiableSet());
     }
 
     private Comparator<OutlineRow> comparator(final OutlineQuery query) {

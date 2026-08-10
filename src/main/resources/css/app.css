@@ -14,6 +14,15 @@
   @apply visible opacity-100;
 }
 
+/* Admin Dashboard data-table column visibility follows the Basecoat checkbox menu state. */
+#outline-table:has([data-column-toggle='type'][aria-checked='false']) [data-column='type'],
+#outline-table:has([data-column-toggle='status'][aria-checked='false']) [data-column='status'],
+#outline-table:has([data-column-toggle='target'][aria-checked='false']) [data-column='target'],
+#outline-table:has([data-column-toggle='limit'][aria-checked='false']) [data-column='limit'],
+#outline-table:has([data-column-toggle='reviewer'][aria-checked='false']) [data-column='reviewer'] {
+  display: none;
+}
+
 .content {
   > h2 {
     @apply mt-12 lg:mt-20 mb-6 scroll-m-22 text-2xl font-semibold tracking-tight first:mt-0;

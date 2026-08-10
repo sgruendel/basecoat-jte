@@ -12,6 +12,7 @@ import org.springframework.data.domain.Sort;
 import tools.jackson.databind.json.JsonMapper;
 
 import java.util.Comparator;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -69,6 +70,12 @@ class ClasspathOutlineServiceTest {
     void findsRowsById() {
         assertThat(service.findById(24)).get().extracting(OutlineRow::header).isEqualTo("API Documentation");
         assertThat(service.findById(999)).isEmpty();
+    }
+
+    @Test
+    void filtersUnknownSelectionIdsInBulk() {
+        assertThat(service.findExistingIds(List.of(1L, 24L, 999L)))
+            .containsExactlyInAnyOrder(1L, 24L);
     }
 
     @Test

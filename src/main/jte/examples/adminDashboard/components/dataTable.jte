@@ -1,4 +1,5 @@
 @import com.basecoatui.jte.examples.admindashboard.models.OutlinePage
+@import com.basecoatui.jte.examples.admindashboard.models.OutlineSelection
 @import com.basecoatui.jte.util.BasecoatTab
 @import gg.jte.Content
 @import java.util.List
@@ -6,6 +7,7 @@
 @import com.basecoatui.jte.util.BasecoatSelect.Item
 
 @param OutlinePage page
+@param OutlineSelection selection
 @param String baseUrl
 @param List<Item> pageSizeItems
 
@@ -28,7 +30,7 @@
   final Content emptyPanel = @`<div class="aspect-video rounded-lg border border-dashed"></div>`;
 }
 
-<section class="flex w-full flex-wrap items-center gap-2 px-4 lg:px-6" aria-label="Document views">
+<section id="outline-table" class="flex w-full flex-wrap items-center gap-2 px-4 lg:px-6" aria-label="Document views">
   <span class="sr-only" id="view-selector-label">View</span>
 
   @template.basecoat.select(
@@ -49,6 +51,7 @@
         @`
           @template.examples.adminDashboard.components.dataTable.outlinePanel(
             page = page,
+            selection = selection,
             baseUrl = baseUrl,
             pageSizeItems = pageSizeItems
           )

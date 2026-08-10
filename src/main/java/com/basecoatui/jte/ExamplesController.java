@@ -2,6 +2,7 @@ package com.basecoatui.jte;
 
 import com.basecoatui.jte.examples.admindashboard.models.OutlinePage;
 import com.basecoatui.jte.examples.admindashboard.models.OutlineQuery;
+import com.basecoatui.jte.examples.admindashboard.models.OutlineSelection;
 import com.basecoatui.jte.examples.admindashboard.services.ChartDataService;
 import com.basecoatui.jte.examples.admindashboard.services.OutlineService;
 import com.basecoatui.jte.examples.models.User;
@@ -18,6 +19,7 @@ import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.util.List;
+import java.util.Set;
 
 import static org.springframework.http.HttpStatus.NOT_FOUND;
 
@@ -47,6 +49,7 @@ public class ExamplesController {
         final var outlinePage = outlineService.findPage(Pageable.ofSize(OutlineQuery.DEFAULT_SIZE));
         model.addAttribute("user", user);
         model.addAttribute("outlinePage", outlinePage);
+        model.addAttribute("selection", OutlineSelection.from(Set.of(), outlinePage, false));
         model.addAttribute("baseUrl", outlineBaseUrl(outlinePage));
         model.addAttribute("pageSizeItems", PAGE_SIZE_ITEMS);
         return "examples/adminDashboard/index";
@@ -55,10 +58,16 @@ public class ExamplesController {
     @GetMapping("/admin-dashboard/outlines")
     public String outline(
         @PageableDefault(size = OutlineQuery.DEFAULT_SIZE, sort = "id") final Pageable pageable,
+        @RequestParam(name = "selected", required = false) final Set<Long> requestedSelection,
+        @RequestParam(defaultValue = "false") final boolean togglePage,
         final Model model
     ) {
         final var page = outlineService.findPage(pageable);
+        final Set<Long> selectedIds = outlineService.findExistingIds(
+            requestedSelection == null ? Set.of() : requestedSelection
+        );
         model.addAttribute("page", page);
+        model.addAttribute("selection", OutlineSelection.from(selectedIds, page, togglePage));
         model.addAttribute("baseUrl", outlineBaseUrl(page));
         model.addAttribute("pageSizeItems", PAGE_SIZE_ITEMS);
         return "examples/adminDashboard/components/dataTable/outlineResults";

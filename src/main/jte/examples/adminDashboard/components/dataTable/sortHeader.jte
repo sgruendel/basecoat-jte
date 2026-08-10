@@ -26,6 +26,7 @@
     class="btn justify-${alignClass.equals("text-right") ? "end" : "start"} h-auto w-full px-0 font-medium"
     data-variant="ghost"
     hx-get="${url}"
+    hx-include="#outline-results [name='selected']"
     hx-target="#outline-results"
     hx-swap="outerHTML"
   >

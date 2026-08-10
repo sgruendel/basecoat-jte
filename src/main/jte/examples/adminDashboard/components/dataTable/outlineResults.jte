@@ -1,4 +1,5 @@
 @import com.basecoatui.jte.examples.admindashboard.models.OutlinePage
+@import com.basecoatui.jte.examples.admindashboard.models.OutlineSelection
 @import com.basecoatui.jte.examples.admindashboard.models.OutlineSort
 @import com.basecoatui.jte.util.BasecoatSelect.Item
 @import com.basecoatui.jte.util.JsonHelper
@@ -6,6 +7,7 @@
 @import java.util.Map
 
 @param OutlinePage page
+@param OutlineSelection selection
 @param String baseUrl
 @param List<Item> pageSizeItems
 
@@ -14,14 +16,13 @@
     "page", "0",
     "sort", page.sort().queryValue() + "," + page.direction().queryValue()
   ));
+  final String togglePageValues = JsonHelper.write(Map.of("togglePage", "true"));
 }
 
-<div
-  id="outline-results"
-  data-total-elements="${page.totalElements()}"
-  data-page="${page.page()}"
-  data-page-size="${page.size()}"
->
+<div id="outline-results">
+  @for(var selectedId : selection.offPageIds())
+    <input type="hidden" name="selected" value="${selectedId}" />
+  @endfor
   <div class="overflow-hidden rounded-lg border">
     <div class="table-container">
       <table class="table">
@@ -36,7 +37,15 @@
                 type="checkbox"
                 class="input"
                 aria-label="Select all rows on this page"
+                aria-checked="${selection.pageSelectionIndeterminate() ? "mixed" : Boolean.toString(selection.allPageRowsSelected())}"
                 data-select-outline-page
+                checked="${selection.allPageRowsSelected()}"
+                hx-get="${baseUrl}&page=${page.page()}"
+                hx-trigger="change"
+                hx-vals="${togglePageValues}"
+                hx-include="#outline-results [name='selected']"
+                hx-target="#outline-results"
+                hx-swap="outerHTML"
               />
             </th>
             @template.examples.adminDashboard.components.dataTable.sortHeader(
@@ -86,13 +95,20 @@
             </tr>
           @else
             @for(var row : page.rows())
-              <tr data-outline-row="${row.id()}">
+              <tr>
                 <td class="text-center">
                   <input
                     type="checkbox"
                     class="input"
                     aria-label="Select ${row.header()}"
-                    data-select-outline-row="${row.id()}"
+                    name="selected"
+                    value="${row.id()}"
+                    checked="${selection.isSelected(row.id())}"
+                    hx-get="${baseUrl}&page=${page.page()}"
+                    hx-trigger="change"
+                    hx-include="#outline-results [name='selected']"
+                    hx-target="#outline-results"
+                    hx-swap="outerHTML"
                   />
                 </td>
                 <td data-column="header">
@@ -134,8 +150,8 @@
   </div>
 
   <div class="mt-4 flex flex-col gap-4 px-2 lg:flex-row lg:items-center">
-    <div data-selection-summary class="text-muted-foreground hidden flex-1 text-sm lg:block">
-      0 of ${page.totalElements()} row(s) selected.
+    <div class="text-muted-foreground hidden flex-1 text-sm lg:block">
+      ${selection.count()} of ${page.totalElements()} row(s) selected.
     </div>
     <div class="flex flex-wrap items-center gap-4 lg:gap-8">
       <div class="hidden items-center gap-2 lg:flex">
@@ -149,7 +165,7 @@
             "class", "w-20",
             "hx-get", "/examples/admin-dashboard/outlines",
             "hx-trigger", "change",
-            "hx-include", "#rows-per-page input",
+            "hx-include", "#rows-per-page input, #outline-results [name='selected']",
             "hx-vals", pageSizeValues,
             "hx-target", "#outline-results",
             "hx-swap", "outerHTML"
@@ -168,6 +184,7 @@
             data-size="icon-sm"
             aria-label="Go to first page"
             hx-get="${baseUrl}&page=0"
+            hx-include="#outline-results [name='selected']"
             hx-target="#outline-results"
             hx-swap="outerHTML"
           >
@@ -180,6 +197,7 @@
             data-size="icon-sm"
             aria-label="Go to previous page"
             hx-get="${baseUrl}&page=${page.page() - 1}"
+            hx-include="#outline-results [name='selected']"
             hx-target="#outline-results"
             hx-swap="outerHTML"
           >
@@ -217,6 +235,7 @@
             data-size="icon-sm"
             aria-label="Go to next page"
             hx-get="${baseUrl}&page=${page.page() + 1}"
+            hx-include="#outline-results [name='selected']"
             hx-target="#outline-results"
             hx-swap="outerHTML"
           >
@@ -229,6 +248,7 @@
             data-size="icon-sm"
             aria-label="Go to last page"
             hx-get="${baseUrl}&page=${page.totalPages() - 1}"
+            hx-include="#outline-results [name='selected']"
             hx-target="#outline-results"
             hx-swap="outerHTML"
           >
