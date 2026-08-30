@@ -1,4 +1,4 @@
-<%-- see https://lucide.dev/icons/volume-x --%>
+<%-- see https://lucide.dev/icons/playing-card --%>
 
 @import java.util.Map
 @import com.basecoatui.jte.util.JteHelper
@@ -23,12 +23,11 @@
   stroke-width="${calculatedStrokeWidth}"
   stroke-linecap="round"
   stroke-linejoin="round"
-  class="${JteHelper.classAppend("lucide lucide-volume-x-icon lucide-volume-x", attrs)}"
+  class="${JteHelper.classAppend("lucide lucide-playing-card-icon lucide-playing-card", attrs)}"
   $unsafe{JteHelper.attrs(attrs, "class")}
 >
   <path
-    d="M11 4.702a.7.7 0 0 0-1.203-.498L6.413 7.587A1.4 1.4 0 0 1 5.416 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.416a1.4 1.4 0 0 1 .997.413l3.383 3.384A.7.7 0 0 0 11 19.298z"
+    d="M12.832 8.445a1 1 0 00-1.589-.098l-2.075 3.098a1 1 0 000 1.11l2 3a1 1 0 001.664 0l2-3a1 1 0 000-1.11z"
   />
-  <path d="m16.5 14.5 5-5" />
-  <path d="m16.5 9.5 5 5" />
+  <rect x="5" y="2" width="14" height="20" rx="2" />
 </svg>

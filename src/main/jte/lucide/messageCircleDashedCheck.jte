@@ -1,4 +1,4 @@
-<%-- see https://lucide.dev/icons/volume-x --%>
+<%-- see https://lucide.dev/icons/message-circle-dashed-check --%>
 
 @import java.util.Map
 @import com.basecoatui.jte.util.JteHelper
@@ -23,12 +23,16 @@
   stroke-width="${calculatedStrokeWidth}"
   stroke-linecap="round"
   stroke-linejoin="round"
-  class="${JteHelper.classAppend("lucide lucide-volume-x-icon lucide-volume-x", attrs)}"
+  class="${JteHelper.classAppend("lucide lucide-message-circle-dashed-check-icon lucide-message-circle-dashed-check", attrs)}"
   $unsafe{JteHelper.attrs(attrs, "class")}
 >
-  <path
-    d="M11 4.702a.7.7 0 0 0-1.203-.498L6.413 7.587A1.4 1.4 0 0 1 5.416 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.416a1.4 1.4 0 0 1 .997.413l3.383 3.384A.7.7 0 0 0 11 19.298z"
-  />
-  <path d="m16.5 14.5 5-5" />
-  <path d="m16.5 9.5 5 5" />
+  <path d="M10.1 2.182a10 10 0 013.8 0" />
+  <path d="M13.9 21.818a10 10 0 01-3.8 0" />
+  <path d="M17.609 3.72a10 10 0 012.69 2.7" />
+  <path d="M2.182 13.9a10 10 0 010-3.8" />
+  <path d="M20.28 17.61a10 10 0 01-2.7 2.69" />
+  <path d="M21.818 10.1a10 10 0 010 3.8" />
+  <path d="M3.721 6.391a10 10 0 012.7-2.69" />
+  <path d="m6.163 21.117-2.906.85a1 1 0 01-1.236-1.169l.965-2.98" />
+  <path d="m16 9-5.5 5.5L8 12" />
 </svg>

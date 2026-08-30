@@ -1,4 +1,4 @@
-<%-- see https://lucide.dev/icons/volume-x --%>
+<%-- see https://lucide.dev/icons/credit-card-x --%>
 
 @import java.util.Map
 @import com.basecoatui.jte.util.JteHelper
@@ -23,12 +23,11 @@
   stroke-width="${calculatedStrokeWidth}"
   stroke-linecap="round"
   stroke-linejoin="round"
-  class="${JteHelper.classAppend("lucide lucide-volume-x-icon lucide-volume-x", attrs)}"
+  class="${JteHelper.classAppend("lucide lucide-credit-card-x-icon lucide-credit-card-x", attrs)}"
   $unsafe{JteHelper.attrs(attrs, "class")}
 >
-  <path
-    d="M11 4.702a.7.7 0 0 0-1.203-.498L6.413 7.587A1.4 1.4 0 0 1 5.416 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.416a1.4 1.4 0 0 1 .997.413l3.383 3.384A.7.7 0 0 0 11 19.298z"
-  />
-  <path d="m16.5 14.5 5-5" />
-  <path d="m16.5 9.5 5 5" />
+  <path d="M12.5 19H4a2 2 0 01-2-2V7a2 2 0 012-2h16a2 2 0 012 2v3.5" />
+  <path d="m16.5 14.5 5 5" />
+  <path d="M2 10h20" />
+  <path d="m21.5 14.5-5 5" />
 </svg>

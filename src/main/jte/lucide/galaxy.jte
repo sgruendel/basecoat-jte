@@ -1,4 +1,4 @@
-<%-- see https://lucide.dev/icons/volume-x --%>
+<%-- see https://lucide.dev/icons/galaxy --%>
 
 @import java.util.Map
 @import com.basecoatui.jte.util.JteHelper
@@ -23,12 +23,14 @@
   stroke-width="${calculatedStrokeWidth}"
   stroke-linecap="round"
   stroke-linejoin="round"
-  class="${JteHelper.classAppend("lucide lucide-volume-x-icon lucide-volume-x", attrs)}"
+  class="${JteHelper.classAppend("lucide lucide-galaxy-icon lucide-galaxy", attrs)}"
   $unsafe{JteHelper.attrs(attrs, "class")}
 >
   <path
-    d="M11 4.702a.7.7 0 0 0-1.203-.498L6.413 7.587A1.4 1.4 0 0 1 5.416 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.416a1.4 1.4 0 0 1 .997.413l3.383 3.384A.7.7 0 0 0 11 19.298z"
+    d="M16.005 15.108a5.041 6.52 28.25 00-8.008-6.217 5.041 6.52 28.25 008.008 6.217A11.884 7.288-60.76 014.029 7.001"
   />
-  <path d="m16.5 14.5 5-5" />
-  <path d="m16.5 9.5 5 5" />
+  <path d="M17 21h.01" />
+  <path d="M7 3h.01" />
+  <path d="M7.997 8.891a11.885 7.288-60.756 0111.977 8.107" />
+  <circle cx="12" cy="12" r="1" fill="currentColor" />
 </svg>

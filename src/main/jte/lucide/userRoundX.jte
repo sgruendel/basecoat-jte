@@ -26,8 +26,8 @@
   class="${JteHelper.classAppend("lucide lucide-user-round-x-icon lucide-user-round-x", attrs)}"
   $unsafe{JteHelper.attrs(attrs, "class")}
 >
-  <path d="M2 21a8 8 0 0 1 11.873-7" />
+  <path d="m16.5 16.5 5 5" />
+  <path d="M2 21a8 8 0 0 1 11.531-7.18" />
+  <path d="m21.5 16.5-5 5" />
   <circle cx="10" cy="8" r="5" />
-  <path d="m17 17 5 5" />
-  <path d="m22 17-5 5" />
 </svg>

@@ -26,6 +26,6 @@
   class="${JteHelper.classAppend("lucide lucide-blend-icon lucide-blend", attrs)}"
   $unsafe{JteHelper.attrs(attrs, "class")}
 >
-  <circle cx="9" cy="9" r="7" />
-  <circle cx="15" cy="15" r="7" />
+  <circle cx="15" cy="9" r="7" />
+  <circle cx="9" cy="15" r="7" />
 </svg>

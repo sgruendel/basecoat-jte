@@ -1,4 +1,4 @@
-<%-- see https://lucide.dev/icons/volume-x --%>
+<%-- see https://lucide.dev/icons/audio-lines-off --%>
 
 @import java.util.Map
 @import com.basecoatui.jte.util.JteHelper
@@ -23,12 +23,16 @@
   stroke-width="${calculatedStrokeWidth}"
   stroke-linecap="round"
   stroke-linejoin="round"
-  class="${JteHelper.classAppend("lucide lucide-volume-x-icon lucide-volume-x", attrs)}"
+  class="${JteHelper.classAppend("lucide lucide-audio-lines-off-icon lucide-audio-lines-off", attrs)}"
   $unsafe{JteHelper.attrs(attrs, "class")}
 >
-  <path
-    d="M11 4.702a.7.7 0 0 0-1.203-.498L6.413 7.587A1.4 1.4 0 0 1 5.416 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.416a1.4 1.4 0 0 1 .997.413l3.383 3.384A.7.7 0 0 0 11 19.298z"
-  />
-  <path d="m16.5 14.5 5-5" />
-  <path d="m16.5 9.5 5 5" />
+  <path d="M10 10v11" />
+  <path d="M10 3v1.35" />
+  <path d="M14 14v1" />
+  <path d="M14 8v.35" />
+  <path d="M18 5v7.35" />
+  <path d="M2 10v3" />
+  <path d="m2 2 20 20" />
+  <path d="M22 10v3" />
+  <path d="M6 6v11" />
 </svg>
