@@ -284,7 +284,7 @@
               role="menuitem"
               class="text-destructive hover:bg-destructive/10 dark:hover:bg-destructive/20 focus:bg-destructive/10 dark:focus:bg-destructive/20 focus:text-destructive [&_svg]:!text-destructive"
             >
-              @template.lucide.trash2() Delete
+              @template.lucide.trash() Delete
             </div>
           </div>
         </div>

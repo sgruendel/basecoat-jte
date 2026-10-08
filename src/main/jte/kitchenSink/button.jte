@@ -71,7 +71,7 @@
         <button class="btn-icon-secondary">@template.lucide.upload()</button>
         <button class="btn-icon-outline">@template.lucide.arrowRight()</button>
         <button class="btn-icon-ghost">@template.lucide.ellipsis()</button>
-        <button class="btn-icon-destructive">@template.lucide.trash2()</button>
+        <button class="btn-icon-destructive">@template.lucide.trash()</button>
         <button class="btn-icon-outline" disabled>
           @template.lucide.loader(attrs = Map.of("class", "animate-spin"))
         </button>
