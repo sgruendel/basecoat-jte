@@ -1,4 +1,4 @@
-<%-- see https://lucide.dev/icons/trash-2 --%>
+<%-- see https://lucide.dev/icons/monitor-pc --%>
 
 @import java.util.Map
 @import com.basecoatui.jte.util.JteHelper
@@ -23,12 +23,14 @@
   stroke-width="${calculatedStrokeWidth}"
   stroke-linecap="round"
   stroke-linejoin="round"
-  class="${JteHelper.classAppend("lucide lucide-trash-2-icon lucide-trash-2", attrs)}"
+  class="${JteHelper.classAppend("lucide lucide-monitor-pc-icon lucide-monitor-pc", attrs)}"
   $unsafe{JteHelper.attrs(attrs, "class")}
 >
-  <path d="M10 11v6" />
-  <path d="M14 11v6" />
-  <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6" />
-  <path d="M3 6h18" />
-  <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+  <path d="M10 15H4a2 2 0 01-2-2V7a2 2 0 012-2h6" />
+  <path d="M10 19H5" />
+  <path d="M14 11h8" />
+  <path d="M14 7h8" />
+  <path d="M18 17h.01" />
+  <path d="M9 19v-4" />
+  <rect x="14" y="3" width="8" height="18" rx="1" />
 </svg>

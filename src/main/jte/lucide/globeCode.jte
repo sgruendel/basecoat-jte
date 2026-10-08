@@ -1,4 +1,4 @@
-<%-- see https://lucide.dev/icons/book-marked --%>
+<%-- see https://lucide.dev/icons/globe-code --%>
 
 @import java.util.Map
 @import com.basecoatui.jte.util.JteHelper
@@ -23,11 +23,11 @@
   stroke-width="${calculatedStrokeWidth}"
   stroke-linecap="round"
   stroke-linejoin="round"
-  class="${JteHelper.classAppend("lucide lucide-book-marked-icon lucide-book-marked", attrs)}"
+  class="${JteHelper.classAppend("lucide lucide-globe-code-icon lucide-globe-code", attrs)}"
   $unsafe{JteHelper.attrs(attrs, "class")}
 >
-  <path d="M10 2v8l3-3 3 3V2" />
-  <path
-    d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20"
-  />
+  <path d="M15.5 10 13 7.5 15.5 5" />
+  <path d="M15.861 14A14.5 14.5 0 0112 22a14.48 14.48 0 010-20 10 10 0 109.888 11.5" />
+  <path d="M19.5 5 22 7.5 19.5 10" />
+  <path d="M2 12h8.5" />
 </svg>

@@ -1,4 +1,4 @@
-<%-- see https://lucide.dev/icons/album --%>
+<%-- see https://lucide.dev/icons/square-exclamation-point --%>
 
 @import java.util.Map
 @import com.basecoatui.jte.util.JteHelper
@@ -23,9 +23,10 @@
   stroke-width="${calculatedStrokeWidth}"
   stroke-linecap="round"
   stroke-linejoin="round"
-  class="${JteHelper.classAppend("lucide lucide-album-icon lucide-album", attrs)}"
+  class="${JteHelper.classAppend("lucide lucide-square-exclamation-point-icon lucide-square-exclamation-point", attrs)}"
   $unsafe{JteHelper.attrs(attrs, "class")}
 >
-  <rect width="18" height="18" x="3" y="3" rx="2" ry="2" />
-  <polyline points="11 3 11 11 14 8 17 11 17 3" />
+  <rect width="18" height="18" x="3" y="3" rx="2" />
+  <line x1="12" x2="12" y1="8" y2="12" />
+  <line x1="12" x2="12.01" y1="16" y2="16" />
 </svg>

@@ -1,4 +1,4 @@
-<%-- see https://lucide.dev/icons/building-2 --%>
+<%-- see https://lucide.dev/icons/cupcake --%>
 
 @import java.util.Map
 @import com.basecoatui.jte.util.JteHelper
@@ -23,12 +23,16 @@
   stroke-width="${calculatedStrokeWidth}"
   stroke-linecap="round"
   stroke-linejoin="round"
-  class="${JteHelper.classAppend("lucide lucide-building-2-icon lucide-building-2", attrs)}"
+  class="${JteHelper.classAppend("lucide lucide-cupcake-icon lucide-cupcake", attrs)}"
   $unsafe{JteHelper.attrs(attrs, "class")}
 >
-  <path d="M10 12h4" />
-  <path d="M10 8h4" />
-  <path d="M14 21v-3a2 2 0 0 0-4 0v3" />
-  <path d="M6 10H4a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-2" />
-  <path d="M6 21V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v16" />
+  <path d="M12 22v-9" />
+  <path d="M14 4h1a3 3 0 013 3l-.004.125A4 4 0 0121 11v2" />
+  <path d="m15.5 22 1.5-9" />
+  <path
+    d="M21 13a1 1 0 01.919 1.394l-2.74 6.394A2 2 0 0117.34 22H6.659a2 2 0 01-1.838-1.212l-2.74-6.394A1 1 0 013 13z"
+  />
+  <path d="M3 13v-2a4 4 0 013.003-3.875L6 7a3 3 0 013-3h1" />
+  <path d="M8.5 22 7 13" />
+  <circle cx="12" cy="4" r="2" />
 </svg>

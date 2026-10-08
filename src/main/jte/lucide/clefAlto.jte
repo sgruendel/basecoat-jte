@@ -1,0 +1,34 @@
+<%-- see https://lucide.dev/icons/clef-alto --%>
+
+@import java.util.Map
+@import com.basecoatui.jte.util.JteHelper
+
+@param int size = 24
+@param String fill = "none"
+@param String color = "currentColor"
+@param int strokeWidth = 2
+@param boolean absoluteStrokeWidth = false
+@param Map<?, ?> attrs = null
+
+<%-- see https://github.com/lucide-icons/lucide/blob/main/packages/vue/src/Icon.ts#L50 --%>
+!{final var calculatedStrokeWidth = absoluteStrokeWidth ? Double.toString(strokeWidth * 24.0 / size) : Integer.toString(strokeWidth);}
+
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="${size}"
+  height="${size}"
+  viewBox="0 0 24 24"
+  fill="${fill}"
+  stroke="${color}"
+  stroke-width="${calculatedStrokeWidth}"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  class="${JteHelper.classAppend("lucide lucide-clef-alto-icon lucide-clef-alto", attrs)}"
+  $unsafe{JteHelper.attrs(attrs, "class")}
+>
+  <path d="M10 4v16" />
+  <path
+    d="M14 4.764a3 3 0 1 1-.152 4.327A4 4 0 0 1 10 12a4 4 0 0 1 3.848 2.909A3 3 0 1 1 14 19.236"
+  />
+  <path d="M6 4v16" />
+</svg>
