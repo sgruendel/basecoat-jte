@@ -81,7 +81,7 @@
   if (!selectedOptions.isEmpty()) {
     defaultOption = selectedOptions.getFirst();
   } else if (placeholder == null || firstOption == null) {
-      defaultOption = null;
+    defaultOption = null;
   } else {
     defaultOption = firstOption;
   }

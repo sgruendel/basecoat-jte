@@ -186,7 +186,15 @@
       aria-multiselectable="${multiple ? "true" : null}"
       $unsafe{JteHelper.attrs(listboxAttrs)}
     >
-      ${options}
+      @if(items != null)
+        @template.basecoat.selectRenderItems(
+          items = items,
+          selectedArray = selectedArray,
+          parentIdPrefix = id + "-items"
+        )
+      @else
+        ${options}
+      @endif
     </div>
   </div>
   <input
