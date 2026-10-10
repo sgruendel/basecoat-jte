@@ -1,4 +1,4 @@
-@import java.util.Map
+@import static io.github.sgruendel.lucide.jte.LucideIcons.*
 <section id="alert" class="w-full rounded-lg border scroll-mt-14">
   <header class="border-b px-4 py-3 flex items-center justify-between">
     <h2 class="text-sm font-medium">Alert</h2>
@@ -8,19 +8,19 @@
       data-tooltip="See documentation"
       data-side="left"
     >
-      @template.lucide.bookOpen(attrs = Map.of("class", "size-4"))
+      ${lucideBookOpen().cssClass("size-4")}
     </a>
   </header>
   <div class="p-4">
     <div class="grid max-w-xl items-start gap-4">
       <div class="alert">
-        @template.lucide.circleCheckBig()
+        ${lucideCircleCheckBig()}
         <h2>Success! Your changes have been saved</h2>
         <section>This is an alert with icon, title and description.</section>
       </div>
 
       <div class="alert">
-        @template.lucide.bookmarkCheck()
+        ${lucideBookmarkCheck()}
         <section>This is an alert with icon, description and no title.</section>
       </div>
 
@@ -29,12 +29,12 @@
       </div>
 
       <div class="alert">
-        @template.lucide.popcorn()
+        ${lucidePopcorn()}
         <h2>Let's try one with icon and title.</h2>
       </div>
 
       <div class="alert">
-        @template.lucide.shieldAlert()
+        ${lucideShieldAlert()}
         <h2>
           This is a very long alert title that demonstrates how the component
           handles extended text content and potentially wraps across multiple
@@ -43,7 +43,7 @@
       </div>
 
       <div class="alert">
-        @template.lucide.gift()
+        ${lucideGift()}
         <section>
           This is a very long alert description that demonstrates how the
           component handles extended text content and potentially wraps across
@@ -52,7 +52,7 @@
       </div>
 
       <div class="alert">
-        @template.lucide.circleAlert()
+        ${lucideCircleAlert()}
         <h2>
           This is an extremely long alert title that spans multiple lines to
           demonstrate how the component handles very lengthy headings while
@@ -69,13 +69,13 @@
       </div>
 
       <div class="alert-destructive">
-        @template.lucide.circleAlert()
+        ${lucideCircleAlert()}
         <h2>Something went wrong!</h2>
         <section>Your session has expired. Please log in again.</section>
       </div>
 
       <div class="alert-destructive">
-        @template.lucide.circleAlert()
+        ${lucideCircleAlert()}
         <h2>Something went wrong!</h2>
         <section>
           <p>Please verify your billing information and try again.</p>
@@ -90,7 +90,7 @@
       <div
         class="alert border-amber-50 bg-amber-50 text-amber-900 dark:border-amber-950 dark:bg-amber-950 dark:text-amber-100"
       >
-        @template.lucide.circleCheckBig()
+        ${lucideCircleCheckBig()}
         <h2>Plot Twist: This Alert is Actually Amber!</h2>
         <section>This one has custom colors for light and dark mode.</section>
       </div>

@@ -1,4 +1,4 @@
-@import java.util.Map
+@import static io.github.sgruendel.lucide.jte.LucideIcons.*
 <section id="card" class="w-full rounded-lg border scroll-mt-14">
   <header class="border-b px-4 py-3 flex items-center justify-between">
     <h2 class="text-sm font-medium">Card</h2>
@@ -8,7 +8,7 @@
       data-tooltip="See documentation"
       data-side="left"
     >
-      @template.lucide.bookOpen(attrs = Map.of("class", "size-4"))
+      ${lucideBookOpen().cssClass("size-4")}
     </a>
   </header>
   <div class="p-4">
@@ -99,9 +99,9 @@
           />
         </section>
         <footer class="flex items-center gap-2">
-          <span class="badge-outline"> @template.lucide.bed() 1 </span>
-          <span class="badge-outline"> @template.lucide.bath() 2 </span>
-          <span class="badge-outline"> @template.lucide.landPlot() 350m² </span>
+          <span class="badge-outline"> ${lucideBed()} 1 </span>
+          <span class="badge-outline"> ${lucideBath()} 2 </span>
+          <span class="badge-outline"> ${lucideLandPlot()} 350m² </span>
           <span class="ml-auto font-medium tabular-nums"> $135,000 </span>
         </footer>
       </div>

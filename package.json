@@ -1,7 +1,7 @@
 {
   "name": "basecoat-jte",
-  "version": "1.0.0",
-  "description": "basecoat UI components for jte, including Lucide icons",
+  "version": "1.1.0",
+  "description": "basecoat UI components for JTE",
   "author": "Stefan Gründel",
   "license": "MIT",
   "repository": {
@@ -15,11 +15,9 @@
   "keywords": [
     "basecoat",
     "jte",
-    "template",
-    "lucide"
+    "template"
   ],
   "scripts": {
-    "generate:lucide-jte": "node scripts/generate-lucide-jte.js",
     "generate:kitchen-sink-jte": "node scripts/convert-kitchen-sink.js",
     "devserver": "webpack serve --open --mode development",
     "build": "webpack --mode production",
@@ -28,8 +26,7 @@
   "dependencies": {
     "basecoat-css": "^1.0.2",
     "chart.js": "^4.5.1",
-    "htmx.org": "^2.0.11",
-    "lucide": "^1.53.0"
+    "htmx.org": "^2.0.11"
   },
   "devDependencies": {
     "@babel/core": "^8.0.7",
@@ -42,7 +39,7 @@
     "mini-css-extract-plugin": "^2.10.1",
     "postcss-loader": "^8.2.1",
     "postcss-preset-env": "^11.6.1",
-    "prettier": "^3.9.9",
+    "prettier": "^3.9.10",
     "prettier-plugin-jte": "^1.5.0",
     "prettier-plugin-tailwindcss": "^0.8.1",
     "style-loader": "^4.0.0",

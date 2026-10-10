@@ -1,5 +1,6 @@
-@import java.util.Map
+@import static io.github.sgruendel.lucide.jte.LucideIcons.*
 
+@import java.util.Map
 <section id="dropdown-menu" class="w-full rounded-lg border scroll-mt-14">
   <header class="border-b px-4 py-3 flex items-center justify-between">
     <h2 class="text-sm font-medium">Dropdown Menu</h2>
@@ -9,7 +10,7 @@
       data-tooltip="See documentation"
       data-side="left"
     >
-      @template.lucide.bookOpen(attrs = Map.of("class", "size-4"))
+      ${lucideBookOpen().cssClass("size-4")}
     </a>
   </header>
   <div class="p-4">
@@ -40,37 +41,31 @@
         content = @`
           <div role="group" aria-labelledby="account-options">
             <div role="heading" id="account-options">Account Options</div>
-            <div role="menuitem">@template.lucide.user() Profile <span class="text-muted-foreground ml-auto text-xs tracking-widest">⇧⌘P</span></div>
-            <div role="menuitem">@template.lucide.creditCard() Billing <span class="text-muted-foreground ml-auto text-xs tracking-widest">⌘B</span></div>
-            <div role="menuitem">@template.lucide.settings() Settings <span class="text-muted-foreground ml-auto text-xs tracking-widest">⌘S</span></div>
+            <div role="menuitem">${lucideUser()} Profile <span class="text-muted-foreground ml-auto text-xs tracking-widest">⇧⌘P</span></div>
+            <div role="menuitem">${lucideCreditCard()} Billing <span class="text-muted-foreground ml-auto text-xs tracking-widest">⌘B</span></div>
+            <div role="menuitem">${lucideSettings()} Settings <span class="text-muted-foreground ml-auto text-xs tracking-widest">⌘S</span></div>
           </div>
           <hr role="separator">
           <div role="group" aria-labelledby="appearance-options">
             <div role="heading" id="appearance-options">Appearance</div>
             <div role="menuitemcheckbox" aria-checked="true" class="group">
-              @template.lucide.check(
-            attrs = Map.of("class", "invisible group-aria-checked:visible", "aria-hidden", "true", "focusable", "false")
-          )
+              ${lucideCheck().attrs(Map.of("class", "invisible group-aria-checked:visible", "aria-hidden", "true", "focusable", "false"))}
               Status Bar
               <span class="text-muted-foreground ml-auto text-xs tracking-widest">⇧⌘P</span>
             </div>
             <div role="menuitemcheckbox" aria-checked="false" class="group" aria-disabled="true">
-              @template.lucide.check(
-            attrs = Map.of("class", "invisible group-aria-checked:visible", "aria-hidden", "true", "focusable", "false")
-          )
+              ${lucideCheck().attrs(Map.of("class", "invisible group-aria-checked:visible", "aria-hidden", "true", "focusable", "false"))}
               Activity Bar
               <span class="text-muted-foreground ml-auto text-xs tracking-widest">⌘B</span>
             </div>
             <div role="menuitemcheckbox" aria-checked="false" class="group">
-              @template.lucide.check(
-            attrs = Map.of("class", "invisible group-aria-checked:visible", "aria-hidden", "true", "focusable", "false")
-          )
+              ${lucideCheck().attrs(Map.of("class", "invisible group-aria-checked:visible", "aria-hidden", "true", "focusable", "false"))}
               Panel
               <span class="text-muted-foreground ml-auto text-xs tracking-widest">⌘S</span>
             </div>
           </div>
           <hr role="separator">
-          <div role="menuitem">@template.lucide.logOut() Logout <span class="text-muted-foreground ml-auto text-xs tracking-widest">⇧⌘P</span></div>
+          <div role="menuitem">${lucideLogOut()} Logout <span class="text-muted-foreground ml-auto text-xs tracking-widest">⇧⌘P</span></div>
         `
       )
 
@@ -163,9 +158,7 @@
               >hunvreus@example.com</span
             >
           </div>
-          @template.lucide.chevronsUpDown(
-            attrs = Map.of("class", "text-muted-foreground ml-auto")
-          )
+          ${lucideChevronsUpDown().cssClass("text-muted-foreground ml-auto")}
         </button>
         <div
           id="dropdown-profile-wide-popover"
@@ -192,13 +185,13 @@
               </div>
             </div>
             <hr role="separator" />
-            <div role="menuitem">@template.lucide.star() Upgrade to Pro</div>
+            <div role="menuitem">${lucideStar()} Upgrade to Pro</div>
             <hr role="separator" />
-            <div role="menuitem">@template.lucide.user() Account</div>
-            <div role="menuitem">@template.lucide.creditCard() Billing</div>
-            <div role="menuitem">@template.lucide.bell() Notifications</div>
+            <div role="menuitem">${lucideUser()} Account</div>
+            <div role="menuitem">${lucideCreditCard()} Billing</div>
+            <div role="menuitem">${lucideBell()} Notifications</div>
             <hr role="separator" />
-            <div role="menuitem">@template.lucide.logOut() Signout</div>
+            <div role="menuitem">${lucideLogOut()} Signout</div>
           </div>
         </div>
       </div>
@@ -244,13 +237,13 @@
               </div>
             </div>
             <hr role="separator" />
-            <div role="menuitem">@template.lucide.star() Upgrade to Pro</div>
+            <div role="menuitem">${lucideStar()} Upgrade to Pro</div>
             <hr role="separator" />
-            <div role="menuitem">@template.lucide.user() Account</div>
-            <div role="menuitem">@template.lucide.creditCard() Billing</div>
-            <div role="menuitem">@template.lucide.bell() Notifications</div>
+            <div role="menuitem">${lucideUser()} Account</div>
+            <div role="menuitem">${lucideCreditCard()} Billing</div>
+            <div role="menuitem">${lucideBell()} Notifications</div>
             <hr role="separator" />
-            <div role="menuitem">@template.lucide.logOut() Signout</div>
+            <div role="menuitem">${lucideLogOut()} Signout</div>
           </div>
         </div>
       </div>
@@ -264,7 +257,7 @@
           aria-expanded="false"
           class="btn-icon-ghost"
         >
-          @template.lucide.ellipsis()
+          ${lucideEllipsis()}
         </button>
         <div
           id="dropdown-actions-popover"
@@ -277,14 +270,14 @@
             id="dropdown-actions-menu"
             aria-labelledby="dropdown-actions-trigger"
           >
-            <div role="menuitem">@template.lucide.pencil() Edit</div>
-            <div role="menuitem">@template.lucide.share() Share</div>
+            <div role="menuitem">${lucidePencil()} Edit</div>
+            <div role="menuitem">${lucideShare()} Share</div>
             <hr role="separator" />
             <div
               role="menuitem"
               class="text-destructive hover:bg-destructive/10 dark:hover:bg-destructive/20 focus:bg-destructive/10 dark:focus:bg-destructive/20 focus:text-destructive [&_svg]:!text-destructive"
             >
-              @template.lucide.trash() Delete
+              ${lucideTrash()} Delete
             </div>
           </div>
         </div>

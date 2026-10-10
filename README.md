@@ -2,17 +2,17 @@
 
 [![Maven Tests](https://github.com/sgruendel/basecoat-jte/actions/workflows/maven-tests.yaml/badge.svg)](https://github.com/sgruendel/basecoat-jte/actions/workflows/maven-tests.yaml)
 
-JTE templates for [Basecoat](https://basecoatui.com/) components and
-[Lucide](https://lucide.dev/) icons.
+JTE templates for [Basecoat](https://basecoatui.com/) components, using
+[Lucide for JTE](https://github.com/sgruendel/lucide-jte) for icons.
 
 Compatible with
 [Basecoat 1.0.1](https://github.com/hunvreus/basecoat/releases/tag/1.0.1) and
-[Lucide 1.21.0](https://github.com/lucide-icons/lucide/releases/tag/1.21.0).
+[Lucide for JTE 1.55.0](https://github.com/sgruendel/lucide-jte).
 
 This repository shows how to use Basecoat with:
 
 - reusable JTE component templates in `src/main/jte/basecoat`
-- generated Lucide icon templates in `src/main/jte/lucide`
+- Lucide icons from the `io.github.sgruendel:lucide-jte` Maven dependency
 - example usages in `src/main/jte/kitchenSink`
 - toast partials in `src/main/jte/partials/toast`
 
@@ -20,14 +20,10 @@ This repository shows how to use Basecoat with:
 
 - `src/main/jte/basecoat`
   JTE templates that mirror the original Basecoat Nunjucks macros.
-- `src/main/jte/lucide`
-  Generated JTE templates for canonical Lucide icons.
 - `src/main/jte/kitchenSink`
   Example pages showing how to use the components and icons.
 - `src/main/jte/partials/toast`
   Small toast partials used by the kitchen sink examples.
-- `scripts/generate-lucide-jte.js`
-  Generates Lucide JTE templates from the installed `lucide` npm package.
 
 The kitchen sink examples are still based on the previous Basecoat version
 0.3.11 and might look a bit off compared to the current Basecoat version 1.0.1,
@@ -35,29 +31,32 @@ but they are the best reference for how the JTE templates are meant to be used.
 
 ## Using Lucide Icons
 
-Each icon is a JTE template under `src/main/jte/lucide`.
+Import the icon helpers from the `lucide-jte` Maven dependency and render them
+with JTE expressions. See the [library documentation](https://github.com/sgruendel/lucide-jte)
+for the full API.
 
 Example:
 
 ```jte
-@import java.util.Map
+@import static io.github.sgruendel.lucide.jte.LucideIcons.*
 
-@template.lucide.bookOpen(attrs = Map.of("class", "size-4"))
-@template.lucide.circleCheck(attrs = Map.of("aria-hidden", "true"))
-@template.lucide.loaderCircle(
-  attrs = Map.of("class", "animate-spin", "role", "status", "aria-label", "Loading")
-)
+${lucideBookOpen().cssClass("size-4")}
+${lucideCircleCheck().attr("aria-hidden", "true")}
+${lucideLoaderCircle().cssClass("animate-spin").attr("role", "status").attr("aria-label", "Loading")}
 ```
 
-Supported icon params:
+Chain fluent methods to configure icons:
 
 - `size`
+- `fill`
 - `color`
 - `strokeWidth`
 - `absoluteStrokeWidth`
 - `attrs`
+- `attr`
+- `cssClass`
 
-`attrs` is the place for HTML attributes such as:
+Use `cssClass` for CSS classes and `attr` or `attrs(Map.of(...))` for HTML attributes such as:
 
 - `class`
 - `role`
@@ -73,8 +72,8 @@ Important:
 
 Example:
 
-- `circle-check` -> `@template.lucide.circleCheck()`
-- `circle-check-big` -> `@template.lucide.circleCheckBig()`
+- `circle-check` -> `${lucideCircleCheck()}`
+- `circle-check-big` -> `${lucideCircleCheckBig()}`
 
 ## Using Basecoat Component Templates
 
@@ -208,14 +207,6 @@ They show:
 - form/select/dropdown/tab/dialog patterns
 - toast examples and partial rendering
 
-## Regenerate Lucide Icon Templates
-
-From the repository root:
-
-```sh
-npm run generate:lucide-jte
-```
-
 ## Run The Demo
 
 The Spring Boot app serves the kitchen sink demo at `/`.
@@ -266,6 +257,6 @@ http://localhost:8080
 
 ## Notes
 
-- Lucide templates are generated from the installed `lucide` package in `node_modules`
-- only canonical Lucide icons are generated, not duplicate alias exports
-- generated icon names follow the icon file name, converted to lower camel case
+- Lucide icons come from the Maven dependency and need no local template generation
+- only canonical Lucide icons have helpers, not duplicate alias exports
+- icon helper names use the `lucide` prefix followed by the camel case icon name

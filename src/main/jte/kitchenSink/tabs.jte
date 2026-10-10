@@ -1,7 +1,8 @@
+@import static io.github.sgruendel.lucide.jte.LucideIcons.*
+
 @import java.util.List
 @import java.util.Map
 @import com.basecoatui.jte.util.BasecoatTab
-
 <section id="tabs" class="w-full rounded-lg border scroll-mt-14">
   <header class="border-b px-4 py-3 flex items-center justify-between">
     <h2 class="text-sm font-medium">Tabs</h2>
@@ -11,7 +12,7 @@
       data-tooltip="See documentation"
       data-side="left"
     >
-      @template.lucide.bookOpen(attrs = Map.of("class", "size-4"))
+      ${lucideBookOpen().cssClass("size-4")}
     </a>
   </header>
   <div class="p-4">
@@ -106,11 +107,11 @@
         id = "demo-tabs-with-icons",
         tabs = List.of(
           BasecoatTab.of(@`
-          @template.lucide.appWindow()
+          ${lucideAppWindow()}
                 Preview
         `),
           BasecoatTab.of(@`
-          @template.lucide.code()
+          ${lucideCode()}
                 Code
         `)
         )

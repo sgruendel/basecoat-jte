@@ -1,7 +1,8 @@
+@import static io.github.sgruendel.lucide.jte.LucideIcons.*
+
 @import java.util.List
 @import java.util.Map
 @import com.basecoatui.jte.util.BasecoatSelect.Item
-
 <section id="select" class="w-full rounded-lg border scroll-mt-14">
   <header class="border-b px-4 py-3 flex items-center justify-between">
     <h2 class="text-sm font-medium">Select</h2>
@@ -11,7 +12,7 @@
       data-tooltip="See documentation"
       data-side="left"
     >
-      @template.lucide.bookOpen(attrs = Map.of("class", "size-4"))
+      ${lucideBookOpen().cssClass("size-4")}
     </a>
   </header>
   <div class="p-4 gap">
@@ -77,25 +78,19 @@
             options = @`
               <div type="button" role="option" data-value="bar">
                 <span class="flex items-center gap-2">
-                  @template.lucide.chartBar(
-                attrs = Map.of("class", "text-muted-foreground")
-              )
+                  ${lucideChartBar().cssClass("text-muted-foreground")}
                   Bar
                 </span>
               </div>
               <div type="button" role="option" data-value="line">
                 <span class="flex items-center gap-2">
-                  @template.lucide.chartLine(
-                attrs = Map.of("class", "text-muted-foreground")
-              )
+                  ${lucideChartLine().cssClass("text-muted-foreground")}
                   Line
                 </span>
               </div>
               <div type="button" role="option" data-value="pie">
                 <span class="flex items-center gap-2">
-                  @template.lucide.chartPie(
-                attrs = Map.of("class", "text-muted-foreground")
-              )
+                  ${lucideChartPie().cssClass("text-muted-foreground")}
                   Pie
                 </span>
               </div>

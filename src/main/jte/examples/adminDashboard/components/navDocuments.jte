@@ -1,15 +1,16 @@
+@import static io.github.sgruendel.lucide.jte.LucideIcons.*
+
 @import gg.jte.Content
 @import gg.jte.support.ForSupport
 @import java.util.List
-
 !{
   record Item(String name, String url, Content icon) {}
 
   final List<Item> documents = List.of(
-    new Item("Data Library", "#", @`@template.lucide.database()`),
-    new Item("Reports", "#", @`@template.lucide.clipboardClock()`),
-    new Item("Word Assistant", "#", @`@template.lucide.fileText()`),
-    new Item("More", "#", @`@template.lucide.ellipsis()`)
+    new Item("Data Library", "#", @`${lucideDatabase()}`),
+    new Item("Reports", "#", @`${lucideClipboardClock()}`),
+    new Item("Word Assistant", "#", @`${lucideFileText()}`),
+    new Item("More", "#", @`${lucideEllipsis()}`)
   );
   // TODO DropdownMenuContent
 }

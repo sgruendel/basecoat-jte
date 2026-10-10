@@ -1,3 +1,5 @@
+@import static io.github.sgruendel.lucide.jte.LucideIcons.*
+
 @import java.util.Map
 @import com.basecoatui.jte.examples.models.User
 
@@ -10,7 +12,7 @@
   headerAttrs = Map.of("class", "border-b"),
   header = @`
     <a href="#" class="btn h-12 w-full justify-start px-2" data-variant="ghost" data-size="lg">
-      @template.lucide.circleStar()
+      ${lucideCircleStar()}
       <span class="text-base font-semibold">Acme Inc.</span>
     </a>
   `,

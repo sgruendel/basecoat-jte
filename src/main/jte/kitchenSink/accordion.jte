@@ -1,4 +1,4 @@
-@import java.util.Map
+@import static io.github.sgruendel.lucide.jte.LucideIcons.*
 <section id="accordion" class="w-full rounded-lg border scroll-mt-14">
   <header class="border-b px-4 py-3 flex items-center justify-between">
     <h2 class="text-sm font-medium">Accordion</h2>
@@ -8,7 +8,7 @@
       data-tooltip="See documentation"
       data-side="left"
     >
-      @template.lucide.bookOpen(attrs = Map.of("class", "size-4"))
+      ${lucideBookOpen().cssClass("size-4")}
     </a>
   </header>
   <div class="p-4">
@@ -22,9 +22,7 @@
               class="flex flex-1 items-start justify-between gap-4 py-4 text-left text-sm font-medium hover:underline "
             >
               Is it accessible?
-              @template.lucide.chevronDown(
-                attrs = Map.of("class", "text-muted-foreground pointer-events-none size-4 shrink-0 translate-y-0.5 transition-transform duration-200 group-open:rotate-180")
-              )
+              ${lucideChevronDown().cssClass("text-muted-foreground pointer-events-none size-4 shrink-0 translate-y-0.5 transition-transform duration-200 group-open:rotate-180")}
             </h2>
           </summary>
           <section class="pb-4">
@@ -41,9 +39,7 @@
               class="flex flex-1 items-start justify-between gap-4 py-4 text-left text-sm font-medium hover:underline "
             >
               Is it styled?
-              @template.lucide.chevronDown(
-                attrs = Map.of("class", "text-muted-foreground pointer-events-none size-4 shrink-0 translate-y-0.5 transition-transform duration-200 group-open:rotate-180")
-              )
+              ${lucideChevronDown().cssClass("text-muted-foreground pointer-events-none size-4 shrink-0 translate-y-0.5 transition-transform duration-200 group-open:rotate-180")}
             </h2>
           </summary>
           <section class="pb-4">
@@ -61,9 +57,7 @@
               class="flex flex-1 items-start justify-between gap-4 py-4 text-left text-sm font-medium hover:underline "
             >
               Is it animated?
-              @template.lucide.chevronDown(
-                attrs = Map.of("class", "text-muted-foreground pointer-events-none size-4 shrink-0 translate-y-0.5 transition-transform duration-200 group-open:rotate-180")
-              )
+              ${lucideChevronDown().cssClass("text-muted-foreground pointer-events-none size-4 shrink-0 translate-y-0.5 transition-transform duration-200 group-open:rotate-180")}
             </h2>
           </summary>
           <section>
@@ -84,9 +78,7 @@
             >
               What are the key considerations when implementing a comprehensive
               enterprise-level authentication system?
-              @template.lucide.chevronDown(
-                attrs = Map.of("class", "text-muted-foreground pointer-events-none size-4 shrink-0 translate-y-0.5 transition-transform duration-200 group-open:rotate-180")
-              )
+              ${lucideChevronDown().cssClass("text-muted-foreground pointer-events-none size-4 shrink-0 translate-y-0.5 transition-transform duration-200 group-open:rotate-180")}
             </h2>
           </summary>
           <section class="pb-4">
@@ -111,9 +103,7 @@
             >
               How does modern distributed system architecture handle eventual
               consistency and data synchronization across multiple regions?
-              @template.lucide.chevronDown(
-                attrs = Map.of("class", "text-muted-foreground pointer-events-none size-4 shrink-0 translate-y-0.5 transition-transform duration-200 group-open:rotate-180")
-              )
+              ${lucideChevronDown().cssClass("text-muted-foreground pointer-events-none size-4 shrink-0 translate-y-0.5 transition-transform duration-200 group-open:rotate-180")}
             </h2>
           </summary>
           <section>

@@ -19,6 +19,8 @@
   @param attrs {object} [optional] - Additional HTML attributes for the toast div.
 --%>
 
+@import static io.github.sgruendel.lucide.jte.LucideIcons.*
+
 @import java.time.Duration
 @import java.util.Map
 @import gg.jte.Content
@@ -48,13 +50,13 @@
     @if(icon != null)
       ${icon}
     @elseif(category == Category.SUCCESS)
-      @template.lucide.circleCheck(attrs = Map.of("aria-hidden", "true"))
+      ${lucideCircleCheck().attr("aria-hidden", "true")}
     @elseif(category == Category.INFO)
-      @template.lucide.info(attrs = Map.of("aria-hidden", "true"))
+      ${lucideInfo().attr("aria-hidden", "true")}
     @elseif(category == Category.WARNING)
-      @template.lucide.triangleAlert(attrs = Map.of("aria-hidden", "true"))
+      ${lucideTriangleAlert().attr("aria-hidden", "true")}
     @elseif(category == Category.ERROR)
-      @template.lucide.circleX(attrs = Map.of("aria-hidden", "true"))
+      ${lucideCircleX().attr("aria-hidden", "true")}
     @endif
 
     <section>

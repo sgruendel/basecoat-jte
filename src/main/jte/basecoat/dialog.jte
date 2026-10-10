@@ -19,6 +19,8 @@
   @param close_on_overlay_click {boolean} [optional] [default=true] - Whether clicking the overlay closes the dialog.
 --%>
 
+@import static io.github.sgruendel.lucide.jte.LucideIcons.*
+
 @import java.util.Map
 @import gg.jte.Content
 @import com.basecoatui.jte.util.JteHelper
@@ -88,7 +90,7 @@
         aria-label="Close dialog"
         onclick="this.closest('dialog').close()"
       >
-        @template.lucide.x()
+        ${lucideX()}
       </button>
     @endif
   </div>

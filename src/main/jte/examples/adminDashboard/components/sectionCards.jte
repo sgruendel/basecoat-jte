@@ -1,18 +1,19 @@
+@import static io.github.sgruendel.lucide.jte.LucideIcons.*
+
 @import gg.jte.Content
 @import java.util.List
-
 !{
   record Card(String label, String value, String change, String summary, String description, Content trendIcon) {}
 
   final var cards = List.of(
     new Card("Total Revenue", "$1,250.00", "+12.5%", "Trending up this month", "Visitors for the last 6 months",
-      @`@template.lucide.trendingUp(size = 16)`),
+      @`${lucideTrendingUp().size(16)}`),
     new Card("New Customers", "1,234", "-20%", "Down 20% this period", "Acquisition needs attention",
-      @`@template.lucide.trendingDown(size = 16)`),
+      @`${lucideTrendingDown().size(16)}`),
     new Card("Active Accounts", "45,678", "+12.5%", "Strong user retention", "Engagement exceed targets",
-      @`@template.lucide.trendingUp(size = 16)`),
+      @`${lucideTrendingUp().size(16)}`),
     new Card("Growth Rate", "4.5%", "+4.5%", "Steady performance increase", "Meets growth projections",
-      @`@template.lucide.trendingUp(size = 16)`)
+      @`${lucideTrendingUp().size(16)}`)
   );
 }
 

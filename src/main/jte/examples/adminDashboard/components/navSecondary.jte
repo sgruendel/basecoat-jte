@@ -1,13 +1,14 @@
+@import static io.github.sgruendel.lucide.jte.LucideIcons.*
+
 @import gg.jte.Content
 @import java.util.List
-
 !{
   record Item(String name, String url, Content icon) {}
 
   final var navSecondary = List.of(
-    new Item("Settings", "#", @`@template.lucide.settings()`),
-    new Item("Get Help", "#", @`@template.lucide.circleQuestionMark()`),
-    new Item("Search", "#", @`@template.lucide.search()`)
+    new Item("Settings", "#", @`${lucideSettings()}`),
+    new Item("Get Help", "#", @`${lucideCircleQuestionMark()}`),
+    new Item("Search", "#", @`${lucideSearch()}`)
   );
 }
 

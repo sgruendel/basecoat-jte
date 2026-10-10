@@ -1,5 +1,6 @@
-@import java.util.Map
+@import static io.github.sgruendel.lucide.jte.LucideIcons.*
 
+@import java.util.Map
 <section id="alert-dialog" class="w-full rounded-lg border scroll-mt-14">
   <header class="border-b px-4 py-3 flex items-center justify-between">
     <h2 class="text-sm font-medium">Alert Dialog</h2>
@@ -9,7 +10,7 @@
       data-tooltip="See documentation"
       data-side="left"
     >
-      @template.lucide.bookOpen(attrs = Map.of("class", "size-4"))
+      ${lucideBookOpen().cssClass("size-4")}
     </a>
   </header>
   <div class="p-4">

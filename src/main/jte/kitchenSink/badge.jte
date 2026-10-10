@@ -1,4 +1,4 @@
-@import java.util.Map
+@import static io.github.sgruendel.lucide.jte.LucideIcons.*
 <section id="badge" class="w-full rounded-lg border scroll-mt-14">
   <header class="border-b px-4 py-3 flex items-center justify-between">
     <h2 class="text-sm font-medium">Badge</h2>
@@ -8,7 +8,7 @@
       data-tooltip="See documentation"
       data-side="left"
     >
-      @template.lucide.bookOpen(attrs = Map.of("class", "size-4"))
+      ${lucideBookOpen().cssClass("size-4")}
     </a>
   </header>
   <div class="p-4">
@@ -18,9 +18,9 @@
         <span class="badge-secondary">Secondary</span>
         <span class="badge-outline">Outline</span>
         <span class="badge-destructive">Destructive</span>
-        <span class="badge-outline"> @template.lucide.check() Badge </span>
+        <span class="badge-outline"> ${lucideCheck()} Badge </span>
         <span class="badge-destructive">
-          @template.lucide.circleAlert() Alert
+          ${lucideCircleAlert()} Alert
         </span>
         <span class="badge rounded-full min-w-5 px-1">8</span>
         <span class="badge-destructive rounded-full min-w-5 px-1">99</span>
@@ -30,15 +30,15 @@
         >
       </div>
       <div class="flex flex-wrap items-center gap-2 md:flex-row">
-        <a href="#" class="badge"> Link @template.lucide.arrowRight() </a>
+        <a href="#" class="badge"> Link ${lucideArrowRight()} </a>
         <a href="#" class="badge-secondary">
-          Link @template.lucide.arrowRight()
+          Link ${lucideArrowRight()}
         </a>
         <a href="#" class="badge-destructive">
-          Link @template.lucide.arrowRight()
+          Link ${lucideArrowRight()}
         </a>
         <a href="#" class="badge-outline">
-          Link @template.lucide.arrowRight()
+          Link ${lucideArrowRight()}
         </a>
       </div>
     </div>

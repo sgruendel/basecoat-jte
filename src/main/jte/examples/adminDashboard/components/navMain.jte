@@ -1,15 +1,16 @@
+@import static io.github.sgruendel.lucide.jte.LucideIcons.*
+
 @import java.util.List
 @import gg.jte.Content
-
 !{
   record Item(String name, Content icon) {}
 
   final var items = List.of(
-    new Item("Dashboard", @`@template.lucide.gauge()`),
-    new Item("Lifecycle", @`@template.lucide.layoutList()`),
-    new Item("Analytics", @`@template.lucide.chartColumnBig()`),
-    new Item("Projects", @`@template.lucide.folder()`),
-    new Item("Team", @`@template.lucide.users()`)
+    new Item("Dashboard", @`${lucideGauge()}`),
+    new Item("Lifecycle", @`${lucideLayoutList()}`),
+    new Item("Analytics", @`${lucideChartColumnBig()}`),
+    new Item("Projects", @`${lucideFolder()}`),
+    new Item("Team", @`${lucideUsers()}`)
   );
 }
 

@@ -1,3 +1,5 @@
+@import static io.github.sgruendel.lucide.jte.LucideIcons.*
+
 @import com.basecoatui.jte.examples.admindashboard.models.OutlinePage
 @import com.basecoatui.jte.examples.admindashboard.models.OutlineSort
 @import com.basecoatui.jte.examples.admindashboard.models.SortDirection
@@ -32,11 +34,11 @@
   >
     ${label}
     @if(active && page.direction() == SortDirection.ASC)
-      @template.lucide.arrowUp(attrs = Map.of("class", "size-3.5", "aria-hidden", "true"))
+      ${lucideArrowUp().attrs(Map.of("class", "size-3.5", "aria-hidden", "true"))}
     @elseif(active)
-      @template.lucide.arrowDown(attrs = Map.of("class", "size-3.5", "aria-hidden", "true"))
+      ${lucideArrowDown().attrs(Map.of("class", "size-3.5", "aria-hidden", "true"))}
     @else
-      @template.lucide.arrowUpDown(attrs = Map.of("class", "text-muted-foreground size-3.5", "aria-hidden", "true"))
+      ${lucideArrowUpDown().attrs(Map.of("class", "text-muted-foreground size-3.5", "aria-hidden", "true"))}
     @endif
   </button>
 </th>

@@ -1,3 +1,5 @@
+@import static io.github.sgruendel.lucide.jte.LucideIcons.*
+
 @import java.util.Map
 @import com.basecoatui.jte.examples.models.User
 
@@ -20,26 +22,26 @@
   id = "sidebar-user",
   triggerContent = @`
     ${avatar}
-    @template.lucide.ellipsisVertical()
+    ${lucideEllipsisVertical()}
   `,
   content = @`
     <div role="heading" class="flex items-center gap-2">${avatar}</div>
     <hr role="separator" />
     <div role="menuitem">
-      @template.lucide.circleUser()
+      ${lucideCircleUser()}
       Account
     </div>
     <div role="menuitem">
-      @template.lucide.creditCard()
+      ${lucideCreditCard()}
       Billing
     </div>
     <div role="menuitem">
-      @template.lucide.bell()
+      ${lucideBell()}
       Notifications
     </div>
     <hr role="separator" />
     <div role="menuitem">
-      @template.lucide.logOut()
+      ${lucideLogOut()}
       Log out
     </div>
   `,

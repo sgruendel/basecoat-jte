@@ -1,3 +1,5 @@
+@import static io.github.sgruendel.lucide.jte.LucideIcons.*
+
 @import com.basecoatui.jte.examples.admindashboard.models.OutlinePage
 @import com.basecoatui.jte.examples.admindashboard.models.OutlineSelection
 @import com.basecoatui.jte.examples.admindashboard.models.OutlineSort
@@ -95,7 +97,7 @@
             </tr>
           @else
             @for(var row : page.rows())
-              <tr>
+              <tr data-outline-row="${row.id()}">
                 <td class="text-center">
                   <input
                     type="checkbox"
@@ -103,6 +105,7 @@
                     aria-label="Select ${row.header()}"
                     name="selected"
                     value="${row.id()}"
+                    data-select-outline-row="${row.id()}"
                     checked="${selection.isSelected(row.id())}"
                     hx-get="${baseUrl}&page=${page.page()}"
                     hx-trigger="change"
@@ -129,11 +132,9 @@
                 <td data-column="status">
                   <span class="badge whitespace-nowrap" data-variant="outline">
                     @if(row.status().equals("Done"))
-                      @template.lucide.circleCheckBig(
-                        attrs = Map.of("class", "size-3.5 fill-green-500 text-white dark:fill-green-400")
-                      )
+                      ${lucideCircleCheckBig().cssClass("size-3.5 fill-green-500 text-white dark:fill-green-400")}
                     @else
-                      @template.lucide.loader(attrs = Map.of("class", "size-3.5 animate-spin"))
+                      ${lucideLoader().cssClass("size-3.5 animate-spin")}
                     @endif
                     ${row.status()}
                   </span>
@@ -150,7 +151,7 @@
   </div>
 
   <div class="mt-4 flex flex-col gap-4 px-2 lg:flex-row lg:items-center">
-    <div class="text-muted-foreground hidden flex-1 text-sm lg:block">
+    <div data-selection-summary class="text-muted-foreground hidden flex-1 text-sm lg:block">
       ${selection.count()} of ${page.totalElements()} row(s) selected.
     </div>
     <div class="flex flex-wrap items-center gap-4 lg:gap-8">
@@ -188,7 +189,7 @@
             hx-target="#outline-results"
             hx-swap="outerHTML"
           >
-            @template.lucide.chevronFirst()
+            ${lucideChevronFirst()}
           </button>
           <button
             type="button"
@@ -201,7 +202,7 @@
             hx-target="#outline-results"
             hx-swap="outerHTML"
           >
-            @template.lucide.chevronLeft()
+            ${lucideChevronLeft()}
           </button>
         @else
           <button
@@ -212,7 +213,7 @@
             aria-label="Go to first page"
             disabled
           >
-            @template.lucide.chevronFirst()
+            ${lucideChevronFirst()}
           </button>
           <button
             type="button"
@@ -222,7 +223,7 @@
             aria-label="Go to previous page"
             disabled
           >
-            @template.lucide.chevronLeft()
+            ${lucideChevronLeft()}
           </button>
         @endif
 
@@ -239,7 +240,7 @@
             hx-target="#outline-results"
             hx-swap="outerHTML"
           >
-            @template.lucide.chevronRight()
+            ${lucideChevronRight()}
           </button>
           <button
             type="button"
@@ -252,7 +253,7 @@
             hx-target="#outline-results"
             hx-swap="outerHTML"
           >
-            @template.lucide.chevronLast()
+            ${lucideChevronLast()}
           </button>
         @else
           <button
@@ -263,7 +264,7 @@
             aria-label="Go to next page"
             disabled
           >
-            @template.lucide.chevronRight()
+            ${lucideChevronRight()}
           </button>
           <button
             type="button"
@@ -273,7 +274,7 @@
             aria-label="Go to last page"
             disabled
           >
-            @template.lucide.chevronLast()
+            ${lucideChevronLast()}
           </button>
         @endif
       </nav>

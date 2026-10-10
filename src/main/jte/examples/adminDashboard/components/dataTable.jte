@@ -1,3 +1,5 @@
+@import static io.github.sgruendel.lucide.jte.LucideIcons.*
+
 @import com.basecoatui.jte.examples.admindashboard.models.OutlinePage
 @import com.basecoatui.jte.examples.admindashboard.models.OutlineSelection
 @import com.basecoatui.jte.util.BasecoatTab
@@ -88,10 +90,10 @@
     @template.basecoat.dropdownMenu(
       id = "columns-menu",
       triggerContent = @`
-        @template.lucide.columns2()
+        ${lucideColumns2()}
         <span class="hidden lg:inline">Customize Columns</span>
         <span class="lg:hidden">Columns</span>
-        @template.lucide.chevronDown()
+        ${lucideChevronDown()}
       `,
       triggerAttrs = Map.of("class", "btn", "data-variant", "outline", "data-size", "sm"),
       popoverAttrs = Map.of("class", "w-56", "data-align", "end"),

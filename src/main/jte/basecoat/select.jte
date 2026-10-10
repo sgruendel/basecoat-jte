@@ -16,6 +16,8 @@
   @param input_attrs {object} [optional] - Additional HTML attributes for the hidden input.
 --%>
 
+@import static io.github.sgruendel.lucide.jte.LucideIcons.*
+
 @import java.util.ArrayList
 @import java.util.List
 @import java.util.Map
@@ -126,9 +128,7 @@
     $unsafe{JteHelper.attrs(triggerAttrs, "class")}
   >
     <span class="truncate">${defaultLabel}</span>
-    @template.lucide.chevronDown(
-      attrs = Map.of("class", "text-muted-foreground opacity-50 shrink-0")
-    )
+    ${lucideChevronDown().cssClass("text-muted-foreground opacity-50 shrink-0")}
   </button>
   <div
     id="${id}-popover"
