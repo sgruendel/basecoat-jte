@@ -50,13 +50,13 @@
     @if(icon != null)
       ${icon}
     @elseif(category == Category.SUCCESS)
-      ${lucideCircleCheck().attr("aria-hidden", "true")}
+      ${lucideCircleCheck()}
     @elseif(category == Category.INFO)
-      ${lucideInfo().attr("aria-hidden", "true")}
+      ${lucideInfo()}
     @elseif(category == Category.WARNING)
-      ${lucideTriangleAlert().attr("aria-hidden", "true")}
+      ${lucideTriangleAlert()}
     @elseif(category == Category.ERROR)
-      ${lucideCircleX().attr("aria-hidden", "true")}
+      ${lucideCircleX()}
     @endif
 
     <section>

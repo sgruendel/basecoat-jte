@@ -7,7 +7,7 @@ JTE templates for [Basecoat](https://basecoatui.com/) components, using
 
 Compatible with
 [Basecoat 1.0.1](https://github.com/hunvreus/basecoat/releases/tag/1.0.1) and
-[Lucide for JTE 1.55.0](https://github.com/sgruendel/lucide-jte).
+[Lucide for JTE 1.59.0](https://github.com/sgruendel/lucide-jte).
 
 This repository shows how to use Basecoat with:
 
@@ -41,9 +41,12 @@ Example:
 @import static io.github.sgruendel.lucide.jte.LucideIcons.*
 
 ${lucideBookOpen().cssClass("size-4")}
-${lucideCircleCheck().attr("aria-hidden", "true")}
+${lucideCircleCheck()}
 ${lucideLoaderCircle().cssClass("animate-spin").attr("role", "status").attr("aria-label", "Loading")}
 ```
+
+Icons default to `aria-hidden="true"` unless an `aria-*`, `role`, or `title`
+attribute is supplied.
 
 Chain fluent methods to configure icons:
 
@@ -260,3 +263,15 @@ http://localhost:8080
 - Lucide icons come from the Maven dependency and need no local template generation
 - only canonical Lucide icons have helpers, not duplicate alias exports
 - icon helper names use the `lucide` prefix followed by the camel case icon name
+
+## Prompt to convert from shadcn-examples
+
+This repository is a conversion of the React based shadcn-examples which are linked here under shadcn-examples/
+and running locally on <http://localhost:3000>.
+
+It's a JTE base Spring Boot app using <https://basecoatui.com/llms.txt> and some JTE templates instead of the optional Nunjucks or Jinja macros
+in src/main/jte/basecoat/
+
+So far, the Admin Dashboard example has been ported with some TODOs still open, except for the Data Table on the Outline tab. Currently, there is outlinePanel.jte with some generated, non-functional Javascript code to replicate React behavior.
+
+Ignore the JavaScript and create a proper server-side solution using pagination, sorting etc. endpoints in ExampleController using htmx where it makes sense. The backend should use the same fake data as the React clientside Javascript has, but the implementation should allow for later proper db service layer to be added without refactoring of APIs.

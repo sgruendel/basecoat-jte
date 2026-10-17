@@ -57,7 +57,7 @@
     <dependency>
       <groupId>io.github.sgruendel</groupId>
       <artifactId>lucide-jte</artifactId>
-      <version>1.55.0</version>
+      <version>1.59.0</version>
     </dependency>
 
     <dependency>

@@ -49,17 +49,17 @@
           <div role="group" aria-labelledby="appearance-options">
             <div role="heading" id="appearance-options">Appearance</div>
             <div role="menuitemcheckbox" aria-checked="true" class="group">
-              ${lucideCheck().attrs(Map.of("class", "invisible group-aria-checked:visible", "aria-hidden", "true", "focusable", "false"))}
+              ${lucideCheck().attrs(Map.of("class", "invisible group-aria-checked:visible", "focusable", "false"))}
               Status Bar
               <span class="text-muted-foreground ml-auto text-xs tracking-widest">⇧⌘P</span>
             </div>
             <div role="menuitemcheckbox" aria-checked="false" class="group" aria-disabled="true">
-              ${lucideCheck().attrs(Map.of("class", "invisible group-aria-checked:visible", "aria-hidden", "true", "focusable", "false"))}
+              ${lucideCheck().attrs(Map.of("class", "invisible group-aria-checked:visible", "focusable", "false"))}
               Activity Bar
               <span class="text-muted-foreground ml-auto text-xs tracking-widest">⌘B</span>
             </div>
             <div role="menuitemcheckbox" aria-checked="false" class="group">
-              ${lucideCheck().attrs(Map.of("class", "invisible group-aria-checked:visible", "aria-hidden", "true", "focusable", "false"))}
+              ${lucideCheck().attrs(Map.of("class", "invisible group-aria-checked:visible", "focusable", "false"))}
               Panel
               <span class="text-muted-foreground ml-auto text-xs tracking-widest">⌘S</span>
             </div>

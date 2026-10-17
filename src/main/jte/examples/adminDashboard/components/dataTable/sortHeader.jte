@@ -3,7 +3,6 @@
 @import com.basecoatui.jte.examples.admindashboard.models.OutlinePage
 @import com.basecoatui.jte.examples.admindashboard.models.OutlineSort
 @import com.basecoatui.jte.examples.admindashboard.models.SortDirection
-@import java.util.Map
 
 @param OutlinePage page
 @param OutlineSort field
@@ -34,11 +33,11 @@
   >
     ${label}
     @if(active && page.direction() == SortDirection.ASC)
-      ${lucideArrowUp().attrs(Map.of("class", "size-3.5", "aria-hidden", "true"))}
+      ${lucideArrowUp().cssClass("size-3.5")}
     @elseif(active)
-      ${lucideArrowDown().attrs(Map.of("class", "size-3.5", "aria-hidden", "true"))}
+      ${lucideArrowDown().cssClass("size-3.5")}
     @else
-      ${lucideArrowUpDown().attrs(Map.of("class", "text-muted-foreground size-3.5", "aria-hidden", "true"))}
+      ${lucideArrowUpDown().cssClass("text-muted-foreground size-3.5")}
     @endif
   </button>
 </th>
