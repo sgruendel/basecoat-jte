@@ -10,7 +10,7 @@
 @param String baseUrl
 @param List<Item> pageSizeItems
 
-<script src="/js/admin-dashboard.js" defer></script>
+<script type="module" src="/js/admin-dashboard.js"></script>
 @template.examples.adminDashboard.components.appSitebar(user = user)
 <main id="content" class="min-w-0">
   @template.examples.adminDashboard.components.siteHeader()

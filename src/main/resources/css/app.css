@@ -1,6 +1,9 @@
 @import 'tailwindcss';
 @import 'basecoat-css';
 
+@source '../../jte';
+@source '../../java';
+
 /* https://github.com/hunvreus/basecoat/blob/main/docs/css/custom.css */
 /* HTMX */
 .htmx-indicator {

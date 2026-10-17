@@ -168,7 +168,9 @@ They show:
 
 The Spring Boot app serves the kitchen sink demo at `/`.
 
-For local development, run Spring Boot and the webpack dev server in two terminals.
+Requires Node.js 20.19+ or 22.12+ and Java 25+.
+
+For local development, run Spring Boot and the Vite dev server in two terminals.
 
 1. Start the Spring Boot app on port `8080`:
 
@@ -176,11 +178,11 @@ For local development, run Spring Boot and the webpack dev server in two termina
 ./mvnw spring-boot:run
 ```
 
-1. Start the webpack dev server on port `8081`:
+1. Start the Vite dev server on port `8081`:
 
 ```sh
 npm install
-npm run devserver
+npm run dev
 ```
 
 1. Open the demo in your browser:
@@ -189,10 +191,10 @@ npm run devserver
 http://localhost:8081
 ```
 
-The webpack dev server proxies requests to the Spring Boot app on `http://localhost:8080`, while serving the frontend
-assets with live reload.
+The Vite dev server proxies pages and backend requests to the Spring Boot app on `http://localhost:8080`.
+It serves JavaScript modules and CSS directly, with CSS hot updates and page reloads for JTE template changes.
 
-If you do not need the webpack dev server, you can also build the frontend assets once and run only Spring Boot:
+To run without the Vite dev server, build the frontend assets once and run only Spring Boot:
 
 ```sh
 npm install
@@ -209,8 +211,13 @@ http://localhost:8080
 ## Build
 
 ```sh
+npm ci
+npm run build
 ./mvnw -q -DskipTests compile
 ```
+
+Vite writes production JavaScript and CSS to `target/classes/static`, where Spring Boot serves them.
+Rebuild the frontend after `./mvnw clean`, which removes that directory.
 
 ## Notes
 

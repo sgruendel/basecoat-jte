@@ -1,5 +1,5 @@
 import htmx from 'htmx.org';
-import 'css/app.css';
+import '../css/app.css';
 import 'basecoat-css/all';
 
 // keep htmx from settling width/height attributes on swapped elements:

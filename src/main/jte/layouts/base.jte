@@ -71,14 +71,12 @@
     <meta name="twitter:description" content="{{ meta_description }}" />
     <meta name="twitter:image" content="{{ site.url }}/assets/social-screenshot.png" />
     <meta name="twitter:creator" content="{{ site.author.x }}" />
-    <%-- CSS --%>
-    <%-- already in app.css link rel="stylesheet" href="/assets/styles.css">
     <%-- JS --%>
     <%-- Highlight.js --%>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/django.min.js"></script>
     <%-- Basecoat components and application behavior --%>
-    <script src="/js/bundle.js" defer></script>
+    @template.layouts.assets()
 
     <script>
       const highlight = () => {
