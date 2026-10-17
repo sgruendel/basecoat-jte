@@ -29,54 +29,8 @@ The kitchen sink examples are still based on the previous Basecoat version
 0.3.11 and might look a bit off compared to the current Basecoat version 1.0.1,
 but they are the best reference for how the JTE templates are meant to be used.
 
-## Using Lucide Icons
-
-Import the icon helpers from the `lucide-jte` Maven dependency and render them
-with JTE expressions. See the [library documentation](https://github.com/sgruendel/lucide-jte)
-for the full API.
-
-Example:
-
-```jte
-@import static io.github.sgruendel.lucide.jte.LucideIcons.*
-
-${lucideBookOpen().cssClass("size-4")}
-${lucideCircleCheck()}
-${lucideLoaderCircle().cssClass("animate-spin").attr("role", "status").attr("aria-label", "Loading")}
-```
-
-Icons default to `aria-hidden="true"` unless an `aria-*`, `role`, or `title`
-attribute is supplied.
-
-Chain fluent methods to configure icons:
-
-- `size`
-- `fill`
-- `color`
-- `strokeWidth`
-- `absoluteStrokeWidth`
-- `attrs`
-- `attr`
-- `cssClass`
-
-Use `cssClass` for CSS classes and `attr` or `attrs(Map.of(...))` for HTML attributes such as:
-
-- `class`
-- `role`
-- `aria-label`
-- `aria-hidden`
-- `focusable`
-- `data-*`
-
-Important:
-
-- for ARIA and `focusable`, use string values like `"true"` and `"false"`
-- icon names are generated from canonical Lucide file names, not alias export names
-
-Example:
-
-- `circle-check` -> `${lucideCircleCheck()}`
-- `circle-check-big` -> `${lucideCircleCheckBig()}`
+For icon imports, styling, attributes, naming, and accessibility, see the
+[Lucide for JTE documentation](https://github.com/sgruendel/lucide-jte#use-icons-in-a-jte-template).
 
 ## Using Basecoat Component Templates
 
