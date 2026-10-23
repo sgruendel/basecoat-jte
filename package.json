@@ -24,8 +24,8 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "basecoat-css": "^1.0.2",
-    "chart.js": "^4.5.1",
+    "basecoat-css": "^1.1.0",
+    "chart.js": "^4.6.1",
     "htmx.org": "^2.0.11"
   },
   "devDependencies": {
@@ -34,7 +34,7 @@
     "prettier-plugin-jte": "^1.5.0",
     "prettier-plugin-tailwindcss": "^0.8.1",
     "tailwindcss": "^4.3.3",
-    "vite": "^8.3.4"
+    "vite": "^8.3.5"
   },
   "private": true
 }
