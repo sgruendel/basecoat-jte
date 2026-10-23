@@ -6,7 +6,7 @@ JTE templates for [Basecoat](https://basecoatui.com/) components, using
 [Lucide for JTE](https://github.com/sgruendel/lucide-jte) for icons.
 
 Compatible with
-[Basecoat 1.0.1](https://github.com/hunvreus/basecoat/releases/tag/1.0.1) and
+[Basecoat 1.1.0](https://github.com/hunvreus/basecoat/releases/tag/1.1.0) and
 [Lucide for JTE 1.59.0](https://github.com/sgruendel/lucide-jte).
 
 This repository shows how to use Basecoat with:
@@ -26,7 +26,7 @@ This repository shows how to use Basecoat with:
   Small toast partials used by the kitchen sink examples.
 
 The kitchen sink examples are still based on the previous Basecoat version
-0.3.11 and might look a bit off compared to the current Basecoat version 1.0.1,
+0.3.11 and might look a bit off compared to the current Basecoat version 1.1.0,
 but they are the best reference for how the JTE templates are meant to be used.
 
 For icon imports, styling, attributes, naming, and accessibility, see the
