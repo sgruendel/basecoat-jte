@@ -1,8 +1,8 @@
-@import static io.github.sgruendel.lucide.jte.LucideIcons.*
-
 @import com.basecoatui.jte.examples.admindashboard.models.OutlinePage
 @import com.basecoatui.jte.examples.admindashboard.models.OutlineSort
 @import com.basecoatui.jte.examples.admindashboard.models.SortDirection
+
+@import static io.github.sgruendel.lucide.jte.LucideIcons.*
 
 @param OutlinePage page
 @param OutlineSort field

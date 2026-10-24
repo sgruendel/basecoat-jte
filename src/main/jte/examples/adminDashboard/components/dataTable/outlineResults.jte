@@ -1,12 +1,13 @@
-@import static io.github.sgruendel.lucide.jte.LucideIcons.*
-
 @import com.basecoatui.jte.examples.admindashboard.models.OutlinePage
 @import com.basecoatui.jte.examples.admindashboard.models.OutlineSelection
 @import com.basecoatui.jte.examples.admindashboard.models.OutlineSort
 @import com.basecoatui.jte.util.BasecoatSelect.Item
 @import com.basecoatui.jte.util.JsonHelper
+
 @import java.util.List
 @import java.util.Map
+
+@import static io.github.sgruendel.lucide.jte.LucideIcons.*
 
 @param OutlinePage page
 @param OutlineSelection selection

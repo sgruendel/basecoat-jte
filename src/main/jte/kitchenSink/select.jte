@@ -1,10 +1,12 @@
-@import static io.github.sgruendel.lucide.jte.LucideIcons.*
+@import com.basecoatui.jte.util.BasecoatSelect.Item
 
 @import java.util.List
 @import java.util.Map
-@import com.basecoatui.jte.util.BasecoatSelect.Item
-<section id="select" class="w-full rounded-lg border scroll-mt-14">
-  <header class="border-b px-4 py-3 flex items-center justify-between">
+
+@import static io.github.sgruendel.lucide.jte.LucideIcons.*
+
+<section id="select" class="w-full scroll-mt-14 rounded-lg border">
+  <header class="flex items-center justify-between border-b px-4 py-3">
     <h2 class="text-sm font-medium">Select</h2>
     <a
       href="https://basecoatui.com/components/select"
@@ -15,7 +17,7 @@
       ${lucideBookOpen().cssClass("size-4")}
     </a>
   </header>
-  <div class="p-4 gap">
+  <div class="gap p-4">
     <div class="flex flex-col gap-4">
       <div class="flex flex-wrap items-center gap-2 md:flex-row">
         <select class="select w-[180px]">
@@ -42,27 +44,20 @@
             items = List.of(
               Item.of(
                 "Fruits",
-                List.of(
-                  Item.of("Apple", "apple"),
-                  Item.of("Banana", "banana"),
-                  Item.of("Blueberry", "blueberry")
-                )
+                List.of(Item.of("Apple", "apple"), Item.of("Banana", "banana"), Item.of("Blueberry", "blueberry"))
               ),
-              Item.of(
-                "Grapes",
-                List.of(
-                  Item.of("Pineapple", "pineapple")
-                )
-              )
+              Item.of("Grapes", List.of(Item.of("Pineapple", "pineapple")))
             )
           )
           @template.basecoat.select(
             id = "select-scrollbar",
             triggerAttrs = Map.of("class", "w-[180px]"),
             listboxAttrs = Map.of("class", "scrollbar overflow-y-auto max-h-64"),
-            options = @`@for(int i = 0; i < 100; i++)
-              <div role="option" data-value="item-${i}">Item ${i}</div>
-            @endfor`
+            options = @`
+              @for(int i = 0; i < 100; i++)
+                <div role="option" data-value="item-${i}">Item ${i}</div>
+              @endfor
+            `
           )
 
           @template.basecoat.select(
@@ -77,22 +72,15 @@
             triggerAttrs = Map.of("class", "w-[180px]"),
             options = @`
               <div type="button" role="option" data-value="bar">
-                <span class="flex items-center gap-2">
-                  ${lucideChartBar().cssClass("text-muted-foreground")}
-                  Bar
-                </span>
+                <span class="flex items-center gap-2"> ${lucideChartBar().cssClass("text-muted-foreground")} Bar </span>
               </div>
               <div type="button" role="option" data-value="line">
                 <span class="flex items-center gap-2">
-                  ${lucideChartLine().cssClass("text-muted-foreground")}
-                  Line
+                  ${lucideChartLine().cssClass("text-muted-foreground")} Line
                 </span>
               </div>
               <div type="button" role="option" data-value="pie">
-                <span class="flex items-center gap-2">
-                  ${lucideChartPie().cssClass("text-muted-foreground")}
-                  Pie
-                </span>
+                <span class="flex items-center gap-2"> ${lucideChartPie().cssClass("text-muted-foreground")} Pie </span>
               </div>
             `
           )

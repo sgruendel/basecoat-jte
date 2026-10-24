@@ -1,5 +1,4 @@
 <%-- see https://github.com/hunvreus/basecoat/blob/main/src/nunjucks/toast.njk --%>
-
 <%--
   Renders a single toast message.
 
@@ -18,15 +17,15 @@
     - href {string}: URL for an anchor link button.
   @param attrs {object} [optional] - Additional HTML attributes for the toast div.
 --%>
-
-@import static io.github.sgruendel.lucide.jte.LucideIcons.*
+@import com.basecoatui.jte.util.BasecoatToast.Button
+@import com.basecoatui.jte.util.BasecoatToast.Category
+@import com.basecoatui.jte.util.JteHelper
+@import gg.jte.Content
 
 @import java.time.Duration
 @import java.util.Map
-@import gg.jte.Content
-@import com.basecoatui.jte.util.BasecoatToast.Category
-@import com.basecoatui.jte.util.BasecoatToast.Button
-@import com.basecoatui.jte.util.JteHelper
+
+@import static io.github.sgruendel.lucide.jte.LucideIcons.*
 
 @param Category category = com.basecoatui.jte.util.BasecoatToast.Category.SUCCESS
 @param String title = null
@@ -72,22 +71,9 @@
       <footer>
         @if(action != null)
           @if(action.href() != null)
-            <a
-              href="${action.href()}"
-              class="btn"
-              data-size="sm"
-              data-toast-action
-            >
-              ${action.label()}
-            </a>
+            <a href="${action.href()}" class="btn" data-size="sm" data-toast-action> ${action.label()} </a>
           @else
-            <button
-              type="button"
-              class="btn"
-              data-size="sm"
-              data-toast-action
-              onclick="${action.onclick()}"
-            >
+            <button type="button" class="btn" data-size="sm" data-toast-action onclick="${action.onclick()}">
               ${action.label()}
             </button>
           @endif
@@ -96,13 +82,7 @@
 
         @if(cancel != null)
           @if(cancel.href() != null)
-            <a
-              href="${cancel.href()}"
-              class="btn"
-              data-variant="outline"
-              data-size="sm"
-              data-toast-cancel
-            >
+            <a href="${cancel.href()}" class="btn" data-variant="outline" data-size="sm" data-toast-cancel>
               ${cancel.label()}
             </a>
           @else

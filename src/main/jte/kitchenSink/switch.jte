@@ -1,6 +1,7 @@
 @import static io.github.sgruendel.lucide.jte.LucideIcons.*
-<section id="switch" class="w-full rounded-lg border scroll-mt-14">
-  <header class="border-b px-4 py-3 flex items-center justify-between">
+
+<section id="switch" class="w-full scroll-mt-14 rounded-lg border">
+  <header class="flex items-center justify-between border-b px-4 py-3">
     <h2 class="text-sm font-medium">Switch</h2>
     <a
       href="https://basecoatui.com/components/switch"
@@ -28,21 +29,15 @@
         Bluetooth
       </label>
       <label
-        class="label gap-6 leading-none border rounded-lg p-4 has-[input[type='checkbox']:checked]:border-blue-600"
+        class="label gap-6 rounded-lg border p-4 leading-none has-[input[type='checkbox']:checked]:border-blue-600"
       >
         <div class="grid gap-1">
-          <h2 class="font-medium text-sm">Share across devices</h2>
+          <h2 class="text-sm font-medium">Share across devices</h2>
           <p class="text-muted-foreground text-sm">
-            Focus is shared across devices, and turns off when you leave the
-            app.
+            Focus is shared across devices, and turns off when you leave the app.
           </p>
         </div>
-        <input
-          type="checkbox"
-          name="switch"
-          role="switch"
-          class="input checked:bg-blue-500 dark:checked:bg-blue-600"
-        />
+        <input type="checkbox" name="switch" role="switch" class="input checked:bg-blue-500 dark:checked:bg-blue-600" />
       </label>
     </div>
   </div>

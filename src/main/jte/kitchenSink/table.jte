@@ -1,6 +1,7 @@
 @import static io.github.sgruendel.lucide.jte.LucideIcons.*
-<section id="table" class="w-full rounded-lg border scroll-mt-14">
-  <header class="border-b px-4 py-3 flex items-center justify-between">
+
+<section id="table" class="w-full scroll-mt-14 rounded-lg border">
+  <header class="flex items-center justify-between border-b px-4 py-3">
     <h2 class="text-sm font-medium">Table</h2>
     <a
       href="https://basecoatui.com/components/table"

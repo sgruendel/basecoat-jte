@@ -1,5 +1,4 @@
 <%-- see https://github.com/hunvreus/basecoat/blob/main/src/nunjucks/command.njk --%>
-
 <%--
   Renders a command dialog (modal command palette).
 
@@ -12,12 +11,12 @@
   @param menu_attrs {object} [optional] - Additional HTML attributes for the menu div.
   @param open {boolean} [optional] [default=false] - Whether the command dialog should be open initially.
 --%>
+@import com.basecoatui.jte.util.BasecoatCommand.Item
+@import com.basecoatui.jte.util.JteHelper
+@import gg.jte.Content
 
 @import java.util.List
 @import java.util.Map
-@import gg.jte.Content
-@import com.basecoatui.jte.util.BasecoatCommand.Item
-@import com.basecoatui.jte.util.JteHelper
 
 @param String id
 @param List<Item> items = null

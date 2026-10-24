@@ -1,12 +1,13 @@
-@import static io.github.sgruendel.lucide.jte.LucideIcons.*
-
 @import com.basecoatui.jte.examples.admindashboard.models.OutlinePage
 @import com.basecoatui.jte.examples.admindashboard.models.OutlineSelection
+@import com.basecoatui.jte.util.BasecoatSelect.Item
 @import com.basecoatui.jte.util.BasecoatTab
 @import gg.jte.Content
+
 @import java.util.List
 @import java.util.Map
-@import com.basecoatui.jte.util.BasecoatSelect.Item
+
+@import static io.github.sgruendel.lucide.jte.LucideIcons.*
 
 @param OutlinePage page
 @param OutlineSelection selection
@@ -29,7 +30,7 @@
     Item.of("Reviewer", "reviewer")
   );
 
-  final Content emptyPanel = @`<div class="aspect-video rounded-lg border border-dashed"></div>`;
+  final Content emptyPanel = @`<div class = "aspect-video rounded-lg border border-dashed"></div>`;
 }
 
 <section id="outline-table" class="flex w-full flex-wrap items-center gap-2 px-4 lg:px-6" aria-label="Document views">

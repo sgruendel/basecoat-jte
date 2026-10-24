@@ -1,5 +1,4 @@
 <%-- see https://github.com/hunvreus/basecoat/blob/main/src/nunjucks/toast.njk --%>
-
 <%--
   Renders a toaster container and individual toast messages.
   Can render the initial container or be used with htmx OOB swaps to add toasts dynamically.
@@ -10,23 +9,19 @@
 
   Supports caller() for custom toast markup.
 --%>
+@import com.basecoatui.jte.util.BasecoatToast
+@import com.basecoatui.jte.util.JteHelper
+@import gg.jte.Content
 
 @import java.util.List
 @import java.util.Map
-@import gg.jte.Content
-@import com.basecoatui.jte.util.BasecoatToast
-@import com.basecoatui.jte.util.JteHelper
 
 @param String id = "toaster"
 @param List<BasecoatToast> toasts = null
 @param Map<?, ?> attrs = null
 @param Content content = null
 
-<div
-  id="${id}"
-  class="${JteHelper.classAppend("toaster", attrs)}"
-  $unsafe{JteHelper.attrs(attrs, "class")}
->
+<div id="${id}" class="${JteHelper.classAppend("toaster", attrs)}" $unsafe{JteHelper.attrs(attrs, "class")}>
   @if(toasts != null)
     @for(var toast : toasts)
       @template.basecoat.toast()

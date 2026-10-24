@@ -1,9 +1,9 @@
 <%-- see https://github.com/hunvreus/basecoat/blob/main/src/nunjucks/command.njk --%>
-
-@import static io.github.sgruendel.lucide.jte.LucideIcons.*
+@import com.basecoatui.jte.util.JteHelper
 
 @import java.util.Map
-@import com.basecoatui.jte.util.JteHelper
+
+@import static io.github.sgruendel.lucide.jte.LucideIcons.*
 
 @param String id
 @param String placeholder

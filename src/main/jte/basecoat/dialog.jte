@@ -1,5 +1,4 @@
 <%-- see https://github.com/hunvreus/basecoat/blob/main/src/nunjucks/dialog.njk --%>
-
 <%--
   Renders a dialog component with optional trigger, header, body, and footer.
 
@@ -18,12 +17,12 @@
   @param close_button {boolean} [optional] [default=true] - Whether to include a close button.
   @param close_on_overlay_click {boolean} [optional] [default=true] - Whether clicking the overlay closes the dialog.
 --%>
-
-@import static io.github.sgruendel.lucide.jte.LucideIcons.*
+@import com.basecoatui.jte.util.JteHelper
+@import gg.jte.Content
 
 @import java.util.Map
-@import gg.jte.Content
-@import com.basecoatui.jte.util.JteHelper
+
+@import static io.github.sgruendel.lucide.jte.LucideIcons.*
 
 @param String id
 @param String trigger = null
@@ -45,13 +44,8 @@
   final var dialogDescriptionId = description != null ? id + "-description" : null;
 }
 
-
 @if(trigger != null)
-  <button
-    type="button"
-    onclick="document.getElementById('${id}').showModal()"
-    $unsafe{JteHelper.attrs(triggerAttrs)}
-  >
+  <button type="button" onclick="document.getElementById('${id}').showModal()" $unsafe{JteHelper.attrs(triggerAttrs)}>
     ${trigger}
   </button>
 @endif

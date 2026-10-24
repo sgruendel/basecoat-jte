@@ -1,5 +1,4 @@
 <%-- see https://github.com/hunvreus/basecoat/blob/main/src/nunjucks/select.njk --%>
-
 <%--
   Renders a select component.
 
@@ -15,16 +14,16 @@
   @param listbox_attrs {object} [optional] - Additional HTML attributes for the listbox div.
   @param input_attrs {object} [optional] - Additional HTML attributes for the hidden input.
 --%>
-
-@import static io.github.sgruendel.lucide.jte.LucideIcons.*
+@import com.basecoatui.jte.util.BasecoatSelect.Item
+@import com.basecoatui.jte.util.BasecoatSelect.ItemType
+@import com.basecoatui.jte.util.JteHelper
+@import gg.jte.Content
 
 @import java.util.ArrayList
 @import java.util.List
 @import java.util.Map
-@import gg.jte.Content
-@import com.basecoatui.jte.util.BasecoatSelect.Item
-@import com.basecoatui.jte.util.BasecoatSelect.ItemType
-@import com.basecoatui.jte.util.JteHelper
+
+@import static io.github.sgruendel.lucide.jte.LucideIcons.*
 
 @param String id
 @param String selected = null
@@ -130,12 +129,7 @@
     <span class="truncate">${defaultLabel}</span>
     ${lucideChevronDown().cssClass("text-muted-foreground opacity-50 shrink-0")}
   </button>
-  <div
-    id="${id}-popover"
-    data-popover
-    aria-hidden="true"
-    $unsafe{JteHelper.attrs(popoverAttrs)}
-  >
+  <div id="${id}-popover" data-popover aria-hidden="true" $unsafe{JteHelper.attrs(popoverAttrs)}>
     <div
       role="listbox"
       id="${id}-listbox"

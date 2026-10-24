@@ -1,7 +1,9 @@
+@import gg.jte.Content
+
+@import java.util.List
+
 @import static io.github.sgruendel.lucide.jte.LucideIcons.*
 
-@import gg.jte.Content
-@import java.util.List
 !{
   record Card(String label, String value, String change, String summary, String description, Content trendIcon) {}
 

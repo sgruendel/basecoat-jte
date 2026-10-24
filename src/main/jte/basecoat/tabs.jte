@@ -1,5 +1,4 @@
 <%-- see https://github.com/hunvreus/basecoat/blob/main/src/nunjucks/tabs.njk --%>
-
 <%--
   Renders a tabs component.
 
@@ -16,12 +15,12 @@
     Set aria-orientation="vertical" for vertical tabs or data-variant="line" for line tabs.
   @param default_tab_index {number} [optional] [default=0] - The 0-based index of the tab to be active initially.
 --%>
+@import com.basecoatui.jte.util.BasecoatTab
+@import com.basecoatui.jte.util.JteHelper
+@import gg.jte.support.ForSupport
 
 @import java.util.List
 @import java.util.Map
-@import gg.jte.support.ForSupport
-@import com.basecoatui.jte.util.BasecoatTab
-@import com.basecoatui.jte.util.JteHelper
 
 @param String id
 @param List<BasecoatTab> tabs = null
@@ -38,16 +37,8 @@
   }
 }
 
-<div
-  id="${id}"
-  class="${JteHelper.classAppend("tabs", mainAttrs)}"
-  $unsafe{JteHelper.attrs(mainAttrs, "class")}
->
-  <nav
-    role="tablist"
-    aria-orientation="${orientation}"
-    $unsafe{JteHelper.attrs(tablistAttrs, "aria-orientation")}
-  >
+<div id="${id}" class="${JteHelper.classAppend("tabs", mainAttrs)}" $unsafe{JteHelper.attrs(mainAttrs, "class")}>
+  <nav role="tablist" aria-orientation="${orientation}" $unsafe{JteHelper.attrs(tablistAttrs, "aria-orientation")}>
     @for(var tab : ForSupport.of(tabs))
       !{var isDefaultTab = tab.getIndex() == defaultTabIndex;}
       <button

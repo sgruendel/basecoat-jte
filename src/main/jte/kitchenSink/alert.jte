@@ -1,6 +1,7 @@
 @import static io.github.sgruendel.lucide.jte.LucideIcons.*
-<section id="alert" class="w-full rounded-lg border scroll-mt-14">
-  <header class="border-b px-4 py-3 flex items-center justify-between">
+
+<section id="alert" class="w-full scroll-mt-14 rounded-lg border">
+  <header class="flex items-center justify-between border-b px-4 py-3">
     <h2 class="text-sm font-medium">Alert</h2>
     <a
       href="https://basecoatui.com/components/alert"
@@ -36,35 +37,30 @@
       <div class="alert">
         ${lucideShieldAlert()}
         <h2>
-          This is a very long alert title that demonstrates how the component
-          handles extended text content and potentially wraps across multiple
-          lines
+          This is a very long alert title that demonstrates how the component handles extended text content and
+          potentially wraps across multiple lines
         </h2>
       </div>
 
       <div class="alert">
         ${lucideGift()}
         <section>
-          This is a very long alert description that demonstrates how the
-          component handles extended text content and potentially wraps across
-          multiple lines
+          This is a very long alert description that demonstrates how the component handles extended text content and
+          potentially wraps across multiple lines
         </section>
       </div>
 
       <div class="alert">
         ${lucideCircleAlert()}
         <h2>
-          This is an extremely long alert title that spans multiple lines to
-          demonstrate how the component handles very lengthy headings while
-          maintaining readability and proper text wrapping behavior
+          This is an extremely long alert title that spans multiple lines to demonstrate how the component handles very
+          lengthy headings while maintaining readability and proper text wrapping behavior
         </h2>
         <section>
-          This is an equally long description that contains detailed information
-          about the alert. It shows how the component can accommodate extensive
-          content while preserving proper spacing, alignment, and readability
-          across different screen sizes and viewport widths. This helps ensure
-          the user experience remains consistent regardless of the content
-          length.
+          This is an equally long description that contains detailed information about the alert. It shows how the
+          component can accommodate extensive content while preserving proper spacing, alignment, and readability across
+          different screen sizes and viewport widths. This helps ensure the user experience remains consistent
+          regardless of the content length.
         </section>
       </div>
 

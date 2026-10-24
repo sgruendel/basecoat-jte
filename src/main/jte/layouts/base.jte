@@ -9,23 +9,23 @@
     <script>
       (() => {
         try {
-          const stored = localStorage.getItem("themeMode");
-          if (stored ? stored === "dark" : matchMedia("(prefers-color-scheme: dark)").matches) {
-            document.documentElement.classList.add("dark");
+          const stored = localStorage.getItem('themeMode');
+          if (stored ? stored === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
           }
         } catch (_) {}
 
         const apply = (dark) => {
-          document.documentElement.classList.toggle("dark", dark);
+          document.documentElement.classList.toggle('dark', dark);
           try {
-            localStorage.setItem("themeMode", dark ? "dark" : "light");
+            localStorage.setItem('themeMode', dark ? 'dark' : 'light');
           } catch (_) {}
         };
 
-        document.addEventListener("basecoat:theme", (event) => {
+        document.addEventListener('basecoat:theme', (event) => {
           const mode = event.detail?.mode;
           apply(
-            mode === "dark" ? true : mode === "light" ? false : !document.documentElement.classList.contains("dark"),
+            mode === 'dark' ? true : mode === 'light' ? false : !document.documentElement.classList.contains('dark'),
           );
         });
       })();
@@ -34,10 +34,10 @@
     <script>
       (function () {
         try {
-          const storedTheme = localStorage.getItem("themeVariant");
-          if (storedTheme) document.documentElement.classList.add("theme-" + storedTheme);
+          const storedTheme = localStorage.getItem('themeVariant');
+          if (storedTheme) document.documentElement.classList.add('theme-' + storedTheme);
         } catch (event) {
-          console.error("Could not apply theme variant from localStorage", event);
+          console.error('Could not apply theme variant from localStorage', event);
         }
       })();
     </script>
@@ -82,18 +82,18 @@
       const highlight = () => {
         if (!window.hljs) return;
         document
-          .querySelectorAll("pre code:not([data-highlighted]), code.highlight:not([data-highlighted])")
+          .querySelectorAll('pre code:not([data-highlighted]), code.highlight:not([data-highlighted])')
           .forEach((el) => hljs.highlightElement(el));
       };
 
       if (!window._hljsInit) {
         window._hljsInit = true;
-        document.addEventListener("DOMContentLoaded", highlight);
-        document.addEventListener("htmx:afterSwap", highlight);
+        document.addEventListener('DOMContentLoaded', highlight);
+        document.addEventListener('htmx:afterSwap', highlight);
       }
     </script>
     <script>
-      document.addEventListener("htmx:historyRestore", () => {
+      document.addEventListener('htmx:historyRestore', () => {
         if (window.basecoat) window.basecoat.initAll();
       });
     </script>

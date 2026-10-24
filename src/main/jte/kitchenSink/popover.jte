@@ -1,8 +1,9 @@
+@import java.util.Map
+
 @import static io.github.sgruendel.lucide.jte.LucideIcons.*
 
-@import java.util.Map
-<section id="popover" class="w-full rounded-lg border scroll-mt-14">
-  <header class="border-b px-4 py-3 flex items-center justify-between">
+<section id="popover" class="w-full scroll-mt-14 rounded-lg border">
+  <header class="flex items-center justify-between border-b px-4 py-3">
     <h2 class="text-sm font-medium">Popover</h2>
     <a
       href="https://basecoatui.com/components/popover"
@@ -28,19 +29,19 @@
           <form class="form grid gap-2">
             <div class="grid grid-cols-3 items-center gap-4">
               <label for="demo-popover-width">Width</label>
-              <input type="text" id="demo-popover-width" value="100%" class="col-span-2 h-8"/>
+              <input type="text" id="demo-popover-width" value="100%" class="col-span-2 h-8" />
             </div>
             <div class="grid grid-cols-3 items-center gap-4">
               <label for="demo-popover-max-width">Max. width</label>
-              <input type="text" id="demo-popover-max-width" value="300px" class="col-span-2 h-8"/>
+              <input type="text" id="demo-popover-max-width" value="300px" class="col-span-2 h-8" />
             </div>
             <div class="grid grid-cols-3 items-center gap-4">
               <label for="demo-popover-height">Height</label>
-              <input type="text" id="demo-popover-height" value="25px" class="col-span-2 h-8"/>
+              <input type="text" id="demo-popover-height" value="25px" class="col-span-2 h-8" />
             </div>
             <div class="grid grid-cols-3 items-center gap-4">
               <label for="demo-popover-max-height">Max. height</label>
-              <input type="text" id="demo-popover-max-height" value="none" class="col-span-2 h-8"/>
+              <input type="text" id="demo-popover-max-height" value="none" class="col-span-2 h-8" />
             </div>
           </form>
         </div>

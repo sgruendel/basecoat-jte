@@ -1,5 +1,4 @@
 <%-- see https://github.com/hunvreus/basecoat/blob/main/src/nunjucks/command.njk --%>
-
 <%--
   Renders a standalone command menu component with search and keyboard navigation.
 
@@ -11,12 +10,12 @@
   @param input_attrs {object} [optional] - Additional HTML attributes for the search input.
   @param menu_attrs {object} [optional] - Additional HTML attributes for the menu div.
 --%>
+@import com.basecoatui.jte.util.BasecoatCommand.Item
+@import com.basecoatui.jte.util.JteHelper
+@import gg.jte.Content
 
 @import java.util.List
 @import java.util.Map
-@import gg.jte.Content
-@import com.basecoatui.jte.util.BasecoatCommand.Item
-@import com.basecoatui.jte.util.JteHelper
 
 @param String id
 @param List<Item> items = null

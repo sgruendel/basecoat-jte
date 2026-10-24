@@ -1,5 +1,4 @@
 <%-- see https://github.com/hunvreus/basecoat/blob/main/src/nunjucks/combobox.njk --%>
-
 <%--
   Renders an input-first combobox component.
 
@@ -17,12 +16,12 @@
   @param listbox_attrs {object} [optional] - Additional HTML attributes for the listbox div.
   @param hidden_input_attrs {object} [optional] - Additional HTML attributes for the hidden input.
 --%>
+@import com.basecoatui.jte.util.BasecoatSelect.Item
+@import com.basecoatui.jte.util.JteHelper
+@import gg.jte.Content
 
 @import java.util.List
 @import java.util.Map
-@import gg.jte.Content
-@import com.basecoatui.jte.util.BasecoatSelect.Item
-@import com.basecoatui.jte.util.JteHelper
 
 @param String id
 @param String selected = null
@@ -173,12 +172,7 @@
       <path d="m6 9 6 6 6-6" />
     </svg>
   @endif
-  <div
-    id="${id}-popover"
-    data-popover
-    aria-hidden="true"
-    $unsafe{JteHelper.attrs(popoverAttrs)}
-  >
+  <div id="${id}-popover" data-popover aria-hidden="true" $unsafe{JteHelper.attrs(popoverAttrs)}>
     <div
       role="listbox"
       id="${id}-listbox"

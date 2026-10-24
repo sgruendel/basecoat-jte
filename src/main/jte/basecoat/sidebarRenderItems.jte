@@ -1,21 +1,19 @@
 <%-- see https://github.com/hunvreus/basecoat/blob/main/src/nunjucks/sidebar.njk --%>
-
 <%--
   Renders sidebar content recursively (groups, items, submenus, separators).
 
   @param items {array} - The array of items to render.
   @param parent_id_prefix {string} [optional] - Prefix for generating element IDs.
 --%>
-
-@import java.util.List
-@import gg.jte.support.ForSupport
 @import com.basecoatui.jte.util.BasecoatSidebar.Item
 @import com.basecoatui.jte.util.BasecoatSidebar.ItemType
 @import com.basecoatui.jte.util.JteHelper
+@import gg.jte.support.ForSupport
+
+@import java.util.List
 
 @param List<Item> items
 @param String parentIdPrefix = "content"
-
 
 @for(var item : ForSupport.of(items))
   !{var itemId = parentIdPrefix + "-" + item.getIndex();}
@@ -42,11 +40,7 @@
     <hr role="separator" />
   @elseif(item.get().type() == ItemType.SUBMENU)
     <li>
-      <details
-        id="submenu-${itemId}"
-        open="${item.get().open()}"
-        $unsafe{JteHelper.attrs(item.get().attrs(), "open")}
-      >
+      <details id="submenu-${itemId}" open="${item.get().open()}" $unsafe{JteHelper.attrs(item.get().attrs(), "open")}>
         <summary aria-controls="submenu-${itemId}-content">
           ${item.get().icon()}
           <span>${item.get().label()}</span>

@@ -1,6 +1,7 @@
 @import static io.github.sgruendel.lucide.jte.LucideIcons.*
-<section id="tooltip" class="w-full rounded-lg border scroll-mt-14">
-  <header class="border-b px-4 py-3 flex items-center justify-between">
+
+<section id="tooltip" class="w-full scroll-mt-14 rounded-lg border">
+  <header class="flex items-center justify-between border-b px-4 py-3">
     <h2 class="text-sm font-medium">Tooltip</h2>
     <a
       href="https://basecoatui.com/components/tooltip"
@@ -13,33 +14,10 @@
   </header>
   <div class="p-4">
     <div class="flex flex-wrap items-center gap-4">
-      <button type="button" class="btn-outline" data-tooltip="Top tooltip">
-        Top
-      </button>
-      <button
-        type="button"
-        class="btn-outline"
-        data-tooltip="Right tooltip"
-        data-side="right"
-      >
-        Right
-      </button>
-      <button
-        type="button"
-        class="btn-outline"
-        data-tooltip="Bottom tooltip"
-        data-side="bottom"
-      >
-        Bottom
-      </button>
-      <button
-        type="button"
-        class="btn-outline"
-        data-tooltip="Left tooltip"
-        data-side="left"
-      >
-        Left
-      </button>
+      <button type="button" class="btn-outline" data-tooltip="Top tooltip">Top</button>
+      <button type="button" class="btn-outline" data-tooltip="Right tooltip" data-side="right">Right</button>
+      <button type="button" class="btn-outline" data-tooltip="Bottom tooltip" data-side="bottom">Bottom</button>
+      <button type="button" class="btn-outline" data-tooltip="Left tooltip" data-side="left">Left</button>
     </div>
   </div>
 </section>

@@ -1,7 +1,8 @@
-@import java.util.List
-@import com.basecoatui.jte.util.BasecoatSelect.Item
 @import com.basecoatui.jte.examples.admindashboard.models.OutlinePage
 @import com.basecoatui.jte.examples.admindashboard.models.OutlineSelection
+@import com.basecoatui.jte.util.BasecoatSelect.Item
+
+@import java.util.List
 
 @param OutlinePage page
 @param OutlineSelection selection

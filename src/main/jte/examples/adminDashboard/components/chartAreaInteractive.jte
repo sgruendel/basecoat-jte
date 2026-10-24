@@ -1,14 +1,15 @@
-@import gg.jte.support.ForSupport
-@import java.util.List
-@import java.util.Map
 @import com.basecoatui.jte.examples.admindashboard.models.ChartDataPoint
 @import com.basecoatui.jte.util.BasecoatSelect.Item
 @import com.basecoatui.jte.util.JsonHelper
+@import gg.jte.support.ForSupport
+
+@import java.util.List
+@import java.util.Map
 
 @param List<ChartDataPoint> data = null
 @param String range = "90d"
-<%-- TODO derive default value from enum, also check Controller for default value --%>
 
+<%-- TODO derive default value from enum, also check Controller for default value --%>
 !{
   // TODO add Java enum for this, inject values as model attribute, and use that in the template to generate the buttons
   final List<Item> rangeItems = List.of(

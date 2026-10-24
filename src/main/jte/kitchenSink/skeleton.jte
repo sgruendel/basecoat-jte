@@ -1,6 +1,7 @@
 @import static io.github.sgruendel.lucide.jte.LucideIcons.*
-<section id="skeleton" class="w-full rounded-lg border scroll-mt-14">
-  <header class="border-b px-4 py-3 flex items-center justify-between">
+
+<section id="skeleton" class="w-full scroll-mt-14 rounded-lg border">
+  <header class="flex items-center justify-between border-b px-4 py-3">
     <h2 class="text-sm font-medium">Skeleton</h2>
     <a
       href="https://basecoatui.com/components/skeleton"
@@ -14,37 +15,31 @@
   <div class="p-4">
     <div class="flex flex-col gap-4">
       <div class="flex items-center gap-4">
-        <div
-          class="bg-accent animate-pulse size-10 shrink-0 rounded-full"
-        ></div>
+        <div class="bg-accent size-10 shrink-0 animate-pulse rounded-full"></div>
         <div class="grid gap-2">
-          <div class="bg-accent animate-pulse rounded-md h-4 w-[150px]"></div>
-          <div class="bg-accent animate-pulse rounded-md h-4 w-[100px]"></div>
+          <div class="bg-accent h-4 w-[150px] animate-pulse rounded-md"></div>
+          <div class="bg-accent h-4 w-[100px] animate-pulse rounded-md"></div>
         </div>
       </div>
 
-      <div class="flex max-sm:flex-col gap-4 w-full">
+      <div class="flex w-full gap-4 max-sm:flex-col">
         <div class="card w-full @md:w-auto @md:min-w-sm">
           <header>
-            <div class="bg-accent animate-pulse rounded-md h-4 w-2/3"></div>
-            <div class="bg-accent animate-pulse rounded-md h-4 w-1/2"></div>
+            <div class="bg-accent h-4 w-2/3 animate-pulse rounded-md"></div>
+            <div class="bg-accent h-4 w-1/2 animate-pulse rounded-md"></div>
           </header>
           <section>
-            <div
-              class="bg-accent animate-pulse rounded-md aspect-square w-full"
-            ></div>
+            <div class="bg-accent aspect-square w-full animate-pulse rounded-md"></div>
           </section>
         </div>
 
         <div class="card w-full @md:w-auto @md:min-w-sm">
           <header>
-            <div class="bg-accent animate-pulse rounded-md h-4 w-2/3"></div>
-            <div class="bg-accent animate-pulse rounded-md h-4 w-1/2"></div>
+            <div class="bg-accent h-4 w-2/3 animate-pulse rounded-md"></div>
+            <div class="bg-accent h-4 w-1/2 animate-pulse rounded-md"></div>
           </header>
           <section>
-            <div
-              class="bg-accent animate-pulse rounded-md aspect-square w-full"
-            ></div>
+            <div class="bg-accent aspect-square w-full animate-pulse rounded-md"></div>
           </section>
         </div>
       </div>

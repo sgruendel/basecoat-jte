@@ -1,8 +1,9 @@
+@import java.util.Map
+
 @import static io.github.sgruendel.lucide.jte.LucideIcons.*
 
-@import java.util.Map
-<section id="combobox" class="w-full rounded-lg border scroll-mt-14">
-  <header class="border-b px-4 py-3 flex items-center justify-between">
+<section id="combobox" class="w-full scroll-mt-14 rounded-lg border">
+  <header class="flex items-center justify-between border-b px-4 py-3">
     <h2 class="text-sm font-medium">Combobox</h2>
     <a
       href="https://basecoatui.com/components/combobox"
@@ -35,7 +36,7 @@
         popoverAttrs = Map.of("class", "w-72"),
         listboxAttrs = Map.of("data-empty", "No timezone found."),
         options = @`
-          <div class="max-h-64 overflow-y-auto scrollbar">
+          <div class="scrollbar max-h-64 overflow-y-auto">
             <div role="group" aria-labelledby="demo-combobox-timezones-group-0">
               <span id="demo-combobox-timezones-group-0" role="heading">Americas</span>
               <div role="option" data-value="America/New_York">(GMT-5) New York</div>
@@ -64,11 +65,8 @@
               <div role="option" data-value="Asia/Seoul">(GMT+9) Seoul</div>
             </div>
           </div>
-          <hr role="separator">
-          <div role="option">
-            ${lucideCirclePlus()}
-            Create timezone
-          </div>
+          <hr role="separator" />
+          <div role="option">${lucideCirclePlus()} Create timezone</div>
         `
       )
     </div>

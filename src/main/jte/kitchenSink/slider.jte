@@ -1,6 +1,7 @@
 @import static io.github.sgruendel.lucide.jte.LucideIcons.*
-<section id="slider" class="w-full rounded-lg border scroll-mt-14">
-  <header class="border-b px-4 py-3 flex items-center justify-between">
+
+<section id="slider" class="w-full scroll-mt-14 rounded-lg border">
+  <header class="flex items-center justify-between border-b px-4 py-3">
     <h2 class="text-sm font-medium">Slider</h2>
     <a
       href="https://basecoatui.com/components/slider"
@@ -27,12 +28,12 @@
       const max = parseFloat(el.max || 100);
       const value = parseFloat(el.value);
       const percent = max === min ? 0 : ((value - min) / (max - min)) * 100;
-      el.style.setProperty("--slider-value", percent + "%");
+      el.style.setProperty('--slider-value', percent + '%');
     };
 
     sliders.forEach((slider) => {
       updateSlider(slider);
-      slider.addEventListener("input", (event) => updateSlider(event.target));
+      slider.addEventListener('input', (event) => updateSlider(event.target));
     });
   })();
 </script>

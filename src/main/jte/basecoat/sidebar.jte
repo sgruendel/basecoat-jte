@@ -1,5 +1,4 @@
 <%-- see https://github.com/hunvreus/basecoat/blob/main/src/nunjucks/sidebar.njk --%>
-
 <%--
   Renders a sidebar component.
 
@@ -15,12 +14,12 @@
   @param content_attrs {object} [optional] - Additional HTML attributes for the content section.
   @param footer_attrs {object} [optional] - Additional HTML attributes for the footer element.
 --%>
+@import com.basecoatui.jte.util.BasecoatSidebar.Item
+@import com.basecoatui.jte.util.JteHelper
+@import gg.jte.Content
 
 @import java.util.List
 @import java.util.Map
-@import gg.jte.Content
-@import com.basecoatui.jte.util.BasecoatSidebar.Item
-@import com.basecoatui.jte.util.JteHelper
 
 @param String id
 @param String label = "Sidebar navigation"

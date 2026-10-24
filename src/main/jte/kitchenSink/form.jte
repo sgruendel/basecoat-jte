@@ -1,4 +1,4 @@
-<section id="form" class="w-full rounded-lg border scroll-mt-16">
+<section id="form" class="w-full scroll-mt-16 rounded-lg border">
   <header class="border-b px-4 py-3">
     <h2 class="text-sm font-medium">Form</h2>
   </header>
@@ -7,9 +7,7 @@
       <div class="grid gap-2">
         <label for="demo-form-text">Username</label>
         <input type="text" id="demo-form-text" placeholder="hunvreus" />
-        <p class="text-muted-foreground text-sm">
-          This is your public display name.
-        </p>
+        <p class="text-muted-foreground text-sm">This is your public display name.</p>
       </div>
 
       <div class="grid gap-2">
@@ -19,100 +17,63 @@
           <option value="alice@example.com">m@google.com</option>
           <option value="john@example.com">m@support.com</option>
         </select>
-        <p class="text-muted-foreground text-sm">
-          You can manage email addresses in your email settings.
-        </p>
+        <p class="text-muted-foreground text-sm">You can manage email addresses in your email settings.</p>
       </div>
 
       <div class="grid gap-2">
         <label for="demo-form-text">Bio</label>
-        <textarea
-          id="demo-form-textarea"
-          placeholder="I like to..."
-          rows="3"
-        ></textarea>
-        <p class="text-muted-foreground text-sm">
-          You can @mention other users and organizations.
-        </p>
+        <textarea id="demo-form-textarea" placeholder="I like to..." rows="3"></textarea>
+        <p class="text-muted-foreground text-sm">You can @mention other users and organizations.</p>
       </div>
 
       <div class="flex flex-col gap-3">
         <label for="demo-form-radio">Notify me about...</label>
         <fieldset id="demo-form-radio" class="grid gap-3">
+          <label class="font-normal"><input type="radio" name="demo-form-radio" value="1" />All new messages</label>
           <label class="font-normal"
-            ><input type="radio" name="demo-form-radio" value="1" />All new
-            messages</label
+            ><input type="radio" name="demo-form-radio" value="2" />Direct messages and mentions</label
           >
-          <label class="font-normal"
-            ><input type="radio" name="demo-form-radio" value="2" />Direct
-            messages and mentions</label
-          >
-          <label class="font-normal"
-            ><input
-              type="radio"
-              name="demo-form-radio"
-              value="3"
-            />Nothing</label
-          >
+          <label class="font-normal"><input type="radio" name="demo-form-radio" value="3" />Nothing</label>
         </fieldset>
       </div>
 
-      <div
-        class="flex flex-row items-start gap-3 rounded-md border p-4 shadow-xs"
-      >
+      <div class="flex flex-row items-start gap-3 rounded-md border p-4 shadow-xs">
         <input type="checkbox" id="demo-form-checkbox" />
         <div class="flex flex-col gap-1">
-          <label for="demo-form-checkbox" class="leading-snug"
-            >Use different settings for my mobile devices</label
-          >
+          <label for="demo-form-checkbox" class="leading-snug">Use different settings for my mobile devices</label>
           <p class="text-muted-foreground text-sm leading-snug">
-            You can manage your mobile notifications in the mobile settings
-            page.
+            You can manage your mobile notifications in the mobile settings page.
           </p>
         </div>
       </div>
 
       <div class="flex flex-col gap-4">
         <header>
-          <label for="demo-form-checkboxes" class="text-base leading-normal"
-            >Sidebar</label
-          >
-          <p class="text-muted-foreground text-sm">
-            Select the items you want to display in the sidebar.
-          </p>
+          <label for="demo-form-checkboxes" class="text-base leading-normal">Sidebar</label>
+          <p class="text-muted-foreground text-sm">Select the items you want to display in the sidebar.</p>
         </header>
         <fieldset id="demo-form-checkboxes" class="flex flex-col gap-2">
-          <label class="font-normal leading-tight">
-            <input
-              type="checkbox"
-              name="demo-form-checkboxes"
-              value="1"
-              checked
-            />
+          <label class="leading-tight font-normal">
+            <input type="checkbox" name="demo-form-checkboxes" value="1" checked />
             Recents
           </label>
-          <label class="font-normal leading-tight">
-            <input
-              type="checkbox"
-              name="demo-form-checkboxes"
-              value="2"
-              checked
-            />
+          <label class="leading-tight font-normal">
+            <input type="checkbox" name="demo-form-checkboxes" value="2" checked />
             Home
           </label>
-          <label class="font-normal leading-tight">
+          <label class="leading-tight font-normal">
             <input type="checkbox" name="demo-form-checkboxes" value="3" />
             Applications
           </label>
-          <label class="font-normal leading-tight">
+          <label class="leading-tight font-normal">
             <input type="checkbox" name="demo-form-checkboxes" value="4" />
             Desktop
           </label>
-          <label class="font-normal leading-tight">
+          <label class="leading-tight font-normal">
             <input type="checkbox" name="demo-form-checkboxes" value="5" />
             Download
           </label>
-          <label class="font-normal leading-tight">
+          <label class="leading-tight font-normal">
             <input type="checkbox" name="demo-form-checkboxes" value="6" />
             Documents
           </label>
@@ -122,43 +83,24 @@
       <div class="grid gap-2">
         <label for="demo-form-date">Date of birth</label>
         <input type="date" id="demo-form-date" />
-        <p class="text-muted-foreground text-sm">
-          Your date of birth is used to calculate your age.
-        </p>
+        <p class="text-muted-foreground text-sm">Your date of birth is used to calculate your age.</p>
       </div>
 
       <section class="grid gap-4">
         <h3 class="text-lg font-medium">Email Notifications</h3>
-        <div
-          class="gap-2 flex flex-row items-start justify-between rounded-lg border p-4 shadow-xs"
-        >
+        <div class="flex flex-row items-start justify-between gap-2 rounded-lg border p-4 shadow-xs">
           <div class="flex flex-col gap-0.5">
-            <label for="demo-form-switch" class="leading-normal"
-              >Marketing emails</label
-            >
-            <p class="text-muted-foreground text-sm">
-              Receive emails about new products, features, and more.
-            </p>
+            <label for="demo-form-switch" class="leading-normal">Marketing emails</label>
+            <p class="text-muted-foreground text-sm">Receive emails about new products, features, and more.</p>
           </div>
           <input type="checkbox" id="demo-form-switch" role="switch" />
         </div>
-        <div
-          class="gap-2 flex flex-row items-start justify-between rounded-lg border p-4 shadow-xs"
-        >
+        <div class="flex flex-row items-start justify-between gap-2 rounded-lg border p-4 shadow-xs">
           <div class="flex flex-col gap-0.5 opacity-60">
-            <label for="demo-form-switch-disabled" class="leading-normal"
-              >Marketing emails</label
-            >
-            <p class="text-muted-foreground text-sm">
-              Receive emails about new products, features, and more.
-            </p>
+            <label for="demo-form-switch-disabled" class="leading-normal">Marketing emails</label>
+            <p class="text-muted-foreground text-sm">Receive emails about new products, features, and more.</p>
           </div>
-          <input
-            type="checkbox"
-            id="demo-form-switch-disabled"
-            role="switch"
-            disabled
-          />
+          <input type="checkbox" id="demo-form-switch-disabled" role="switch" disabled />
         </div>
       </section>
 

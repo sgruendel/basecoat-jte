@@ -1,7 +1,9 @@
+@import gg.jte.Content
+
+@import java.util.List
+
 @import static io.github.sgruendel.lucide.jte.LucideIcons.*
 
-@import gg.jte.Content
-@import java.util.List
 !{
   record Item(String name, String url, Content icon) {}
 

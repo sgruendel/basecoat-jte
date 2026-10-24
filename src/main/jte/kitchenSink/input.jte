@@ -1,6 +1,7 @@
 @import static io.github.sgruendel.lucide.jte.LucideIcons.*
-<section id="input" class="w-full rounded-lg border scroll-mt-14">
-  <header class="border-b px-4 py-3 flex items-center justify-between">
+
+<section id="input" class="w-full scroll-mt-14 rounded-lg border">
+  <header class="flex items-center justify-between border-b px-4 py-3">
     <h2 class="text-sm font-medium">Input</h2>
     <a
       href="https://basecoatui.com/components/input"
@@ -15,12 +16,7 @@
     <div class="flex flex-col gap-y-4">
       <input type="text" class="input" placeholder="Text" />
       <input type="text" class="input" disabled placeholder="Disabled" />
-      <input
-        type="text"
-        class="input"
-        aria-invalid="true"
-        placeholder="Error"
-      />
+      <input type="text" class="input" aria-invalid="true" placeholder="Error" />
       <input type="email" class="input" placeholder="Email" />
       <input type="password" class="input" placeholder="Password" />
       <input type="number" class="input" placeholder="Number" />

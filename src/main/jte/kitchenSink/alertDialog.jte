@@ -1,8 +1,9 @@
+@import java.util.Map
+
 @import static io.github.sgruendel.lucide.jte.LucideIcons.*
 
-@import java.util.Map
-<section id="alert-dialog" class="w-full rounded-lg border scroll-mt-14">
-  <header class="border-b px-4 py-3 flex items-center justify-between">
+<section id="alert-dialog" class="w-full scroll-mt-14 rounded-lg border">
+  <header class="flex items-center justify-between border-b px-4 py-3">
     <h2 class="text-sm font-medium">Alert Dialog</h2>
     <a
       href="https://basecoatui.com/components/alert-dialog"
@@ -21,8 +22,12 @@
       trigger = "Open dialog",
       triggerAttrs = Map.of("class", "btn-outline"),
       footer = @`
-        <button class="btn-outline" type="button" onclick="document.getElementById('alert-dialog-demo').close()">Cancel</button>
-        <button class="btn-primary" type="button" onclick="document.getElementById('alert-dialog-demo').close()">Continue</button>
+        <button class="btn-outline" type="button" onclick="document.getElementById('alert-dialog-demo').close()">
+          Cancel
+        </button>
+        <button class="btn-primary" type="button" onclick="document.getElementById('alert-dialog-demo').close()">
+          Continue
+        </button>
       `,
       closeButton = false,
       closeOnOverlayClick = false

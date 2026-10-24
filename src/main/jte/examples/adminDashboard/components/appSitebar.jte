@@ -1,7 +1,8 @@
-@import static io.github.sgruendel.lucide.jte.LucideIcons.*
+@import com.basecoatui.jte.examples.models.User
 
 @import java.util.Map
-@import com.basecoatui.jte.examples.models.User
+
+@import static io.github.sgruendel.lucide.jte.LucideIcons.*
 
 @param User user
 

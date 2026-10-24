@@ -1,6 +1,7 @@
 @import static io.github.sgruendel.lucide.jte.LucideIcons.*
-<section id="card" class="w-full rounded-lg border scroll-mt-14">
-  <header class="border-b px-4 py-3 flex items-center justify-between">
+
+<section id="card" class="w-full scroll-mt-14 rounded-lg border">
+  <header class="flex items-center justify-between border-b px-4 py-3">
     <h2 class="text-sm font-medium">Card</h2>
     <a
       href="https://basecoatui.com/components/card"
@@ -27,9 +28,7 @@
             <div class="grid gap-2">
               <div class="flex items-center gap-2">
                 <label for="demo-card-form-password">Password</label>
-                <a
-                  href="#"
-                  class="ml-auto inline-block text-sm underline-offset-4 hover:underline"
+                <a href="#" class="ml-auto inline-block text-sm underline-offset-4 hover:underline"
                   >Forgot your password?</a
                 >
               </div>
@@ -39,9 +38,7 @@
         </section>
         <footer class="flex flex-col items-center gap-2">
           <button type="button" class="btn w-full">Login</button>
-          <button type="button" class="btn-outline w-full">
-            Login with Google
-          </button>
+          <button type="button" class="btn-outline w-full">Login with Google</button>
           <p class="mt-4 text-center text-sm">
             Don't have an account?
             <a href="#" class="underline-offset-4 hover:underline">Sign up</a>
@@ -55,10 +52,7 @@
           <p>Transcript from the meeting with the client.</p>
         </header>
         <section class="text-sm">
-          <p>
-            Client requested dashboard redesign with focus on mobile
-            responsiveness.
-          </p>
+          <p>Client requested dashboard redesign with focus on mobile responsiveness.</p>
           <ol class="mt-4 flex list-decimal flex-col gap-2 pl-6">
             <li>New analytics widgets for daily/weekly metrics</li>
             <li>Simplified navigation menu</li>
@@ -69,7 +63,7 @@
         </section>
         <footer class="flex items-center">
           <div
-            class="flex -space-x-2 [&_img]:ring-background [&_img]:ring-2 [&_img]:grayscale [&_img]:size-8 [&_img]:shrink-0 [&_img]:object-cover [&_img]:rounded-full"
+            class="[&_img]:ring-background flex -space-x-2 [&_img]:size-8 [&_img]:shrink-0 [&_img]:rounded-full [&_img]:object-cover [&_img]:ring-2 [&_img]:grayscale"
           >
             <img alt="@hunvreus" src="https://github.com/hunvreus.png" />
             <img alt="@shadcn" src="https://github.com/shadcn.png" />
@@ -106,9 +100,7 @@
         </footer>
       </div>
 
-      <div
-        class="flex w-full flex-wrap items-start gap-8 md:*:[.card]:basis-1/4"
-      >
+      <div class="flex w-full flex-wrap items-start gap-8 md:*:[.card]:basis-1/4">
         <div class="card">
           <section>Content Only</section>
         </div>

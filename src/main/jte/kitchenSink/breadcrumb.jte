@@ -1,10 +1,12 @@
-@import static io.github.sgruendel.lucide.jte.LucideIcons.*
+@import com.basecoatui.jte.util.BasecoatSelect.Item
 
 @import java.util.List
 @import java.util.Map
-@import com.basecoatui.jte.util.BasecoatSelect.Item
-<section id="breadcrumb" class="w-full rounded-lg border scroll-mt-14">
-  <header class="border-b px-4 py-3 flex items-center justify-between">
+
+@import static io.github.sgruendel.lucide.jte.LucideIcons.*
+
+<section id="breadcrumb" class="w-full scroll-mt-14 rounded-lg border">
+  <header class="flex items-center justify-between border-b px-4 py-3">
     <h2 class="text-sm font-medium">Breadcrumb</h2>
     <a
       href="https://basecoatui.com/components/breadcrumb"
@@ -16,39 +18,27 @@
     </a>
   </header>
   <div class="p-4">
-    <ol
-      class="text-muted-foreground flex flex-wrap items-center gap-1.5 text-sm wrap-break-word sm:gap-2.5"
-    >
+    <ol class="text-muted-foreground flex flex-wrap items-center gap-1.5 text-sm wrap-break-word sm:gap-2.5">
       <li class="inline-flex items-center gap-1.5">
         <a href="#" class="hover:text-foreground transition-colors">Home</a>
       </li>
-      <li>
-        ${lucideChevronRight().cssClass("size-3.5")}
-      </li>
+      <li>${lucideChevronRight().cssClass("size-3.5")}</li>
       <li class="inline-flex items-center gap-1.5">
         @template.basecoat.dropdownMenu(
           id = "demo-breadcrumb-menu",
           triggerContent = @`${lucideEllipsis()}`,
-          triggerAttrs = Map.of("class", "flex size-9 items-center justify-center h-4 w-4 hover:text-foreground cursor-pointer"),
+          triggerAttrs = Map.of(
+            "class", "flex size-9 items-center justify-center h-4 w-4 hover:text-foreground cursor-pointer"
+          ),
           popoverAttrs = Map.of("class", "p-1"),
-          items = List.of(
-            Item.of("Documentation"),
-            Item.of("Themes"),
-            Item.of("GitHub")
-          )
+          items = List.of(Item.of("Documentation"), Item.of("Themes"), Item.of("GitHub"))
         )
       </li>
-      <li>
-        ${lucideChevronRight().cssClass("size-3.5")}
-      </li>
+      <li>${lucideChevronRight().cssClass("size-3.5")}</li>
       <li class="inline-flex items-center gap-1.5">
-        <a href="#" class="hover:text-foreground transition-colors"
-          >Components</a
-        >
+        <a href="#" class="hover:text-foreground transition-colors">Components</a>
       </li>
-      <li>
-        ${lucideChevronRight().cssClass("size-3.5")}
-      </li>
+      <li>${lucideChevronRight().cssClass("size-3.5")}</li>
       <li class="inline-flex items-center gap-1.5">
         <span class="text-foreground font-normal">Breadcrumb</span>
       </li>

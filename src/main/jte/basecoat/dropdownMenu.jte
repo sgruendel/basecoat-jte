@@ -1,5 +1,4 @@
 <%-- see https://github.com/hunvreus/basecoat/blob/main/src/nunjucks/dropdown-menu.njk --%>
-
 <%--
   Renders a dropdown menu component.
 
@@ -11,12 +10,12 @@
   @param popover_attrs {object} [optional] - Additional HTML attributes for the dropdown content div.
   @param menu_attrs {object} [optional] - Additional HTML attributes for the menu div.
 --%>
+@import com.basecoatui.jte.util.BasecoatSelect.Item
+@import com.basecoatui.jte.util.JteHelper
+@import gg.jte.Content
 
 @import java.util.List
 @import java.util.Map
-@import gg.jte.Content
-@import com.basecoatui.jte.util.BasecoatSelect.Item
-@import com.basecoatui.jte.util.JteHelper
 
 @param String id
 @param String triggerText = null
@@ -44,18 +43,8 @@
     ${triggerText}
     ${triggerContent}
   </button>
-  <div
-    id="${id}-popover"
-    data-popover
-    aria-hidden="true"
-    $unsafe{JteHelper.attrs(popoverAttrs)}
-  >
-    <div
-      role="menu"
-      id="${id}-menu"
-      aria-labelledby="${id}-trigger"
-      $unsafe{JteHelper.attrs(menuAttrs)}
-    >
+  <div id="${id}-popover" data-popover aria-hidden="true" $unsafe{JteHelper.attrs(popoverAttrs)}>
+    <div role="menu" id="${id}-menu" aria-labelledby="${id}-trigger" $unsafe{JteHelper.attrs(menuAttrs)}>
       @if(items != null)
         @template.basecoat.dropdownRenderItems(
           items = items,

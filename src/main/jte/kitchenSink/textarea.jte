@@ -1,6 +1,7 @@
 @import static io.github.sgruendel.lucide.jte.LucideIcons.*
-<section id="textarea" class="w-full rounded-lg border scroll-mt-14">
-  <header class="border-b px-4 py-3 flex items-center justify-between">
+
+<section id="textarea" class="w-full scroll-mt-14 rounded-lg border">
+  <header class="flex items-center justify-between border-b px-4 py-3">
     <h2 class="text-sm font-medium">Textarea</h2>
     <a
       href="https://basecoatui.com/components/textarea"
@@ -13,44 +14,24 @@
   </header>
   <div class="p-4">
     <div class="flex flex-col gap-y-10">
-      <textarea
-        class="textarea"
-        placeholder="Type your message here"
-      ></textarea>
-      <textarea
-        class="textarea"
-        placeholder="Type your message here"
-        aria-invalid="true"
-      ></textarea>
+      <textarea class="textarea" placeholder="Type your message here"></textarea>
+      <textarea class="textarea" placeholder="Type your message here" aria-invalid="true"></textarea>
       <div class="grid gap-3">
         <label for="textarea-demo-label" class="label">Label</label>
-        <textarea
-          id="textarea-demo-label"
-          class="textarea"
-          placeholder="Type your message here"
-        ></textarea>
+        <textarea id="textarea-demo-label" class="textarea" placeholder="Type your message here"></textarea>
       </div>
       <div class="grid gap-3">
-        <label for="textarea-demo-label-and-description" class="label"
-          >With label and description</label
-        >
+        <label for="textarea-demo-label-and-description" class="label">With label and description</label>
         <textarea
           id="textarea-demo-label-and-description"
           class="textarea"
           placeholder="Type your message here"
         ></textarea>
-        <p class="text-muted-foreground text-sm">
-          Type your message and press enter to send.
-        </p>
+        <p class="text-muted-foreground text-sm">Type your message and press enter to send.</p>
       </div>
       <div class="grid gap-3">
         <label for="textarea-demo-disabled" class="label">Disabled</label>
-        <textarea
-          id="textarea-demo-disabled"
-          class="textarea"
-          placeholder="Type your message here"
-          disabled
-        ></textarea>
+        <textarea id="textarea-demo-disabled" class="textarea" placeholder="Type your message here" disabled></textarea>
       </div>
     </div>
   </div>
