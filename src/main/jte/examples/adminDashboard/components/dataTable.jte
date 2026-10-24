@@ -30,7 +30,7 @@
     Item.of("Reviewer", "reviewer")
   );
 
-  final Content emptyPanel = @`<div class = "aspect-video rounded-lg border border-dashed"></div>`;
+  final Content emptyPanel = @`<div class="aspect-video rounded-lg border border-dashed"></div>`;
 }
 
 <section id="outline-table" class="flex w-full flex-wrap items-center gap-2 px-4 lg:px-6" aria-label="Document views">
