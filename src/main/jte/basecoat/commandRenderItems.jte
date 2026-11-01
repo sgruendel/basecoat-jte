@@ -5,6 +5,7 @@
   @param items {array} - Array of items to render.
   @param parent_id_prefix {string} [optional] - The prefix for the item id.
 --%>
+
 @import com.basecoatui.jte.util.BasecoatCommand.Item
 @import com.basecoatui.jte.util.BasecoatCommand.ItemType
 @import com.basecoatui.jte.util.JteHelper

@@ -1,4 +1,5 @@
 <%-- see https://github.com/hunvreus/basecoat/blob/main/src/nunjucks/command.njk --%>
+
 @import com.basecoatui.jte.util.JteHelper
 
 @import java.util.Map

@@ -15,6 +15,7 @@
     Set aria-orientation="vertical" for vertical tabs or data-variant="line" for line tabs.
   @param default_tab_index {number} [optional] [default=0] - The 0-based index of the tab to be active initially.
 --%>
+
 @import com.basecoatui.jte.util.BasecoatTab
 @import com.basecoatui.jte.util.JteHelper
 @import gg.jte.support.ForSupport

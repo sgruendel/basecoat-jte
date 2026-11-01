@@ -17,6 +17,7 @@
   @param close_button {boolean} [optional] [default=true] - Whether to include a close button.
   @param close_on_overlay_click {boolean} [optional] [default=true] - Whether clicking the overlay closes the dialog.
 --%>
+
 @import com.basecoatui.jte.util.JteHelper
 @import gg.jte.Content
 

@@ -11,6 +11,7 @@
   @param menu_attrs {object} [optional] - Additional HTML attributes for the menu div.
   @param open {boolean} [optional] [default=false] - Whether the command dialog should be open initially.
 --%>
+
 @import com.basecoatui.jte.util.BasecoatCommand.Item
 @import com.basecoatui.jte.util.JteHelper
 @import gg.jte.Content

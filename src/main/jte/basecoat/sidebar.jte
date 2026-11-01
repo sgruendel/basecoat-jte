@@ -14,6 +14,7 @@
   @param content_attrs {object} [optional] - Additional HTML attributes for the content section.
   @param footer_attrs {object} [optional] - Additional HTML attributes for the footer element.
 --%>
+
 @import com.basecoatui.jte.util.BasecoatSidebar.Item
 @import com.basecoatui.jte.util.JteHelper
 @import gg.jte.Content

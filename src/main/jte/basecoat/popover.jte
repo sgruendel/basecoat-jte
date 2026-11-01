@@ -8,6 +8,7 @@
   @param trigger_attrs {object} [optional] - Additional HTML attributes for the trigger element.
   @param popover_attrs {object} [optional] - Additional HTML attributes for the popover content div.
 --%>
+
 @import com.basecoatui.jte.util.JteHelper
 @import gg.jte.Content
 

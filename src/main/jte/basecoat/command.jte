@@ -10,6 +10,7 @@
   @param input_attrs {object} [optional] - Additional HTML attributes for the search input.
   @param menu_attrs {object} [optional] - Additional HTML attributes for the menu div.
 --%>
+
 @import com.basecoatui.jte.util.BasecoatCommand.Item
 @import com.basecoatui.jte.util.JteHelper
 @import gg.jte.Content

@@ -17,6 +17,7 @@
     - href {string}: URL for an anchor link button.
   @param attrs {object} [optional] - Additional HTML attributes for the toast div.
 --%>
+
 @import com.basecoatui.jte.util.BasecoatToast.Button
 @import com.basecoatui.jte.util.BasecoatToast.Category
 @import com.basecoatui.jte.util.JteHelper
