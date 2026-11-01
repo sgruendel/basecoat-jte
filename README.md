@@ -7,7 +7,7 @@ JTE templates for [Basecoat](https://basecoatui.com/) components, using
 
 Compatible with
 [Basecoat 1.1.0](https://github.com/hunvreus/basecoat/releases/tag/1.1.0) and
-[Lucide for JTE 1.59.0](https://github.com/sgruendel/lucide-jte).
+[Lucide for JTE 1.66.0](https://github.com/sgruendel/lucide-jte).
 
 This repository shows how to use Basecoat with:
 
