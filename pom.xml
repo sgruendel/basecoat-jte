@@ -26,9 +26,12 @@
 		<tag/>
 		<url/>
 	</scm>
+
 	<properties>
 		<java.version>25</java.version>
+    <jte.version>3.2.5</jte.version>
 	</properties>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -52,12 +55,12 @@
 		<dependency>
 			<groupId>gg.jte</groupId>
 			<artifactId>jte-spring-boot-starter-4</artifactId>
-			<version>3.2.4</version>
+      <version>${jte.version}</version>
     </dependency>
     <dependency>
       <groupId>io.github.sgruendel</groupId>
       <artifactId>lucide-jte</artifactId>
-      <version>1.59.0</version>
+      <version>1.66.0</version>
     </dependency>
 
     <dependency>
@@ -73,7 +76,7 @@
 			<plugin>
 				<groupId>gg.jte</groupId>
 				<artifactId>jte-maven-plugin</artifactId>
-				<version>3.2.4</version>
+        <version>${jte.version}</version>
 				<executions>
 					<execution>
 						<id>jte-generate</id>
