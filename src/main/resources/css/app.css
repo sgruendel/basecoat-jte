@@ -1,5 +1,13 @@
 @import 'tailwindcss';
-@import 'basecoat-css';
+@import 'basecoat-css/nova';
+@import '@fontsource/geist/400.css';
+@import '@fontsource/geist/500.css';
+@import '@fontsource/geist/600.css';
+@import '@fontsource/geist/700.css';
+@import '@fontsource/geist-mono/400.css';
+@import '@fontsource/geist-mono/500.css';
+@import '@fontsource/geist-mono/600.css';
+@import '@fontsource/geist-mono/700.css';
 
 @source '../../jte';
 @source '../../java';
@@ -7,7 +15,7 @@
 /* https://github.com/hunvreus/basecoat/blob/main/docs/css/custom.css */
 /* HTMX */
 .htmx-indicator {
-  @apply invisible opacity-0 transition-discrete transition-all;
+  @apply invisible opacity-0 transition-all transition-discrete;
 }
 .htmx-indicator:not(.htmx-request) {
   @apply hidden;
@@ -28,7 +36,7 @@
 
 .content {
   > h2 {
-    @apply mt-12 lg:mt-20 mb-6 scroll-m-22 text-2xl font-semibold tracking-tight first:mt-0;
+    @apply mt-12 mb-6 scroll-m-22 text-2xl font-semibold tracking-tight first:mt-0 lg:mt-20;
   }
   > h3 {
     @apply mt-8 mb-6 scroll-m-22 text-xl font-semibold tracking-tight;
@@ -43,16 +51,16 @@
       @apply font-medium underline underline-offset-4;
     }
     code:not(pre > code) {
-      @apply relative rounded-md bg-muted/50 px-[0.3rem] py-[0.2rem] font-mono text-sm;
+      @apply bg-muted/50 relative rounded-md px-[0.3rem] py-[0.2rem] font-mono text-sm;
     }
     blockquote {
-      @apply border-l-4 border-border pl-4;
+      @apply border-border border-l-4 pl-4;
     }
     ol {
-      @apply list-decimal ml-6;
+      @apply ml-6 list-decimal;
     }
     ul {
-      @apply list-disc ml-6;
+      @apply ml-6 list-disc;
     }
     ol,
     ul {
@@ -61,15 +69,15 @@
       }
     }
     dl {
-      @apply border-b pb-3 my-6;
+      @apply my-6 border-b pb-3;
       dt {
-        @apply border-t pt-3 mt-3 first:mt-0;
+        @apply mt-3 border-t pt-3 first:mt-0;
       }
       dd {
         @apply mt-2 space-y-2;
       }
       dl {
-        @apply mt-4 border-b-0 pb-0 pl-8 my-0;
+        @apply my-0 mt-4 border-b-0 pb-0 pl-8;
       }
     }
     b,
@@ -97,12 +105,12 @@
     counter-increment: step;
 
     &:before {
-      @apply absolute w-8 h-8 md:w-9 md:h-9 bg-muted rounded-full font-mono font-semibold text-center text-sm inline-flex items-center justify-center -indent-px border-4 mr-2 border-background;
-      @apply md:ml-[-50px] md:mt-[-4px];
+      @apply bg-muted border-background absolute mr-2 inline-flex h-8 w-8 items-center justify-center rounded-full border-4 text-center -indent-px font-mono text-sm font-semibold md:h-9 md:w-9;
+      @apply md:mt-[-4px] md:ml-[-50px];
       content: counter(step);
     }
     > h3 {
-      @apply max-md:ml-10 min-h-8 flex items-center;
+      @apply flex min-h-8 items-center max-md:ml-10;
     }
   }
 }
@@ -160,13 +168,13 @@ html.dark {
 }
 
 /* --- Base --- */
-pre code.hljs{
-    display:block;
-    overflow-x:auto;
-    padding:1em
+pre code.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 1em;
 }
-code.hljs{
-    padding:3px 5px
+code.hljs {
+  padding: 3px 5px;
 }
 
 /* --- Mapped styles --- */
