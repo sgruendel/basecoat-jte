@@ -20,7 +20,7 @@
         <span class="badge-outline">Outline</span>
         <span class="badge-destructive">Destructive</span>
         <span class="badge-outline"> ${lucideCheck()} Badge </span>
-        <span class="badge-destructive"> ${lucideCircleAlert()} Alert </span>
+        <span class="badge-destructive"> ${lucideCircleExclamationPoint()} Alert </span>
         <span class="badge min-w-5 rounded-full px-1">8</span>
         <span class="badge-destructive min-w-5 rounded-full px-1">99</span>
         <span class="badge-outline min-w-5 rounded-full px-1 font-mono tabular-nums">20+</span>

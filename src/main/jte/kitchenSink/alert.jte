@@ -35,7 +35,7 @@
       </div>
 
       <div class="alert">
-        ${lucideShieldAlert()}
+        ${lucideShieldExclamationPoint()}
         <h2>
           This is a very long alert title that demonstrates how the component handles extended text content and
           potentially wraps across multiple lines
@@ -51,7 +51,7 @@
       </div>
 
       <div class="alert">
-        ${lucideCircleAlert()}
+        ${lucideCircleExclamationPoint()}
         <h2>
           This is an extremely long alert title that spans multiple lines to demonstrate how the component handles very
           lengthy headings while maintaining readability and proper text wrapping behavior
@@ -65,13 +65,13 @@
       </div>
 
       <div class="alert-destructive">
-        ${lucideCircleAlert()}
+        ${lucideCircleExclamationPoint()}
         <h2>Something went wrong!</h2>
         <section>Your session has expired. Please log in again.</section>
       </div>
 
       <div class="alert-destructive">
-        ${lucideCircleAlert()}
+        ${lucideCircleExclamationPoint()}
         <h2>Something went wrong!</h2>
         <section>
           <p>Please verify your billing information and try again.</p>

@@ -54,7 +54,7 @@
     @elseif(category == Category.INFO)
       ${lucideInfo()}
     @elseif(category == Category.WARNING)
-      ${lucideTriangleAlert()}
+      ${lucideTriangleExclamationPoint()}
     @elseif(category == Category.ERROR)
       ${lucideCircleX()}
     @endif
