@@ -6,25 +6,15 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 public record OutlineSelection(
-    Set<Long> selectedIds,
-    List<Long> offPageIds,
-    boolean allPageRowsSelected,
-    boolean somePageRowsSelected
-) {
+        Set<Long> selectedIds, List<Long> offPageIds, boolean allPageRowsSelected, boolean somePageRowsSelected) {
 
     public OutlineSelection {
         selectedIds = Set.copyOf(selectedIds);
         offPageIds = List.copyOf(offPageIds);
     }
 
-    public static OutlineSelection from(
-        final Set<Long> selectedIds,
-        final OutlinePage page,
-        final boolean togglePage
-    ) {
-        final Set<Long> pageIds = page.rows().stream()
-            .map(OutlineRow::id)
-            .collect(Collectors.toUnmodifiableSet());
+    public static OutlineSelection from(final Set<Long> selectedIds, final OutlinePage page, final boolean togglePage) {
+        final Set<Long> pageIds = page.rows().stream().map(OutlineRow::id).collect(Collectors.toUnmodifiableSet());
         final Set<Long> effectiveIds = new LinkedHashSet<>(selectedIds);
 
         if (togglePage) {
@@ -35,19 +25,15 @@ public record OutlineSelection(
             }
         }
 
-        final long selectedOnPage = pageIds.stream().filter(effectiveIds::contains).count();
+        final long selectedOnPage =
+                pageIds.stream().filter(effectiveIds::contains).count();
         final boolean allPageRowsSelected = !pageIds.isEmpty() && selectedOnPage == pageIds.size();
         final List<Long> offPageIds = effectiveIds.stream()
-            .filter(id -> !pageIds.contains(id))
-            .sorted()
-            .toList();
+                .filter(id -> !pageIds.contains(id))
+                .sorted()
+                .toList();
 
-        return new OutlineSelection(
-            effectiveIds,
-            offPageIds,
-            allPageRowsSelected,
-            selectedOnPage > 0
-        );
+        return new OutlineSelection(effectiveIds, offPageIds, allPageRowsSelected, selectedOnPage > 0);
     }
 
     public int count() {

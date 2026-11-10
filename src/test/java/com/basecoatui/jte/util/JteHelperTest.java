@@ -1,15 +1,13 @@
 package com.basecoatui.jte.util;
 
-import org.junit.jupiter.api.Test;
-
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import org.junit.jupiter.api.Test;
 
 class JteHelperTest {
 
@@ -41,30 +39,25 @@ class JteHelperTest {
                 "data\"slot",
                 "data'slot",
                 "\u0000data",
-                "data\uFDD0slot"
-        );
+                "data\uFDD0slot");
 
-        invalidNames.forEach(name -> assertThrows(
-                IllegalArgumentException.class,
-                () -> JteHelper.attrs(Map.of(name, "value"))
-        ));
+        invalidNames.forEach(
+                name -> assertThrows(IllegalArgumentException.class, () -> JteHelper.attrs(Map.of(name, "value"))));
     }
 
     @Test
     void attrsEscapesRegularHtmlAttributeValues() {
 
         assertEquals(" title=\"Tom &amp; Jerry\"", JteHelper.attrs(Map.of("title", "Tom & Jerry")));
-        assertEquals(" data-text=\"&lt;quoted &#34;text&#34;>\"", JteHelper.attrs(Map.of("data-text", "<quoted \"text\">") ));
+        assertEquals(
+                " data-text=\"&lt;quoted &#34;text&#34;>\"", JteHelper.attrs(Map.of("data-text", "<quoted \"text\">")));
         assertEquals(" data-space=\"a\u00A0b\"", JteHelper.attrs(Map.of("data-space", "a\u00A0b")));
     }
 
     @Test
     void attrsEscapesJavaScriptEventHandlerAttributeValues() {
 
-        assertEquals(
-                " onclick=\"alert(\\x27x\\x27)\"",
-                JteHelper.attrs(Map.of("onclick", "alert('x')"))
-        );
+        assertEquals(" onclick=\"alert(\\x27x\\x27)\"", JteHelper.attrs(Map.of("onclick", "alert('x')")));
     }
 
     @Test
@@ -84,8 +77,7 @@ class JteHelperTest {
 
         final Map<?, ?> attrs = new LinkedHashMap<>(Map.of(
                 "class", "btn",
-                "id", "primary"
-        ));
+                "id", "primary"));
 
         assertEquals(" id=\"primary\"", JteHelper.attrs(attrs, "class"));
     }
@@ -129,5 +121,4 @@ class JteHelperTest {
         assertEquals("btn", JteHelper.classAppend("btn", Map.of("id", "primary")));
         assertEquals("btn", JteHelper.classAppend("btn", null));
     }
-
 }

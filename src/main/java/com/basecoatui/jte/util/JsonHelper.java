@@ -8,8 +8,7 @@ public final class JsonHelper {
 
     private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
 
-    private JsonHelper() {
-    }
+    private JsonHelper() {}
 
     public static String write(final Object value) {
 
@@ -19,5 +18,4 @@ public final class JsonHelper {
             throw new IllegalStateException("Unable to serialize JSON", exception);
         }
     }
-
 }

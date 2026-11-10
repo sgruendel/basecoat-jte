@@ -1,8 +1,7 @@
 package com.basecoatui.jte.examples.admindashboard.models;
 
-import org.springframework.data.domain.Pageable;
-
 import java.util.List;
+import org.springframework.data.domain.Pageable;
 
 public record OutlineQuery(int page, int size, OutlineSort sort, SortDirection direction) {
 
@@ -19,10 +18,9 @@ public record OutlineQuery(int page, int size, OutlineSort sort, SortDirection d
     public static OutlineQuery from(final Pageable pageable) {
         final var order = pageable.getSort().stream().findFirst().orElse(null);
         return new OutlineQuery(
-            pageable.getPageNumber(),
-            pageable.getPageSize(),
-            order == null ? OutlineSort.ID : OutlineSort.parse(order.getProperty()),
-            order != null && order.isDescending() ? SortDirection.DESC : SortDirection.ASC
-        );
+                pageable.getPageNumber(),
+                pageable.getPageSize(),
+                order == null ? OutlineSort.ID : OutlineSort.parse(order.getProperty()),
+                order != null && order.isDescending() ? SortDirection.DESC : SortDirection.ASC);
     }
 }

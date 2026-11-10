@@ -1,5 +1,7 @@
 package com.basecoatui.jte;
 
+import static org.springframework.http.HttpStatus.NOT_FOUND;
+
 import com.basecoatui.jte.examples.admindashboard.models.OutlinePage;
 import com.basecoatui.jte.examples.admindashboard.models.OutlineQuery;
 import com.basecoatui.jte.examples.admindashboard.models.OutlineSelection;
@@ -7,6 +9,8 @@ import com.basecoatui.jte.examples.admindashboard.services.ChartDataService;
 import com.basecoatui.jte.examples.admindashboard.services.OutlineService;
 import com.basecoatui.jte.examples.models.User;
 import com.basecoatui.jte.util.BasecoatSelect.Item;
+import java.util.List;
+import java.util.Set;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
@@ -18,20 +22,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import java.util.List;
-import java.util.Set;
-
-import static org.springframework.http.HttpStatus.NOT_FOUND;
-
-
 @Controller
 @RequestMapping("/examples")
 public class ExamplesController {
 
     private static final List<Item> PAGE_SIZE_ITEMS = OutlineQuery.ALLOWED_SIZES.stream()
-        .map(String::valueOf)
-        .map(value -> Item.of(value, value))
-        .toList();
+            .map(String::valueOf)
+            .map(value -> Item.of(value, value))
+            .toList();
 
     private final ChartDataService chartDataService;
 
@@ -57,15 +55,13 @@ public class ExamplesController {
 
     @GetMapping("/admin-dashboard/outlines")
     public String outline(
-        @PageableDefault(size = OutlineQuery.DEFAULT_SIZE, sort = "id") final Pageable pageable,
-        @RequestParam(name = "selected", required = false) final Set<Long> requestedSelection,
-        @RequestParam(defaultValue = "false") final boolean togglePage,
-        final Model model
-    ) {
+            @PageableDefault(size = OutlineQuery.DEFAULT_SIZE, sort = "id") final Pageable pageable,
+            @RequestParam(name = "selected", required = false) final Set<Long> requestedSelection,
+            @RequestParam(defaultValue = "false") final boolean togglePage,
+            final Model model) {
         final var page = outlineService.findPage(pageable);
-        final Set<Long> selectedIds = outlineService.findExistingIds(
-            requestedSelection == null ? Set.of() : requestedSelection
-        );
+        final Set<Long> selectedIds =
+                outlineService.findExistingIds(requestedSelection == null ? Set.of() : requestedSelection);
         model.addAttribute("page", page);
         model.addAttribute("selection", OutlineSelection.from(selectedIds, page, togglePage));
         model.addAttribute("baseUrl", outlineBaseUrl(page));
@@ -76,10 +72,10 @@ public class ExamplesController {
     @GetMapping("/admin-dashboard/outlines/{id}")
     public String outlineDetails(@PathVariable final long id, final Model model) {
         model.addAttribute(
-            "row",
-            outlineService.findById(id)
-                .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Outline row not found"))
-        );
+                "row",
+                outlineService
+                        .findById(id)
+                        .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Outline row not found")));
         model.addAttribute("detailData", chartDataService.findDetailChartData());
         return "examples/adminDashboard/components/dataTable/outlineDetails";
     }
@@ -88,7 +84,8 @@ public class ExamplesController {
     public String chartAreaInteractive(@RequestParam(defaultValue = "90d") final String range, final Model model) {
 
         // TODO derive default value from enum
-        // TODO add Java enum for this, inject values as model attribute, and use that in the template to generate the buttons
+        // TODO add Java enum for this, inject values as model attribute, and use that in the template to generate the
+        // buttons
         final int days = switch (range) {
             case "7d" -> 7;
             case "30d" -> 30;
@@ -101,9 +98,10 @@ public class ExamplesController {
 
     private String outlineBaseUrl(final OutlinePage page) {
         return UriComponentsBuilder.fromPath("/examples/admin-dashboard/outlines")
-            .queryParam("size", page.size())
-            .queryParam("sort", page.sort().queryValue() + "," + page.direction().queryValue())
-            .toUriString();
+                .queryParam("size", page.size())
+                .queryParam(
+                        "sort",
+                        page.sort().queryValue() + "," + page.direction().queryValue())
+                .toUriString();
     }
-
 }

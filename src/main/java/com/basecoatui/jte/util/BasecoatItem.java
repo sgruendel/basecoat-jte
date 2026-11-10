@@ -1,7 +1,6 @@
 package com.basecoatui.jte.util;
 
 import gg.jte.Content;
-
 import java.util.List;
 import java.util.Map;
 
@@ -13,16 +12,11 @@ public sealed interface BasecoatItem {
             String id, // optional
             Map<?, ?> attrs,
             String label,
-            List<BasecoatItem> items) implements BasecoatItem {
-    }
+            List<BasecoatItem> items)
+            implements BasecoatItem {}
 
-    record Item(
-            String url,
-            boolean current,
-            Map<?, ?> attrs,
-            Content icon,
-            String label,
-            Content content) implements BasecoatItem {
+    record Item(String url, boolean current, Map<?, ?> attrs, Content icon, String label, Content content)
+            implements BasecoatItem {
 
         static Item of(final String url, final Content icon, final String label) {
 
@@ -65,16 +59,8 @@ public sealed interface BasecoatItem {
         }
     }
 
-    record Submenu(
-            String id,
-            boolean open,
-            Map<?, ?> attrs,
-            Content icon,
-            String label,
-            List<BasecoatItem> items) implements BasecoatItem {
-    }
+    record Submenu(String id, boolean open, Map<?, ?> attrs, Content icon, String label, List<BasecoatItem> items)
+            implements BasecoatItem {}
 
-    record Separator() implements BasecoatItem {
-    }
-
+    record Separator() implements BasecoatItem {}
 }

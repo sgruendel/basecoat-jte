@@ -1,11 +1,11 @@
 package com.basecoatui.jte.examples.admindashboard;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import com.basecoatui.jte.examples.admindashboard.services.ClasspathChartDataService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import tools.jackson.databind.json.JsonMapper;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 class ClasspathChartDataServiceTest {
 

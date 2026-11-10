@@ -5,7 +5,6 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
-
 public class JteContext {
 
     private static final ThreadLocal<ModelMap> model = new ThreadLocal<>();
@@ -25,5 +24,4 @@ public class JteContext {
     public static HttpServletRequest getRequest() {
         return ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
     }
-
 }

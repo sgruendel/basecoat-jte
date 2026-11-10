@@ -1,15 +1,22 @@
 package com.basecoatui.jte.util;
 
 import gg.jte.Content;
-
 import java.util.Map;
 
-
-public record BasecoatToast(Category category, String title, String description, Button action,
-                            Button cancel, Map<?, ?> attrs, Content content) {
+public record BasecoatToast(
+        Category category,
+        String title,
+        String description,
+        Button action,
+        Button cancel,
+        Map<?, ?> attrs,
+        Content content) {
 
     public enum Category {
-        SUCCESS, INFO, WARNING, ERROR
+        SUCCESS,
+        INFO,
+        WARNING,
+        ERROR
     }
 
     public record Button(String href, String label, String onclick) {
@@ -23,7 +30,5 @@ public record BasecoatToast(Category category, String title, String description,
 
             return new Button(null, label, onclick);
         }
-
     }
-
 }

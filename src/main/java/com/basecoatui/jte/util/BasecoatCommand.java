@@ -1,15 +1,15 @@
 package com.basecoatui.jte.util;
 
 import gg.jte.Content;
-
 import java.util.List;
 import java.util.Map;
-
 
 public record BasecoatCommand() {
 
     public enum ItemType {
-        ITEM, GROUP, SEPARATOR
+        ITEM,
+        GROUP,
+        SEPARATOR
     }
 
     public record Item(
@@ -21,10 +21,10 @@ public record BasecoatCommand() {
             boolean disabled,
             List<Item> items,
             Map<?, ?> attrs,
-            Content icon
-    ) {
+            Content icon) {
 
-        public static final Item SEPARATOR = new Item(ItemType.SEPARATOR, null, null, null, null, false, null, null, null);
+        public static final Item SEPARATOR =
+                new Item(ItemType.SEPARATOR, null, null, null, null, false, null, null, null);
 
         public static Item of(final String label) {
 
@@ -40,7 +40,5 @@ public record BasecoatCommand() {
 
             return new Item(ItemType.GROUP, null, label, null, null, false, items, null, null);
         }
-
     }
-
 }

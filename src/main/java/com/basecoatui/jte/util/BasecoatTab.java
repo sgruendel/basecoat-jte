@@ -1,9 +1,7 @@
 package com.basecoatui.jte.util;
 
 import gg.jte.Content;
-
 import java.util.Map;
-
 
 public record BasecoatTab(String tabText, Content tabContent, Map<?, ?> tabAttrs, Content panel, Map<?, ?> panelAttrs) {
 
@@ -42,5 +40,4 @@ public record BasecoatTab(String tabText, Content tabContent, Map<?, ?> tabAttrs
         }
         return false;
     }
-
 }

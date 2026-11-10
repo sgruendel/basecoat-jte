@@ -2,23 +2,20 @@ package com.basecoatui.jte.util;
 
 import gg.jte.TemplateOutput;
 import gg.jte.html.escape.Escape;
-
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.regex.Pattern;
 
-
 public class JteHelper {
 
     // see https://html.spec.whatwg.org/multipage/syntax.html#attributes-2 for valid attribute names
-    private static final Pattern HTML_ATTR_NAME = Pattern.compile(
-            "^(?!.*[\\p{Cntrl} \"'/>=])"
-                    + "(?!.*[\\x{FDD0}-\\x{FDEF}\\x{FFFE}\\x{FFFF}\\x{1FFFE}\\x{1FFFF}\\x{2FFFE}\\x{2FFFF}"
-                    + "\\x{3FFFE}\\x{3FFFF}\\x{4FFFE}\\x{4FFFF}\\x{5FFFE}\\x{5FFFF}\\x{6FFFE}\\x{6FFFF}"
-                    + "\\x{7FFFE}\\x{7FFFF}\\x{8FFFE}\\x{8FFFF}\\x{9FFFE}\\x{9FFFF}\\x{AFFFE}\\x{AFFFF}"
-                    + "\\x{BFFFE}\\x{BFFFF}\\x{CFFFE}\\x{CFFFF}\\x{DFFFE}\\x{DFFFF}\\x{EFFFE}\\x{EFFFF}"
-                    + "\\x{FFFFE}\\x{FFFFF}\\x{10FFFE}\\x{10FFFF}]).+$");
+    private static final Pattern HTML_ATTR_NAME = Pattern.compile("^(?!.*[\\p{Cntrl} \"'/>=])"
+            + "(?!.*[\\x{FDD0}-\\x{FDEF}\\x{FFFE}\\x{FFFF}\\x{1FFFE}\\x{1FFFF}\\x{2FFFE}\\x{2FFFF}"
+            + "\\x{3FFFE}\\x{3FFFF}\\x{4FFFE}\\x{4FFFF}\\x{5FFFE}\\x{5FFFF}\\x{6FFFE}\\x{6FFFF}"
+            + "\\x{7FFFE}\\x{7FFFF}\\x{8FFFE}\\x{8FFFF}\\x{9FFFE}\\x{9FFFF}\\x{AFFFE}\\x{AFFFF}"
+            + "\\x{BFFFE}\\x{BFFFF}\\x{CFFFE}\\x{CFFFF}\\x{DFFFE}\\x{DFFFF}\\x{EFFFE}\\x{EFFFF}"
+            + "\\x{FFFFE}\\x{FFFFF}\\x{10FFFE}\\x{10FFFF}]).+$");
 
     public static String attrs(final Map<?, ?> attrs) {
 
@@ -107,7 +104,8 @@ public class JteHelper {
         final StringBuffer sb = new StringBuffer();
         final TemplateOutput to = new StringBufferTemplateOutput(sb);
 
-        // see https://github.com/casid/jte/blob/main/jte-runtime/src/main/java/gg/jte/html/OwaspHtmlTemplateOutput.java#L70
+        // see
+        // https://github.com/casid/jte/blob/main/jte-runtime/src/main/java/gg/jte/html/OwaspHtmlTemplateOutput.java#L70
         if (name.startsWith("on")) {
             Escape.javaScriptAttribute(value, to);
         } else {
@@ -129,7 +127,5 @@ public class JteHelper {
 
             sb.append(value, beginIndex, endIndex);
         }
-
     }
-
 }

@@ -1,15 +1,16 @@
 package com.basecoatui.jte.util;
 
 import gg.jte.Content;
-
 import java.util.List;
 import java.util.Map;
-
 
 public record BasecoatSidebar() {
 
     public enum ItemType {
-        ITEM, GROUP, SEPARATOR, SUBMENU
+        ITEM,
+        GROUP,
+        SEPARATOR,
+        SUBMENU
     }
 
     // TODO allow Content for label
@@ -22,10 +23,10 @@ public record BasecoatSidebar() {
             boolean open,
             List<Item> items,
             Map<?, ?> attrs,
-            Content icon
-    ) {
+            Content icon) {
 
-        public static final Item SEPARATOR = new Item(ItemType.SEPARATOR, null, null, null, false, false, null, null, null);
+        public static final Item SEPARATOR =
+                new Item(ItemType.SEPARATOR, null, null, null, false, false, null, null, null);
 
         public static Item of(final String label, final String url) {
 
@@ -52,7 +53,5 @@ public record BasecoatSidebar() {
 
             return new Item(ItemType.SUBMENU, null, label, null, false, false, items, null, null);
         }
-
     }
-
 }
