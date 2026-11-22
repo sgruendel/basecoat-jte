@@ -35,4 +35,4 @@ build/
 .vscode/
 
 ### jte ###
-/jte-classes/
+jte-classes/
