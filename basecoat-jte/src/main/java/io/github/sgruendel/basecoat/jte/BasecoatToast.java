@@ -3,20 +3,18 @@ package io.github.sgruendel.basecoat.jte;
 import gg.jte.Content;
 import java.time.Duration;
 import java.util.Map;
-import java.util.Objects;
 
 /**
- * A toast rendered by the toaster template. The single toast template takes the same values as separate parameters.
+ * A toast rendered initially by the toaster template, with the same fields as the toast template parameters. Optional
+ * fields are set with {@code with*} methods, each returning a new toast.
  *
- * <p>Optional fields are set with {@code with*} methods, each returning a new toast.
- *
- * @param category the toast category, which selects the default icon and ARIA role
- * @param title the toast title
- * @param description the toast description
- * @param action the primary button
- * @param cancel the secondary button
- * @param duration how long the toast is shown, or Basecoat's default for the category if {@code null}
- * @param icon an icon replacing the category's default icon
+ * @param category the category, which determines the icon and ARIA role; {@link Category#SUCCESS} if {@code null}
+ * @param title the title text
+ * @param description the description text
+ * @param action the action button
+ * @param cancel the cancel button
+ * @param duration how long the toast is shown; Basecoat's default if {@code null}
+ * @param icon an icon replacing the category icon
  * @param attrs additional HTML attributes for the toast element
  */
 public record BasecoatToast(
@@ -30,7 +28,9 @@ public record BasecoatToast(
         Map<?, ?> attrs) {
 
     public BasecoatToast {
-        Objects.requireNonNull(category, "category");
+        if (category == null) {
+            category = Category.SUCCESS;
+        }
     }
 
     public static BasecoatToast of(final Category category, final String title) {
@@ -75,13 +75,6 @@ public record BasecoatToast(
         ERROR
     }
 
-    /**
-     * A toast button, rendered as a link if {@code href} is set.
-     *
-     * @param href the link target
-     * @param label the button text
-     * @param onclick JavaScript run on click
-     */
     public record Button(String href, String label, String onclick) {
 
         public static Button of(final String label) {

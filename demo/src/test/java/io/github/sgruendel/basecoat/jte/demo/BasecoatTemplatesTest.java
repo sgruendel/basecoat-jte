@@ -13,6 +13,10 @@ import io.github.sgruendel.basecoat.jte.BasecoatItem.MenuItem;
 import io.github.sgruendel.basecoat.jte.BasecoatItem.NavItem;
 import io.github.sgruendel.basecoat.jte.BasecoatItem.Option;
 import io.github.sgruendel.basecoat.jte.BasecoatItem.Submenu;
+import io.github.sgruendel.basecoat.jte.BasecoatToast;
+import io.github.sgruendel.basecoat.jte.BasecoatToast.Button;
+import io.github.sgruendel.basecoat.jte.BasecoatToast.Category;
+import java.time.Duration;
 import java.util.List;
 import java.util.Map;
 import org.junit.jupiter.api.Test;
@@ -272,5 +276,37 @@ class BasecoatTemplatesTest {
         assertThat(render("basecoat/commandDialog.jte", Map.of("id", "cmd")))
                 .contains(onPointerDown)
                 .contains(onClick);
+    }
+
+    @Test
+    void toasterRendersEachToastWithItsFields() {
+
+        final var html = render(
+                "basecoat/toaster.jte",
+                Map.of(
+                        "toasts",
+                        List.of(
+                                BasecoatToast.of(Category.SUCCESS, "Saved", "All changes stored")
+                                        .withAction(Button.of("View"))
+                                        .withCancel(Button.of("Undo", "undo()")),
+                                BasecoatToast.of(Category.ERROR, "Upload failed")
+                                        .withDuration(Duration.ofSeconds(10))
+                                        .withIcon(ICON)
+                                        .withAttrs(Map.of("data-x", "1")))));
+
+        assertThat(html)
+                .contains("<div id=\"toaster\" class=\"toaster\" >")
+                .contains("data-category=\"success\"")
+                .contains("<h2>Saved</h2>")
+                .contains("<p>All changes stored</p>")
+                .contains("data-toast-action")
+                .contains("View")
+                .contains("data-toast-cancel")
+                .contains("onclick=\"undo()\"")
+                .contains("role=\"alert\"")
+                .contains("data-category=\"error\" data-duration=\"10000\" data-x=\"1\"")
+                .contains("<h2>Upload failed</h2>")
+                .contains("<svg class=\"icon\"></svg>");
+        assertThat(html.split("class=\"toast\"", -1)).hasSize(3);
     }
 }

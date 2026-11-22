@@ -213,6 +213,22 @@ Example toaster:
 @template.basecoat.toaster()
 ```
 
+Example toaster with an initial toast:
+
+```jte
+@import io.github.sgruendel.basecoat.jte.BasecoatToast
+@import io.github.sgruendel.basecoat.jte.BasecoatToast.Button
+@import io.github.sgruendel.basecoat.jte.BasecoatToast.Category
+@import java.util.List
+
+@template.basecoat.toaster(
+  toasts = List.of(
+    BasecoatToast.of(Category.SUCCESS, "Event has been created", "Sunday, December 03, 2023 at 9:00 AM")
+      .withAction(Button.of("View"))
+  )
+)
+```
+
 Example toast partial usage:
 
 ```jte

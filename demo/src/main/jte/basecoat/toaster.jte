@@ -25,7 +25,16 @@
 <div id="${id}" class="${JteHelper.classAppend("toaster", attrs)}" $unsafe{JteHelper.attrs(attrs, "class")}>
   @if(toasts != null)
     @for(var toast : toasts)
-      @template.basecoat.toast()
+      @template.basecoat.toast(
+        category = toast.category(),
+        title = toast.title(),
+        description = toast.description(),
+        duration = toast.duration(),
+        icon = toast.icon(),
+        action = toast.action(),
+        cancel = toast.cancel(),
+        attrs = toast.attrs()
+      )
     @endfor
   @endif
   ${content}
