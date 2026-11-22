@@ -1,4 +1,4 @@
-<%-- see https://github.com/hunvreus/basecoat/blob/main/src/nunjucks/select.njk --%>
+<%-- see https://github.com/hunvreus/basecoat/blob/1.2.1/src/templates/nunjucks/select.njk --%>
 <%--
   Renders a select component.
 
@@ -47,125 +47,125 @@
 @param Content options = null
 
 !{
-  final List<String> selectedArray;
-  if (selected != null && selectedList != null) {
-    throw new IllegalArgumentException("only one of selected and selectedList must be specified");
-  }
+    final List<String> selectedArray;
+    if (selected != null && selectedList != null) {
+      throw new IllegalArgumentException("only one of selected and selectedList must be specified");
+    }
 
-  if (selected != null) {
-    selectedArray = List.of(selected);
-  } else if (selectedList != null) {
-    selectedArray = selectedList;
-  } else {
-    selectedArray = List.of();
-  }
+    if (selected != null) {
+      selectedArray = List.of(selected);
+    } else if (selectedList != null) {
+      selectedArray = selectedList;
+    } else {
+      selectedArray = List.of();
+    }
 
-  // collect options depth-first in document order, like selectRenderItems renders nested groups
-  final List<Option> allOptions = new ArrayList<>();
-  if (items != null) {
-    final Deque<Iterator<? extends BasecoatItem>> pending = new ArrayDeque<>();
-    pending.push(items.iterator());
-    while (!pending.isEmpty()) {
-      final var iterator = pending.peek();
-      if (!iterator.hasNext()) {
-        pending.pop();
-        continue;
-      }
-      final var item = iterator.next();
-      if (item instanceof Option option) {
-        allOptions.add(option);
-      } else if (item instanceof Group group && group.items() != null) {
-        pending.push(group.items().iterator());
+    // collect options depth-first in document order, like selectRenderItems renders nested groups
+    final List<Option> allOptions = new ArrayList<>();
+    if (items != null) {
+      final Deque<Iterator<? extends BasecoatItem>> pending = new ArrayDeque<>();
+      pending.push(items.iterator());
+      while (!pending.isEmpty()) {
+        final var iterator = pending.peek();
+        if (!iterator.hasNext()) {
+          pending.pop();
+          continue;
+        }
+        final var item = iterator.next();
+        if (item instanceof Option option) {
+          allOptions.add(option);
+        } else if (item instanceof Group group && group.items() != null) {
+          pending.push(group.items().iterator());
+        }
       }
     }
-  }
-  final Option firstOption = allOptions.isEmpty() ? null : allOptions.getFirst();
-  final List<Option> selectedOptions = allOptions.stream()
-    .filter(option -> option.value() != null && selectedArray.contains(option.value()))
-    .toList();
+    final Option firstOption = allOptions.isEmpty() ? null : allOptions.getFirst();
+    final List<Option> selectedOptions = allOptions.stream()
+      .filter(option -> option.value() != null && selectedArray.contains(option.value()))
+      .toList();
 
-  final Option defaultOption;
-  if (!selectedOptions.isEmpty()) {
-    defaultOption = selectedOptions.getFirst();
-  } else if (placeholder != null) {
-    // show the placeholder, like a native select without a selected option
-    defaultOption = null;
-  } else {
-    defaultOption = firstOption;
-  }
-
-  final List<String> labels = new ArrayList<>();
-  final String defaultLabel;
-  // like Basecoat's select script, show the option content if there is no text label
-  Content defaultContent = null;
-  if (multiple && !selectedOptions.isEmpty()) {
-    selectedOptions.forEach(so -> labels.add(so.label() != null ? so.label() : so.value()));
-    defaultLabel = String.join(", ", labels);
-  } else if (placeholder != null && selectedOptions.isEmpty()) {
-    defaultLabel = placeholder;
-  } else if (defaultOption != null) {
-    defaultLabel = defaultOption.label();
-    if (defaultLabel == null) {
-      defaultContent = defaultOption.content();
+    final Option defaultOption;
+    if (!selectedOptions.isEmpty()) {
+      defaultOption = selectedOptions.getFirst();
+    } else if (placeholder != null) {
+      // show the placeholder, like a native select without a selected option
+      defaultOption = null;
+    } else {
+      defaultOption = firstOption;
     }
-  } else {
-    defaultLabel = "";
-  }
 
-  final String value;
-  if (multiple) {
-    // Basecoat's select script reads and writes multiple values as a JSON array
-    value = JsonHelper.write(selectedArray);
-  } else if (defaultOption != null && defaultOption.value() != null) {
-    value = defaultOption.value();
-  } else {
-    value = "";
-  }
+    final List<String> labels = new ArrayList<>();
+    final String defaultLabel;
+    // like Basecoat's select script, show the option content if there is no text label
+    Content defaultContent = null;
+    if (multiple && !selectedOptions.isEmpty()) {
+      selectedOptions.forEach(so -> labels.add(so.label() != null ? so.label() : so.value()));
+      defaultLabel = String.join(", ", labels);
+    } else if (placeholder != null && selectedOptions.isEmpty()) {
+      defaultLabel = placeholder;
+    } else if (defaultOption != null) {
+      defaultLabel = defaultOption.label();
+      if (defaultLabel == null) {
+        defaultContent = defaultOption.content();
+      }
+    } else {
+      defaultLabel = "";
+    }
+
+    final String value;
+    if (multiple) {
+      // Basecoat's select script reads and writes multiple values as a JSON array
+      value = JsonHelper.write(selectedArray);
+    } else if (defaultOption != null && defaultOption.value() != null) {
+      value = defaultOption.value();
+    } else {
+      value = "";
+    }
 }
 
 <div
-  id="${id}"
-  class="${JteHelper.classAppend("select", mainAttrs)}"
-  data-placeholder="${placeholder}"
-  data-close-on-select="${(multiple && closeOnSelect) ? "true" : null}"
-  $unsafe{JteHelper.attrs(mainAttrs, "class")}
+    id="${id}"
+    class="${JteHelper.classAppend("select", mainAttrs)}"
+    data-placeholder="${placeholder}"
+    data-close-on-select="${(multiple && closeOnSelect) ? "true" : null}"
+    $unsafe{JteHelper.attrs(mainAttrs, "class")}
 >
-  <button
-    type="button"
-    class="${JteHelper.clazz(triggerAttrs)}"
-    id="${id}-trigger"
-    aria-haspopup="listbox"
-    aria-expanded="false"
-    aria-controls="${id}-listbox"
-    $unsafe{JteHelper.attrs(triggerAttrs, "class")}
-  >
-    <span class="truncate">@if(defaultContent != null)${defaultContent}@else${defaultLabel}@endif</span>
-    ${lucideChevronDown().cssClass("text-muted-foreground opacity-50 shrink-0")}
-  </button>
-  <div id="${id}-popover" data-popover aria-hidden="true" $unsafe{JteHelper.attrs(popoverAttrs)}>
-    <div
-      role="listbox"
-      id="${id}-listbox"
-      aria-orientation="vertical"
-      aria-labelledby="${id}-trigger"
-      aria-multiselectable="${multiple ? "true" : null}"
-      $unsafe{JteHelper.attrs(listboxAttrs)}
+    <button
+        type="button"
+        class="${JteHelper.clazz(triggerAttrs)}"
+        id="${id}-trigger"
+        aria-haspopup="listbox"
+        aria-expanded="false"
+        aria-controls="${id}-listbox"
+        $unsafe{JteHelper.attrs(triggerAttrs, "class")}
     >
-      @if(items != null)
-        @template.basecoat.selectRenderItems(
-          items = items,
-          selectedArray = selectedArray,
-          parentIdPrefix = id + "-items"
-        )
-      @else
-        ${options}
-      @endif
+        <span class="truncate">@if(defaultContent != null)${defaultContent}@else${defaultLabel}@endif</span>
+        ${lucideChevronDown().cssClass("text-muted-foreground opacity-50 shrink-0")}
+    </button>
+    <div id="${id}-popover" data-popover aria-hidden="true" $unsafe{JteHelper.attrs(popoverAttrs)}>
+        <div
+            role="listbox"
+            id="${id}-listbox"
+            aria-orientation="vertical"
+            aria-labelledby="${id}-trigger"
+            aria-multiselectable="${multiple ? "true" : null}"
+            $unsafe{JteHelper.attrs(listboxAttrs)}
+        >
+            @if(items != null)
+                @template.basecoat.selectRenderItems(
+                    items = items,
+                    selectedArray = selectedArray,
+                    parentIdPrefix = id + "-items"
+                )
+            @else
+                ${options}
+            @endif
+        </div>
     </div>
-  </div>
-  <input
-    type="hidden"
-    name="${name != null ? name : (id + "-value")}"
-    value="${value}"
-    $unsafe{JteHelper.attrs(inputAttrs, List.of("name", "value"))}
-  />
+    <input
+        type="hidden"
+        name="${name != null ? name : (id + "-value")}"
+        value="${value}"
+        $unsafe{JteHelper.attrs(inputAttrs, List.of("name", "value"))}
+    />
 </div>

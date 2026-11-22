@@ -30,7 +30,7 @@
     <properties>
         <java.version>25</java.version>
         <jte.version>3.2.5</jte.version>
-        <basecoat-jte.version>1.1.0</basecoat-jte.version>
+        <basecoat-jte.version>1.2.1</basecoat-jte.version>
         <maven.deploy.skip>true</maven.deploy.skip>
     </properties>
 
@@ -67,7 +67,7 @@
         <dependency>
             <groupId>io.github.sgruendel</groupId>
             <artifactId>lucide-jte</artifactId>
-            <version>1.73.0</version>
+            <version>1.77.0</version>
         </dependency>
 
         <dependency>

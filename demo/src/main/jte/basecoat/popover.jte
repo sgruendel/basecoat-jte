@@ -1,4 +1,4 @@
-<%-- see https://github.com/hunvreus/basecoat/blob/main/src/nunjucks/popover.njk --%>
+<%-- see https://github.com/hunvreus/basecoat/blob/1.2.1/src/templates/nunjucks/popover.njk --%>
 <%--
   Renders a generic popover component, often used internally by other components like dropdowns or selects.
 
@@ -23,15 +23,15 @@
 @param Content content
 
 <div id="${id}" class="${JteHelper.classAppend("popover", mainAttrs)}" $unsafe{JteHelper.attrs(mainAttrs, "class")}>
-  <button
-    type="button"
-    id="${id}-trigger"
-    aria-expanded="false"
-    aria-controls="${id}-popover"
-    $unsafe{JteHelper.attrs(triggerAttrs)}
-  >
-    ${triggerText}
-    ${triggerContent}
-  </button>
-  <div id="${id}-popover" data-popover aria-hidden="true" $unsafe{JteHelper.attrs(popoverAttrs)}>${content}</div>
+    <button
+        type="button"
+        id="${id}-trigger"
+        aria-expanded="false"
+        aria-controls="${id}-popover"
+        $unsafe{JteHelper.attrs(triggerAttrs)}
+    >
+        ${triggerText}
+        ${triggerContent}
+    </button>
+    <div id="${id}-popover" data-popover aria-hidden="true" $unsafe{JteHelper.attrs(popoverAttrs)}>${content}</div>
 </div>

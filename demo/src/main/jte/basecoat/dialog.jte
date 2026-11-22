@@ -1,4 +1,4 @@
-<%-- see https://github.com/hunvreus/basecoat/blob/main/src/nunjucks/dialog.njk --%>
+<%-- see https://github.com/hunvreus/basecoat/blob/1.2.1/src/templates/nunjucks/dialog.njk --%>
 <%--
   Renders a dialog component with optional trigger, header, body, and footer.
 
@@ -41,58 +41,58 @@
 @param Content footer = null
 
 !{
-  final var dialogTitleId = title != null ? id + "-title" : null;
-  final var dialogDescriptionId = description != null ? id + "-description" : null;
-  // only close if the press also started on the backdrop, not when dragging out of the dialog; written with $unsafe,
-  // since JTE escapes dynamic values in event handler attributes for use inside JavaScript strings
-  final var overlayClickHandlers = closeOnOverlayClick
-    ? "onpointerdown=\"this.dataset.backdropPress = event.target === this\" "
-      + "onclick=\"if (event.target === this && this.dataset.backdropPress === 'true') this.close()\""
-    : null;
+    final var dialogTitleId = title != null ? id + "-title" : null;
+    final var dialogDescriptionId = description != null ? id + "-description" : null;
+    // only close if the press also started on the backdrop, not when dragging out of the dialog; written with $unsafe,
+    // since JTE escapes dynamic values in event handler attributes for use inside JavaScript strings
+    final var overlayClickHandlers = closeOnOverlayClick
+      ? "onpointerdown=\"this.dataset.backdropPress = event.target === this\" "
+        + "onclick=\"if (event.target === this && this.dataset.backdropPress === 'true') this.close()\""
+      : null;
 }
 
 @if(trigger != null)
-  <button type="button" onclick="document.getElementById('${id}').showModal()" $unsafe{JteHelper.attrs(triggerAttrs)}>
-    ${trigger}
-  </button>
+    <button type="button" onclick="document.getElementById('${id}').showModal()" $unsafe{JteHelper.attrs(triggerAttrs)}>
+        ${trigger}
+    </button>
 @endif
 <dialog
-  id="${id}"
-  class="${JteHelper.classAppend("dialog", dialogAttrs)}"
-  aria-labelledby="${dialogTitleId}"
-  aria-describedby="${dialogDescriptionId}"
-  open="${open}"
-  $unsafe{overlayClickHandlers}
-  $unsafe{JteHelper.attrs(dialogAttrs, "class")}
+    id="${id}"
+    class="${JteHelper.classAppend("dialog", dialogAttrs)}"
+    aria-labelledby="${dialogTitleId}"
+    aria-describedby="${dialogDescriptionId}"
+    open="${open}"
+    $unsafe{overlayClickHandlers}
+    $unsafe{JteHelper.attrs(dialogAttrs, "class")}
 >
-  <div>
-    @if(title != null || description != null)
-      <header $unsafe{JteHelper.attrs(headerAttrs)}>
-        @if(title != null)
-          <h2 id="${dialogTitleId}">${title}</h2>
+    <div>
+        @if(title != null || description != null)
+            <header $unsafe{JteHelper.attrs(headerAttrs)}>
+                @if(title != null)
+                    <h2 id="${dialogTitleId}">${title}</h2>
+                @endif
+                @if(description != null)
+                    <p id="${dialogDescriptionId}">${description}</p>
+                @endif
+            </header>
         @endif
-        @if(description != null)
-          <p id="${dialogDescriptionId}">${description}</p>
+        @if(content != null)
+            <section $unsafe{JteHelper.attrs(bodyAttrs)}>${content}</section>
         @endif
-      </header>
-    @endif
-    @if(content != null)
-      <section $unsafe{JteHelper.attrs(bodyAttrs)}>${content}</section>
-    @endif
-    @if(footer != null)
-      <footer $unsafe{JteHelper.attrs(footerAttrs)}>${footer}</footer>
-    @endif
-    @if(closeButton)
-      <button
-        type="button"
-        class="btn"
-        data-variant="ghost"
-        data-size="icon-sm"
-        aria-label="Close dialog"
-        onclick="this.closest('dialog').close()"
-      >
-        ${lucideX()}
-      </button>
-    @endif
-  </div>
+        @if(footer != null)
+            <footer $unsafe{JteHelper.attrs(footerAttrs)}>${footer}</footer>
+        @endif
+        @if(closeButton)
+            <button
+                type="button"
+                class="btn"
+                data-variant="ghost"
+                data-size="icon-sm"
+                aria-label="Close dialog"
+                onclick="this.closest('dialog').close()"
+            >
+                ${lucideX()}
+            </button>
+        @endif
+    </div>
 </dialog>

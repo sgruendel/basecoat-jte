@@ -1,4 +1,4 @@
-<%-- see https://github.com/hunvreus/basecoat/blob/main/src/nunjucks/tabs.njk --%>
+<%-- see https://github.com/hunvreus/basecoat/blob/1.2.1/src/templates/nunjucks/tabs.njk --%>
 <%--
   Renders a tabs component.
 
@@ -30,47 +30,46 @@
 @param int defaultTabIndex = 0
 
 !{
-  final String orientation;
-  if (tablistAttrs != null && tablistAttrs.containsKey("aria-orientation")) {
-    orientation = tablistAttrs.get("aria-orientation").toString();
-  } else {
-    orientation = "horizontal";
-  }
+    final String orientation;
+    if (tablistAttrs != null && tablistAttrs.containsKey("aria-orientation")) {
+      orientation = tablistAttrs.get("aria-orientation").toString();
+    } else {
+      orientation = "horizontal";
+    }
 }
 
 <div id="${id}" class="${JteHelper.classAppend("tabs", mainAttrs)}" $unsafe{JteHelper.attrs(mainAttrs, "class")}>
-  <nav role="tablist" aria-orientation="${orientation}" $unsafe{JteHelper.attrs(tablistAttrs, "aria-orientation")}>
-    @for(var tab : ForSupport.of(tabs))
-      !{var isDefaultTab = tab.getIndex() == defaultTabIndex;}
-      <button
-        type="button"
-        role="tab"
-        id="${id}-tab-${tab.getIndex()}"
-        aria-controls="${id}-panel-${tab.getIndex()}"
-        aria-selected="${Boolean.toString(isDefaultTab)}"
-        tabindex="${isDefaultTab && !tab.get().isDisabled() ? "0" : "-1"}"
-        $unsafe{JteHelper.attrs(tab.get().tabAttrs())}
-      >
-        ${tab.get().tabText()}
-        ${tab.get().tabContent()}
-      </button>
-    @endfor
-  </nav>
+    <nav role="tablist" aria-orientation="${orientation}" $unsafe{JteHelper.attrs(tablistAttrs, "aria-orientation")}>
+        @for(var tab : ForSupport.of(tabs))
+            !{var isDefaultTab = tab.getIndex() == defaultTabIndex;}
+            <button
+                type="button"
+                role="tab"
+                id="${id}-tab-${tab.getIndex()}"
+                aria-controls="${id}-panel-${tab.getIndex()}"
+                aria-selected="${Boolean.toString(isDefaultTab)}"
+                tabindex="${isDefaultTab && !tab.get().isDisabled() ? "0" : "-1"}"
+                $unsafe{JteHelper.attrs(tab.get().tabAttrs())}
+            >
+                ${tab.get().tabText()}
+                ${tab.get().tabContent()}
+            </button>
+        @endfor
+    </nav>
 
-  @for(var tab : ForSupport.of(tabs))
-    @if(tab.get().panel() != null)
-      !{var isDefaultTab = tab.getIndex() == defaultTabIndex;}
-      <div
-        role="tabpanel"
-        id="${id}-panel-${tab.getIndex()}"
-        aria-labelledby="${id}-tab-${tab.getIndex()}"
-        tabindex="-1"
-        aria-selected="${Boolean.toString(isDefaultTab)}"
-        hidden="${!isDefaultTab}"
-        $unsafe{JteHelper.attrs(tab.get().panelAttrs())}
-      >
-        ${tab.get().panel()}
-      </div>
-    @endif
-  @endfor
+    @for(var tab : ForSupport.of(tabs))
+        @if(tab.get().panel() != null)
+            !{var isDefaultTab = tab.getIndex() == defaultTabIndex;}
+            <div
+                role="tabpanel"
+                id="${id}-panel-${tab.getIndex()}"
+                aria-labelledby="${id}-tab-${tab.getIndex()}"
+                tabindex="-1"
+                hidden="${!isDefaultTab}"
+                $unsafe{JteHelper.attrs(tab.get().panelAttrs())}
+            >
+                ${tab.get().panel()}
+            </div>
+        @endif
+    @endfor
 </div>

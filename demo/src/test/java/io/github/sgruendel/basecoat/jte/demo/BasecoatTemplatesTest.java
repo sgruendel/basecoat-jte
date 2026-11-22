@@ -13,10 +13,12 @@ import io.github.sgruendel.basecoat.jte.BasecoatItem.MenuItem;
 import io.github.sgruendel.basecoat.jte.BasecoatItem.NavItem;
 import io.github.sgruendel.basecoat.jte.BasecoatItem.Option;
 import io.github.sgruendel.basecoat.jte.BasecoatItem.Submenu;
+import io.github.sgruendel.basecoat.jte.BasecoatTab;
 import io.github.sgruendel.basecoat.jte.BasecoatToast;
 import io.github.sgruendel.basecoat.jte.BasecoatToast.Button;
 import io.github.sgruendel.basecoat.jte.BasecoatToast.Category;
 import java.time.Duration;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import org.junit.jupiter.api.Test;
@@ -295,7 +297,7 @@ class BasecoatTemplatesTest {
                                         .withAttrs(Map.of("data-x", "1")))));
 
         assertThat(html)
-                .contains("<div id=\"toaster\" class=\"toaster\" >")
+                .contains("<ol id=\"toaster\" class=\"toaster\" role=\"list\" aria-label=\"Notifications\" >")
                 .contains("data-category=\"success\"")
                 .contains("<h2>Saved</h2>")
                 .contains("<p>All changes stored</p>")
@@ -303,10 +305,99 @@ class BasecoatTemplatesTest {
                 .contains("View")
                 .contains("data-toast-cancel")
                 .contains("onclick=\"undo()\"")
-                .contains("role=\"alert\"")
-                .contains("data-category=\"error\" data-duration=\"10000\" data-x=\"1\"")
+                .contains("<div class=\"toast-content\" role=\"alert\" aria-atomic=\"true\">")
+                .contains("<li class=\"toast\" data-category=\"error\" data-duration=\"10000\" data-x=\"1\" >")
                 .contains("<h2>Upload failed</h2>")
                 .contains("<svg class=\"icon\"></svg>");
         assertThat(html.split("class=\"toast\"", -1)).hasSize(3);
+        assertThat(html.split("aria-label=\"Close toast\"", -1)).hasSize(3);
+    }
+
+    @Test
+    void toasterKeepsItsRoleAndUsesCustomAriaLabel() {
+
+        final var html = render(
+                "basecoat/toaster.jte",
+                Map.of("attrs", Map.of("class", "x", "role", "region", "aria-label", "Alerts", "data-align", "start")));
+
+        assertThat(html)
+                .contains("<ol id=\"toaster\" class=\"toaster x\" role=\"list\" aria-label=\"Alerts\""
+                        + " data-align=\"start\" >")
+                .doesNotContain("region");
+    }
+
+    @Test
+    void toastRendersLoadingCategoryAndOmitsCloseButtonOnRequest() {
+
+        final var html = render(
+                "basecoat/toaster.jte",
+                Map.of(
+                        "toasts",
+                        List.of(BasecoatToast.of(Category.LOADING, "Creating event")
+                                .withCloseButton(false))));
+
+        assertThat(html)
+                .contains("data-category=\"loading\"")
+                .contains("role=\"status\"")
+                .doesNotContain("Close toast")
+                .doesNotContain("<footer>");
+    }
+
+    @Test
+    void toastWithoutCategoryHasNoCategoryOrIcon() {
+
+        final var params = new HashMap<String, Object>();
+        params.put("category", null);
+        params.put("title", "Event created");
+        params.put("closeButton", false);
+        assertThat(render("basecoat/toast.jte", params))
+                .doesNotContain("data-category")
+                .contains("role=\"status\"")
+                .doesNotContain("<svg");
+
+        assertThat(render(
+                        "basecoat/toaster.jte",
+                        Map.of(
+                                "toasts",
+                                List.of(BasecoatToast.of(null, "Event created").withCloseButton(false)))))
+                .doesNotContain("data-category")
+                .doesNotContain("<svg");
+    }
+
+    @Test
+    void toastRendersLinkButtonsAndSkipsEmptyTexts() {
+
+        final var html = render(
+                "basecoat/toaster.jte",
+                Map.of(
+                        "toasts",
+                        List.of(BasecoatToast.of(Category.INFO, "", "Event created")
+                                .withAction(Button.link("Open", "/events/1"))
+                                .withCancel(Button.link("Undo", "/events/1/undo"))
+                                .withDuration(BasecoatToast.PERSISTENT))));
+
+        assertThat(html)
+                .doesNotContain("<h2>")
+                .contains("<p>Event created</p>")
+                .contains("data-duration=\"-1\"")
+                .contains("<a href=\"/events/1\" class=\"btn\" data-variant=\"outline\" data-size=\"sm\""
+                        + " data-toast-action")
+                .contains("<a href=\"/events/1/undo\" class=\"btn\" data-variant=\"outline\" data-size=\"sm\""
+                        + " data-toast-cancel");
+    }
+
+    @Test
+    void tabPanelsDoNotCarryAriaSelected() {
+
+        final var html = render(
+                "basecoat/tabs.jte",
+                Map.of(
+                        "id",
+                        "t",
+                        "tabs",
+                        List.of(BasecoatTab.of("A", html("<p>a</p>")), BasecoatTab.of("B", html("<p>b</p>")))));
+
+        assertThat(html).contains("role=\"tabpanel\"").contains(" hidden");
+        assertThat(html.split("aria-selected", -1)).hasSize(3);
     }
 }

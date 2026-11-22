@@ -1,4 +1,4 @@
-<%-- see https://github.com/hunvreus/basecoat/blob/main/src/nunjucks/command.njk --%>
+<%-- see https://github.com/hunvreus/basecoat/blob/1.2.1/src/templates/nunjucks/command.njk --%>
 <%--
   Renders a command dialog (modal command palette).
 
@@ -30,36 +30,36 @@
 @param Content content = null
 
 <dialog
-  id="${id}"
-  class="${JteHelper.classAppend("command-dialog", dialogAttrs)}"
-  aria-label="Command menu"
-  open="${open}"
-  onpointerdown="this.dataset.backdropPress = event.target === this"
-  onclick="if (event.target === this && this.dataset.backdropPress === 'true') this.close()"
-  $unsafe{JteHelper.attrs(dialogAttrs, "class")}
+    id="${id}"
+    class="${JteHelper.classAppend("command-dialog", dialogAttrs)}"
+    aria-label="Command menu"
+    open="${open}"
+    onpointerdown="this.dataset.backdropPress = event.target === this"
+    onclick="if (event.target === this && this.dataset.backdropPress === 'true') this.close()"
+    $unsafe{JteHelper.attrs(dialogAttrs, "class")}
 >
-  <div class="command">
-    @template.basecoat.commandInput(
-      id = id,
-      placeholder = placeholder,
-      inputAttrs = inputAttrs
-    )
-    <div
-      role="menu"
-      id="${id}-menu"
-      aria-orientation="vertical"
-      data-empty="${emptyText}"
-      class="${JteHelper.clazz(menuAttrs)}"
-      $unsafe{JteHelper.attrs(menuAttrs, "class")}
-    >
-      @if(items != null && !items.isEmpty())
-        @template.basecoat.commandRenderItems(
-          items = items,
-          parentIdPrefix = id + "-items"
+    <div class="command">
+        @template.basecoat.commandInput(
+            id = id,
+            placeholder = placeholder,
+            inputAttrs = inputAttrs
         )
-      @else
-        ${content}
-      @endif
+        <div
+            role="menu"
+            id="${id}-menu"
+            aria-orientation="vertical"
+            data-empty="${emptyText}"
+            class="${JteHelper.clazz(menuAttrs)}"
+            $unsafe{JteHelper.attrs(menuAttrs, "class")}
+        >
+            @if(items != null && !items.isEmpty())
+                @template.basecoat.commandRenderItems(
+                    items = items,
+                    parentIdPrefix = id + "-items"
+                )
+            @else
+                ${content}
+            @endif
+        </div>
     </div>
-  </div>
 </dialog>

@@ -1,8 +1,10 @@
 package io.github.sgruendel.basecoat.jte;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertSame;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import gg.jte.Content;
 import io.github.sgruendel.basecoat.jte.BasecoatToast.Button;
@@ -23,6 +25,7 @@ class BasecoatToastTest {
 
         assertEquals(
                 "Details", BasecoatToast.of(Category.ERROR, "Failed", "Details").description());
+        assertTrue(toast.closeButton());
     }
 
     @Test
@@ -34,7 +37,8 @@ class BasecoatToastTest {
                 .withCancel(Button.of("Dismiss"))
                 .withDuration(Duration.ofSeconds(10))
                 .withIcon(icon)
-                .withAttrs(Map.of("data-x", "1"));
+                .withAttrs(Map.of("data-x", "1"))
+                .withCloseButton(false);
 
         assertNull(toast.action());
         assertEquals(Button.of("View"), updated.action());
@@ -44,11 +48,21 @@ class BasecoatToastTest {
         assertEquals(Map.of("data-x", "1"), updated.attrs());
         assertEquals(Category.WARNING, updated.category());
         assertEquals("Low disk space", updated.title());
+        assertFalse(updated.closeButton());
+        assertTrue(toast.closeButton());
     }
 
     @Test
-    void categoryDefaultsToSuccess() {
+    void categoryMayBeNull() {
 
-        assertEquals(Category.SUCCESS, BasecoatToast.of(null, "Done").category());
+        assertNull(BasecoatToast.of(null, "Done").category());
+    }
+
+    @Test
+    void buttonFactoriesSetLabelOnclickOrHref() {
+
+        assertEquals(new Button("View", null, null), Button.of("View"));
+        assertEquals(new Button("Undo", "undo()", null), Button.of("Undo", "undo()"));
+        assertEquals(new Button("Open", null, "/events/1"), Button.link("Open", "/events/1"));
     }
 }

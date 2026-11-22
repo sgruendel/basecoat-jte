@@ -10,10 +10,10 @@
 @param List<Option> pageSizeItems
 
 <div class="flex flex-col gap-4 overflow-auto">
-  @template.examples.adminDashboard.components.dataTable.outlineResults(
-    page = page,
-    selection = selection,
-    baseUrl = baseUrl,
-    pageSizeItems = pageSizeItems
-  )
+    @template.examples.adminDashboard.components.dataTable.outlineResults(
+        page = page,
+        selection = selection,
+        baseUrl = baseUrl,
+        pageSizeItems = pageSizeItems
+    )
 </div>

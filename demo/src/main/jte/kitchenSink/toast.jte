@@ -1,55 +1,55 @@
 @import static io.github.sgruendel.lucide.jte.LucideIcons.*
 
 <section id="toast" class="w-full scroll-mt-14 rounded-lg border">
-  <header class="flex items-center justify-between border-b px-4 py-3">
-    <h2 class="text-sm font-medium">Toast</h2>
-    <a
-      href="https://basecoatui.com/components/toast"
-      class="text-muted-foreground hover:text-foreground"
-      data-tooltip="See documentation"
-      data-side="left"
-    >
-      ${lucideBookOpen().cssClass("size-4")}
-    </a>
-  </header>
-  <div class="p-4">
-    <div class="flex flex-wrap items-center gap-2">
-      <button
-        class="btn-outline"
-        hx-trigger="click"
-        hx-get="/fragments/toast/success"
-        hx-target="#toaster"
-        hx-swap="beforeend"
-      >
-        Success
-      </button>
-      <button
-        class="btn-outline"
-        hx-trigger="click"
-        hx-get="/fragments/toast/error"
-        hx-target="#toaster"
-        hx-swap="beforeend"
-      >
-        Error
-      </button>
-      <button
-        class="btn-outline"
-        hx-trigger="click"
-        hx-get="/fragments/toast/info"
-        hx-target="#toaster"
-        hx-swap="beforeend"
-      >
-        Info
-      </button>
-      <button
-        class="btn-outline"
-        hx-trigger="click"
-        hx-get="/fragments/toast/warning"
-        hx-target="#toaster"
-        hx-swap="beforeend"
-      >
-        Warning
-      </button>
+    <header class="flex items-center justify-between border-b px-4 py-3">
+        <h2 class="text-sm font-medium">Toast</h2>
+        <a
+            href="https://basecoatui.com/components/toast"
+            class="text-muted-foreground hover:text-foreground"
+            data-tooltip="See documentation"
+            data-side="left"
+        >
+            ${lucideBookOpen().cssClass("size-4")}
+        </a>
+    </header>
+    <div class="p-4">
+        <div class="flex flex-wrap items-center gap-2">
+            <button
+                class="btn-outline"
+                hx-trigger="click"
+                hx-get="/fragments/toast/success"
+                hx-target="#toaster"
+                hx-swap="beforeend"
+            >
+                Success
+            </button>
+            <button
+                class="btn-outline"
+                hx-trigger="click"
+                hx-get="/fragments/toast/error"
+                hx-target="#toaster"
+                hx-swap="beforeend"
+            >
+                Error
+            </button>
+            <button
+                class="btn-outline"
+                hx-trigger="click"
+                hx-get="/fragments/toast/info"
+                hx-target="#toaster"
+                hx-swap="beforeend"
+            >
+                Info
+            </button>
+            <button
+                class="btn-outline"
+                hx-trigger="click"
+                hx-get="/fragments/toast/warning"
+                hx-target="#toaster"
+                hx-swap="beforeend"
+            >
+                Warning
+            </button>
+        </div>
     </div>
-  </div>
 </section>

@@ -1,4 +1,4 @@
-<%-- see https://github.com/hunvreus/basecoat/blob/main/src/nunjucks/dropdown-menu.njk --%>
+<%-- see https://github.com/hunvreus/basecoat/blob/1.2.1/src/templates/nunjucks/dropdown-menu.njk --%>
 <%--
   Renders a dropdown menu component.
 
@@ -29,31 +29,31 @@
 @param Content content = null
 
 <div
-  id="${id}"
-  class="${JteHelper.classAppend("dropdown-menu", mainAttrs)}"
-  $unsafe{JteHelper.attrs(mainAttrs, "class")}
+    id="${id}"
+    class="${JteHelper.classAppend("dropdown-menu", mainAttrs)}"
+    $unsafe{JteHelper.attrs(mainAttrs, "class")}
 >
-  <button
-    type="button"
-    id="${id}-trigger"
-    aria-haspopup="menu"
-    aria-controls="${id}-menu"
-    aria-expanded="false"
-    $unsafe{JteHelper.attrs(triggerAttrs)}
-  >
-    ${triggerText}
-    ${triggerContent}
-  </button>
-  <div id="${id}-popover" data-popover aria-hidden="true" $unsafe{JteHelper.attrs(popoverAttrs)}>
-    <div role="menu" id="${id}-menu" aria-labelledby="${id}-trigger" $unsafe{JteHelper.attrs(menuAttrs)}>
-      @if(items != null)
-        @template.basecoat.dropdownRenderItems(
-          items = items,
-          parentIdPrefix = id + "-items"
-        )
-      @else
-        ${content}
-      @endif
+    <button
+        type="button"
+        id="${id}-trigger"
+        aria-haspopup="menu"
+        aria-controls="${id}-menu"
+        aria-expanded="false"
+        $unsafe{JteHelper.attrs(triggerAttrs)}
+    >
+        ${triggerText}
+        ${triggerContent}
+    </button>
+    <div id="${id}-popover" data-popover aria-hidden="true" $unsafe{JteHelper.attrs(popoverAttrs)}>
+        <div role="menu" id="${id}-menu" aria-labelledby="${id}-trigger" $unsafe{JteHelper.attrs(menuAttrs)}>
+            @if(items != null)
+                @template.basecoat.dropdownRenderItems(
+                    items = items,
+                    parentIdPrefix = id + "-items"
+                )
+            @else
+                ${content}
+            @endif
+        </div>
     </div>
-  </div>
 </div>

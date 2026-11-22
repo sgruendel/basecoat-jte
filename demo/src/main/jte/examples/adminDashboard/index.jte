@@ -12,14 +12,14 @@
 @param List<Option> pageSizeItems
 
 @template.examples.layout(
-  pageTitle = "Admin Dashboard",
-  content=@`
-    @template.examples.adminDashboard.page(
-      user = user,
-      outlinePage = outlinePage,
-      selection = selection,
-      baseUrl = baseUrl,
-      pageSizeItems = pageSizeItems
-    )
-  `
+    pageTitle = "Admin Dashboard",
+    content=@`
+        @template.examples.adminDashboard.page(
+            user = user,
+            outlinePage = outlinePage,
+            selection = selection,
+            baseUrl = baseUrl,
+            pageSizeItems = pageSizeItems
+        )
+    `
 )

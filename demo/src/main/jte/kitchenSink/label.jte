@@ -1,37 +1,37 @@
 @import static io.github.sgruendel.lucide.jte.LucideIcons.*
 
 <section id="label" class="w-full scroll-mt-14 rounded-lg border">
-  <header class="flex items-center justify-between border-b px-4 py-3">
-    <h2 class="text-sm font-medium">Label</h2>
-    <a
-      href="https://basecoatui.com/components/label"
-      class="text-muted-foreground hover:text-foreground"
-      data-tooltip="See documentation"
-      data-side="left"
-    >
-      ${lucideBookOpen().cssClass("size-4")}
-    </a>
-  </header>
-  <div class="p-4">
-    <div class="flex flex-col gap-y-4">
-      <div class="grid w-full max-w-sm gap-6">
-        <div class="flex items-center gap-3">
-          <input type="checkbox" id="label-demo-terms" class="input" />
-          <label for="label-demo-terms" class="label">Accept terms and conditions</label>
+    <header class="flex items-center justify-between border-b px-4 py-3">
+        <h2 class="text-sm font-medium">Label</h2>
+        <a
+            href="https://basecoatui.com/components/label"
+            class="text-muted-foreground hover:text-foreground"
+            data-tooltip="See documentation"
+            data-side="left"
+        >
+            ${lucideBookOpen().cssClass("size-4")}
+        </a>
+    </header>
+    <div class="p-4">
+        <div class="flex flex-col gap-y-4">
+            <div class="grid w-full max-w-sm gap-6">
+                <div class="flex items-center gap-3">
+                    <input type="checkbox" id="label-demo-terms" class="input" />
+                    <label for="label-demo-terms" class="label">Accept terms and conditions</label>
+                </div>
+                <div class="grid gap-3">
+                    <label for="label-demo-text" class="label">Username</label>
+                    <input type="text" id="label-demo-text" class="input" placeholder="Username" />
+                </div>
+                <div class="grid gap-3">
+                    <label for="label-demo-disabled" class="label">Disabled</label>
+                    <input type="text" id="label-demo-disabled" class="peer input" placeholder="Disabled" disabled />
+                </div>
+                <div class="grid gap-3">
+                    <label for="label-demo-textarea" class="label">Message</label>
+                    <textarea id="label-demo-textarea" class="textarea" placeholder="Message"></textarea>
+                </div>
+            </div>
         </div>
-        <div class="grid gap-3">
-          <label for="label-demo-text" class="label">Username</label>
-          <input type="text" id="label-demo-text" class="input" placeholder="Username" />
-        </div>
-        <div class="grid gap-3">
-          <label for="label-demo-disabled" class="label">Disabled</label>
-          <input type="text" id="label-demo-disabled" class="peer input" placeholder="Disabled" disabled />
-        </div>
-        <div class="grid gap-3">
-          <label for="label-demo-textarea" class="label">Message</label>
-          <textarea id="label-demo-textarea" class="textarea" placeholder="Message"></textarea>
-        </div>
-      </div>
     </div>
-  </div>
 </section>

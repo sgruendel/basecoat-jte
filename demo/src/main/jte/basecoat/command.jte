@@ -1,4 +1,4 @@
-<%-- see https://github.com/hunvreus/basecoat/blob/main/src/nunjucks/command.njk --%>
+<%-- see https://github.com/hunvreus/basecoat/blob/1.2.1/src/templates/nunjucks/command.njk --%>
 <%--
   Renders a standalone command menu component with search and keyboard navigation.
 
@@ -28,31 +28,31 @@
 @param Content content = null
 
 <div
-  id="${id}"
-  class="${JteHelper.classAppend("command", mainAttrs)}"
-  aria-label="Command menu"
-  $unsafe{JteHelper.attrs(mainAttrs, "class")}
+    id="${id}"
+    class="${JteHelper.classAppend("command", mainAttrs)}"
+    aria-label="Command menu"
+    $unsafe{JteHelper.attrs(mainAttrs, "class")}
 >
-  @template.basecoat.commandInput(
-    id = id,
-    placeholder = placeholder,
-    inputAttrs = inputAttrs
-  )
-  <div
-    role="menu"
-    id="${id}-menu"
-    aria-orientation="vertical"
-    data-empty="${emptyText}"
-    class="${JteHelper.clazz(menuAttrs)}"
-    $unsafe{JteHelper.attrs(menuAttrs, "class")}
-  >
-    @if(items != null && !items.isEmpty())
-      @template.basecoat.commandRenderItems(
-        items = items,
-        parentIdPrefix = id + "-items"
-      )
-    @else
-      ${content}
-    @endif
-  </div>
+    @template.basecoat.commandInput(
+        id = id,
+        placeholder = placeholder,
+        inputAttrs = inputAttrs
+    )
+    <div
+        role="menu"
+        id="${id}-menu"
+        aria-orientation="vertical"
+        data-empty="${emptyText}"
+        class="${JteHelper.clazz(menuAttrs)}"
+        $unsafe{JteHelper.attrs(menuAttrs, "class")}
+    >
+        @if(items != null && !items.isEmpty())
+            @template.basecoat.commandRenderItems(
+                items = items,
+                parentIdPrefix = id + "-items"
+            )
+        @else
+            ${content}
+        @endif
+    </div>
 </div>

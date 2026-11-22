@@ -1,4 +1,4 @@
-<%-- see https://github.com/hunvreus/basecoat/blob/main/src/nunjucks/combobox.njk --%>
+<%-- see https://github.com/hunvreus/basecoat/blob/1.2.1/src/templates/nunjucks/combobox.njk --%>
 <%--
   Renders an input-first combobox component.
 
@@ -43,67 +43,123 @@
 @param Content options = null
 
 !{
-  final List<String> selectedArray;
-  if (selected != null && selectedList != null) {
-    throw new IllegalArgumentException("only one of selected and selectedList must be specified");
-  }
+    final List<String> selectedArray;
+    if (selected != null && selectedList != null) {
+      throw new IllegalArgumentException("only one of selected and selectedList must be specified");
+    }
 
-  if (selected != null) {
-    selectedArray = List.of(selected);
-  } else if (selectedList != null) {
-    selectedArray = selectedList;
-  } else {
-    selectedArray = List.of();
-  }
+    if (selected != null) {
+      selectedArray = List.of(selected);
+    } else if (selectedList != null) {
+      selectedArray = selectedList;
+    } else {
+      selectedArray = List.of();
+    }
 
-  final String hiddenValue;
-  if (multiple) {
-    // Basecoat's combobox script reads and writes multiple values as a JSON array
-    hiddenValue = JsonHelper.write(selectedArray);
-  } else if (!selectedArray.isEmpty()) {
-    hiddenValue = selectedArray.getFirst();
-  } else {
-    hiddenValue = "";
-  }
+    final String hiddenValue;
+    if (multiple) {
+      // Basecoat's combobox script reads and writes multiple values as a JSON array
+      hiddenValue = JsonHelper.write(selectedArray);
+    } else if (!selectedArray.isEmpty()) {
+      hiddenValue = selectedArray.getFirst();
+    } else {
+      hiddenValue = "";
+    }
 }
 
 <div
-  id="${id}"
-  class="${JteHelper.classAppend("combobox", mainAttrs)}"
-  data-close-on-select="${(multiple && closeOnSelect) ? "true" : null}"
-  data-auto-highlight="${autoHighlight ? "true" : null}"
-  $unsafe{JteHelper.attrs(mainAttrs, "class")}
+    id="${id}"
+    class="${JteHelper.classAppend("combobox", mainAttrs)}"
+    data-close-on-select="${(multiple && closeOnSelect) ? "true" : null}"
+    data-auto-highlight="${autoHighlight ? "true" : null}"
+    $unsafe{JteHelper.attrs(mainAttrs, "class")}
 >
-  @if(multiple)
-    <input
-      type="text"
-      role="combobox"
-      class="${JteHelper.clazz(inputAttrs)}"
-      placeholder="${placeholder}"
-      autocomplete="off"
-      spellcheck="false"
-      aria-autocomplete="list"
-      aria-expanded="false"
-      aria-controls="${id}-listbox"
-      $unsafe{JteHelper.attrs(inputAttrs, "class")}
-    />
-  @elseif(clear)
-    <div class="${JteHelper.classAppend("input-group", inputAttrs)}">
-      <input
-        type="text"
-        role="combobox"
-        placeholder="${placeholder}"
-        autocomplete="off"
-        spellcheck="false"
-        aria-autocomplete="list"
-        aria-expanded="false"
-        aria-controls="${id}-listbox"
-        $unsafe{JteHelper.attrs(inputAttrs, "class")}
-      />
-      <span role="group" data-align="inline-end">
-        <button type="button" data-clear aria-label="Clear selection">
-          <svg
-            class="size-4"
+    @if(multiple)
+        <input
+            type="text"
+            role="combobox"
+            class="${JteHelper.clazz(inputAttrs)}"
+            placeholder="${placeholder}"
+            autocomplete="off"
+            spellcheck="false"
+            aria-autocomplete="list"
+            aria-expanded="false"
+            aria-controls="${id}-listbox"
+            $unsafe{JteHelper.attrs(inputAttrs, "class")}
+        />
+    @elseif(clear)
+        <div class="${JteHelper.classAppend("input-group", inputAttrs)}">
+            <input
+                type="text"
+                role="combobox"
+                placeholder="${placeholder}"
+                autocomplete="off"
+                spellcheck="false"
+                aria-autocomplete="list"
+                aria-expanded="false"
+                aria-controls="${id}-listbox"
+                $unsafe{JteHelper.attrs(inputAttrs, "class")}
+            />
+            <span role="group" data-align="inline-end">
+                <button type="button" data-clear aria-label="Clear selection">
+                    <svg
+                        class="size-4"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    >
+                        <path d="M18 6 6 18" />
+                        <path d="m6 6 12 12" />
+                    </svg>
+                </button>
+                <button
+                    type="button"
+                    class="btn"
+                    data-variant="ghost"
+                    data-size="icon-xs"
+                    aria-label="Open suggestions"
+                    aria-haspopup="listbox"
+                    aria-expanded="false"
+                    aria-controls="${id}-listbox"
+                >
+                    <svg
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    >
+                        <path d="m6 9 6 6 6-6" />
+                    </svg>
+                </button>
+            </span>
+        </div>
+    @else
+        <input
+            type="text"
+            role="combobox"
+            class="${JteHelper.clazz(inputAttrs)}"
+            placeholder="${placeholder}"
+            autocomplete="off"
+            spellcheck="false"
+            aria-autocomplete="list"
+            aria-expanded="false"
+            aria-controls="${id}-listbox"
+            $unsafe{JteHelper.attrs(inputAttrs, "class")}
+        />
+        <svg
             aria-hidden="true"
             xmlns="http://www.w3.org/2000/svg"
             width="24"
@@ -114,90 +170,34 @@
             stroke-width="2"
             stroke-linecap="round"
             stroke-linejoin="round"
-          >
-            <path d="M18 6 6 18" />
-            <path d="m6 6 12 12" />
-          </svg>
-        </button>
-        <button
-          type="button"
-          class="btn"
-          data-variant="ghost"
-          data-size="icon-xs"
-          aria-label="Open suggestions"
-          aria-haspopup="listbox"
-          aria-expanded="false"
-          aria-controls="${id}-listbox"
+            class="combobox-trigger-icon"
         >
-          <svg
-            aria-hidden="true"
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
             <path d="m6 9 6 6 6-6" />
-          </svg>
-        </button>
-      </span>
+        </svg>
+    @endif
+    <div id="${id}-popover" data-popover aria-hidden="true" $unsafe{JteHelper.attrs(popoverAttrs)}>
+        <div
+            role="listbox"
+            id="${id}-listbox"
+            aria-orientation="vertical"
+            aria-multiselectable="${multiple ? "true" : null}"
+            $unsafe{JteHelper.attrs(listboxAttrs)}
+        >
+            @if(items != null)
+                @template.basecoat.selectRenderItems(
+                    items = items,
+                    selectedArray = selectedArray,
+                    parentIdPrefix = id + "-items"
+                )
+            @else
+                ${options}
+            @endif
+        </div>
     </div>
-  @else
     <input
-      type="text"
-      role="combobox"
-      class="${JteHelper.clazz(inputAttrs)}"
-      placeholder="${placeholder}"
-      autocomplete="off"
-      spellcheck="false"
-      aria-autocomplete="list"
-      aria-expanded="false"
-      aria-controls="${id}-listbox"
-      $unsafe{JteHelper.attrs(inputAttrs, "class")}
+        type="hidden"
+        name="${name != null ? name : (id + "-value")}"
+        value="${hiddenValue}"
+        $unsafe{JteHelper.attrs(hiddenInputAttrs, List.of("name", "value"))}
     />
-    <svg
-      aria-hidden="true"
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      class="combobox-trigger-icon"
-    >
-      <path d="m6 9 6 6 6-6" />
-    </svg>
-  @endif
-  <div id="${id}-popover" data-popover aria-hidden="true" $unsafe{JteHelper.attrs(popoverAttrs)}>
-    <div
-      role="listbox"
-      id="${id}-listbox"
-      aria-orientation="vertical"
-      aria-multiselectable="${multiple ? "true" : null}"
-      $unsafe{JteHelper.attrs(listboxAttrs)}
-    >
-      @if(items != null)
-        @template.basecoat.selectRenderItems(
-          items = items,
-          selectedArray = selectedArray,
-          parentIdPrefix = id + "-items"
-        )
-      @else
-        ${options}
-      @endif
-    </div>
-  </div>
-  <input
-    type="hidden"
-    name="${name != null ? name : (id + "-value")}"
-    value="${hiddenValue}"
-    $unsafe{JteHelper.attrs(hiddenInputAttrs, List.of("name", "value"))}
-  />
 </div>

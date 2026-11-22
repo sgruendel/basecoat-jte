@@ -1,11 +1,11 @@
-<%-- see https://github.com/hunvreus/basecoat/blob/main/src/nunjucks/toast.njk --%>
+<%-- see https://github.com/hunvreus/basecoat/blob/1.2.1/src/templates/nunjucks/toast.njk --%>
 <%--
   Renders a toaster container and individual toast messages.
   Can render the initial container or be used with htmx OOB swaps to add toasts dynamically.
 
-  @param id {string} [optional] [default="toaster"] - Unique identifier for the toaster container.
+  @param id {string} [optional] [default="toaster"] - Unique identifier for the toaster list.
   @param toasts {array} [optional] - An array of toast objects to render initially. See the <code>toast()</code> macro for more details.
-  @param attrs {object} [optional] - Additional HTML attributes for the main toaster container div.
+  @param attrs {object} [optional] - Additional HTML attributes for the main toaster list.
 
   Supports caller() for custom toast markup.
 --%>
@@ -22,20 +22,32 @@
 @param Map<?, ?> attrs = null
 @param Content content = null
 
-<div id="${id}" class="${JteHelper.classAppend("toaster", attrs)}" $unsafe{JteHelper.attrs(attrs, "class")}>
-  @if(toasts != null)
-    @for(var toast : toasts)
-      @template.basecoat.toast(
-        category = toast.category(),
-        title = toast.title(),
-        description = toast.description(),
-        duration = toast.duration(),
-        icon = toast.icon(),
-        action = toast.action(),
-        cancel = toast.cancel(),
-        attrs = toast.attrs()
-      )
-    @endfor
-  @endif
-  ${content}
-</div>
+!{
+    final var customAriaLabel = attrs != null && attrs.get("aria-label") != null ? attrs.get("aria-label").toString() : "";
+    final var ariaLabel = customAriaLabel.isEmpty() ? "Notifications" : customAriaLabel;
+}
+
+<ol
+    id="${id}"
+    class="${JteHelper.classAppend("toaster", attrs)}"
+    role="list"
+    aria-label="${ariaLabel}"
+    $unsafe{JteHelper.attrs(attrs, List.of("class", "role", "aria-label"))}
+>
+    @if(toasts != null)
+        @for(var toast : toasts)
+            @template.basecoat.toast(
+                category = toast.category(),
+                title = toast.title(),
+                description = toast.description(),
+                duration = toast.duration(),
+                icon = toast.icon(),
+                action = toast.action(),
+                cancel = toast.cancel(),
+                attrs = toast.attrs(),
+                closeButton = toast.closeButton()
+            )
+        @endfor
+    @endif
+    ${content}
+</ol>

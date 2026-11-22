@@ -15,100 +15,100 @@
 @param List<Option> pageSizeItems
 
 !{
-  final List<Option> viewItems = List.of(
-    Option.of("Outline", "outline"),
-    Option.of("Past Performance", "past-performance"),
-    Option.of("Key Personnel", "key-personnel"),
-    Option.of("Focus Documents", "focus-documents")
-  );
+    final List<Option> viewItems = List.of(
+      Option.of("Outline", "outline"),
+      Option.of("Past Performance", "past-performance"),
+      Option.of("Key Personnel", "key-personnel"),
+      Option.of("Focus Documents", "focus-documents")
+    );
 
-  final List<Option> columnItems = List.of(
-    Option.of("Section Type", "type"),
-    Option.of("Status", "status"),
-    Option.of("Target", "target"),
-    Option.of("Limit", "limit"),
-    Option.of("Reviewer", "reviewer")
-  );
+    final List<Option> columnItems = List.of(
+      Option.of("Section Type", "type"),
+      Option.of("Status", "status"),
+      Option.of("Target", "target"),
+      Option.of("Limit", "limit"),
+      Option.of("Reviewer", "reviewer")
+    );
 
-  final Content emptyPanel = @`<div class="aspect-video rounded-lg border border-dashed"></div>`;
+    final Content emptyPanel = @`<div class="aspect-video rounded-lg border border-dashed"></div>`;
 }
 
 <section id="outline-table" class="flex w-full flex-wrap items-center gap-2 px-4 lg:px-6" aria-label="Document views">
-  <span class="sr-only" id="view-selector-label">View</span>
+    <span class="sr-only" id="view-selector-label">View</span>
 
-  @template.basecoat.select(
-    id = "view-selector",
-    selected = viewItems.getFirst().value(),
-    items = viewItems,
-    mainAttrs = Map.of("class", "w-fit lg:hidden"),
-    triggerAttrs = Map.of("class", "w-48", "aria-labelledby", "view-selector-label view-selector-trigger")
-  )
-
-  @template.basecoat.tabs(
-    id = "document-tabs",
-    tabs = List.of(
-      new BasecoatTab(
-        "Outline",
-        null,
-        Map.of("data-view", "outline"),
-        @`
-          @template.examples.adminDashboard.components.dataTable.outlinePanel(
-            page = page,
-            selection = selection,
-            baseUrl = baseUrl,
-            pageSizeItems = pageSizeItems
-          )
-        `,
-        Map.of("class", "order-1 mt-6 basis-full!", "data-view", "outline")
-      ),
-      new BasecoatTab(
-        null,
-        @`Past Performance <span class="badge" data-variant="secondary">3</span>`,
-        Map.of("data-view", "past-performance"),
-        emptyPanel,
-        Map.of("class", "order-1 mt-6 basis-full!", "data-view", "past-performance")
-      ),
-      new BasecoatTab(
-        null,
-        @`Key Personnel <span class="badge" data-variant="secondary">2</span>`,
-        Map.of("data-view", "key-personnel"),
-        emptyPanel,
-        Map.of("class", "order-1 mt-6 basis-full!", "data-view", "key-personnel")
-      ),
-      new BasecoatTab(
-        "Focus Documents",
-        null,
-        Map.of("data-view", "focus-documents"),
-        emptyPanel,
-        Map.of("class", "order-1 mt-6 basis-full!", "data-view", "focus-documents")
-      )
-    ),
-    mainAttrs = Map.of("class", "contents!"),
-    tablistAttrs = Map.of("class", "hidden lg:flex")
-  )
-
-  <div class="ml-auto flex items-center gap-2">
-    @template.basecoat.dropdownMenu(
-      id = "columns-menu",
-      triggerContent = @`
-        ${lucideColumns2()}
-        <span class="hidden lg:inline">Customize Columns</span>
-        <span class="lg:hidden">Columns</span>
-        ${lucideChevronDown()}
-      `,
-      triggerAttrs = Map.of("class", "btn", "data-variant", "outline", "data-size", "sm"),
-      popoverAttrs = Map.of("class", "w-56", "data-align", "end"),
-      content = @`
-        <div role="heading">Visible columns</div>
-        @for(var column : columnItems)
-          <div role="menuitemcheckbox" aria-checked="true" data-column-toggle="${column.value()}">
-            <span data-indicator="true">✓</span>
-            ${column.label()}
-          </div>
-        @endfor
-      `
+    @template.basecoat.select(
+        id = "view-selector",
+        selected = viewItems.getFirst().value(),
+        items = viewItems,
+        mainAttrs = Map.of("class", "w-fit lg:hidden"),
+        triggerAttrs = Map.of("class", "w-48", "aria-labelledby", "view-selector-label view-selector-trigger")
     )
-  </div>
+
+    @template.basecoat.tabs(
+        id = "document-tabs",
+        tabs = List.of(
+            new BasecoatTab(
+                "Outline",
+                null,
+                Map.of("data-view", "outline"),
+                @`
+                    @template.examples.adminDashboard.components.dataTable.outlinePanel(
+                        page = page,
+                        selection = selection,
+                        baseUrl = baseUrl,
+                        pageSizeItems = pageSizeItems
+                    )
+                `,
+                Map.of("class", "order-1 mt-6 basis-full!", "data-view", "outline")
+            ),
+            new BasecoatTab(
+                null,
+                @`Past Performance <span class="badge" data-variant="secondary">3</span>`,
+                Map.of("data-view", "past-performance"),
+                emptyPanel,
+                Map.of("class", "order-1 mt-6 basis-full!", "data-view", "past-performance")
+            ),
+            new BasecoatTab(
+                null,
+                @`Key Personnel <span class="badge" data-variant="secondary">2</span>`,
+                Map.of("data-view", "key-personnel"),
+                emptyPanel,
+                Map.of("class", "order-1 mt-6 basis-full!", "data-view", "key-personnel")
+            ),
+            new BasecoatTab(
+                "Focus Documents",
+                null,
+                Map.of("data-view", "focus-documents"),
+                emptyPanel,
+                Map.of("class", "order-1 mt-6 basis-full!", "data-view", "focus-documents")
+            )
+        ),
+        mainAttrs = Map.of("class", "contents!"),
+        tablistAttrs = Map.of("class", "hidden lg:flex")
+    )
+
+    <div class="ml-auto flex items-center gap-2">
+        @template.basecoat.dropdownMenu(
+            id = "columns-menu",
+            triggerContent = @`
+                ${lucideColumns2()}
+                <span class="hidden lg:inline">Customize Columns</span>
+                <span class="lg:hidden">Columns</span>
+                ${lucideChevronDown()}
+            `,
+            triggerAttrs = Map.of("class", "btn", "data-variant", "outline", "data-size", "sm"),
+            popoverAttrs = Map.of("class", "w-56", "data-align", "end"),
+            content = @`
+                <div role="heading">Visible columns</div>
+                @for(var column : columnItems)
+                    <div role="menuitemcheckbox" aria-checked="true" data-column-toggle="${column.value()}">
+                        <span data-indicator="true">✓</span>
+                        ${column.label()}
+                    </div>
+                @endfor
+            `
+        )
+    </div>
 </section>
 
 <dialog id="row-details" class="drawer" data-side="right" aria-label="Document details"></dialog>

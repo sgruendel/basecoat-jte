@@ -1,4 +1,4 @@
-<%-- see https://github.com/hunvreus/basecoat/blob/main/src/nunjucks/select.njk --%>
+<%-- see https://github.com/hunvreus/basecoat/blob/1.2.1/src/templates/nunjucks/select.njk --%>
 <%--
   Renders a list of items for the select component.
 
@@ -20,38 +20,38 @@
 @param String parentIdPrefix
 
 @for(var entry : ForSupport.of(items))
-  !{var itemId = parentIdPrefix + "-" + entry.getIndex();}
-  @if(entry.get() instanceof Group group)
-    !{var groupLabelId = group.id() != null ? group.id() : "group-label-" + itemId;}
-    <div role="group" aria-labelledby="${groupLabelId}" $unsafe{JteHelper.attrs(group.attrs())}>
-      <div role="heading" id="${groupLabelId}">${group.label()}</div>
-      @if(group.items() != null)
-        @template.basecoat.selectRenderItems(
-          items = group.items(),
-          selectedArray = selectedArray,
-          parentIdPrefix = itemId
-        )
-      @endif
-    </div>
-  @elseif(entry.get() instanceof Separator)
-    <hr role="separator" />
-  @elseif(entry.get() instanceof Option option)
-    <div
-      id="${itemId}"
-      role="option"
-      data-value="${option.value()}"
-      data-label="${option.content() != null ? option.label() : null}"
-      aria-selected="${option.value() != null && selectedArray.contains(option.value()) ? "true" : null}"
-      $unsafe{JteHelper.attrs(option.attrs())}
-    >
-      @if(option.content() != null)
-        ${option.content()}
-      @else
-        ${option.label()}
-      @endif
-    </div>
-  @else
-    <%-- "if (true)": JTE writes the following template text after this code, which must stay reachable --%>
-    !{if (true) throw new IllegalArgumentException("Unsupported select item: " + entry.get());}
-  @endif
+    !{var itemId = parentIdPrefix + "-" + entry.getIndex();}
+    @if(entry.get() instanceof Group group)
+        !{var groupLabelId = group.id() != null ? group.id() : "group-label-" + itemId;}
+        <div role="group" aria-labelledby="${groupLabelId}" $unsafe{JteHelper.attrs(group.attrs())}>
+            <div role="heading" id="${groupLabelId}">${group.label()}</div>
+            @if(group.items() != null)
+                @template.basecoat.selectRenderItems(
+                    items = group.items(),
+                    selectedArray = selectedArray,
+                    parentIdPrefix = itemId
+                )
+            @endif
+        </div>
+    @elseif(entry.get() instanceof Separator)
+        <hr role="separator" />
+    @elseif(entry.get() instanceof Option option)
+        <div
+            id="${itemId}"
+            role="option"
+            data-value="${option.value()}"
+            data-label="${option.content() != null ? option.label() : null}"
+            aria-selected="${option.value() != null && selectedArray.contains(option.value()) ? "true" : null}"
+            $unsafe{JteHelper.attrs(option.attrs())}
+        >
+            @if(option.content() != null)
+                ${option.content()}
+            @else
+                ${option.label()}
+            @endif
+        </div>
+    @else
+        <%-- "if (true)": JTE writes the following template text after this code, which must stay reachable --%>
+        !{if (true) throw new IllegalArgumentException("Unsupported select item: " + entry.get());}
+    @endif
 @endfor

@@ -1,4 +1,4 @@
-<%-- see https://github.com/hunvreus/basecoat/blob/main/src/nunjucks/sidebar.njk --%>
+<%-- see https://github.com/hunvreus/basecoat/blob/1.2.1/src/templates/nunjucks/sidebar.njk --%>
 <%--
   Renders a sidebar component.
 
@@ -36,31 +36,31 @@
 @param Content content = null
 
 <aside
-  id="${id}"
-  class="${JteHelper.classAppend("sidebar", mainAttrs)}"
-  data-side="${side}"
-  aria-hidden="${Boolean.toString(!open)}"
-  inert="${!open}"
-  $unsafe{JteHelper.attrs(mainAttrs, "class")}
+    id="${id}"
+    class="${JteHelper.classAppend("sidebar", mainAttrs)}"
+    data-side="${side}"
+    aria-hidden="${Boolean.toString(!open)}"
+    inert="${!open}"
+    $unsafe{JteHelper.attrs(mainAttrs, "class")}
 >
-  <nav aria-label="${label}">
-    @if(header != null)
-      <header $unsafe{JteHelper.attrs(headerAttrs)}>${header}</header>
-    @endif
+    <nav aria-label="${label}">
+        @if(header != null)
+            <header $unsafe{JteHelper.attrs(headerAttrs)}>${header}</header>
+        @endif
 
-    <section $unsafe{JteHelper.attrs(contentAttrs)}>
-      @if(menu != null)
-        @template.basecoat.sidebarRenderItems(
-          items = menu,
-          parentIdPrefix = id + "-content"
-        )
-      @else
-        ${content}
-      @endif
-    </section>
+        <section $unsafe{JteHelper.attrs(contentAttrs)}>
+            @if(menu != null)
+                @template.basecoat.sidebarRenderItems(
+                    items = menu,
+                    parentIdPrefix = id + "-content"
+                )
+            @else
+                ${content}
+            @endif
+        </section>
 
-    @if(footer != null)
-      <footer $unsafe{JteHelper.attrs(footerAttrs)}>${footer}</footer>
-    @endif
-  </nav>
+        @if(footer != null)
+            <footer $unsafe{JteHelper.attrs(footerAttrs)}>${footer}</footer>
+        @endif
+    </nav>
 </aside>
