@@ -1,0 +1,31 @@
+name: GitHub Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    uses: ./.github/workflows/verify.yml
+
+  release:
+    needs: verify
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Verify tag matches all library versions
+        run: npm run sync-version -- --check "${GITHUB_REF_NAME#v}"
+      - name: Create GitHub release
+        run: gh release create "$GITHUB_REF_NAME" --verify-tag --title "Basecoat for JTE ${GITHUB_REF_NAME#v}" --generate-notes
+        env:
+          GH_TOKEN: ${{ github.token }}

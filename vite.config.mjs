@@ -4,8 +4,9 @@ import { defineConfig } from 'vite';
 import tailwindcss from '@tailwindcss/vite';
 
 const projectDir = fileURLToPath(new URL('.', import.meta.url));
-const resourcesDir = resolve(projectDir, 'src/main/resources');
-const templatesDir = resolve(projectDir, 'src/main/jte');
+const demoDir = resolve(projectDir, 'demo');
+const resourcesDir = resolve(demoDir, 'src/main/resources');
+const templatesDir = resolve(demoDir, 'src/main/jte');
 
 export default defineConfig({
   root: resourcesDir,
@@ -39,7 +40,7 @@ export default defineConfig({
     },
   },
   build: {
-    outDir: resolve(projectDir, 'target/classes/static'),
+    outDir: resolve(demoDir, 'target/classes/static'),
     // Maven also copies static resources here; retain those files.
     emptyOutDir: false,
     cssCodeSplit: false,

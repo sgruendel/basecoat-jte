@@ -1,0 +1,92 @@
+@import io.github.sgruendel.basecoat.jte.BasecoatItem.Group
+@import io.github.sgruendel.basecoat.jte.BasecoatItem.Option
+
+@import java.util.List
+@import java.util.Map
+
+@import static io.github.sgruendel.lucide.jte.LucideIcons.*
+
+<section id="select" class="w-full scroll-mt-14 rounded-lg border">
+  <header class="flex items-center justify-between border-b px-4 py-3">
+    <h2 class="text-sm font-medium">Select</h2>
+    <a
+      href="https://basecoatui.com/components/select"
+      class="text-muted-foreground hover:text-foreground"
+      data-tooltip="See documentation"
+      data-side="left"
+    >
+      ${lucideBookOpen().cssClass("size-4")}
+    </a>
+  </header>
+  <div class="gap p-4">
+    <div class="flex flex-col gap-4">
+      <div class="flex flex-wrap items-center gap-2 md:flex-row">
+        <select class="select w-[180px]">
+          <optgroup label="Fruits">
+            <option>Apple</option>
+            <option>Banana</option>
+            <option>Blueberry</option>
+          </optgroup>
+          <optgroup label="Grapes">
+            <option>Pineapple</option>
+          </optgroup>
+        </select>
+        <select class="select w-[180px]" disabled>
+          <option>Disabled</option>
+        </select>
+      </div>
+
+      <div class="flex flex-wrap items-center gap-4">
+        <div class="flex flex-wrap items-center gap-2 md:flex-row">
+          @template.basecoat.select(
+            id = "select-default",
+            triggerAttrs = Map.of("class", "w-[180px]"),
+            selected = "blueberry",
+            items = List.of(
+              Group.of(
+                "Fruits",
+                List.of(Option.of("Apple", "apple"), Option.of("Banana", "banana"), Option.of("Blueberry", "blueberry"))
+              ),
+              Group.of("Grapes", List.of(Option.of("Pineapple", "pineapple")))
+            )
+          )
+          @template.basecoat.select(
+            id = "select-scrollbar",
+            triggerAttrs = Map.of("class", "w-[180px]"),
+            listboxAttrs = Map.of("class", "scrollbar overflow-y-auto max-h-64"),
+            options = @`
+              @for(int i = 0; i < 100; i++)
+                <div role="option" data-value="item-${i}">Item ${i}</div>
+              @endfor
+            `
+          )
+
+          @template.basecoat.select(
+            id = "select-disabled",
+            triggerAttrs = Map.of("disabled", true, "class", "w-[180px]"),
+            options = @`<div role="option" data-value="disabled">Disabled</div>`
+          )
+
+          @template.basecoat.select(
+            id = "select-with-icon",
+            name = "chart-type",
+            triggerAttrs = Map.of("class", "w-[180px]"),
+            options = @`
+              <div type="button" role="option" data-value="bar">
+                <span class="flex items-center gap-2"> ${lucideChartBar().cssClass("text-muted-foreground")} Bar </span>
+              </div>
+              <div type="button" role="option" data-value="line">
+                <span class="flex items-center gap-2">
+                  ${lucideChartLine().cssClass("text-muted-foreground")} Line
+                </span>
+              </div>
+              <div type="button" role="option" data-value="pie">
+                <span class="flex items-center gap-2"> ${lucideChartPie().cssClass("text-muted-foreground")} Pie </span>
+              </div>
+            `
+          )
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

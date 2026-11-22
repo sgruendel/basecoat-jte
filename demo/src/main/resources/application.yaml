@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: basecoat-jte
+gg:
+  jte:
+    #development-mode: false
+    usePrecompiledTemplates: false
+    developmentMode: true

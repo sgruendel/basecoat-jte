@@ -21,7 +21,10 @@
     "generate:kitchen-sink-jte": "node scripts/convert-kitchen-sink.js",
     "dev": "vite --open",
     "build": "vite build",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "sync-version": "node scripts/sync-version.js",
+    "test": "node --test scripts/*.test.js",
+    "release:maven-central": "mise exec java@temurin-21 -- ./mvnw --no-transfer-progress -Prelease -pl basecoat-jte clean verify",
+    "publish:maven-central": "mise exec java@temurin-21 -- ./mvnw --no-transfer-progress -Prelease -pl basecoat-jte -DautoPublish=true -DwaitUntil=published deploy"
   },
   "dependencies": {
     "@fontsource/geist": "^5.3.0",

@@ -1,0 +1,4 @@
+gg:
+  jte:
+    usePrecompiledTemplates: false
+    developmentMode: true
