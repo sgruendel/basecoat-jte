@@ -293,6 +293,36 @@ class BasecoatTemplatesTest {
     }
 
     @Test
+    void triggersRenderEitherTextOrContent() {
+
+        assertThat(render("basecoat/dropdownMenu.jte", Map.of("id", "menu", "triggerText", "<Open>")))
+                .contains("> &lt;Open&gt; </button>");
+        assertThat(render("basecoat/popover.jte", Map.of("id", "pop", "triggerContent", ICON, "content", html("x"))))
+                .contains("> <svg class=\"icon\"></svg> </button>");
+        assertThat(render("basecoat/dialog.jte", Map.of("id", "dlg", "triggerContent", ICON)))
+                .contains("showModal()\" > <svg class=\"icon\"></svg> </button>");
+        assertThat(render("basecoat/dialog.jte", Map.of("id", "dlg"))).doesNotContain("showModal()");
+
+        assertThatThrownBy(() -> render(
+                        "basecoat/dropdownMenu.jte",
+                        Map.of("id", "menu", "triggerText", "Open", "triggerContent", ICON)))
+                .rootCause()
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("triggerText and triggerContent are exclusive");
+        assertThatThrownBy(() -> render(
+                        "basecoat/popover.jte",
+                        Map.of("id", "pop", "triggerText", "Open", "triggerContent", ICON, "content", html("x"))))
+                .rootCause()
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("triggerText and triggerContent are exclusive");
+        assertThatThrownBy(() ->
+                        render("basecoat/dialog.jte", Map.of("id", "dlg", "trigger", "Open", "triggerContent", ICON)))
+                .rootCause()
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("trigger and triggerContent are exclusive");
+    }
+
+    @Test
     void templatesExceptSidebarRejectGroupsWithoutLabel() {
 
         assertThatThrownBy(() -> render(

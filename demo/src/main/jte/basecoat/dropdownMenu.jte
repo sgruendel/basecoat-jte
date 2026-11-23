@@ -28,6 +28,12 @@
 @param List<? extends BasecoatItem> items = null
 @param Content content = null
 
+!{
+    if (triggerText != null && triggerContent != null) {
+        throw new IllegalArgumentException("triggerText and triggerContent are exclusive");
+    }
+}
+
 <div
     id="${id}"
     class="${JteHelper.classAppend("dropdown-menu", mainAttrs)}"
@@ -41,8 +47,11 @@
         aria-expanded="false"
         $unsafe{JteHelper.attrs(triggerAttrs)}
     >
-        ${triggerText}
-        ${triggerContent}
+        @if(triggerContent != null)
+            ${triggerContent}
+        @else
+            ${triggerText}
+        @endif
     </button>
     <div id="${id}-popover" data-popover aria-hidden="true" $unsafe{JteHelper.attrs(popoverAttrs)}>
         <div role="menu" id="${id}-menu" aria-labelledby="${id}-trigger" $unsafe{JteHelper.attrs(menuAttrs)}>

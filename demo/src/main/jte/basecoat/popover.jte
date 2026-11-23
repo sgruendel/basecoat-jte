@@ -22,6 +22,12 @@
 @param Map<?, ?> popoverAttrs = null
 @param Content content
 
+!{
+    if (triggerText != null && triggerContent != null) {
+        throw new IllegalArgumentException("triggerText and triggerContent are exclusive");
+    }
+}
+
 <div id="${id}" class="${JteHelper.classAppend("popover", mainAttrs)}" $unsafe{JteHelper.attrs(mainAttrs, "class")}>
     <button
         type="button"
@@ -30,8 +36,11 @@
         aria-controls="${id}-popover"
         $unsafe{JteHelper.attrs(triggerAttrs)}
     >
-        ${triggerText}
-        ${triggerContent}
+        @if(triggerContent != null)
+            ${triggerContent}
+        @else
+            ${triggerText}
+        @endif
     </button>
     <div id="${id}-popover" data-popover aria-hidden="true" $unsafe{JteHelper.attrs(popoverAttrs)}>${content}</div>
 </div>

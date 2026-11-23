@@ -107,6 +107,10 @@ Supporting render helpers are also present for nested item structures:
 Most of these templates support an `attrs`-style API through `Map<?, ?>` parameters for passing HTML attributes through
 to the rendered elements.
 
+Triggers take either plain text, which is HTML-escaped, or rich content: `triggerText` or `triggerContent` for the
+dropdown menu and popover, `trigger` or `triggerContent` for the dialog. Passing both throws an
+`IllegalArgumentException`.
+
 Example dialog usage:
 
 ```jte

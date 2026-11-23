@@ -27,6 +27,7 @@
 
 @param String id
 @param String trigger = null
+@param Content triggerContent = null
 @param String title = null
 @param String description = null
 @param Map<?, ?> dialogAttrs = null
@@ -41,6 +42,12 @@
 @param Content footer = null
 
 !{
+    if (trigger != null && triggerContent != null) {
+        throw new IllegalArgumentException("trigger and triggerContent are exclusive");
+    }
+}
+
+!{
     final var dialogTitleId = title != null ? id + "-title" : null;
     final var dialogDescriptionId = description != null ? id + "-description" : null;
     // only close if the press also started on the backdrop, not when dragging out of the dialog; written with $unsafe,
@@ -51,9 +58,13 @@
       : null;
 }
 
-@if(trigger != null)
+@if(trigger != null || triggerContent != null)
     <button type="button" onclick="document.getElementById('${id}').showModal()" $unsafe{JteHelper.attrs(triggerAttrs)}>
-        ${trigger}
+        @if(triggerContent != null)
+            ${triggerContent}
+        @else
+            ${trigger}
+        @endif
     </button>
 @endif
 <dialog
