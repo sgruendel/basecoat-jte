@@ -29,7 +29,6 @@ Compatible with [Basecoat 1.2.1](https://github.com/hunvreus/basecoat/releases/t
   - `demo/src/main/jte/basecoat` JTE templates that mirror the original Basecoat Nunjucks macros.
   - `demo/src/main/jte/kitchenSink` Example pages showing how to use the components and icons.
   - `demo/src/main/jte/examples/adminDashboard` A port of the shadcn admin dashboard example.
-  - `demo/src/main/jte/partials/toast` Small toast partials used by the kitchen sink examples.
 
 The kitchen sink examples are still based on the previous Basecoat version 0.3.11 and might look a bit off compared to
 the current Basecoat version 1.2.1, but they are the best reference for how the JTE templates are meant to be used.
@@ -196,20 +195,9 @@ HTML-escaped. Each leaf also has a factory taking JTE `Content` for rich labels,
 label. Optional fields are set with `with*` methods, for example
 `MenuItem.of("Profile").withUrl("/profile").withIcon(lucideUser()).withDisabled(true)`.
 
-## Toast Partials
+## Toasts
 
-Example toast partials live in `demo/src/main/jte/partials/toast`.
-
-Current toast partials include:
-
-- `success.jte`
-- `info.jte`
-- `warning.jte`
-- `error.jte`
-
-They are intended to be rendered into the toaster container, for example via htmx.
-
-Example toaster:
+Render the toaster container once, for example in your layout:
 
 ```jte
 @template.basecoat.toaster()
@@ -236,11 +224,9 @@ As with the Nunjucks macros, a `null` category renders a toast without category 
 icon button unless created with `withCloseButton(false)`. Use `Button.link(label, href)` for link buttons and
 `withDuration(BasecoatToast.PERSISTENT)` to keep a toast open.
 
-Example toast partial usage:
-
-```jte
-@template.partials.toast.success()
-```
+To add toasts later, render `@template.basecoat.toast(...)` in a response and append it to the toaster, for example
+with htmx (`hx-target="#toaster" hx-swap="beforeend"`). The kitchen sink demo does this: its buttons fetch the example
+templates in `demo/src/main/jte/kitchenSink/toast`, served by `ToastController`.
 
 ## Kitchen Sink
 
