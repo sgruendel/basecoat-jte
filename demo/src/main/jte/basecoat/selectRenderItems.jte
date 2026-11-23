@@ -22,6 +22,11 @@
 @for(var entry : ForSupport.of(items))
     !{var itemId = parentIdPrefix + "-" + entry.getIndex();}
     @if(entry.get() instanceof Group group)
+        !{
+            if (group.label() == null) {
+                throw new IllegalArgumentException("Unsupported select group without label: " + group);
+            }
+        }
         !{var groupLabelId = group.id() != null ? group.id() : "group-label-" + itemId;}
         <div role="group" aria-labelledby="${groupLabelId}" $unsafe{JteHelper.attrs(group.attrs())}>
             <div role="heading" id="${groupLabelId}">${group.label()}</div>

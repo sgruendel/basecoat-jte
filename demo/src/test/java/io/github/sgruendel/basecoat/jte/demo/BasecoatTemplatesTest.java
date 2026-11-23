@@ -293,6 +293,38 @@ class BasecoatTemplatesTest {
     }
 
     @Test
+    void templatesExceptSidebarRejectGroupsWithoutLabel() {
+
+        assertThatThrownBy(() -> render(
+                        "basecoat/select.jte",
+                        Map.of("id", "x", "items", List.of(Group.of(List.of(Option.of("Apple", "apple")))))))
+                .rootCause()
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageStartingWith("Unsupported select group without label: Group");
+
+        assertThatThrownBy(() -> render(
+                        "basecoat/combobox.jte",
+                        Map.of("id", "x", "items", List.of(Group.of(List.of(Option.of("Apple", "apple")))))))
+                .rootCause()
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageStartingWith("Unsupported select group without label: Group");
+
+        assertThatThrownBy(() -> render(
+                        "basecoat/dropdownMenu.jte",
+                        Map.of("id", "x", "items", List.of(Group.of(List.of(MenuItem.of("Profile")))))))
+                .rootCause()
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageStartingWith("Unsupported dropdown menu group without label: Group");
+
+        assertThatThrownBy(() -> render(
+                        "basecoat/command.jte",
+                        Map.of("id", "x", "items", List.of(Group.of(List.of(MenuItem.of("Calendar")))))))
+                .rootCause()
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageStartingWith("Unsupported command group without label: Group");
+    }
+
+    @Test
     void dialogsOnlyCloseOnClicksThatStartedOnTheBackdrop() {
 
         final var onPointerDown = "onpointerdown=\"this.dataset.backdropPress = event.target === this\"";

@@ -17,7 +17,8 @@ import java.util.function.Function;
  *   <li>sidebar: {@link NavItem} and {@link Submenu}
  * </ul>
  *
- * <p>Templates reject leaf types they don't render. Leaf labels are plain text and HTML-escaped; use the factories
+ * <p>Templates reject leaf types they don't render, and all templates except the sidebar reject groups without
+ * heading. Leaf labels are plain text and HTML-escaped; use the factories
  * taking {@link Content} for rich labels, which are rendered instead of the text label.
  *
  * <p>All items are immutable. Optional fields are set with {@code with*} methods, each returning a new item.
