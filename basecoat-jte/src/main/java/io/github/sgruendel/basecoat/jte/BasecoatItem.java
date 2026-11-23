@@ -1,8 +1,11 @@
 package io.github.sgruendel.basecoat.jte;
 
 import gg.jte.Content;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Function;
 
 /**
  * Items passed to the Basecoat component templates. {@link Group} and {@link Separator} work in every component; each
@@ -82,6 +85,49 @@ public sealed interface BasecoatItem {
         public static Option of(final Content content, final String value) {
 
             return new Option(null, content, value, null);
+        }
+
+        /**
+         * Creates options from a map of labels by value, in the iteration order of the map.
+         *
+         * @param labelsByValue the labels by value, e.g. names by ID
+         * @return the options, with the keys converted by {@link JteHelper#value(Object)}
+         */
+        public static List<Option> listOf(final Map<?, String> labelsByValue) {
+
+            return labelsByValue.entrySet().stream()
+                    .map(entry -> of(entry.getValue(), JteHelper.value(entry.getKey())))
+                    .toList();
+        }
+
+        /**
+         * Creates options from enum constants, in the given order.
+         *
+         * @param <E> the enum type
+         * @param values the enum constants, e.g. {@code Status.values()}
+         * @param label the function returning the label of a constant, e.g. {@code Status::getDisplayName}
+         * @return the options, with the constant names as values
+         */
+        public static <E extends Enum<E>> List<Option> listOf(
+                final E[] values, final Function<? super E, String> label) {
+
+            return Arrays.stream(values)
+                    .map(value -> of(label.apply(value), value.name()))
+                    .toList();
+        }
+
+        /**
+         * Creates options from values, in the iteration order of the collection.
+         *
+         * @param values the values, e.g. page sizes; must not contain {@code null}
+         * @return the options, with the string representations as labels and the values converted by
+         *     {@link JteHelper#value(Object)}
+         */
+        public static List<Option> listOf(final Collection<?> values) {
+
+            return values.stream()
+                    .map(value -> of(value.toString(), JteHelper.value(value)))
+                    .toList();
         }
 
         public Option withLabel(final String label) {

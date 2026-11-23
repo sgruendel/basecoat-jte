@@ -149,6 +149,35 @@ class BasecoatTemplatesTest {
     }
 
     @Test
+    void selectAndComboboxConvertNonStringSelectionsToOptionValues() {
+
+        final List<Option> items = Option.listOf(Map.of(1L, "One"));
+        final List<Option> enumItems =
+                Option.listOf(Category.values(), category -> category.name().toLowerCase());
+
+        assertThat(render("basecoat/select.jte", Map.of("id", "number", "selected", 1L, "items", items)))
+                .contains("data-value=\"1\" aria-selected=\"true\"");
+        assertThat(render("basecoat/combobox.jte", Map.of("id", "number", "selected", 1L, "items", items)))
+                .contains("data-value=\"1\" aria-selected=\"true\"");
+        assertThat(render(
+                        "basecoat/select.jte", Map.of("id", "category", "selected", Category.INFO, "items", enumItems)))
+                .contains("<span class=\"truncate\">info</span>")
+                .contains("data-value=\"INFO\" aria-selected=\"true\"");
+        assertThat(render(
+                        "basecoat/select.jte",
+                        Map.of(
+                                "id",
+                                "category",
+                                "multiple",
+                                true,
+                                "selectedList",
+                                List.of(Category.INFO, Category.ERROR),
+                                "items",
+                                enumItems)))
+                .contains("value=\"[&#34;INFO&#34;,&#34;ERROR&#34;]\"");
+    }
+
+    @Test
     void groupHeadingIdsAreUniquePerComponentUnlessSetExplicitly() {
 
         final List<BasecoatItem> items = List.of(

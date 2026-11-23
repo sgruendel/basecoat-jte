@@ -85,6 +85,22 @@ public class JteHelper {
         return className;
     }
 
+    /**
+     * Converts a value to the string submitted by a form control, e.g. the selected value of a select or combobox.
+     *
+     * @param value the value to convert, e.g. an ID or an enum constant
+     * @return the name of an enum constant, the string representation of any other value, or {@code null} for
+     *     {@code null}
+     */
+    public static String value(final Object value) {
+
+        return switch (value) {
+            case null -> null;
+            case Enum<?> constant -> constant.name();
+            default -> value.toString();
+        };
+    }
+
     private static String htmlAttr(final String name, final Object value) {
 
         if (!HTML_ATTR_NAME.matcher(name).matches()) {

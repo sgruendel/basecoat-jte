@@ -13,6 +13,7 @@ import io.github.sgruendel.basecoat.jte.BasecoatItem.MenuItem;
 import io.github.sgruendel.basecoat.jte.BasecoatItem.NavItem;
 import io.github.sgruendel.basecoat.jte.BasecoatItem.Option;
 import io.github.sgruendel.basecoat.jte.BasecoatItem.Submenu;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import org.junit.jupiter.api.Test;
@@ -34,6 +35,48 @@ class BasecoatItemTest {
         assertSame(CONTENT, rich.content());
         assertEquals("apple", rich.value());
         assertEquals(Map.of("data-x", "1"), rich.attrs());
+    }
+
+    private enum Color {
+        LIGHT_BLUE,
+        RED;
+
+        @Override
+        public String toString() {
+
+            return name().charAt(0) + name().substring(1).toLowerCase().replace('_', ' ');
+        }
+    }
+
+    @Test
+    void optionListOfMapKeepsIterationOrderAndConvertsKeys() {
+
+        final Map<Object, String> labelsByValue = new LinkedHashMap<>();
+        labelsByValue.put(2L, "Marine");
+        labelsByValue.put(1L, "Aviation");
+        labelsByValue.put(Color.LIGHT_BLUE, "Sky");
+
+        assertEquals(
+                List.of(Option.of("Marine", "2"), Option.of("Aviation", "1"), Option.of("Sky", "LIGHT_BLUE")),
+                Option.listOf(labelsByValue));
+    }
+
+    @Test
+    void optionListOfEnumUsesLabelFunctionAndNames() {
+
+        assertEquals(
+                List.of(Option.of("light blue", "LIGHT_BLUE"), Option.of("red", "RED")),
+                Option.listOf(
+                        Color.values(), color -> color.name().toLowerCase().replace('_', ' ')));
+    }
+
+    @Test
+    void optionListOfCollectionUsesStringRepresentationAsLabel() {
+
+        assertEquals(List.of(Option.of("10", "10"), Option.of("25", "25")), Option.listOf(List.of(10, 25)));
+        assertEquals(
+                List.of(Option.of("Light blue", "LIGHT_BLUE"), Option.of("Red", "RED")),
+                Option.listOf(List.of(Color.values())));
     }
 
     @Test

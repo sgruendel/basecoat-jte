@@ -21,10 +21,10 @@ Compatible with [Basecoat 1.2.1](https://github.com/hunvreus/basecoat/releases/t
 ## What This Repo Contains
 
 - `basecoat-jte` The library published to Maven Central as `io.github.sgruendel:basecoat-jte`: `JteHelper`, which
-  renders `attrs`-style maps as escaped HTML attributes, the sealed `BasecoatItem` hierarchy the component templates
-  take as items (see [Items](#items)), and the `BasecoatTab` and `BasecoatToast` records. Requires Java 21+ and depends
-  on `jte-runtime`. It expects Jackson 3 from the application, as Spring Boot 4 web applications provide; only
-  `JsonHelper` needs it, which the select and combobox templates use.
+  renders `attrs`-style maps as escaped HTML attributes and converts values for form controls, the sealed `BasecoatItem`
+  hierarchy the component templates take as items (see [Items](#items)), and the `BasecoatTab` and `BasecoatToast`
+  records. Requires Java 21+ and depends on `jte-runtime`. It expects Jackson 3 from the application, as Spring Boot 4
+  web applications provide; only `JsonHelper` needs it, which the select and combobox templates use.
 - `demo` A Spring Boot app with the component templates and examples. It is not published.
   - `demo/src/main/jte/basecoat` JTE templates that mirror the original Basecoat Nunjucks macros.
   - `demo/src/main/jte/kitchenSink` Example pages showing how to use the components and icons.
@@ -195,6 +195,33 @@ HTML-escaped. Each leaf also has a factory taking JTE `Content` for rich labels,
 label. Optional fields are set with `with*` methods, for example
 `MenuItem.of("Profile").withUrl("/profile").withIcon(lucideUser()).withDisabled(true)`.
 
+`Option.listOf` creates the options of a select or combobox from common data structures:
+
+| Factory                                            | Label                 | Value              |
+| -------------------------------------------------- | --------------------- | ------------------ |
+| `Option.listOf(Map<?, String> labelsByValue)`      | map value             | map key            |
+| `Option.listOf(E[] values, Function<E, String> f)` | result of `f`         | enum constant name |
+| `Option.listOf(Collection<?> values)`              | string representation | element            |
+
+Values are converted with `JteHelper.value(Object)`: enum constants by `name()`, anything else by `toString()`. The
+`selected` and `selectedList` parameters of the select and combobox templates take any object and convert it the same
+way, so IDs and enum constants can be passed directly:
+
+```jte
+@import io.github.sgruendel.basecoat.jte.BasecoatItem.Option
+
+@template.basecoat.select(
+  id = "status",
+  selected = item.getStatus(),
+  items = Option.listOf(Status.values(), Status::getDisplayName)
+)
+@template.basecoat.combobox(
+  id = "owner",
+  selected = item.getOwnerId(),
+  items = Option.listOf(ownerNamesById)
+)
+```
+
 ## Toasts
 
 Render the toaster container once, for example in your layout:
@@ -224,8 +251,8 @@ As with the Nunjucks macros, a `null` category renders a toast without category 
 icon button unless created with `withCloseButton(false)`. Use `Button.link(label, href)` for link buttons and
 `withDuration(BasecoatToast.PERSISTENT)` to keep a toast open.
 
-To add toasts later, render `@template.basecoat.toast(...)` in a response and append it to the toaster, for example
-with htmx (`hx-target="#toaster" hx-swap="beforeend"`). The kitchen sink demo does this: its buttons fetch the example
+To add toasts later, render `@template.basecoat.toast(...)` in a response and append it to the toaster, for example with
+htmx (`hx-target="#toaster" hx-swap="beforeend"`). The kitchen sink demo does this: its buttons fetch the example
 templates in `demo/src/main/jte/kitchenSink/toast`, served by `ToastController`.
 
 ## Kitchen Sink

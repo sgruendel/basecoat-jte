@@ -3,7 +3,7 @@
   Renders a select component.
 
   @param id {string} [optional] - Unique identifier for the select component.
-  @param selected {string|array} [optional] - The initially selected value(s).
+  @param selected {string|array} [optional] - The initially selected value(s), converted with JteHelper.value.
   @param name {string} [optional] - The name attribute for the hidden input storing the selected value.
   @param multiple {boolean} [optional] [default=false] - Enables multiple selection mode.
   @param placeholder {string} [optional] - Placeholder text shown when no option is selected.
@@ -32,8 +32,8 @@
 @import static io.github.sgruendel.lucide.jte.LucideIcons.*
 
 @param String id
-@param String selected = null
-@param List<String> selectedList = null
+@param Object selected = null
+@param List<?> selectedList = null
 @param String name = null
 @param boolean multiple = false
 @param String placeholder = null
@@ -53,9 +53,9 @@
     }
 
     if (selected != null) {
-      selectedArray = List.of(selected);
+      selectedArray = List.of(JteHelper.value(selected));
     } else if (selectedList != null) {
-      selectedArray = selectedList;
+      selectedArray = selectedList.stream().map(JteHelper::value).toList();
     } else {
       selectedArray = List.of();
     }

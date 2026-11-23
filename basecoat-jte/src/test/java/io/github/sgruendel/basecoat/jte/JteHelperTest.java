@@ -11,6 +11,25 @@ import org.junit.jupiter.api.Test;
 
 class JteHelperTest {
 
+    private enum Color {
+        LIGHT_BLUE;
+
+        @Override
+        public String toString() {
+
+            return "Light blue";
+        }
+    }
+
+    @Test
+    void valueUsesEnumNameAndStringRepresentation() {
+
+        assertNull(JteHelper.value(null));
+        assertEquals("42", JteHelper.value(42L));
+        assertEquals("apple", JteHelper.value("apple"));
+        assertEquals("LIGHT_BLUE", JteHelper.value(Color.LIGHT_BLUE));
+    }
+
     @Test
     void attrsReturnsNullForNullOrEmptyMap() {
 
