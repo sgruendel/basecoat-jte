@@ -7,7 +7,16 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.regex.Pattern;
 
-public class JteHelper {
+/**
+ * Helpers for the Basecoat component templates, mainly for rendering the HTML attribute maps the templates take as
+ * {@code *Attrs} parameters.
+ *
+ * <p>Attribute maps render each entry as an HTML attribute, with the key's string representation as name: a
+ * {@code null} or {@code false} value omits the attribute, {@code true} renders it without value, e.g.
+ * {@code disabled}, and any other value is rendered as escaped string, e.g. {@code data-x="1"}. Values of event handler
+ * attributes ({@code on*}) are escaped for JavaScript.
+ */
+public final class JteHelper {
 
     // see https://html.spec.whatwg.org/multipage/syntax.html#attributes-2 for valid attribute names
     private static final Pattern HTML_ATTR_NAME = Pattern.compile("^(?!.*[\\p{Cntrl} \"'/>=])"
@@ -17,30 +26,60 @@ public class JteHelper {
             + "\\x{BFFFE}\\x{BFFFF}\\x{CFFFE}\\x{CFFFF}\\x{DFFFE}\\x{DFFFF}\\x{EFFFE}\\x{EFFFF}"
             + "\\x{FFFFE}\\x{FFFFF}\\x{10FFFE}\\x{10FFFF}]).+$");
 
+    private JteHelper() {}
+
+    /**
+     * Renders HTML attributes, to be written with {@code $unsafe{...}} into an element's start tag.
+     *
+     * @param attrs the attributes, may be {@code null}
+     * @return the attributes, each preceded by a space, or {@code null} if {@code attrs} is {@code null} or empty
+     * @throws IllegalArgumentException if an attribute name is not a valid HTML attribute name
+     */
     public static String attrs(final Map<?, ?> attrs) {
 
         if (attrs == null || attrs.isEmpty()) {
             return null;
         }
 
-        final StringBuffer sb = new StringBuffer();
+        final StringBuilder sb = new StringBuilder();
         attrs.forEach((k, v) -> sb.append(htmlAttr(k.toString(), v)));
         return sb.toString();
     }
 
+    /**
+     * Renders HTML attributes except one, which the template renders itself, e.g. {@code class} merged with the
+     * component's own class by {@link #classAppend(String, Map)}.
+     *
+     * @param attrs the attributes, may be {@code null}
+     * @param keyToSkip the key of the attribute not to render
+     * @return the remaining attributes, each preceded by a space, or {@code null} if {@code attrs} is {@code null} or
+     *     empty
+     * @throws IllegalArgumentException if an attribute name is not a valid HTML attribute name
+     * @see #attrs(Map)
+     */
     public static String attrs(final Map<?, ?> attrs, final Object keyToSkip) {
 
         if (attrs == null || attrs.isEmpty()) {
             return null;
         }
 
-        final StringBuffer sb = new StringBuffer();
+        final StringBuilder sb = new StringBuilder();
         attrs.entrySet().stream()
                 .filter(entry -> !Objects.equals(keyToSkip, entry.getKey()))
                 .forEach(entry -> sb.append(htmlAttr(entry.getKey().toString(), entry.getValue())));
         return sb.toString();
     }
 
+    /**
+     * Renders HTML attributes except the ones the template renders itself.
+     *
+     * @param attrs the attributes, may be {@code null}
+     * @param keysToSkip the keys of the attributes not to render, may be {@code null}
+     * @return the remaining attributes, each preceded by a space, or {@code null} if {@code attrs} is {@code null} or
+     *     empty
+     * @throws IllegalArgumentException if an attribute name is not a valid HTML attribute name
+     * @see #attrs(Map)
+     */
     public static String attrs(final Map<?, ?> attrs, final List<?> keysToSkip) {
 
         if (attrs == null || attrs.isEmpty()) {
@@ -50,13 +89,19 @@ public class JteHelper {
             return attrs(attrs);
         }
 
-        final StringBuffer sb = new StringBuffer();
+        final StringBuilder sb = new StringBuilder();
         attrs.entrySet().stream()
                 .filter(entry -> !keysToSkip.contains(entry.getKey()))
                 .forEach(entry -> sb.append(htmlAttr(entry.getKey().toString(), entry.getValue())));
         return sb.toString();
     }
 
+    /**
+     * Returns the {@code class} attribute of an attribute map.
+     *
+     * @param attrs the attributes, may be {@code null}
+     * @return the string representation of the {@code class} value, or {@code null} if it is missing or empty
+     */
     public static String clazz(final Map<?, ?> attrs) {
 
         if (attrs != null && !attrs.isEmpty()) {
@@ -71,6 +116,13 @@ public class JteHelper {
         return null;
     }
 
+    /**
+     * Appends the {@code class} attribute of an attribute map to a component's own class.
+     *
+     * @param className the component's own class, e.g. {@code tabs}
+     * @param attrs the attributes, may be {@code null}
+     * @return {@code className}, followed by a space and the {@code class} value if it is set and not empty
+     */
     public static String classAppend(final String className, final Map<?, ?> attrs) {
 
         if (attrs != null && !attrs.isEmpty()) {
@@ -117,8 +169,8 @@ public class JteHelper {
 
     private static String escapeHtmlAttributeValue(final String name, final String value) {
 
-        final StringBuffer sb = new StringBuffer();
-        final TemplateOutput to = new StringBufferTemplateOutput(sb);
+        final StringBuilder sb = new StringBuilder();
+        final TemplateOutput to = new StringBuilderTemplateOutput(sb);
 
         // see
         // https://github.com/casid/jte/blob/main/jte-runtime/src/main/java/gg/jte/html/OwaspHtmlTemplateOutput.java#L70
@@ -130,7 +182,7 @@ public class JteHelper {
         return sb.toString();
     }
 
-    private record StringBufferTemplateOutput(StringBuffer sb) implements TemplateOutput {
+    private record StringBuilderTemplateOutput(StringBuilder sb) implements TemplateOutput {
 
         @Override
         public void writeContent(final String value) {
