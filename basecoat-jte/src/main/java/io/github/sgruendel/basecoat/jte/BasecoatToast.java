@@ -139,7 +139,8 @@ public record BasecoatToast(
 
     /**
      * A toast footer button, rendered as a link if {@code href} is set, otherwise as a button. Any of them closes the
-     * toast after its own click handler ran.
+     * toast after its own click handler ran. A link button has no {@code onclick} handler, so {@code onclick} and
+     * {@code href} are exclusive.
      *
      * @param label the button text
      * @param onclick JavaScript code to execute on click; never put user input here
@@ -148,10 +149,26 @@ public record BasecoatToast(
     public record Button(String label, String onclick, String href) {
 
         /**
+         * Creates a button.
+         *
+         * @throws IllegalArgumentException if {@code label} is {@code null}, or both {@code onclick} and {@code href}
+         *     are set
+         */
+        public Button {
+            if (label == null) {
+                throw new IllegalArgumentException("label is required");
+            }
+            if (onclick != null && href != null) {
+                throw new IllegalArgumentException("onclick and href are exclusive");
+            }
+        }
+
+        /**
          * Creates a button that just closes the toast.
          *
          * @param label the button text
          * @return the button
+         * @throws IllegalArgumentException if {@code label} is {@code null}
          */
         public static Button of(final String label) {
 
@@ -164,6 +181,7 @@ public record BasecoatToast(
          * @param label the button text
          * @param onclick JavaScript code to execute on click; never put user input here
          * @return the button
+         * @throws IllegalArgumentException if {@code label} is {@code null}
          */
         public static Button of(final String label, final String onclick) {
 
@@ -176,6 +194,7 @@ public record BasecoatToast(
          * @param label the button text
          * @param href the link target
          * @return the button
+         * @throws IllegalArgumentException if {@code label} is {@code null}
          */
         public static Button link(final String label, final String href) {
 

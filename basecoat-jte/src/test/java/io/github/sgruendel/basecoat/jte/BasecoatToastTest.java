@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertSame;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import gg.jte.Content;
@@ -64,5 +65,12 @@ class BasecoatToastTest {
         assertEquals(new Button("View", null, null), Button.of("View"));
         assertEquals(new Button("Undo", "undo()", null), Button.of("Undo", "undo()"));
         assertEquals(new Button("Open", null, "/events/1"), Button.link("Open", "/events/1"));
+    }
+
+    @Test
+    void buttonRequiresLabelAndRejectsOnclickWithHref() {
+
+        assertThrows(IllegalArgumentException.class, () -> Button.of(null));
+        assertThrows(IllegalArgumentException.class, () -> new Button("Open", "track()", "/events/1"));
     }
 }
