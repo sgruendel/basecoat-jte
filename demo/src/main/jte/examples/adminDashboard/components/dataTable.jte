@@ -47,41 +47,29 @@
     @template.basecoat.tabs(
         id = "document-tabs",
         tabs = List.of(
-            new BasecoatTab(
-                "Outline",
-                null,
-                Map.of("data-view", "outline"),
-                @`
+            BasecoatTab.of("Outline")
+                .withTabAttrs(Map.of("data-view", "outline"))
+                .withPanel(@`
                     @template.examples.adminDashboard.components.dataTable.outlinePanel(
                         page = page,
                         selection = selection,
                         baseUrl = baseUrl,
                         pageSizeItems = pageSizeItems
                     )
-                `,
-                Map.of("class", "order-1 mt-6 basis-full!", "data-view", "outline")
-            ),
-            new BasecoatTab(
-                null,
-                @`Past Performance <span class="badge" data-variant="secondary">3</span>`,
-                Map.of("data-view", "past-performance"),
-                emptyPanel,
-                Map.of("class", "order-1 mt-6 basis-full!", "data-view", "past-performance")
-            ),
-            new BasecoatTab(
-                null,
-                @`Key Personnel <span class="badge" data-variant="secondary">2</span>`,
-                Map.of("data-view", "key-personnel"),
-                emptyPanel,
-                Map.of("class", "order-1 mt-6 basis-full!", "data-view", "key-personnel")
-            ),
-            new BasecoatTab(
-                "Focus Documents",
-                null,
-                Map.of("data-view", "focus-documents"),
-                emptyPanel,
-                Map.of("class", "order-1 mt-6 basis-full!", "data-view", "focus-documents")
-            )
+                `)
+                .withPanelAttrs(Map.of("class", "order-1 mt-6 basis-full!", "data-view", "outline")),
+            BasecoatTab.of(@`Past Performance <span class="badge" data-variant="secondary">3</span>`)
+                .withTabAttrs(Map.of("data-view", "past-performance"))
+                .withPanel(emptyPanel)
+                .withPanelAttrs(Map.of("class", "order-1 mt-6 basis-full!", "data-view", "past-performance")),
+            BasecoatTab.of(@`Key Personnel <span class="badge" data-variant="secondary">2</span>`)
+                .withTabAttrs(Map.of("data-view", "key-personnel"))
+                .withPanel(emptyPanel)
+                .withPanelAttrs(Map.of("class", "order-1 mt-6 basis-full!", "data-view", "key-personnel")),
+            BasecoatTab.of("Focus Documents")
+                .withTabAttrs(Map.of("data-view", "focus-documents"))
+                .withPanel(emptyPanel)
+                .withPanelAttrs(Map.of("class", "order-1 mt-6 basis-full!", "data-view", "focus-documents"))
         ),
         mainAttrs = Map.of("class", "contents!"),
         tablistAttrs = Map.of("class", "hidden lg:flex")

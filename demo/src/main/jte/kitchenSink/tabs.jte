@@ -22,8 +22,7 @@
             @template.basecoat.tabs(
                 id = "demo-tabs-with-panels",
                 tabs = List.of(
-                    BasecoatTab.of(
-                        "Account",
+                    BasecoatTab.of("Account").withPanel(
                         @`
                             <div class="card">
                                 <header>
@@ -48,8 +47,7 @@
                             </div>
                         `
                     ),
-                    BasecoatTab.of(
-                        "Password",
+                    BasecoatTab.of("Password").withPanel(
                         @`
                             <div class="card">
                                 <header>
@@ -86,7 +84,10 @@
 
             @template.basecoat.tabs(
                 id = "demo-tabs-disabled",
-                tabs = List.of(BasecoatTab.of("Home"), BasecoatTab.of("Disabled", Map.of("disabled", true)))
+                tabs = List.of(
+                    BasecoatTab.of("Home"),
+                    BasecoatTab.of("Disabled").withTabAttrs(Map.of("disabled", true))
+                )
             )
 
             @template.basecoat.tabs(

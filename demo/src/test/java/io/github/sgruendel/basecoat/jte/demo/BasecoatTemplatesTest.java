@@ -456,7 +456,9 @@ class BasecoatTemplatesTest {
                         "id",
                         "t",
                         "tabs",
-                        List.of(BasecoatTab.of("A", html("<p>a</p>")), BasecoatTab.of("B", html("<p>b</p>")))));
+                        List.of(
+                                BasecoatTab.of("A").withPanel(html("<p>a</p>")),
+                                BasecoatTab.of("B").withPanel(html("<p>b</p>")))));
 
         assertThat(html).contains("role=\"tabpanel\"").contains(" hidden");
         assertThat(html.split("aria-selected", -1)).hasSize(3);

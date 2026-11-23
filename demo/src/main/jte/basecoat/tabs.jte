@@ -51,8 +51,11 @@
                 tabindex="${isDefaultTab && !tab.get().isDisabled() ? "0" : "-1"}"
                 $unsafe{JteHelper.attrs(tab.get().tabAttrs())}
             >
-                ${tab.get().tabText()}
-                ${tab.get().tabContent()}
+                @if(tab.get().tabContent() != null)
+                    ${tab.get().tabContent()}
+                @else
+                    ${tab.get().tabText()}
+                @endif
             </button>
         @endfor
     </nav>
