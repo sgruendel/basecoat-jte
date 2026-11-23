@@ -1,7 +1,7 @@
 package io.github.sgruendel.basecoat.jte;
 
 import tools.jackson.core.JacksonException;
-import tools.jackson.databind.ObjectMapper;
+import tools.jackson.databind.json.JsonMapper;
 
 /**
  * Serializes values to JSON, for example for the hidden input of a multiple select, which Basecoat's script reads as a
@@ -13,7 +13,7 @@ import tools.jackson.databind.ObjectMapper;
  */
 public final class JsonHelper {
 
-    private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
+    private static final JsonMapper JSON_MAPPER = new JsonMapper();
 
     private JsonHelper() {}
 
@@ -27,7 +27,7 @@ public final class JsonHelper {
     public static String write(final Object value) {
 
         try {
-            return OBJECT_MAPPER.writeValueAsString(value);
+            return JSON_MAPPER.writeValueAsString(value);
         } catch (final JacksonException exception) {
             throw new IllegalStateException("Unable to serialize JSON", exception);
         }
