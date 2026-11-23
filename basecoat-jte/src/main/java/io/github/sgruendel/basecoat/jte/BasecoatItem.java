@@ -37,22 +37,46 @@ public sealed interface BasecoatItem {
      */
     record Group(String id, String label, Map<?, ?> attrs, List<? extends BasecoatItem> items) implements BasecoatItem {
 
+        /**
+         * Creates a group with a heading.
+         *
+         * @param label the heading text
+         * @param items the grouped items
+         * @return the group, with the heading id generated from the item position
+         */
         public static Group of(final String label, final List<? extends BasecoatItem> items) {
 
             return new Group(null, label, null, items);
         }
 
-        /** Creates a group without heading, which only the sidebar supports. */
+        /**
+         * Creates a group without heading, which only the sidebar supports.
+         *
+         * @param items the grouped items
+         * @return the group
+         */
         public static Group of(final List<? extends BasecoatItem> items) {
 
             return new Group(null, null, null, items);
         }
 
+        /**
+         * Returns a copy of this group with the given heading id.
+         *
+         * @param id the heading id, or {@code null} to generate it from the item position
+         * @return the new group
+         */
         public Group withId(final String id) {
 
             return new Group(id, label, attrs, items);
         }
 
+        /**
+         * Returns a copy of this group with the given additional HTML attributes.
+         *
+         * @param attrs the attributes for the group element, rendered by {@link JteHelper#attrs(Map)}
+         * @return the new group
+         */
         public Group withAttrs(final Map<?, ?> attrs) {
 
             return new Group(id, label, attrs, items);
@@ -77,11 +101,28 @@ public sealed interface BasecoatItem {
             requireLabel(label, content);
         }
 
+        /**
+         * Creates an option with a text label.
+         *
+         * @param label the option text
+         * @param value the submitted value
+         * @return the option
+         * @throws IllegalArgumentException if {@code label} is {@code null}
+         */
         public static Option of(final String label, final String value) {
 
             return new Option(label, null, value, null);
         }
 
+        /**
+         * Creates an option with rich content. Set a text label with {@link #withLabel(String)} for the select trigger
+         * to show instead of the content.
+         *
+         * @param content the option content
+         * @param value the submitted value
+         * @return the option
+         * @throws IllegalArgumentException if {@code content} is {@code null}
+         */
         public static Option of(final Content content, final String value) {
 
             return new Option(null, content, value, null);
@@ -130,11 +171,25 @@ public sealed interface BasecoatItem {
                     .toList();
         }
 
+        /**
+         * Returns a copy of this option with the given text label. For an option with rich content, the select trigger
+         * shows this label instead of the content.
+         *
+         * @param label the option text
+         * @return the new option
+         * @throws IllegalArgumentException if {@code label} is {@code null} and this option has no content
+         */
         public Option withLabel(final String label) {
 
             return new Option(label, content, value, attrs);
         }
 
+        /**
+         * Returns a copy of this option with the given additional HTML attributes.
+         *
+         * @param attrs the attributes for the option element, rendered by {@link JteHelper#attrs(Map)}
+         * @return the new option
+         */
         public Option withAttrs(final Map<?, ?> attrs) {
 
             return new Option(label, content, value, attrs);
@@ -160,36 +215,80 @@ public sealed interface BasecoatItem {
             requireLabel(label, content);
         }
 
+        /**
+         * Creates an entry with a text label.
+         *
+         * @param label the entry text
+         * @return the entry
+         * @throws IllegalArgumentException if {@code label} is {@code null}
+         */
         public static MenuItem of(final String label) {
 
             return new MenuItem(label, null, null, null, null, false, null);
         }
 
+        /**
+         * Creates an entry with rich content.
+         *
+         * @param content the entry content
+         * @return the entry
+         * @throws IllegalArgumentException if {@code content} is {@code null}
+         */
         public static MenuItem of(final Content content) {
 
             return new MenuItem(null, content, null, null, null, false, null);
         }
 
+        /**
+         * Returns a copy of this entry with the given link target, rendering the entry as a link.
+         *
+         * @param url the link target, or {@code null} to render the entry without link
+         * @return the new entry
+         */
         public MenuItem withUrl(final String url) {
 
             return new MenuItem(label, content, url, icon, keywords, disabled, attrs);
         }
 
+        /**
+         * Returns a copy of this entry with the given icon, rendered before the label.
+         *
+         * @param icon the icon, e.g. an inline SVG
+         * @return the new entry
+         */
         public MenuItem withIcon(final Content icon) {
 
             return new MenuItem(label, content, url, icon, keywords, disabled, attrs);
         }
 
+        /**
+         * Returns a copy of this entry with the given search terms, which only the command menu uses.
+         *
+         * @param keywords additional search terms, separated by spaces
+         * @return the new entry
+         */
         public MenuItem withKeywords(final String keywords) {
 
             return new MenuItem(label, content, url, icon, keywords, disabled, attrs);
         }
 
+        /**
+         * Returns a copy of this entry with the given disabled state.
+         *
+         * @param disabled whether the entry is rendered with {@code aria-disabled="true"}
+         * @return the new entry
+         */
         public MenuItem withDisabled(final boolean disabled) {
 
             return new MenuItem(label, content, url, icon, keywords, disabled, attrs);
         }
 
+        /**
+         * Returns a copy of this entry with the given additional HTML attributes.
+         *
+         * @param attrs the attributes for the entry element, rendered by {@link JteHelper#attrs(Map)}
+         * @return the new entry
+         */
         public MenuItem withAttrs(final Map<?, ?> attrs) {
 
             return new MenuItem(label, content, url, icon, keywords, disabled, attrs);
@@ -213,26 +312,60 @@ public sealed interface BasecoatItem {
             requireLabel(label, content);
         }
 
+        /**
+         * Creates a link with a text label.
+         *
+         * @param label the link text
+         * @param url the link target
+         * @return the link
+         * @throws IllegalArgumentException if {@code label} is {@code null}
+         */
         public static NavItem of(final String label, final String url) {
 
             return new NavItem(label, null, url, false, null, null);
         }
 
+        /**
+         * Creates a link with rich content.
+         *
+         * @param content the link content
+         * @param url the link target
+         * @return the link
+         * @throws IllegalArgumentException if {@code content} is {@code null}
+         */
         public static NavItem of(final Content content, final String url) {
 
             return new NavItem(null, content, url, false, null, null);
         }
 
+        /**
+         * Returns a copy of this link with the given current page state.
+         *
+         * @param current whether the link is rendered with {@code aria-current="page"}
+         * @return the new link
+         */
         public NavItem withCurrent(final boolean current) {
 
             return new NavItem(label, content, url, current, icon, attrs);
         }
 
+        /**
+         * Returns a copy of this link with the given icon, rendered before the label.
+         *
+         * @param icon the icon, e.g. an inline SVG
+         * @return the new link
+         */
         public NavItem withIcon(final Content icon) {
 
             return new NavItem(label, content, url, current, icon, attrs);
         }
 
+        /**
+         * Returns a copy of this link with the given additional HTML attributes.
+         *
+         * @param attrs the attributes for the link element, rendered by {@link JteHelper#attrs(Map)}
+         * @return the new link
+         */
         public NavItem withAttrs(final Map<?, ?> attrs) {
 
             return new NavItem(label, content, url, current, icon, attrs);
@@ -262,26 +395,60 @@ public sealed interface BasecoatItem {
             requireLabel(label, content);
         }
 
+        /**
+         * Creates a collapsed submenu with a text label.
+         *
+         * @param label the summary text
+         * @param items the submenu items
+         * @return the submenu
+         * @throws IllegalArgumentException if {@code label} is {@code null}
+         */
         public static Submenu of(final String label, final List<? extends BasecoatItem> items) {
 
             return new Submenu(label, null, null, false, null, items);
         }
 
+        /**
+         * Creates a collapsed submenu with rich content.
+         *
+         * @param content the summary content
+         * @param items the submenu items
+         * @return the submenu
+         * @throws IllegalArgumentException if {@code content} is {@code null}
+         */
         public static Submenu of(final Content content, final List<? extends BasecoatItem> items) {
 
             return new Submenu(null, content, null, false, null, items);
         }
 
+        /**
+         * Returns a copy of this submenu with the given icon, rendered before the label.
+         *
+         * @param icon the icon, e.g. an inline SVG
+         * @return the new submenu
+         */
         public Submenu withIcon(final Content icon) {
 
             return new Submenu(label, content, icon, open, attrs, items);
         }
 
+        /**
+         * Returns a copy of this submenu with the given expanded state.
+         *
+         * @param open whether the submenu is initially expanded
+         * @return the new submenu
+         */
         public Submenu withOpen(final boolean open) {
 
             return new Submenu(label, content, icon, open, attrs, items);
         }
 
+        /**
+         * Returns a copy of this submenu with the given additional HTML attributes.
+         *
+         * @param attrs the attributes for the {@code details} element, rendered by {@link JteHelper#attrs(Map)}
+         * @return the new submenu
+         */
         public Submenu withAttrs(final Map<?, ?> attrs) {
 
             return new Submenu(label, content, icon, open, attrs, items);
