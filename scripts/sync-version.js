@@ -1,11 +1,15 @@
+const { execFileSync } = require('node:child_process');
 const fs = require('node:fs');
 const path = require('node:path');
 
 const root = path.resolve(__dirname, '..');
 const libraryPom = 'basecoat-jte/pom.xml';
 const demoPom = 'demo/pom.xml';
+const templateDir = 'demo/src/main/jte/basecoat';
 const files = [libraryPom, demoPom, 'README.md', 'package.json', 'package-lock.json'];
+const basecoatPackage = 'basecoat-css';
 const projectVersion = /(<artifactId>basecoat-jte<\/artifactId>\s*<version>)([^<]+)(<\/version>)/;
+const templateSource = /(https:\/\/github\.com\/hunvreus\/basecoat\/blob\/)([^/\s]+)(\/)/g;
 const semver = /^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$/;
 
 function replaceField(content, file, field, pattern, value) {
@@ -13,9 +17,26 @@ function replaceField(content, file, field, pattern, value) {
     return content.replace(pattern, (_, prefix, current, suffix) => prefix + value + suffix);
 }
 
-function sync(version, { projectRoot = root, check = false } = {}) {
+// npm resolves the tarball URL and integrity hash that the lockfile needs.
+function npmInstall(projectRoot, version) {
+    execFileSync('npm', ['install', '--save-exact', '--no-audit', '--no-fund', `${basecoatPackage}@${version}`], {
+        cwd: projectRoot,
+        stdio: 'inherit',
+    });
+}
+
+function sync(version, { projectRoot = root, check = false, install = npmInstall } = {}) {
+    // Templates link to the upstream Basecoat macros they are ported from.
+    const templates = fs
+        .readdirSync(path.join(projectRoot, templateDir))
+        .filter((file) => file.endsWith('.jte'))
+        .sort()
+        .map((file) => `${templateDir}/${file}`);
+
     // Read and validate every file before changing any of them.
-    const originals = new Map(files.map((file) => [file, fs.readFileSync(path.join(projectRoot, file), 'utf8')]));
+    const originals = new Map(
+        [...files, ...templates].map((file) => [file, fs.readFileSync(path.join(projectRoot, file), 'utf8')]),
+    );
     if (version === undefined && check) {
         const match = originals.get(libraryPom).match(projectVersion);
         if (!match) throw new Error(`Cannot find project version in ${libraryPom}`);
@@ -88,34 +109,61 @@ function sync(version, { projectRoot = root, check = false } = {}) {
         /(Compatible with\s*\[Basecoat [^\]]+\]\(https:\/\/github\.com\/hunvreus\/basecoat\/releases\/tag\/)([^)]+)(\))/,
         version,
     );
+    readme = replaceField(
+        readme,
+        'README.md',
+        'kitchen sink Basecoat version',
+        /(the current Basecoat version )(\d+\.\d+\.\d+)(,)/,
+        version,
+    );
     updates.set('README.md', readme);
 
+    for (const file of templates) {
+        // Not every template has an upstream counterpart, so a missing link is fine.
+        updates.set(
+            file,
+            originals.get(file).replace(templateSource, (_, prefix, current, suffix) => prefix + version + suffix),
+        );
+    }
+
+    // The demo uses the Basecoat CSS and JavaScript the templates are ported from.
+    let lockedBasecoat;
     for (const file of ['package.json', 'package-lock.json']) {
         const json = JSON.parse(originals.get(file));
         if (typeof json.version !== 'string') throw new Error(`Cannot find package version in ${file}`);
-        let needsUpdate = json.version !== version;
+        const manifest = file === 'package.json' ? json : json.packages?.[''];
+        if (typeof manifest?.version !== 'string') throw new Error(`Cannot find root package version in ${file}`);
+        if (typeof manifest.dependencies?.[basecoatPackage] !== 'string') {
+            throw new Error(`Cannot find ${basecoatPackage} dependency in ${file}`);
+        }
+        const needsUpdate =
+            json.version !== version ||
+            manifest.version !== version ||
+            manifest.dependencies[basecoatPackage] !== version;
         json.version = version;
+        manifest.version = version;
+        manifest.dependencies[basecoatPackage] = version;
         if (file === 'package-lock.json') {
-            if (typeof json.packages?.['']?.version !== 'string') {
-                throw new Error(`Cannot find root package version in ${file}`);
-            }
-            needsUpdate ||= json.packages[''].version !== version;
-            json.packages[''].version = version;
+            lockedBasecoat = json.packages[`node_modules/${basecoatPackage}`]?.version;
         }
         if (needsUpdate) updates.set(file, JSON.stringify(json, null, 2) + '\n');
     }
+    const staleInstall = lockedBasecoat !== version;
 
     const changed = [...updates].filter(([file, content]) => content !== originals.get(file));
-    if (check && changed.length) {
+    if (check && (changed.length || staleInstall)) {
+        const stale = changed.map(([file]) => file);
+        if (staleInstall && !stale.includes('package-lock.json')) stale.push('package-lock.json');
         throw new Error(
-            `Versions do not match ${version} (JTE ${jte}): ${changed.map(([file]) => file).join(', ')}. ` +
+            `Versions do not match ${version} (JTE ${jte}): ${stale.join(', ')}. ` +
                 `Run npm run sync-version -- ${version}.`,
         );
     }
     if (!check) {
         for (const [file, content] of changed) fs.writeFileSync(path.join(projectRoot, file), content);
+        if (staleInstall) install(projectRoot, version);
     }
-    const summary = `library ${version}, JTE ${jte}`;
+    const summary = `library ${version}, ${basecoatPackage} ${version}, JTE ${jte}`;
     console.log(check ? `Verified ${summary}.` : `Synced ${summary} in ${changed.length} files.`);
 }
 

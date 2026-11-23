@@ -1,4 +1,4 @@
-<%-- see https://github.com/hunvreus/basecoat/blob/1.2.1/src/templates/nunjucks/popover.njk --%>
+<%-- see https://github.com/hunvreus/basecoat/blob/1.3.0/src/templates/nunjucks/popover.njk --%>
 <%--
   Renders a generic popover component, often used internally by other components like dropdowns or selects.
 

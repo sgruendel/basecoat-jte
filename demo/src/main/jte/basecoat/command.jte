@@ -1,4 +1,4 @@
-<%-- see https://github.com/hunvreus/basecoat/blob/1.2.1/src/templates/nunjucks/command.njk --%>
+<%-- see https://github.com/hunvreus/basecoat/blob/1.3.0/src/templates/nunjucks/command.njk --%>
 <%--
   Renders a standalone command menu component with search and keyboard navigation.
 

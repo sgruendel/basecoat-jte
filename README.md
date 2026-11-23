@@ -1,7 +1,7 @@
 # basecoat-jte
 
 [![Maven Central][maven-badge]][maven-central] [![Build status][build-badge]][build-status]
-[![Java 21+][java-badge]](#installation) [![Basecoat 1.2.1][basecoat-badge]](https://basecoatui.com/)
+[![Java 21+][java-badge]](#installation) [![Basecoat 1.3.0][basecoat-badge]](https://basecoatui.com/)
 [![License: MIT][license-badge]](LICENSE)
 
 [maven-badge]: https://img.shields.io/maven-central/v/io.github.sgruendel/basecoat-jte.svg
@@ -9,13 +9,13 @@
 [build-badge]: https://github.com/sgruendel/basecoat-jte/actions/workflows/verify.yml/badge.svg?branch=main
 [build-status]: https://github.com/sgruendel/basecoat-jte/actions/workflows/verify.yml
 [java-badge]: https://img.shields.io/badge/Java-21%2B-blue.svg
-[basecoat-badge]: https://img.shields.io/badge/Basecoat-1.2.1-18181b.svg
+[basecoat-badge]: https://img.shields.io/badge/Basecoat-1.3.0-18181b.svg
 [license-badge]: https://img.shields.io/badge/License-MIT-green.svg
 
 JTE templates for [Basecoat](https://basecoatui.com/) components, using
 [Lucide for JTE](https://github.com/sgruendel/lucide-jte) for icons.
 
-Compatible with [Basecoat 1.2.1](https://github.com/hunvreus/basecoat/releases/tag/1.2.1) and
+Compatible with [Basecoat 1.3.0](https://github.com/hunvreus/basecoat/releases/tag/1.3.0) and
 [Lucide for JTE 1.77.0](https://github.com/sgruendel/lucide-jte/releases/tag/v1.77.0).
 
 ## What This Repo Contains
@@ -31,7 +31,7 @@ Compatible with [Basecoat 1.2.1](https://github.com/hunvreus/basecoat/releases/t
   - `demo/src/main/jte/examples/adminDashboard` A port of the shadcn admin dashboard example.
 
 The kitchen sink examples are still based on the previous Basecoat version 0.3.11 and might look a bit off compared to
-the current Basecoat version 1.2.1, but they are the best reference for how the JTE templates are meant to be used.
+the current Basecoat version 1.3.0, but they are the best reference for how the JTE templates are meant to be used.
 
 For icon imports, styling, attributes, naming, and accessibility, see the
 [Lucide for JTE documentation](https://github.com/sgruendel/lucide-jte#use-icons-in-a-jte-template).
@@ -54,7 +54,7 @@ shadcn/ui components. The library provides the Java classes they need, so you do
    <dependency>
        <groupId>io.github.sgruendel</groupId>
        <artifactId>basecoat-jte</artifactId>
-       <version>1.2.1</version>
+       <version>1.3.0</version>
    </dependency>
    <dependency>
        <groupId>io.github.sgruendel</groupId>
@@ -66,7 +66,7 @@ shadcn/ui components. The library provides the Java classes they need, so you do
    Gradle:
 
    ```kotlin
-   implementation("io.github.sgruendel:basecoat-jte:1.2.1")
+   implementation("io.github.sgruendel:basecoat-jte:1.3.0")
    implementation("io.github.sgruendel:lucide-jte:1.77.0")
    ```
 

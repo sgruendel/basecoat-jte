@@ -1,4 +1,4 @@
-<%-- see https://github.com/hunvreus/basecoat/blob/1.2.1/src/templates/nunjucks/command.njk --%>
+<%-- see https://github.com/hunvreus/basecoat/blob/1.3.0/src/templates/nunjucks/command.njk --%>
 
 @import io.github.sgruendel.basecoat.jte.JteHelper
 

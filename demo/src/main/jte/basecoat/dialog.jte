@@ -1,4 +1,4 @@
-<%-- see https://github.com/hunvreus/basecoat/blob/1.2.1/src/templates/nunjucks/dialog.njk --%>
+<%-- see https://github.com/hunvreus/basecoat/blob/1.3.0/src/templates/nunjucks/dialog.njk --%>
 <%--
   Renders a dialog component with optional trigger, header, body, and footer.
 

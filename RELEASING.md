@@ -56,9 +56,13 @@ No Central or GPG secrets are required in GitHub Actions.
 
    This updates the library version and SCM tag in `basecoat-jte/pom.xml`, the
    library and JTE versions the demo builds against in `demo/pom.xml`, the README
-   dependency snippets, and the npm package and lockfile versions. Repeating the
-   command repairs stale fields even when the POM already has the requested version.
-   `--check` only verifies files and never writes them.
+   dependency snippets and Basecoat version references, the upstream Basecoat links
+   in the `demo/src/main/jte/basecoat/` template headers, and the npm package and
+   lockfile versions. It also pins the `basecoat-css` dependency to the same version
+   and runs `npm install` when the lockfile has a different `basecoat-css` installed,
+   so that Basecoat version must already be published to npm. Repeating the command
+   repairs stale fields even when the POM already has the requested version.
+   `--check` only verifies files and never writes them or runs npm.
 
 2. Check the changes locally:
 
@@ -78,7 +82,7 @@ No Central or GPG secrets are required in GitHub Actions.
 3. Commit the intended files and push the release commit for CI verification:
 
    ```sh
-   git add basecoat-jte/pom.xml demo/pom.xml README.md package.json package-lock.json
+   git add basecoat-jte/pom.xml demo/pom.xml demo/src/main/jte/basecoat README.md package.json package-lock.json
    git commit -m "chore(release): prepare 1.1.0"
    git push origin main
    ```
