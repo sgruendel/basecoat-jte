@@ -27,6 +27,7 @@ public class ClasspathOutlineService implements OutlineService {
     private final List<OutlineRow> rows;
 
     public ClasspathOutlineService(final JsonMapper jsonMapper) {
+
         try (var input = new ClassPathResource(DATA_RESOURCE).getInputStream()) {
             rows = List.copyOf(jsonMapper.readValue(input, new TypeReference<List<OutlineRow>>() {}));
         } catch (IOException | JacksonException exception) {

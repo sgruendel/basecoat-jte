@@ -21,6 +21,7 @@ public class ClasspathChartDataService implements ChartDataService {
     private final LocalDate latestDate;
 
     public ClasspathChartDataService(final JsonMapper jsonMapper) {
+
         try (var chartInput = new ClassPathResource(CHART_DATA_RESOURCE).getInputStream();
                 var detailChartInput = new ClassPathResource(DETAIL_CHART_DATA_RESOURCE).getInputStream()) {
             rows = List.copyOf(jsonMapper.readValue(chartInput, new TypeReference<List<ChartDataPoint>>() {}));

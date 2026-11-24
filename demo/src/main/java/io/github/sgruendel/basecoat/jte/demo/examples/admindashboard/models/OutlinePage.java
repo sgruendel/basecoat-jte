@@ -11,6 +11,7 @@ public record OutlinePage(
         OutlineSort sort,
         SortDirection direction) {
     public OutlinePage {
+
         rows = List.copyOf(rows);
     }
 

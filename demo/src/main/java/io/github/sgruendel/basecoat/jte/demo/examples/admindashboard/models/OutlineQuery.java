@@ -9,6 +9,7 @@ public record OutlineQuery(int page, int size, OutlineSort sort, SortDirection d
     public static final List<Integer> ALLOWED_SIZES = List.of(10, 20, 30, 40, 50);
 
     public OutlineQuery {
+
         page = Math.max(0, page);
         size = ALLOWED_SIZES.contains(size) ? size : DEFAULT_SIZE;
         sort = sort == null ? OutlineSort.ID : sort;

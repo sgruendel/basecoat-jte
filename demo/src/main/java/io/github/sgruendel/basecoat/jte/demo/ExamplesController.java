@@ -36,6 +36,7 @@ public class ExamplesController {
     private final OutlineService outlineService;
 
     public ExamplesController(final ChartDataService chartDataService, final OutlineService outlineService) {
+
         this.chartDataService = chartDataService;
         this.outlineService = outlineService;
     }

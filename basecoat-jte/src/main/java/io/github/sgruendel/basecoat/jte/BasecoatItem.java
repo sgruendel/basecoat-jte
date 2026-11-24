@@ -113,6 +113,7 @@ public sealed interface BasecoatItem {
     record Option(String label, Content content, String value, Map<?, ?> attrs) implements BasecoatItem {
 
         public Option {
+
             requireLabel(label, content);
         }
 
@@ -241,6 +242,7 @@ public sealed interface BasecoatItem {
             implements BasecoatItem {
 
         public MenuItem {
+
             requireLabel(label, content);
         }
 
@@ -368,6 +370,7 @@ public sealed interface BasecoatItem {
             implements BasecoatItem {
 
         public NavItem {
+
             requireLabel(label, content);
         }
 
@@ -465,6 +468,7 @@ public sealed interface BasecoatItem {
             implements BasecoatItem {
 
         public Submenu {
+
             requireLabel(label, content);
         }
 

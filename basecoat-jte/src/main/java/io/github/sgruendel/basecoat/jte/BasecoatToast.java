@@ -178,6 +178,7 @@ public record BasecoatToast(
          *     are set
          */
         public Button {
+
             if (label == null) {
                 throw new IllegalArgumentException("label is required");
             }

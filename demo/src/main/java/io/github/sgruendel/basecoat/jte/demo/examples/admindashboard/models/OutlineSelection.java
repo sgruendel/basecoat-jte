@@ -9,6 +9,7 @@ public record OutlineSelection(
         Set<Long> selectedIds, List<Long> offPageIds, boolean allPageRowsSelected, boolean somePageRowsSelected) {
 
     public OutlineSelection {
+
         selectedIds = Set.copyOf(selectedIds);
         offPageIds = List.copyOf(offPageIds);
     }
