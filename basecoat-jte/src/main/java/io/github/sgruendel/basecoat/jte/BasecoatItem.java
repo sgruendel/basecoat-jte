@@ -73,7 +73,7 @@ public sealed interface BasecoatItem {
         }
 
         /**
-         * Returns a copy of this group with the given additional HTML attributes.
+         * Returns a copy of this group with the given additional HTML attributes, replacing any set before.
          *
          * @param attrs the attributes for the group element, rendered by {@link JteHelper#attrs(Map)}
          * @return the new group
@@ -81,6 +81,20 @@ public sealed interface BasecoatItem {
         public Group withAttrs(final Map<?, ?> attrs) {
 
             return new Group(id, label, attrs, items);
+        }
+
+        /**
+         * Returns a copy of this group with the given additional HTML attribute set, keeping the others.
+         *
+         * @param attrName the attribute name
+         * @param attrValue the attribute value, rendered by {@link JteHelper#attrs(Map)}, or {@code null} to remove the
+         *     attribute
+         * @return the new group
+         * @throws IllegalArgumentException if {@code attrName} is not a valid HTML attribute name
+         */
+        public Group withAttr(final String attrName, final Object attrValue) {
+
+            return new Group(id, label, JteHelper.withAttr(attrs, attrName, attrValue), items);
         }
     }
 
@@ -186,7 +200,7 @@ public sealed interface BasecoatItem {
         }
 
         /**
-         * Returns a copy of this option with the given additional HTML attributes.
+         * Returns a copy of this option with the given additional HTML attributes, replacing any set before.
          *
          * @param attrs the attributes for the option element, rendered by {@link JteHelper#attrs(Map)}
          * @return the new option
@@ -194,6 +208,20 @@ public sealed interface BasecoatItem {
         public Option withAttrs(final Map<?, ?> attrs) {
 
             return new Option(label, content, value, attrs);
+        }
+
+        /**
+         * Returns a copy of this option with the given additional HTML attribute set, keeping the others.
+         *
+         * @param attrName the attribute name
+         * @param attrValue the attribute value, rendered by {@link JteHelper#attrs(Map)}, or {@code null} to remove the
+         *     attribute
+         * @return the new option
+         * @throws IllegalArgumentException if {@code attrName} is not a valid HTML attribute name
+         */
+        public Option withAttr(final String attrName, final Object attrValue) {
+
+            return new Option(label, content, value, JteHelper.withAttr(attrs, attrName, attrValue));
         }
     }
 
@@ -300,7 +328,7 @@ public sealed interface BasecoatItem {
         }
 
         /**
-         * Returns a copy of this entry with the given additional HTML attributes.
+         * Returns a copy of this entry with the given additional HTML attributes, replacing any set before.
          *
          * @param attrs the attributes for the entry element, rendered by {@link JteHelper#attrs(Map)}
          * @return the new entry
@@ -308,6 +336,21 @@ public sealed interface BasecoatItem {
         public MenuItem withAttrs(final Map<?, ?> attrs) {
 
             return new MenuItem(label, content, url, icon, keywords, disabled, attrs);
+        }
+
+        /**
+         * Returns a copy of this entry with the given additional HTML attribute set, keeping the others.
+         *
+         * @param attrName the attribute name
+         * @param attrValue the attribute value, rendered by {@link JteHelper#attrs(Map)}, or {@code null} to remove the
+         *     attribute
+         * @return the new entry
+         * @throws IllegalArgumentException if {@code attrName} is not a valid HTML attribute name
+         */
+        public MenuItem withAttr(final String attrName, final Object attrValue) {
+
+            return new MenuItem(
+                    label, content, url, icon, keywords, disabled, JteHelper.withAttr(attrs, attrName, attrValue));
         }
     }
 
@@ -377,7 +420,7 @@ public sealed interface BasecoatItem {
         }
 
         /**
-         * Returns a copy of this link with the given additional HTML attributes.
+         * Returns a copy of this link with the given additional HTML attributes, replacing any set before.
          *
          * @param attrs the attributes for the link element, rendered by {@link JteHelper#attrs(Map)}
          * @return the new link
@@ -385,6 +428,20 @@ public sealed interface BasecoatItem {
         public NavItem withAttrs(final Map<?, ?> attrs) {
 
             return new NavItem(label, content, url, current, icon, attrs);
+        }
+
+        /**
+         * Returns a copy of this link with the given additional HTML attribute set, keeping the others.
+         *
+         * @param attrName the attribute name
+         * @param attrValue the attribute value, rendered by {@link JteHelper#attrs(Map)}, or {@code null} to remove the
+         *     attribute
+         * @return the new link
+         * @throws IllegalArgumentException if {@code attrName} is not a valid HTML attribute name
+         */
+        public NavItem withAttr(final String attrName, final Object attrValue) {
+
+            return new NavItem(label, content, url, current, icon, JteHelper.withAttr(attrs, attrName, attrValue));
         }
     }
 
@@ -460,7 +517,7 @@ public sealed interface BasecoatItem {
         }
 
         /**
-         * Returns a copy of this submenu with the given additional HTML attributes.
+         * Returns a copy of this submenu with the given additional HTML attributes, replacing any set before.
          *
          * @param attrs the attributes for the {@code details} element, rendered by {@link JteHelper#attrs(Map)}
          * @return the new submenu
@@ -468,6 +525,20 @@ public sealed interface BasecoatItem {
         public Submenu withAttrs(final Map<?, ?> attrs) {
 
             return new Submenu(label, content, icon, open, attrs, items);
+        }
+
+        /**
+         * Returns a copy of this submenu with the given additional HTML attribute set, keeping the others.
+         *
+         * @param attrName the attribute name
+         * @param attrValue the attribute value, rendered by {@link JteHelper#attrs(Map)}, or {@code null} to remove the
+         *     attribute
+         * @return the new submenu
+         * @throws IllegalArgumentException if {@code attrName} is not a valid HTML attribute name
+         */
+        public Submenu withAttr(final String attrName, final Object attrValue) {
+
+            return new Submenu(label, content, icon, open, JteHelper.withAttr(attrs, attrName, attrValue), items);
         }
     }
 

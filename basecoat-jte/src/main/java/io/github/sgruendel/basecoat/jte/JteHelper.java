@@ -2,6 +2,8 @@ package io.github.sgruendel.basecoat.jte;
 
 import gg.jte.TemplateOutput;
 import gg.jte.html.escape.Escape;
+import java.util.Collections;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -153,11 +155,37 @@ public final class JteHelper {
         };
     }
 
-    private static String htmlAttr(final String name, final Object value) {
+    /**
+     * Returns a copy of an attribute map with one attribute set or removed, backing the {@code withAttr} methods.
+     *
+     * @param attrs the attributes, may be {@code null}
+     * @param attrName the attribute name
+     * @param attrValue the attribute value, rendered by {@link #attrs(Map)}, or {@code null} to remove the attribute
+     * @return an unmodifiable copy of {@code attrs} in insertion order, with the attribute added last if it is new
+     * @throws IllegalArgumentException if {@code attrName} is not a valid HTML attribute name
+     */
+    static Map<?, ?> withAttr(final Map<?, ?> attrs, final String attrName, final Object attrValue) {
 
-        if (!HTML_ATTR_NAME.matcher(name).matches()) {
+        requireHtmlAttrName(attrName);
+        final Map<Object, Object> copy = attrs == null ? new LinkedHashMap<>() : new LinkedHashMap<>(attrs);
+        if (attrValue == null) {
+            copy.remove(attrName);
+        } else {
+            copy.put(attrName, attrValue);
+        }
+        return Collections.unmodifiableMap(copy);
+    }
+
+    private static void requireHtmlAttrName(final String name) {
+
+        if (name == null || !HTML_ATTR_NAME.matcher(name).matches()) {
             throw new IllegalArgumentException("Illegal HTML attribute name " + name);
         }
+    }
+
+    private static String htmlAttr(final String name, final Object value) {
+
+        requireHtmlAttrName(name);
         if (value == null || Boolean.FALSE.equals(value)) {
             return "";
         }

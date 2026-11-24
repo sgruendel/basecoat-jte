@@ -60,4 +60,29 @@ class BasecoatTabTest {
                 .isDisabled());
         assertFalse(BasecoatTab.of("Tab 7").isDisabled());
     }
+
+    @Test
+    void withTabAttrAndWithPanelAttrMergeIntoExistingAttrsAndKeepOtherFields() {
+
+        final Content panel = output -> output.writeContent("<p>panel</p>");
+        final var tab = new BasecoatTab("Tab", null, Map.of("data-view", "a"), panel, Map.of("class", "p-4"));
+
+        assertEquals(
+                new BasecoatTab("Tab", null, Map.of("data-view", "a", "disabled", true), panel, Map.of("class", "p-4")),
+                tab.withTabAttr("disabled", true));
+        assertEquals(
+                new BasecoatTab("Tab", null, Map.of("data-view", "a"), panel, Map.of("class", "p-4", "data-x", "1")),
+                tab.withPanelAttr("data-x", "1"));
+        assertEquals(
+                new BasecoatTab(null, CONTENT, Map.of("data-x", "1"), null, null),
+                BasecoatTab.of(CONTENT).withTabAttr("data-x", "1"));
+    }
+
+    @Test
+    void withTabAttrTogglesDisabled() {
+
+        final var tab = BasecoatTab.of("Tab").withTabAttr("disabled", true);
+        assertTrue(tab.isDisabled());
+        assertFalse(tab.withTabAttr("disabled", null).isDisabled());
+    }
 }

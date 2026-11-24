@@ -54,7 +54,8 @@ public record BasecoatTab(String tabText, Content tabContent, Map<?, ?> tabAttrs
     }
 
     /**
-     * Returns a copy of this tab with the given additional HTML attributes for the tab button.
+     * Returns a copy of this tab with the given additional HTML attributes for the tab button, replacing
+     * any set before.
      *
      * @param tabAttrs the attributes for the tab button, rendered by {@link JteHelper#attrs(Map)}; set
      *     {@code disabled} or {@code aria-disabled} to disable the tab
@@ -63,6 +64,21 @@ public record BasecoatTab(String tabText, Content tabContent, Map<?, ?> tabAttrs
     public BasecoatTab withTabAttrs(final Map<?, ?> tabAttrs) {
 
         return new BasecoatTab(tabText, tabContent, tabAttrs, panel, panelAttrs);
+    }
+
+    /**
+     * Returns a copy of this tab with the given additional HTML attribute for the tab button set, keeping the others.
+     *
+     * @param attrName the attribute name
+     * @param attrValue the attribute value, rendered by {@link JteHelper#attrs(Map)}, or {@code null} to remove the
+     *     attribute
+     * @return the new tab
+     * @throws IllegalArgumentException if {@code attrName} is not a valid HTML attribute name
+     */
+    public BasecoatTab withTabAttr(final String attrName, final Object attrValue) {
+
+        return new BasecoatTab(
+                tabText, tabContent, JteHelper.withAttr(tabAttrs, attrName, attrValue), panel, panelAttrs);
     }
 
     /**
@@ -77,7 +93,7 @@ public record BasecoatTab(String tabText, Content tabContent, Map<?, ?> tabAttrs
     }
 
     /**
-     * Returns a copy of this tab with the given additional HTML attributes for the panel.
+     * Returns a copy of this tab with the given additional HTML attributes for the panel, replacing any set before.
      *
      * @param panelAttrs the attributes for the panel element, rendered by {@link JteHelper#attrs(Map)}
      * @return the new tab
@@ -85,6 +101,21 @@ public record BasecoatTab(String tabText, Content tabContent, Map<?, ?> tabAttrs
     public BasecoatTab withPanelAttrs(final Map<?, ?> panelAttrs) {
 
         return new BasecoatTab(tabText, tabContent, tabAttrs, panel, panelAttrs);
+    }
+
+    /**
+     * Returns a copy of this tab with the given additional HTML attribute for the panel set, keeping the others.
+     *
+     * @param attrName the attribute name
+     * @param attrValue the attribute value, rendered by {@link JteHelper#attrs(Map)}, or {@code null} to remove the
+     *     attribute
+     * @return the new tab
+     * @throws IllegalArgumentException if {@code attrName} is not a valid HTML attribute name
+     */
+    public BasecoatTab withPanelAttr(final String attrName, final Object attrValue) {
+
+        return new BasecoatTab(
+                tabText, tabContent, tabAttrs, panel, JteHelper.withAttr(panelAttrs, attrName, attrValue));
     }
 
     /**

@@ -145,4 +145,38 @@ class BasecoatItemTest {
         assertThrows(IllegalArgumentException.class, () -> NavItem.of((String) null, "/"));
         assertThrows(IllegalArgumentException.class, () -> Submenu.of((Content) null, List.of()));
     }
+
+    @Test
+    void withAttrMergesIntoExistingAttrsAndKeepsOtherFields() {
+
+        final Content icon = output -> output.writeContent("<svg></svg>");
+        final List<Option> items = List.of(Option.of("Apple", "apple"));
+        final Map<String, String> attrs = Map.of("data-x", "1");
+        final Map<String, String> merged = Map.of("data-x", "1", "data-y", "2");
+
+        assertEquals(
+                new Group("fruits", "Fruits", merged, items),
+                new Group("fruits", "Fruits", attrs, items).withAttr("data-y", "2"));
+        assertEquals(
+                new Option("Apple", CONTENT, "apple", merged),
+                new Option("Apple", CONTENT, "apple", attrs).withAttr("data-y", "2"));
+        assertEquals(
+                new MenuItem("Profile", CONTENT, "/profile", icon, "account", true, merged),
+                new MenuItem("Profile", CONTENT, "/profile", icon, "account", true, attrs).withAttr("data-y", "2"));
+        assertEquals(
+                new NavItem("Home", CONTENT, "/", true, icon, merged),
+                new NavItem("Home", CONTENT, "/", true, icon, attrs).withAttr("data-y", "2"));
+        assertEquals(
+                new Submenu("Settings", CONTENT, icon, true, merged, items),
+                new Submenu("Settings", CONTENT, icon, true, attrs, items).withAttr("data-y", "2"));
+    }
+
+    @Test
+    void withAttrSetsBooleanAndRemovesNullAttrs() {
+
+        final var option = Option.of("Apple", "apple").withAttr("data-x", "1").withAttr("disabled", true);
+        assertEquals(Map.of("data-x", "1", "disabled", true), option.attrs());
+        assertEquals(Map.of("disabled", true), option.withAttr("data-x", null).attrs());
+        assertThrows(IllegalArgumentException.class, () -> option.withAttr("a b", "1"));
+    }
 }

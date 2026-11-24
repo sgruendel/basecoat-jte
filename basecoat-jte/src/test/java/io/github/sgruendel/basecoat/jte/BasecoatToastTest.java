@@ -73,4 +73,36 @@ class BasecoatToastTest {
         assertThrows(IllegalArgumentException.class, () -> Button.of(null));
         assertThrows(IllegalArgumentException.class, () -> new Button("Open", "track()", "/events/1"));
     }
+
+    @Test
+    void withAttrMergesIntoExistingAttrsAndKeepsOtherFields() {
+
+        final Content icon = output -> output.writeContent("<svg></svg>");
+        final var action = Button.of("View");
+        final var cancel = Button.of("Dismiss");
+        final var duration = Duration.ofSeconds(10);
+
+        assertEquals(
+                new BasecoatToast(
+                        Category.WARNING,
+                        "Low disk space",
+                        "Details",
+                        action,
+                        cancel,
+                        duration,
+                        icon,
+                        Map.of("data-x", "1", "data-y", "2"),
+                        false),
+                new BasecoatToast(
+                                Category.WARNING,
+                                "Low disk space",
+                                "Details",
+                                action,
+                                cancel,
+                                duration,
+                                icon,
+                                Map.of("data-x", "1"),
+                                false)
+                        .withAttr("data-y", "2"));
+    }
 }

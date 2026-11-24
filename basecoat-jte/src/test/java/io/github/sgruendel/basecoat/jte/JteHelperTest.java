@@ -3,6 +3,7 @@ package io.github.sgruendel.basecoat.jte;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -139,5 +140,36 @@ class JteHelperTest {
         assertEquals("btn", JteHelper.classAppend("btn", Map.of("class", "")));
         assertEquals("btn", JteHelper.classAppend("btn", Map.of("id", "primary")));
         assertEquals("btn", JteHelper.classAppend("btn", null));
+    }
+
+    @Test
+    void withAttrAddsReplacesAndRemovesInInsertionOrder() {
+
+        final Map<String, Object> attrs = new LinkedHashMap<>();
+        attrs.put("id", "primary");
+        attrs.put("title", "Save");
+
+        final var added = JteHelper.withAttr(attrs, "disabled", true);
+        assertEquals(" id=\"primary\" title=\"Save\" disabled", JteHelper.attrs(added));
+        assertEquals(" id=\"secondary\" title=\"Save\"", JteHelper.attrs(JteHelper.withAttr(attrs, "id", "secondary")));
+        assertEquals(" title=\"Save\"", JteHelper.attrs(JteHelper.withAttr(attrs, "id", null)));
+        assertEquals(Map.of("id", "primary", "title", "Save"), attrs);
+    }
+
+    @Test
+    void withAttrAcceptsNullMapAndReturnsUnmodifiableCopy() {
+
+        final var attrs = JteHelper.withAttr(null, "data-x", "1");
+        assertEquals(Map.of("data-x", "1"), attrs);
+        assertTrue(JteHelper.withAttr(null, "data-x", null).isEmpty());
+        assertThrows(UnsupportedOperationException.class, () -> attrs.clear());
+    }
+
+    @Test
+    void withAttrRejectsInvalidHtmlAttributeNames() {
+
+        assertThrows(IllegalArgumentException.class, () -> JteHelper.withAttr(null, "a b", "1"));
+        assertThrows(IllegalArgumentException.class, () -> JteHelper.withAttr(null, "", "1"));
+        assertThrows(IllegalArgumentException.class, () -> JteHelper.withAttr(null, null, "1"));
     }
 }

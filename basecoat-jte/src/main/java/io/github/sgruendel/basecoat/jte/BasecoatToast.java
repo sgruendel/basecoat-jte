@@ -107,7 +107,7 @@ public record BasecoatToast(
     }
 
     /**
-     * Returns a copy of this toast with the given additional HTML attributes.
+     * Returns a copy of this toast with the given additional HTML attributes, replacing any set before.
      *
      * @param attrs the attributes for the toast list item, rendered by {@link JteHelper#attrs(Map)}
      * @return the new toast
@@ -115,6 +115,29 @@ public record BasecoatToast(
     public BasecoatToast withAttrs(final Map<?, ?> attrs) {
 
         return new BasecoatToast(category, title, description, action, cancel, duration, icon, attrs, closeButton);
+    }
+
+    /**
+     * Returns a copy of this toast with the given additional HTML attribute set, keeping the others.
+     *
+     * @param attrName the attribute name
+     * @param attrValue the attribute value, rendered by {@link JteHelper#attrs(Map)}, or {@code null} to remove the
+     *     attribute
+     * @return the new toast
+     * @throws IllegalArgumentException if {@code attrName} is not a valid HTML attribute name
+     */
+    public BasecoatToast withAttr(final String attrName, final Object attrValue) {
+
+        return new BasecoatToast(
+                category,
+                title,
+                description,
+                action,
+                cancel,
+                duration,
+                icon,
+                JteHelper.withAttr(attrs, attrName, attrValue),
+                closeButton);
     }
 
     /**
