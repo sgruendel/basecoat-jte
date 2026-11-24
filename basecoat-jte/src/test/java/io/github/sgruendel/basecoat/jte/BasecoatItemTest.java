@@ -82,14 +82,13 @@ class BasecoatItemTest {
     @Test
     void menuItemWithersReturnUpdatedCopies() {
 
-        final var item = MenuItem.of("Profile");
-        final var updated = item.withUrl("/profile")
-                .withIcon(CONTENT)
+        final var item = MenuItem.of("Profile", "/profile");
+        final var updated = item.withIcon(CONTENT)
                 .withKeywords("account")
                 .withDisabled(true)
                 .withAttrs(Map.of("data-x", "1"));
 
-        assertNull(item.url());
+        assertNull(item.icon());
         assertFalse(item.disabled());
         assertEquals("Profile", updated.label());
         assertEquals("/profile", updated.url());
@@ -98,6 +97,15 @@ class BasecoatItemTest {
         assertTrue(updated.disabled());
         assertEquals(Map.of("data-x", "1"), updated.attrs());
         assertSame(CONTENT, MenuItem.of(CONTENT).content());
+    }
+
+    @Test
+    void menuItemFactoriesAcceptUrl() {
+
+        assertEquals("/profile", MenuItem.of("Profile", "/profile").url());
+        assertEquals("/profile", MenuItem.of(CONTENT, "/profile").url());
+        assertNull(MenuItem.of("Profile").url());
+        assertNull(MenuItem.of(CONTENT).url());
     }
 
     @Test
@@ -133,6 +141,7 @@ class BasecoatItemTest {
 
         assertThrows(IllegalArgumentException.class, () -> Option.of((String) null, "x"));
         assertThrows(IllegalArgumentException.class, () -> MenuItem.of((Content) null));
+        assertThrows(IllegalArgumentException.class, () -> MenuItem.of((String) null, "/"));
         assertThrows(IllegalArgumentException.class, () -> NavItem.of((String) null, "/"));
         assertThrows(IllegalArgumentException.class, () -> Submenu.of((Content) null, List.of()));
     }

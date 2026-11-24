@@ -241,14 +241,29 @@ public sealed interface BasecoatItem {
         }
 
         /**
-         * Returns a copy of this entry with the given link target, rendering the entry as a link.
+         * Creates an entry with a text label, rendered as a link.
          *
+         * @param label the entry text
          * @param url the link target, or {@code null} to render the entry without link
-         * @return the new entry
+         * @return the entry
+         * @throws IllegalArgumentException if {@code label} is {@code null}
          */
-        public MenuItem withUrl(final String url) {
+        public static MenuItem of(final String label, final String url) {
 
-            return new MenuItem(label, content, url, icon, keywords, disabled, attrs);
+            return new MenuItem(label, null, url, null, null, false, null);
+        }
+
+        /**
+         * Creates an entry with rich content, rendered as a link.
+         *
+         * @param content the entry content
+         * @param url the link target, or {@code null} to render the entry without link
+         * @return the entry
+         * @throws IllegalArgumentException if {@code content} is {@code null}
+         */
+        public static MenuItem of(final Content content, final String url) {
+
+            return new MenuItem(null, content, url, null, null, false, null);
         }
 
         /**

@@ -211,8 +211,7 @@ class BasecoatTemplatesTest {
                                 Group.of(
                                         "Account",
                                         List.of(
-                                                MenuItem.of("Profile")
-                                                        .withUrl("/profile")
+                                                MenuItem.of("Profile", "/profile")
                                                         .withIcon(ICON),
                                                 MenuItem.of("Billing")
                                                         .withDisabled(true)
@@ -241,7 +240,7 @@ class BasecoatTemplatesTest {
                                 "Suggestions",
                                 List.of(
                                         MenuItem.of("Calendar").withKeywords("events schedule"),
-                                        MenuItem.of("Search").withUrl("/search").withDisabled(true))))));
+                                        MenuItem.of("Search", "/search").withDisabled(true))))));
 
         assertThat(html)
                 .contains("<span role=\"heading\" id=\"group-label-cmd-items-0\">Suggestions</span>")

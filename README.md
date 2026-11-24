@@ -197,7 +197,7 @@ The select, combobox, dropdown menu, command, and sidebar templates take their i
 A template throws an `IllegalArgumentException` for leaf types it doesn't render. Labels are plain text and
 HTML-escaped. Each leaf also has a factory taking JTE `Content` for rich labels, which is rendered instead of the text
 label. Optional fields are set with `with*` methods, for example
-`MenuItem.of("Profile").withUrl("/profile").withIcon(lucideUser()).withDisabled(true)`.
+`MenuItem.of("Profile", "/profile").withIcon(lucideUser()).withDisabled(true)`.
 
 `Option.listOf` creates the options of a select or combobox from common data structures:
 
